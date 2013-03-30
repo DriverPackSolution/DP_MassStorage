@@ -1,0 +1,185 @@
+;Copyright (c) 2004-2010 Hewlett-Packard Development Company, L.P. ALL RIGHTS RESERVED.
+;HP Confidential.
+
+;INF for W2K and Windows XP 32 Bit supporting HP SAS/SATA Smart Array controllers.
+
+
+[version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%HP%
+CatalogFile=HpCISSm2.cat  
+CatalogFile.ntx86=HpCISSm2.cat 
+DriverVer = 01/26/2010, 5.22.0.32
+
+
+[SourceDisksNames] ;Default
+1=%DISK%,HpCISSm2.sys,,
+
+
+[SourceDisksNames.x86]
+1=%DISK%,HpCISSm2.sys,,
+
+
+[SourceDisksFiles] ;Default and W2K
+HpCISSm2.sys=1,,
+
+
+[SourceDisksFiles.x86]
+HpCISSm2.sys=1,,
+
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[Manufacturer]
+%HP%=HP_HDC, ntx86
+
+
+[HP_HDC] ;Default and W2K
+%smart_B400I.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_323E103C
+%smart_P800.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3223103C
+%smart_P700m.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_323D103C
+%smart_P600.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3220&SUBSYS_3225103C
+%smart_P400.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3234103C
+%smart_P400I.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3235103C
+%smart_E500.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3237103C
+%smart_E200.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3238&SUBSYS_3212103C
+%smart_E200I.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3238&SUBSYS_3211103C
+%smart_P212.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3241103C
+%smart_P410.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3243103C
+%smart_P410i.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3245103C
+%smart_P411.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3247103C
+%smart_P812.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3249103C
+%smart_P712.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_324A103C
+%smart_P711.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_324B103C
+
+
+[HP_HDC.ntx86] ;XP 32-Bit
+%smart_B400I.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_323E103C
+%smart_P800.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3223103C
+%smart_P700m.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_323D103C
+%smart_P600.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3220&SUBSYS_3225103C
+%smart_P400.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3234103C
+%smart_P400I.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3235103C
+%smart_E500.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3230&SUBSYS_3237103C
+%smart_E200.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_3238&SUBSYS_3212103C
+%smart_E200I.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_3238&SUBSYS_3211103C
+%smart_P212.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3241103C
+%smart_P410.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3243103C
+%smart_P410i.DeviceDesc% = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3245103C
+%smart_P411.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3247103C
+%smart_P812.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_3249103C
+%smart_P712.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_324A103C
+%smart_P711.DeviceDesc%  = HpCISSm2_Inst, PCI\VEN_103C&DEV_323A&SUBSYS_324B103C
+
+
+[HpCISSm2_Inst] ;Default and W2K
+CopyFiles = @HpCISSm2.sys
+DriverVer = 01/26/2010, 5.22.0.32
+
+
+[HpCISSm2_Inst.ntx86]
+CopyFiles = @HpCISSm2.sys
+DriverVer = 01/26/2010, 5.22.0.32
+
+
+[HpCISSm2_Inst.Services]
+AddService = HpCISSm2, %SPSVCINST_ASSOCSERVICE%, HpCISSm2_Service_Inst, HpCISSm2_EventLog_Inst
+
+
+[HpCISSm2_Inst.ntx86.Services]
+AddService = HpCISSm2, %SPSVCINST_ASSOCSERVICE%, HpCISSm2_Service_Inst, HpCISSm2_EventLog_Inst
+
+
+[HpCISSm2_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\HpCISSm2.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+
+[HpCISSm2_EventLog_Inst] 
+AddReg = HpCISSm2_EventLog_AddReg
+
+
+[HpCISSm2_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+
+[pnpsafe_pci_addreg]
+HKR, ,                          "Tag",              %REG_DWORD%,  0x103
+HKR, "Parameters\Device",       "NumberOfRequests", %REG_DWORD%,  0x80
+HKR, "Parameters\PnpInterface", "5",                %REG_DWORD%,  0x00000001
+HKR, "Parameters\Device",       "DriverParameters", %REG_SZ%,     "CSMI=None;"
+
+
+[Strings]
+HP                     = "Hewlett-Packard Company"
+DISK                   = "Smart Array SAS/SATA Controller Support"
+smart_B400I.DeviceDesc = "Smart Array B400I Controller"
+smart_P800.DeviceDesc  = "Smart Array P800 Controller"
+smart_P700m.DeviceDesc = "Smart Array P700m Controller"
+smart_P600.DeviceDesc  = "Smart Array P600 Controller"
+smart_P400.DeviceDesc  = "Smart Array P400 Controller"
+smart_P400I.DeviceDesc = "Smart Array P400I Controller"
+smart_E500.DeviceDesc  = "Smart Array E500 Controller"
+smart_E200.DeviceDesc  = "Smart Array E200 Controller"
+smart_E200I.DeviceDesc = "Smart Array E200I Controller"
+smart_P212.DeviceDesc  = "Smart Array P212 Controller"
+smart_P410.DeviceDesc  = "Smart Array P410 Controller"
+smart_P410i.DeviceDesc = "Smart Array P410i Controller"
+smart_P411.DeviceDesc  = "Smart Array P411 Controller"
+smart_P812.DeviceDesc  = "Smart Array P812 Controller"
+smart_P712.DeviceDesc  = "Smart Array P712 Controller"
+smart_P711.DeviceDesc  = "Smart Array P711 Controller"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_SZ                 = 0x00000000
+
+
+;**Japanese**********************************
+[Strings.0411]
+HP = "Hewlett-Packard Company"
+DISK                   = "Smart アレイ SAS/SATA コントローラ Support"
+smart_B400I.DeviceDesc = "Smart アレイ B400I コントローラ"
+smart_P800.DeviceDesc  = "Smart アレイ P800 コントローラ"
+smart_P700m.DeviceDesc = "Smart アレイ P700m コントローラ"
+smart_P600.DeviceDesc  = "Smart アレイ P600 コントローラ"
+smart_P400.DeviceDesc  = "Smart アレイ P400 コントローラ"
+smart_P400I.DeviceDesc = "Smart アレイ P400I コントローラ"
+smart_E500.DeviceDesc  = "Smart アレイ E500 コントローラ"
+smart_E200.DeviceDesc  = "Smart アレイ E200 コントローラ"
+smart_E200I.DeviceDesc = "Smart アレイ E200I コントローラ"
+smart_P212.DeviceDesc  = "Smart アレイ P212 コントローラ"
+smart_P410.DeviceDesc  = "Smart アレイ P410 コントローラ"
+smart_P410i.DeviceDesc = "Smart アレイ P410i コントローラ"
+smart_P411.DeviceDesc  = "Smart アレイ P411 コントローラ"
+smart_P812.DeviceDesc  = "Smart アレイ P812 コントローラ"
+smart_P712.DeviceDesc  = "Smart アレイ P712 コントローラ"
+smart_P711.DeviceDesc  = "Smart アレイ P711 コントローラ"
+
+
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_SZ                 = 0x00000000

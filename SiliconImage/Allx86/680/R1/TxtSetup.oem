@@ -1,0 +1,36 @@
+; This file installs the 680 Medley ATA RAID driver as part of text mode setup on
+; Windows 2000, Windows XP, Windows Server 2003 and Windows Vista.
+;
+; Copyright (C) 2002-2007 by Silicon Image, Inc.
+; All rights reserved
+
+
+[Disks]
+disk1 = "Silicon Image ATA-133 Medley Raid Driver Installation Disk",\pnp680r.sys,\
+
+[Defaults]
+SCSI = PnP680r
+
+[SCSI]                  ; HwComponent section
+PnP680r = "Silicon Image ATA-133 Medley Raid Controller"
+
+
+[Files.SCSI.PnP680r]
+driver = disk1,pnp680r.sys, PnP680r
+inf = disk1,SiI680r.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, PnP680r.cat
+
+; NOTE:	In order to install Windows 2000 onto a drive that is attached
+;	to this controller you must delete the line that reads:
+;
+;	value = Parameters\PnpInterface, "5", REG_DWORD, 1
+;
+;	from the [Config.PnP680] section below.
+
+[Config.PnP680r]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+
+[HardwareIds.SCSI.PnP680r]
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_36801095", "PnP680r"

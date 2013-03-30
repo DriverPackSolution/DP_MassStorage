@@ -1,0 +1,125 @@
+; This INF file installs the Silicon Image Serial ATA Raid driver
+; for the SiI 3124 controller on systems running Windows 2000, and Windows XP.
+;
+; Copyright (C) 2003-2004 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Chicago$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%SI%
+CatalogFile=SI3124r.cat
+DriverVer=02/02/2004, 1.0.0.2
+
+
+[SourceDisksNames]
+1="Silicon Image SiI 3124 SATARaid Driver Installation Disk",SI3124r.sys,,
+
+[SourceDisksFiles]
+SI3124r.sys	= 1
+SiWinAcc.sys	= 1
+
+[DestinationDirs]
+DefaultDestDir	= 12
+
+[DriverFiles_NT_2K]
+SI3124r.sys,,,0x20
+
+[DriverFiles_XP]
+SI3124r.sys,,,0x20
+SiWinAcc.sys,,,0x20
+
+[Manufacturer]
+;;;%SI%=SI_HDC
+%SI%=SI_HDC,NTx86.5.1
+
+[SI_HDC]
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124, PCI\VEN_1095&DEV_3124&SUBSYS_61241095
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124, PCI\VEN_1095&DEV_3124&SUBSYS_34438086
+
+[SI_HDC.NTx86.5.1]
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124_XP, PCI\VEN_1095&DEV_3124&SUBSYS_61241095
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124_XP, PCI\VEN_1095&DEV_3124&SUBSYS_34438086
+
+
+;; Windows 2000 install sections
+;;
+[SI_3124.NTX86]
+Copyfiles=DriverFiles_NT_2K
+
+[SI_3124.NTX86.Services]
+AddService=SI3124r,0x00000002,SI_3124_Service_Install, Miniport_EventLog_Inst
+
+;; Windows XP install sections
+;;
+[SI_3124_XP]
+Copyfiles=DriverFiles_XP
+
+[SI_3124_XP.Services]
+AddService=SI3124r,0x00000002,SI_3124_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,,FilterService_Install
+
+[SI_3124_Service_Install]
+DisplayName=%SI3124.SvcDesc%
+ServiceType=1						; SERVICE_KERNEL_DRIVER
+StartType=0							; SERVICE_BOOT_START
+ErrorControl=1						; SERVICE_ERROR_NORMAL
+ServiceBinary=%12%\SI3124R.sys
+LoadOrderGroup=Scsi miniport
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+[FilterService_Install]
+DisplayName=SATALink driver accelerator
+ServiceType=1						; SERVICE_KERNEL_DRIVER
+StartType=0							; SERVICE_BOOT_START
+ErrorControl=0						; SERVICE_ERROR_IGNORE
+ServiceBinary=%12%\SiWinAcc.sys
+LoadOrderGroup=Filter
+
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+
+[PortConfigure_AddReg]
+HKR,Parameters\Device,NumberOfRequests,0x00010001, 124
+
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+HKR,ProblemDevices, %ProblemDev1Name%, 0, %ProblemDev1Value%
+
+
+; List of controller subsystem IDs to be supported by the SI3124.sys driver on
+; Win2K/XP systems.
+[SupportedSubSystemIds_AddReg]
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_3124.DeviceDesc%,0x00010001, 0x61241095
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3124.DeviceDesc% (intel 3443)",0x00010001, 0x34438086
+
+
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[Strings]
+SI="Silicon Image"
+
+PCI\VEN_1095&DEV_3124.DeviceDesc="Silicon Image SiI 3124 SATARaid Controller"
+SI3124.SvcDesc="SiI-3124 SATARaid Controller"
+
+
+ProblemDev1Name="Maxtor 4D060H3                          DAK05GK0"
+ProblemDev1Value="MaxMode = UDMA-5"

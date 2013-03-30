@@ -1,0 +1,148 @@
+[Version]
+Signature="$Chicago$"
+
+;*********************for 32 bit**********************************
+[DefaultInstall]
+AddReg=asAHCICritical.Reg, asAHCISvc.Reg
+CopyFiles=asAHCI_Driver_File
+
+[DefaultUninstall]
+DelReg=asAHCICritical.DelReg, asAHCISvc.DelReg
+
+[asAHCI_Driver_File]
+%ASAHCI_SYS%,,,0x00000010
+
+;*********************for 64 bit**********************************
+[DefaultInstall.NTamd64]
+AddReg=asAHCICritical64.Reg, asAHCISvc64.Reg
+CopyFiles=asAHCI_Driver_File64
+
+[DefaultUninstall.NTamd64]
+DelReg=asAHCICritical64.DelReg, asAHCISvc64.DelReg
+
+[asAHCI_Driver_File64]
+%ASAHCI64_SYS%,,,0x00000010
+
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+;============================================================================================================
+;*********************for 32 bit**********************************
+;============================================================================================================
+[asAHCICritical.Reg]
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0601,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0601,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0602,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0602,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0611,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0611,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0612,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0612,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+[asAHCICritical.DelReg]
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0601
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0602
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0611
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0612
+
+
+;============================================================================================================
+;============================================================================================================
+[asAHCISvc.Reg]
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%, ErrorControl,%REG_DWORD%,1
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%, Group,%REG_SZ%,"SCSI miniport"
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%, Start,%REG_DWORD%,0
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%, Type,%REG_DWORD%,1
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%, DisplayName,%REG_SZ%,%PCI\VEN_1B21&DEV_1060.DeviceDesc%
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%, ImagePath,%REG_SZ%, %ASAHCI_SVC_PATH%
+
+HKLM,System\CurrentControlSet\Services\%ASAHCI_SVC%\Parameters\PnpInterface,5,%REG_DWORD%,1
+
+[asAHCISvc.DelReg]
+HKLM,System\CurrentControlSet\Services\ASAHCI_SVC
+
+
+;============================================================================================================
+;*********************for 64 bit**********************************
+;============================================================================================================
+[asAHCICritical64.Reg]
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0601,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0601,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0602,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0602,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0611,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0611,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0612,Service,%REG_SZ%,%ASAHCI_SVC%
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0612,ClassGUID,%REG_SZ%,"{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+
+[asAHCICritical64.DelReg]
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0601
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0602
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0611
+HKLM,System\CurrentControlSet\Control\CriticalDeviceDatabase\pci#ven_1B21&dev_0612
+
+
+;============================================================================================================
+;============================================================================================================
+[asAHCISvc64.Reg]
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%, ErrorControl,%REG_DWORD%,1
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%, Group,%REG_SZ%,"SCSI miniport"
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%, Start,%REG_DWORD%,0
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%, Type,%REG_DWORD%,1
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%, DisplayName,%REG_SZ%,%PCI\VEN_1B21&DEV_1060.DeviceDesc%
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%, ImagePath,%REG_SZ%, %ASAHCI64_SVC_PATH%
+
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%\Parameters\PnpInterface,5,%REG_DWORD%,1
+
+[asAHCISvc64.DelReg]
+HKLM,System\CurrentControlSet\Services\%ASAHCI64_SVC%
+
+
+[SourceDisksNames]
+1=%ProdName%,,
+
+[SourceDisksFiles]
+asahxp_PRE.inf=1
+%ASAHCI_SYS%=1, ..\,
+
+[SourceDisksFiles.NTamd64]
+asahxp_PRE.inf=1
+%ASAHCI64_SYS%=1, ..\,
+
+
+
+[Strings]
+ASAHCI_SYS	=	"asahxp32.sys"
+ASAHCI_SVC	=	"asahxp32"
+ASAHCI_SVC_PATH	= "System32\Drivers\asahxp32.sys"
+
+ASAHCI64_SYS	=	"asahxp64.sys"
+ASAHCI64_SVC	=	"asahxp64"
+ASAHCI64_SVC_PATH	= "System32\Drivers\asahxp64.sys"
+
+PCI\VEN_1B21&DEV_0611.DeviceDesc="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0612.DeviceDesc="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0601.DeviceDesc="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0602.DeviceDesc="Asmedia 106x SATA Controller"
+
+ProdName	  ="Asmedia 106x SATA Controller Preparation for Windows 2003/XP"
+ProdVersion ="1.0"
+ASMEDIA     ="Asmedia Technology"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_SZ                 = 0x00000000
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

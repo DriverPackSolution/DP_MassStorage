@@ -1,0 +1,360 @@
+;  -- This file contains descriptions of the MegaRAID family 
+;             of RAID Controllers
+;
+; Copyright © 2001, LSI Logic Corp.,
+[version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+CatalogFile=MRAID32.cat
+DriverVer= 06/19/2003,6.36.32
+
+
+     
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+
+[ControlFlags]
+;
+; Exclude the following PnP devices from Select Device list.
+;
+ExcludeFromSelect = PCI\VEN_101E&DEV_9010 
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0431101E 
+ExcludeFromSelect = PCI\VEN_101E&DEV_9060 
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0438101E 
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0466101E 
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0467101E
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0490101E 
+
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0471101E
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0493101E
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0475101E
+
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0762101E 
+
+ExcludeFromSelect = PCI\VEN_1011&DEV_0046&SUBSYS_0489101E 
+ExcludeFromSelect = PCI\VEN_8086&DEV_B555&SUBSYS_0489101E 
+
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0494101E 
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0494101E 
+
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0503101E 
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_0503101E 
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0511101E
+
+ExcludeFromSelect = PCI\VEN_1000&DEV_1960&SUBSYS_05181000 
+ExcludeFromSelect = PCI\VEN_1000&DEV_1960&SUBSYS_05201000 
+ExcludeFromSelect = PCI\VEN_1000&DEV_1960&SUBSYS_A5201000
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_0522101E 
+ExcludeFromSelect = PCI\VEN_1000&DEV_1960&SUBSYS_05221000 
+ExcludeFromSelect = PCI\VEN_1000&DEV_0407&SUBSYS_05311000
+ExcludeFromSelect = PCI\VEN_1000&DEV_0407&SUBSYS_05321000
+
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_10C6103C
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_10C7103C
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_10CC103C
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_10CD103C
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_60E7103C
+ExcludeFromSelect = PCI\VEN_101E&DEV_1960&SUBSYS_60E8103C
+
+
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_11121111
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_11111111
+ExcludeFromSelect = PCI\VEN_8086&DEV_1960&SUBSYS_09A0101E
+
+ExcludeFromSelect = PCI\VEN_1000&DEV_1960&SUBSYS_05231000
+ExcludeFromSelect = PCI\VEN_1000&DEV_1960&SUBSYS_45231000
+ExcludeFromSelect = PCI\VEN_1000&DEV_0407&SUBSYS_05328086
+     
+[Manufacturer]
+%LSI%=LSI
+%HP%=HP
+
+     
+[LSI]
+;MegaRAID Enterprise 1200 (428)
+%mraid428.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_9010 
+
+;MegaRAID 431 
+%megaraid.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0431101E 
+
+;MegaRAID Enterprise 1300 (434)
+%mraid434.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_9060 
+
+;MegaRAID Enterprise 1400 (438) 
+%mraid438.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0438101E 
+
+;MegaRAID Express 200 (466) 
+%mraid466.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0466101E 
+
+;MegaRAID Enterprise 1500 (467) 
+%mraid467.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0467101E
+
+;MegaRAID Enterprise 1600 (471) 
+%mraid471.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0471101E
+%mraid471.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0471101E
+
+;MegaRAID Express 300 (490)
+%mraid490.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0490101E 
+
+;MegaRAID Elite 1600 (493)
+%mraid493.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0493101E
+%mraid493.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0493101E
+
+;Intel's Chilito-2 (u320-2X)
+%Intelu3202X.DeviceDesc% = Mraid35x_Inst, PCI\VEN_1000&DEV_0407&SUBSYS_05328086
+
+;MegaRAID Express 000 (762)
+%mraid762.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0762101E 
+
+;MegaRAID Express 500/500LC (475)
+%mraid475.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0475101E
+%mraid475.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0475101E
+
+;MegaRAID Enterprise 3000 (489)
+%mraid489.DeviceDesc% = Mraid35x_Inst, PCI\VEN_1011&DEV_0046&SUBSYS_0489101E 
+%mraid489.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_B555&SUBSYS_0489101E 
+
+;MegaRAID Elite 1650/1700 (494)
+%mraid494.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0494101E 
+%mraid494.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0494101E 
+
+;MegaRAID Enterprise 1700 (503)
+%mraid503.DeviceDesc% = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0503101E 
+%mraid503.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_0503101E 
+
+;MegaRAID i4 IDE RAID Controller (LSI Logic)
+%mraid511.DeviceDesc% = mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0511101E 
+
+;MegaRAID 320-0
+%mraidZCR.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_1960&SUBSYS_A5201000 
+
+;MegaRAID 320-2
+%mraid518.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_1960&SUBSYS_05181000 
+
+;MegaRAID 320-1
+%mraid520.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_1960&SUBSYS_05201000 
+
+;MegaRAID SCSI 320-4X (531)
+%mraid531.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_0407&SUBSYS_05311000 
+
+;MegaRAID SCSI 320-2X (532)
+%mraid532.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_0407&SUBSYS_05321000 
+
+;MegaRAID i4133 (522)
+%mraid522.DeviceDesc% = mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_0522101E 
+%mraid522.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_1960&SUBSYS_05221000 
+
+;MegaRAID SATA 6
+%mraid523.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_1960&SUBSYS_05231000 
+
+;MegaRAID SATA 4
+%mraid4523.DeviceDesc% = mraid35x_Inst, PCI\VEN_1000&DEV_1960&SUBSYS_45231000 
+
+
+
+[HP]
+%netraid3si.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_10C6103C
+%netRaid.DeviceDesc%    = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_10C7103C
+%netRaid.DeviceDesc%    = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_10CC103C
+%netraid1si.DeviceDesc% = Mraid35x_Inst, PCI\VEN_8086&DEV_1960&SUBSYS_10CD103C
+;HP 475
+%netraid1M.DeviceDesc%  = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_60E7103C
+;HP 493
+%netraid2M.DeviceDesc%  = Mraid35x_Inst, PCI\VEN_101E&DEV_1960&SUBSYS_60E8103C
+
+
+
+
+[Mraid35x_Inst]
+CopyFiles = @Mraid35x.sys
+     
+[Mraid35x_Inst.Services]
+AddService = Mraid35x, %SPSVCINST_ASSOCSERVICE%, Mraid35x_Service_Inst,Miniport_EventLog_Inst
+
+[Mraid35x_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_BOOT_START% 
+ErrorControl   = %SERVICE_ERROR_NORMAL% 
+ServiceBinary  = %12%\Mraid35x.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+     
+;************************************************************* 
+;The EventLog entries are the same for all SCSI miniports. 
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+     
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x000000BD
+HKLM,"System\CurrentControlSet\Services\Disk","TimeOutValue",0x00010001,0x00000028
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_11121111,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_11121111,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_11111111,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_11111111,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_09A0101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_09A0101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10C6103C,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10C6103C,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10C7103C,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10C7103C,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10CC103C,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10CC103C,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10CD103C,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_10CD103C,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_60E7103C,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_60E7103C,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0762101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0762101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_60E8103C,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_60E8103C,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1011&dev_0046&subsys_0489101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1011&dev_0046&subsys_0489101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_B555&subsys_0489101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_B555&subsys_0489101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0503101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0503101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0438101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0438101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0466101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0466101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0467101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0467101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0490101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0490101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0493101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0493101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0511101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0511101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0471101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0471101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0475101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0475101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0477101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0477101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0494101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0494101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0494101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_8086&dev_1960&subsys_0494101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0503101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0503101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05181000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05181000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05201000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05201000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0522101E,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_101E&dev_1960&subsys_0522101E,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05221000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05221000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_0407&subsys_05311000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_0407&subsys_05311000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_0407&subsys_05321000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_0407&subsys_05321000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_A5201000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_A5201000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05231000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_05231000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_45231000,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_1960&subsys_45231000,Service,,%Service%
+
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_0407&subsys_05328086,ClassGUID,,%ClassGUID%
+HKLM,SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\pci#ven_1000&dev_0407&subsys_05328086,Service,,%Service%
+
+    
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%%SystemRoot%%\System32\IoLogMsg.dll 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %SOURCE_DISK%,\Mraid35x.sys,,
+
+[SourceDisksFiles]
+Mraid35x.SYS = 1,,11136,,,,,,
+
+[Strings]
+;------------------MegaRAID----------------------------
+LSI = "LSI Logic Corp.,"
+megaraid.DeviceDesc = "LSI Logic MegaRAID RAID Controller RAID Controller"
+mraid466.DeviceDesc = "LSI Logic MegaRAID Express 200 RAID Controller"
+mraid490.DeviceDesc = "LSI Logic MegaRAID Express 300 RAID Controller"
+mraid762.DeviceDesc = "LSI Logic MegaRAID Express 000 RAID Controller"
+mraid475.DeviceDesc = "LSI Logic MegaRAID Express 500/500LC RAID Controller"
+mraid493.DeviceDesc = "LSI Logic MegaRAID Elite 1600 RAID Controller"
+mraid494.DeviceDesc = "LSI Logic MegaRAID Elite 1650/1700 RAID Controller"
+mraid428.DeviceDesc = "LSI Logic MegaRAID Enterprise 1200 RAID Controller"
+mraid434.DeviceDesc = "LSI Logic MegaRAID Enterprise 1300 RAID Controller"
+mraid438.DeviceDesc = "LSI Logic MegaRAID Enterprise 1400 RAID Controller"
+mraid467.DeviceDesc = "LSI Logic MegaRAID Enterprise 1500 RAID Controller"
+mraid471.DeviceDesc = "LSI Logic MegaRAID Enterprise 1600 RAID Controller"
+mraid503.DeviceDesc = "LSI Logic MegaRAID Enterprise 1700 RAID Controller"
+mraid489.DeviceDesc = "LSI Logic MegaRAID Enterprise 3000 RAID Controller"
+mraidZCR.DeviceDesc = "MegaRAID SCSI 320-0 RAID Controller"
+mraid520.DeviceDesc = "MegaRAID SCSI 320-1 RAID Controller"
+mraid518.DeviceDesc = "MegaRAID SCSI 320-2 RAID Controller"
+mraid532.DeviceDesc = "MegaRAID SCSI 320-2X RAID Controller"
+mraid531.DeviceDesc = "MegaRAID SCSI 320-4X RAID Controller"
+mraid511.DeviceDesc = "LSI Logic MegaRAID i4 IDE RAID Controller" 
+mraid522.DeviceDesc = "LSI Logic MegaRAID i4133 RAID Controller"
+mraid523.DeviceDesc = "LSI Logic MegaRAID SATA 150-6 RAID Controller"
+mraid4523.DeviceDesc = "LSI Logic MegaRAID SATA 150-4 RAID Controller"
+Intelu3202X.DeviceDesc = "Intel(R) Storage RAID Controller SRCU42"
+
+Service = "Mraid35x"
+ClassGUID = "{4D36E97B-E325-11CE-BFC1-08002BE10318}"
+
+
+;------------------HP----------------------------------
+HP="Hewlett Packard"
+netraid3si.DeviceDesc = "HP NetRAID-3Si"
+NetRaid.DeviceDesc    = "Integrated HP NetRAID"
+netraid1si.DeviceDesc = "HP NetRAID-1Si"
+netraid1M.DeviceDesc  = "HP NetRAID-1M RAID Controller"
+netraid2M.DeviceDesc  = "HP NetRAID-2M RAID Controller"
+
+
+SOURCE_DISK         = "MegaRAID 2001 RAID Driver"     
+;******************************************* 
+;Handy macro substitutions (non-localizable) 
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

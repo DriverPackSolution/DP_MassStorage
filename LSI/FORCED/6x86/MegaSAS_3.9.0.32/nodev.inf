@@ -1,0 +1,59 @@
+;#####################################################################
+;  Copyright © 2005, LSI Corp..
+;#####################################################################
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+CatalogFile=megasas.cat
+DriverVer=11/20/2008,3.9.0.32
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+
+[SourceDisksNames]
+
+
+[SourceDisksFiles]
+
+
+[Manufacturer]
+%LSI%=LSI, NTx86
+
+[LSI]
+
+[LSI.NTx86]
+%NULL.DeviceDesc%     = megasas_Inst, SCSI\Other__RAID___DummyDevice____0001    
+%LSISHEAENCLOSURE%    = megasas_Inst, SCSI\EnclosureLSILOGIC_____SYM3600-SAS
+%IBMSHEAENCLOSURE%    = megasas_Inst, SCSI\EnclosureIBM-ESXSEXP3000_________
+%IBMSHEAENCLOSURE1%   = megasas_Inst, SCSI\EnclosureIBM_____SAS_SES-2_DEVICE
+%IBMSAS_ESXS%	      = megasas_Inst, SCSI\EnclosureIBM-ESXSVSC7160_________
+%IBMSAS_EXPBP% 		  = megasas_Inst, SCSI\EnclosureIBM-ESXS_SAS_EXP_BP_____
+
+[megasas_Inst.NTx86]
+AddReg=raid_addreg
+
+[megasas_Inst.NTx86.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+
+
+[strings]
+LSI                     = "LSI Corp."
+NULL.DeviceDesc         = "LSI MegaRAID Virtual Device"
+LSISHEAENCLOSURE	    = "LSI Logic SYM3600-SAS Enclosure"
+IBMSHEAENCLOSURE        = "IBM-ESXS_EXP3000 Enclosure Device"
+IBMSHEAENCLOSURE1       = "IBM SAS SES-2 Device"
+IBMSAS_ESXS				= "IBM-ESXS VSC7160"
+IBMSAS_EXPBP			= "IBM-ESXS SAS EXP BKPLN"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+
+[raid_addreg]
+HKR, "Parameters\virtualraid", "level", 0x00010001, 0x00000001

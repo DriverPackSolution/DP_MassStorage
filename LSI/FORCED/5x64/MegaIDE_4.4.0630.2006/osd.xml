@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Supported Platform Ids: S3000AHX, S3000AHV, S3000AH-->
+<osi-meta>
+    <jdp pid="S3000AHX,S3000AHV,S3000AH" >
+        <jdrivers os_type="w2k3,wsbs,wxp">
+        <!-- OIP has to modify only the (name,ver,inf) attribute when creating new version of JDP, and should not modify devname. -->
+            <osi_driver name="SW/Onboard RAID" devname="ICH7R" inf_loc="Windows\."  ver="4.4.0630.2006"/>
+        </jdrivers>
+         <jdrivers os_type="w2k3x64,wxpx64">
+        <!-- OIP has to modify only the (name,ver,inf) attribute when creating new version of JDP, and should not modify devname. -->
+            <osi_driver name="SW/Onboard RAID" devname="ICH7R" inf_loc="Win64\."  ver="4.4.0630.2006"/>
+        </jdrivers>
+    </jdp>
+</osi-meta>

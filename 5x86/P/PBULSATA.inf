@@ -1,0 +1,105 @@
+[Version]
+signature="$CHICAGO$"
+Provider=%PROMISE%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+CatalogFile=Ulsata.cat
+DriverVer=06/03/2003, 1.00.0.26
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+MoveMiniPort.NT = 12;
+CacheDll.NT = 11;
+
+[ControlFlags]
+
+[Manufacturer]
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_3373.DeviceDesc%=ultra373PCI,PCI\VEN_105A&DEV_3373&CC_0101
+%Promise_Sata_ControllerDesc%=NODRV,SCSI\Promise_SATA_CONSOLE_
+
+[NODRV]
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[ultra373PCI.Uninstall.NT]
+DelReg=RegUninstall373.del
+DelFiles=MoveMiniPort.NT,CacheDll.NT
+
+
+[ultra373PCI.NT]
+CopyFiles=MoveMiniPort.NT,CacheDll.NT
+
+
+[ultra373PCI.NT.Services]
+AddService = UlSata, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+;***************************************
+[ultraPCI_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ide376xp.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg, ulsata_cache_addreg
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;*************************************************************
+[ulsata_cache_addreg]
+HKR, "Parameters\Cache", "DefSize", 0x00010001, 0x00900000
+HKR, "Parameters\Cache", "Flag",, "TRUE"
+HKR, "Parameters\Cache", "CACHEON", 0x00010001, 0x00000001
+HKR, "Parameters\Cache", "DrvSetting", 0x00010001, 0x00000000
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Run","PtiuPbmd",,"Rundll32.exe ptipbm.dll,SetWriteBack"
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[RegUninstall373.del]
+;HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Ultra373
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Run,PtiuPbmd
+
+[SourceDisksFiles]
+ide376xp.sys = 1
+ptipbm.dll = 1
+
+[MoveMiniPort.NT]
+ide376xp.sys
+
+[CacheDll.NT]
+ptipbm.dll
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[strings]
+Promise="Promise Technology"
+PCI\VEN_105A&DEV_3373.DeviceDesc="WinXP Promise SATA378 (tm) IDE Controller"
+DISKNAME1="Promise SATA378 Driver Diskette"
+DISKNAME2="Windows system"
+Promise_Sata_ControllerDesc= "Promise SATA Console SCSI Processor"
+SPSVCINST_ASSOCSERVICE = 0x00000002
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+
+

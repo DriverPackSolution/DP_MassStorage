@@ -1,0 +1,52 @@
+; ahcix64s.INF
+; Copyright 2009 Advanced Micro Devices, Inc.
+;
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ATI%
+CatalogFile=ahcix64s.cat
+DriverVer=07/01/2009, 3.1.1540.151
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+
+[SourceDisksFiles]
+
+[Manufacturer]
+%ATI%=ATI, ntamd64
+
+; These are formed using the device ID for the actual LUN exposed
+; you might have processor, array, or Other 
+; Subject to change in later OSes 
+; as more device types are added to SPC-x
+[ATI.ntamd64]
+%ATI_Raid_ControllerDesc%=NODRV,SCSI\ProcessorAMD_____
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed 
+; this is the important bit
+; you will wind up with a device string in device manager 
+; and no banged out devnode
+; Null service of course does nothing. 
+; You can use your device by opening the FDO via the port \\.\ScsiN
+; and passthrough commands then set the bus/target/LUN
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[strings] 
+
+;  *******Localizable Strings******* 
+
+ATI= "Advanced Micro Devices, Inc." 
+ATI_Raid_ControllerDesc= "AMD RAID Console"
+
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

@@ -1,0 +1,165 @@
+;
+; oemsetup.inf -- INF setup file for ipsraidn ServeRAID Adapters
+;                 for Windows 2000 and Windows XP Servers.
+; Copyright (c) 1998-2004, IBM
+; Copyright 2004 Adaptec, Inc. All rights reserved.
+
+[Version]
+Signature = "$Windows NT$"
+Class = SCSIAdapter
+ClassGUID = {4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider = %IBM%
+CatalogFile = ipsraid2.cat
+DriverVer=07/12/2004, 7.10.18
+
+[SourceDisksNames]
+1 = %INSTALL_MEDIA_DESCRIPTION%, \WINDOWS\WIN2K_XP\SCSI\PPCDRVR\IPSRAIDN.SYS,
+
+[SourceDisksFiles]
+ipsraidn.sys = 1
+nfrdci04.dll = 1
+
+[DestinationDirs]
+IPSRAIDN_CopyFiles = 12         ; WINNT\SYSTEM32\DRIVERS
+NFRDCI_CopyFiles = 11           ; WINNT\SYSTEM32
+
+[Manufacturer]
+%IBM%=IBM,NTx86.5.1.0x1
+
+; models section
+
+[IBM.NTx86.5.1.0x1]     ; Section for XP Professional
+
+[IBM]
+%SERVERAID4H_DESCRIPTION% = IPSRAIDN_Install, PCI\VEN_1014&DEV_002E&SUBSYS_022E1014&REV_10
+%SERVERAID3_DESCRIPTION% = IPSRAIDN_Install, PCI\VEN_1014&DEV_002E&SUBSYS_002E1014&REV_0D
+%SERVERAID2_DESCRIPTION% = IPSRAIDN_Install, PCI\VEN_1014&DEV_002E&SUBSYS_00000000&REV_04
+%SERVERAIDNAV_DESCRIPTION% = IPSRAIDN_Install, PCI\VEN_1014&DEV_002E&SUBSYS_00000000&REV_03
+%SERVERAID1_DESCRIPTION% = IPSRAIDN_Install, PCI\VEN_1014&DEV_002E&SUBSYS_00000000&REV_02
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[IPSRAIDN_Install]
+Copyfiles = IPSRAIDN_Copyfiles
+
+[IPSRAIDN_Install.Services]
+AddService = ipsraidn, %SPSVCINST_ASSOCSERVICE%, IPSRAIDN_Service_Install, IPSRAIDN_EventLog_Install
+DelService = ipsperf
+
+[IPSRAIDN_Install.HW]
+DelReg = Legacy_ScsiPort_DelReg
+
+[IPSRAIDN_Copyfiles]
+ipsraidn.sys
+
+[IPSRAIDN_Service_Install]
+DisplayName = %IPSRAIDN_FRIENDLY_NAME%
+ServiceType = %SERVICE_KERNEL_DRIVER%
+StartType = %SERVICE_BOOT_START%
+ErrorControl = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\ipsraidn.sys
+LoadOrderGroup = SCSI Miniport
+AddReg = IPSRAIDN_AddReg
+
+[IPSRAIDN_EventLog_Install]
+AddReg = IPSRAIDN_EventLog_AddReg
+
+[IPSRAIDN_EventLog_AddReg]
+HKR, , EventMessageFile, %FLG_ADDREG_TYPE_EXPAND_SZ%, "%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\ipsraidn.sys"
+HKR, , TypesSupported, %FLG_ADDREG_TYPE_DWORD%, %EVENTLOG_ERROR_WARNING_INFORMATION_TYPE%
+
+[IPSRAIDN_AddReg]
+HKR,"Parameters\Device", "NumberOfRequests", %FLG_ADDREG_TYPE_DWORD%, 128
+HKR,"Parameters\PnpInterface", "5",%REG_DWORD%,0x00000001
+
+[Legacy_ScsiPort_DelReg]
+HKR, Scsiport, BusNumber
+HKR, Scsiport, LegacyInterfaceType
+HKR, Scsiport, SlotNumber
+
+[IPSRAIDN_Install.CoInstallers]
+CopyFiles = NFRDCI_Copyfiles
+AddReg = NFRDCI.CoInstallers_AddReg
+
+[NFRDCI_Copyfiles]
+nfrdci04.dll
+
+[NFRDCI.CoInstallers_AddReg]
+HKR,,Coinstallers32,0x00010000,"nfrdci04.dll,nfrdci_Entry"
+
+[Strings]
+;Handy macro substitutions (non-localizable)
+
+; Values for flag in the Services section
+SPSVCINST_NOFLAG = 0x00000000
+SPSVCINST_TAGTOFRONT = 0x00000001
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SPSVCINST_DELETEEVENTLOGENTRY = 0x00000004
+SPSVCINST_NOCLOBBER_DISPLAYNAME = 0x00000008
+SPSVCINST_NOCLOBBER_STARTTYPE = 0x00000010
+SPSVCINST_NOCLOBBER_ERRORCONTROL = 0x00000020
+SPSVCINST_NOCLOBBER_LOADORDERGROUP = 0x00000040
+SPSVCINST_NOCLOBBER_DEPENDENCIES = 0x00000080
+
+; Values for ServiceType
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_FILE_SYSTEM_DRIVER = 2
+SERVICE_ADAPTER = 4
+SERVICE_RECOGNIZER_DRIVER = 8
+SERVICE_WIN32_OWN_PROCESS  = 16
+SERVICE_WIN32_SHARE_PROCESS = 32
+SERVICE_INTERACTIVE_PROCESS = 256
+
+; Values for StartType
+SERVICE_BOOT_START     = 0
+SERVICE_SYSTEM_START   = 1
+SERVICE_AUTO_START     = 2
+SERVICE_DEMAND_START   = 3
+SERVICE_DISABLED       = 4
+
+; Values for ErrorControl
+SERVICE_ERROR_IGNORE   = 0
+SERVICE_ERROR_NORMAL   = 1
+SERVICE_ERROR_SEVERE   = 2
+SERVICE_ERROR_CRITICAL = 3
+
+; Values for registry key data type
+FLG_ADDREG_BINVALUETYPE   = 0x00000001
+FLG_ADDREG_NOCLOBBER      = 0x00000002
+FLG_ADDREG_DELVAL         = 0x00000004
+FLG_ADDREG_APPEND         = 0x00000008
+FLG_ADDREG_KEYONLY        = 0x00000010
+FLG_ADDREG_OVERWRITEONLY  = 0x00000020
+
+FLG_ADDREG_TYPE_SZ        = 0x00000000
+FLG_ADDREG_TYPE_MULTI_SZ  = 0x00010000
+FLG_ADDREG_TYPE_EXPAND_SZ = 0x00020000
+FLG_ADDREG_TYPE_BINARY    = 0x00000001
+FLG_ADDREG_TYPE_DWORD     = 0x00010001
+FLG_ADDREG_TYPE_NONE      = 0x00020001
+
+; Values for error log type
+EVENTLOG_SUCCESS              = 0X0000
+EVENTLOG_ERROR_TYPE           = 0x0001
+EVENTLOG_WARNING_TYPE         = 0x0002
+EVENTLOG_INFORMATION_TYPE     = 0x0004
+EVENTLOG_AUDIT_SUCCESS        = 0x0008
+EVENTLOG_AUDIT_FAILURE        = 0x0010
+EVENTLOG_ERROR_WARNING_INFORMATION_TYPE = 0x0007
+
+;
+REG_DWORD              = 0x00010001
+
+;*******************************************
+
+; Localizable strings
+IBM = "IBM Corporation"
+INSTALL_MEDIA_DESCRIPTION = "IBM ServeRAID Device Driver CD/Diskette"
+SERVERAID4H_DESCRIPTION = "IBM ServeRAID 4H Controller"
+SERVERAID3_DESCRIPTION = "IBM ServeRAID 3H/3L Controller"
+SERVERAID2_DESCRIPTION = "IBM ServeRAID II Controller"
+SERVERAIDNAV_DESCRIPTION = "IBM ServeRAID integrated on PC 330 Server"
+SERVERAID1_DESCRIPTION = "IBM PC ServeRAID Controller"
+IPSRAIDN_FRIENDLY_NAME = "IBM ServeRAID Device Driver"
+

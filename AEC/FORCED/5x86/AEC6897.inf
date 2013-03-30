@@ -1,0 +1,90 @@
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}	;SCSI CLASS
+Provider=%ProviderName%
+DriverVer=06/23/2004, 1.0.3.2
+
+; Class Install
+[ClassInstall32.NT]
+Addreg=SCSIReg
+
+[SCSIReg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.Dll,ScsiClassInstaller"
+HKR,,Icon,,"-10"
+HKR,,LegacyInfOption,,"SCSI"
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+
+[Manufacturer]
+%MfgName%=ACARD
+
+
+;****************************************************
+; Manufacturer device list
+[ACARD]
+%aec6897.DeviceDesc% = aec689x_Inst, PCI\VEN_1191&DEV_000B&SUBSYS_1191000B
+%aec6898.DeviceDesc% = aec689x_Inst, PCI\VEN_1191&DEV_000B&SUBSYS_11916898
+%aec6897.Processor% = NO_DRV,AEC6897_RAID_PROCESSOR__1
+%aec6898.Processor% = NO_DRV,AEC6898_RAID_PROCESSOR__1
+
+[NO_DRV]
+;Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+;Include=machine.inf
+Needs=NO_DRV.Services
+
+;****************************************************
+;*** section for atp867
+;****************************************************
+[aec689x_Inst]
+CopyFiles = @aec6897.sys
+
+[aec689x_Inst.Services]
+AddService = aec6897, %SPSVCINST_ASSOCSERVICE%, aec689x_Service_Inst, Miniport_EventLog_Inst
+
+[aec689x_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\aec6897.sys
+LoadOrderGroup = SCSI Miniport
+AddReg	       = pnpsafe_pci_addreg
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001      ; PCI Bus
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+ProviderName = "ACARD Technology Corp."
+MfgName = "ACARD"
+aec6897.DeviceDesc = "AEC6897 4-Channel IDE ULTRA 133 RAID Adapter for Windows 2000/XP/2003"
+aec6898.DeviceDesc = "AEC6898 4-Channel SERIAL ATA RAID Adapter for Windows 2000/XP/2003"
+aec6897.Processor  = "AEC6897 RAID Processor"
+aec6898.Processor  = "AEC6898 RAID Processor"
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+
+

@@ -1,0 +1,43 @@
+;#####################################################################
+;  Copyright © 2001, LSI Logic Corp.
+;#####################################################################
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+CatalogFile=MegaXP.cat
+DriverVer=07/09/2003,4.1.0709.2003
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%LSI%=LSI
+
+[LSI]
+%NULL.DeviceDesc%     = NODRV, SCSI\Other__RAID___DummyDevice____    
+
+[NODRV]
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+
+[strings]
+LSI                   = "LSI Logic Corp."
+NULL.DeviceDesc       = "RAID Virtual Device"
+

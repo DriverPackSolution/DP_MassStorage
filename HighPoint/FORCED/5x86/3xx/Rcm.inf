@@ -1,0 +1,61 @@
+;
+; RCM.INF
+;
+; INF file of HPT370/372 IDE RAID controller for Windows XP
+; This INF installs a dummy driver for the management device.
+; Copyright (c) 2000-2001 HighPoint Technologies, Inc. All rights reserved
+;
+[Version]
+signature="$Windows NT$"
+Class=System
+ClassGUID={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%HIGHPOINT%
+;CatalogFile=RCM.CAT
+DriverVer=10/19/2001,2.0.1019
+
+[ControlFlags]
+;ExcludeFromSelect = *
+
+[SourceDisksNames]
+1 = %InstallDisk%,\disk1,,,
+
+
+[SourceDisksFiles]
+
+[HptMgtFiles]
+;
+; Dummy section to satisfy ChkInf tool
+;
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%HighPoint%=HighPoint
+
+[HighPoint]
+%SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc% = NODRV, SCSI\ProcessorHPT_____RCM_DEVICE______
+
+
+[NODRV]
+;
+; Dummy directive to satisfy ChkInf tool
+;
+CopyFiles = HptMgtFiles
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[strings]
+
+HighPoint="HighPoint Technologies, Inc."
+SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc = "HighPoint RCM Device"
+InstallDisk="HighPoint HPT370/372 IDE RAID Driver Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

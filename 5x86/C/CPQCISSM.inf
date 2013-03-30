@@ -1,0 +1,191 @@
+; Copyright (c) 1999-2007 Hewlett-Packard Development Company, L.P. ALL RIGHTS RESERVED.
+; HP Confidential.
+
+
+[version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%COMPAQ%
+CatalogFile.ntx86=cpqcissm.cat
+CatalogFile.ntia64=cpqcissm.cat
+DriverVer = 09/21/2007, 5.80.0.32
+
+
+[SourceDisksNames.x86]
+1=%DISK%,cpqcissm.sys,,
+
+
+[SourceDisksNames.ia64]
+1=%DISK%,cpqcissm.sys,,
+
+
+[SourceDisksFiles.x86]
+cpqcissm.sys=1,,
+
+
+[SourceDisksFiles.ia64]
+cpqcissm.sys=1,,
+
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+cpqcissmCopyFilesSection = 12 ; DIRID_DRIVERS - Required second copy
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[Manufacturer]
+%COMPAQ%=COMPAQ_HDC, ntx86, ntia64
+
+
+[COMPAQ_HDC]   ;For W2K 
+%smart_5300.DeviceDesc%          = cpqcissm_Inst, PCI\VEN_0E11&DEV_B060&SUBSYS_40700E11
+%smart_integrated_5i.DeviceDesc% = cpqcissm_Inst, PCI\VEN_0E11&DEV_B178&SUBSYS_40800E11
+%smart_532.DeviceDesc%           = cpqcissm_Inst, PCI\VEN_0E11&DEV_B178&SUBSYS_40820E11
+%smart_5312.DeviceDesc%          = cpqcissm_Inst, PCI\VEN_0E11&DEV_B178&SUBSYS_40830E11
+%smart_integrated_6i.DeviceDesc% = cpqcissm_Inst, PCI\VEN_0E11&DEV_0046&SUBSYS_40910E11
+%smart_641.DeviceDesc%           = cpqcissm_Inst, PCI\VEN_0E11&DEV_0046&SUBSYS_409A0E11
+%smart_642.DeviceDesc%           = cpqcissm_Inst, PCI\VEN_0E11&DEV_0046&SUBSYS_409B0E11
+%smart_6400.DeviceDesc%          = cpqcissm_Inst, PCI\VEN_0E11&DEV_0046&SUBSYS_409C0E11
+%smart_6400_EM.DeviceDesc%       = cpqcissm_Inst, PCI\VEN_0E11&DEV_0046&SUBSYS_409D0E11
+
+[COMPAQ_HDC.ntx86]
+%smart_5300.DeviceDesc%          = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_B060&SUBSYS_40700E11
+%smart_integrated_5i.DeviceDesc% = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_B178&SUBSYS_40800E11
+%smart_532.DeviceDesc%           = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_B178&SUBSYS_40820E11
+%smart_5312.DeviceDesc%          = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_B178&SUBSYS_40830E11
+%smart_integrated_6i.DeviceDesc% = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_0046&SUBSYS_40910E11
+%smart_641.DeviceDesc%           = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_0046&SUBSYS_409A0E11
+%smart_642.DeviceDesc%           = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_0046&SUBSYS_409B0E11
+%smart_6400.DeviceDesc%          = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_0046&SUBSYS_409C0E11
+%smart_6400_EM.DeviceDesc%       = cpqcissm_Inst.ntx86, PCI\VEN_0E11&DEV_0046&SUBSYS_409D0E11
+
+[COMPAQ_HDC.ntia64]
+%smart_5300.DeviceDesc%          = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_B060&SUBSYS_40700E11
+%smart_integrated_5i.DeviceDesc% = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_B178&SUBSYS_40800E11
+%smart_532.DeviceDesc%           = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_B178&SUBSYS_40820E11
+%smart_5312.DeviceDesc%          = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_B178&SUBSYS_40830E11
+%smart_integrated_6i.DeviceDesc% = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_0046&SUBSYS_40910E11
+%smart_641.DeviceDesc%           = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_0046&SUBSYS_409A0E11
+%smart_642.DeviceDesc%           = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_0046&SUBSYS_409B0E11
+%smart_6400.DeviceDesc%          = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_0046&SUBSYS_409C0E11
+%smart_6400_EM.DeviceDesc%       = cpqcissm_Inst.ntia64, PCI\VEN_0E11&DEV_0046&SUBSYS_409D0E11
+
+[cpqcissm_Inst.ntx86]
+CopyFiles = @cpqcissm.sys
+DriverVer = 09/21/2007, 5.80.0.32
+
+
+[cpqcissm_Inst.ntia64]
+CopyFiles = @cpqcissm.sys
+DriverVer = 09/21/2007, 5.80.0.32
+
+
+[cpqcissm_Inst.ntx86.CoInstallers]
+CopyFiles = cpqcissmCopyFilesSection
+AddReg = cpqcissmCoInstallers_AddReg
+
+
+[cpqcissm_Inst.ntia64.CoInstallers]
+CopyFiles = cpqcissmCopyFilesSection
+AddReg = cpqcissmCoInstallers_AddReg
+
+
+[cpqcissm_Inst.ntia64.HW]
+AddReg=cpqcissm_Inst_shutdown_notification
+
+
+[cpqcissm_Inst_shutdown_notification]
+HKR, "Scsiport", "NeedsSystemShutdownNotification", %REG_DWORD%, 1
+
+
+[cpqcissmCopyFilesSection]
+cpqcissm.sys,, COPYFLG_NO_OVERWRITE 
+
+
+[cpqcissmCoInstallers_AddReg]
+HKR,,EnumPropPages32,,"cpqcissm.dll,CISS_PropPageEntry"
+
+
+[cpqcissm_Inst.ntx86.Services]
+AddService = cpqcissm, %SPSVCINST_ASSOCSERVICE%, cpqcissm_Service_Inst, cpqcissm_EventLog_Inst
+
+
+[cpqcissm_Inst.ntia64.Services]
+AddService = cpqcissm, %SPSVCINST_ASSOCSERVICE%, cpqcissm_Service_Inst, cpqcissm_EventLog_Inst
+
+
+[cpqcissm_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\cpqcissm.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+
+[cpqcissm_EventLog_Inst]
+AddReg = cpqcissm_EventLog_AddReg
+
+
+[cpqcissm_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+
+[pnpsafe_pci_addreg]
+HKR, ,                          "Tag",              %REG_DWORD%,  0x103
+HKR, "Parameters\Device",       "NumberOfRequests", %REG_DWORD%,  0x80
+HKR, "Parameters\PnpInterface", "5",                %REG_DWORD%,  0x00000001
+HKR, "Parameters",              "BusType",	    %REG_DWORD%,  00000008
+
+
+[Strings]
+COMPAQ                         = "Hewlett-Packard Company"
+DISK                           = "Smart Array 5x and 6x Controller Support"
+smart_5300.DeviceDesc          = "Smart Array 5300 Controller"
+smart_integrated_5i.DeviceDesc = "Smart Array 5i"
+smart_532.DeviceDesc           = "Smart Array 532 Controller"
+smart_5312.DeviceDesc          = "Smart Array 5312 Controller"
+smart_integrated_6i.DeviceDesc = "Smart Array 6i"
+smart_641.DeviceDesc           = "Smart Array 641 Controller"
+smart_642.DeviceDesc           = "Smart Array 642 Controller"
+smart_6400.DeviceDesc          = "Smart Array 6400 Controller"
+smart_6400_EM.DeviceDesc       = "Smart Array 6400 U320 EM Controller"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+COPYFLG_NO_OVERWRITE   = 0x00000010 
+
+
+;**Japanese**********************************
+[Strings.0411]
+COMPAQ                         = "Hewlett-Packard Company"
+DISK                           = "Smart Array 5x and 6x Controller Support"
+smart_5300.DeviceDesc          = "Smart アレイ 5300 コントローラ"
+smart_integrated_5i.DeviceDesc = "Smart アレイ 5i"
+smart_532.DeviceDesc           = "Smart アレイ 532 コントローラ"
+smart_5312.DeviceDesc          = "Smart アレイ 5312 コントローラ"
+smart_integrated_6i.DeviceDesc = "Smart アレイ 6i"
+smart_641.DeviceDesc           = "Smart アレイ 641 コントローラ"
+smart_642.DeviceDesc           = "Smart アレイ 642 コントローラ"
+smart_6400.DeviceDesc          = "Smart アレイ 6400 コントローラ"
+smart_6400_EM.DeviceDesc       = "Smart アレイ 6400 U320 EM コントローラ"
+
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+COPYFLG_NO_OVERWRITE   = 0x00000010 
+

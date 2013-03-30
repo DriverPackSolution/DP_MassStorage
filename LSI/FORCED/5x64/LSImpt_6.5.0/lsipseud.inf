@@ -1,0 +1,87 @@
+; Copyright (c) 2008, LSI Corporation
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=06/03/2008,6.5.0
+CatalogFile.ntia64=mpixia64.cat
+
+[SourceDisksFiles.ia64]
+
+[SourceDisksNames]
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%LSI%=LSI, NTia64
+%IBM%=IBM, NTia64
+%SUN%=SUN, NTia64
+
+[LSI]
+
+[LSI.NTia64]
+%Pseudo.DeviceDesc% = NODRV, SCSI\BridgeLSI_____PSEUDO_DEVICE___
+%SASx28.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICSASX28_A.0______
+%SASx36.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICSASX36_A.0______
+%SASswitch.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICx36_LYNX3090____
+
+[IBM]
+
+[IBM.NTia64]
+%SAS_SES.DeviceDesc% = NODRV, SCSI\EnclosureIBM_____SAS_SES-2_DEVICE
+%SAS_SES.DeviceDesc% = NODRV, SCSI\EnclosureIBM-ESXSVSC7160_________
+%SAS_SES.DeviceDesc% = NODRV, SCSI\EnclosureIBM-ESXS_SAS_EXP_BP_____
+%SAS_BCS.DeviceDesc% = NODRV, SCSI\EnclosureIBM-ESXSBCS-DSS1___3GSAS
+%SAS_BCS.DeviceDesc% = NODRV, SCSI\EnclosureIBM-ESXSBCS-DSS2___3GSAS
+
+[SUN.NTia64]
+%SAS_JBOD_1.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____BLADE_STORAGE___
+%SAS_JBOD_2.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____NEM_PLUS________
+%SAS_JBOD_3.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____16Disk_Backplane
+%SAS_JBOD_4.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____SS_J4200________
+%SAS_JBOD_5.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____Storage_J4200___
+%SAS_JBOD_6.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____SS_J4300________
+%SAS_JBOD_7.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____Storage_J4300___
+%SAS_JBOD_8.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____SS_J4400________
+%SAS_JBOD_9.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____Storage_J4400___
+%SAS_JBOD_10.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____SS_J4500________
+%SAS_JBOD_11.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____Storage_J4500___
+%SAS_JBOD_12.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____NEM_P_10GbE_x10_
+%SAS_JBOD_13.DeviceDesc% = NODRV, SCSI\EnclosureSUN_____NEM_P_10GbE_x12_
+
+[NODRV]
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%
+
+[Strings]
+LSI = "LSI Corporation"
+IBM = "IBM Corporation"
+SUN = "Sun Microsystems, Inc."
+Pseudo.DeviceDesc = "LSI Pseudo Device"
+SASx28.DeviceDesc = "LSI SAS x28 Expander"
+SASx36.DeviceDesc = "LSI SAS x36 Expander"
+SASswitch.DeviceDesc = "LSI LYNX 3090 SAS Switch"
+SAS_SES.DeviceDesc = "IBM SAS SES Device"
+SAS_BCS.DeviceDesc = "IBM BCS SAS Storage Module"
+SAS_JBOD_1.DeviceDesc = "Sun Blade 6000 Disk Module"
+SAS_JBOD_2.DeviceDesc = "Sun Blade 6000 Multi-Fabric NEM"
+SAS_JBOD_3.DeviceDesc = "Sun SES Enclosure Device"
+SAS_JBOD_4.DeviceDesc = "Sun Storage J4200"
+SAS_JBOD_5.DeviceDesc = "Sun Storage J4200"
+SAS_JBOD_6.DeviceDesc = "Sun Storage J4300"
+SAS_JBOD_7.DeviceDesc = "Sun Storage J4300"
+SAS_JBOD_8.DeviceDesc = "Sun Storage J4400"
+SAS_JBOD_9.DeviceDesc = "Sun Storage J4400"
+SAS_JBOD_10.DeviceDesc = "Sun Storage J4500"
+SAS_JBOD_11.DeviceDesc = "Sun Storage J4500"
+SAS_JBOD_12.DeviceDesc = "Sun Blade 6000 10GbE Multi-Fabric NEM"
+SAS_JBOD_13.DeviceDesc = "Sun Blade 6048 10GbE Multi-Fabric NEM"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

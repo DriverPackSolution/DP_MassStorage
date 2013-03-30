@@ -1,0 +1,292 @@
+--------------------------------------------------------------------------------
+Release notes for the Adaptec ASC-58300, ASC-48300 and ASC-44300 SAS 
+HostRAID Controllers dated: AUGUST 2, 2007
+--------------------------------------------------------------------------------
+
+This release notes contains the following:
+
+1. Description of the release
+2. Supported hardware
+3. Supported Operating Systems
+4. Major functional changes
+5. Prerequisites of using the Software
+6. Tested Configuration
+7. Known Issues
+8. Windows Registry Parameters
+	
+	
+
+1. Description of the Release:
+---------------------------------
+
+Date of release: August 2, 2007
+
+This is the official software release containing the list of software components
+listed in the section 3 of the release note.
+
+2. Supported Hardware:
+--------------------------
+
+The software release supports the following hardware listed below:
+
+Adaptec ASC-58300 SAS HostRAID Controller
+Adaptec ASC-48300 SAS HostRAID Controller
+Adaptec ASC-44300 SAS HostRAID Controller
+
+3. Supported Operating Systems:
+------------------------------------
+
+Windows Driver 32-bit and 64-bit (AMD & EM-64T) 	- 1.5-0 Build 11685
+
+            	
+- Windows 2003 Server, Standard, Enterprise, Web Edition, and x64 Edition
+- Windows XP Professional, and x64 Edition
+- Windows Vista Ultimate, Home, Business
+
+Linux Driver  - 32 bit                         		- 1.5-0 Build 11685
+Linux Driver  - 64 bit                         		- 1.5-0 Build 11686
+		
+- Red Hat Enterprise Linux 4.0, IA-32 and x64
+- Red Hat Enterprise Linux 5.0, IA-32 and x64
+- SUSE Linux Enterprise Server 9.0, IA-32 and x64 
+- SUSE Linux Enterprise Server 10.0, IA-32 and x64
+        
+Netware Driver                                 		- 1.5-0 Build 11683
+- Netware 6.5 SP5
+
+
+3.1 Adaptec Storage Manager:
+---------------------------------
+
+Adaptec Storage Manager and HRCONF            		- 5.10.0 Build 17173
+	
+Supported OS:
+- Windows IA-32 and x64 
+- Linux IA-32 and x64
+- Netware 6.5
+- SCO OpenServer 6.0
+- SCO UnixWare 7.1.4
+	
+3.2 BIOS and DOS Tools:
+----------------------------
+
+1. Expansion ROM BIOS (for all hardware)			- 2.0-0 Build 1918
+2. Adaptec Flash Utility (AFU.EXE) 				- 2.0-0 Build 1918
+
+4. Major Functional changes:
+--------------------------------
+	
+1. Greater than 2TB logical drive supported.
+
+
+5. Prerequisites of Using the Software:
+-------------------------------------------
+
+- BIOS and the driver should use above stated software version.
+
+6. Tested Configuration:
+---------------------------
+
+The software was tested with the Hardware Supported list on the motherboard with
+the IBM PC/AT compatible PCI-X platforms. These are the various components used
+during the testing:
+
+- IBM x86 PC/AT compatible platform with Intel Xeon 
+- Tested with direct attached SATA-I and SATA-II drives 
+- Adaptec Storage Enclosure 335SAS enclosures with SATA drives
+
+
+7. Known Issues/Limitations:
+--------------------------------
+
+7.1 Windows 
+
+- All Windows
+	- Drive Letter may disappear after Medium Error on a Simple Volume
+	Drive Letter may disappear after Medium Error on a Simple Volume: 
+  	On a simple volume with Medium error, the error is reported to the Windows OS. 
+  	All the error handling is done by the operating system. The expected behavior 
+  	is intermittent and sometimes drive letter disappear.
+
+	- OS Caching cause invalid data in file copy from Medium Error locations in 
+	specific conditions:
+	When read medium error occur in simple volume or RAID-0 or a good member of a 
+	degraded RAID-1/RAID-10, file copy in Windows Explorer will fail the first few  
+	times but will pass on the later attempts; however, the file gets copied has 
+	invalid data in the section where the medium error was. This happens because 
+	if the Windows OS caching invalid data.
+
+	- System wakes up from S1 standby and may hang with BSOD or at Windows   
+	Splash Screen with NVIDIA Video Card GeForce 6200
+          
+	- Using the "Load Driver" option to replace a same-name inbox driver (adp94xx) 
+	fails silently on first attempt.
+
+- Windows XP (32-bit)
+  	On a Dell Precision 670, Adaptec Storage Manager logfile shows "commands are 
+  	not responding" error when the system comes up from S3 sleep state with IO on 
+  	Optimal/Rebuilding R10. The controller will be added after several minutes.
+
+- Windows Vista 32-bit   
+	When you are updating the driver adp94xx by loading it from a floppy or USB in 
+	Windows Vista 32 bit, the system will crash. Restart the system to start the 
+	controller. This problem will re-occur if the controller is moved to another slot.
+	The permanent fix for this issue will be part of the Longhorn Server/Vista SP1.
+
+7.2 Linux
+ 
+- Red Hat Enterprise Linux 4 (32-bit)
+	Kernel Panic Screen after OS Upgrade from RHEL 4 to RHEL 4 QU3 on a Dell PE 
+	1800/HP ML 370. This is a Linux algorithm issue. 
+
+- Red Hat Enterprise Linux 4 QU3 (32-bit)
+	Mismatch in order of the drives during POST and disk partition screen with 
+	RHEL 4 QU3 if during the installation the boot device was modified. 
+
+
+7.3 Netware 6.5
+
+- In Netware 6.5 SP4, when operating RAID functionality using ASM utility  
+  (raidman.nlm), switch to server console and reboot, the system will get ABEND 
+  during reboot. This is a Java compatibility issue. 
+
+- Netware installation on a RAID 10 device may show the controller name as ASC 
+  48300 instead of ASC 58300 if the driver is loaded from floppy.
+
+
+8. Windows REGISTRY PARAMETERS:
+----------------------------------------------
+
+8.1 Driver Specific Registry Parameters
+
+ 
+WARNING: Altering or adding these driver parameters incorrectly can render your
+system inoperable. Use them with caution.
+
+Follow the instructions below to enter registry values that affect the configuration
+information for the adp94xx driver. Note that all HostRAID adapters supported by the
+installed driver are affected by the values you enter here.
+
+ 
+The key used for this HostRAID release is "adp94xx". To enter driver-specific parameters,
+follow these steps:
+
+1) Select Run from the Start button.
+
+2) Type "regedt32" and press Enter.
+
+3) Open the registry list to the following location: 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\adp94xx
+
+If the \Parameters\Device\ keys already exist, skip to step 6 to begin
+entering parameters. If the keys do not yet exist, follow steps 4 and 5 to
+create them.
+
+4) Click on the adp94xx key. Select "New -> Key" from the Edit menu, type
+"Parameters" in the "New Key #1" edit box, and press Enter. 
+
+5) Click on the Parameters key. Select the "New -> Key" from the Edit menu, type
+"Device" in the "New Key #1" edit box, and press Enter. To specify a specific host
+adapter, append Device with the number of the host adapter. For example, type "Device0"
+for the first host adapter, "Device1" for the second, etc. If you omit the host adapter
+number, the configuration information will apply to all supported host adapters.
+
+6) Go to the Parameters\Device key. Select "New -> String Value" from the Edit menu,
+type "DriverParameters" in the "New Value #1" box, and press Enter twice. The Edit
+String text box appears. Enter valid parameters in the text box. Use a semicolon
+to separate multiple parameters. For example:
+
+<Parameter1>=<Value1>;<Parameter2>=<Value2>;
+MaximumSGList=17;PK=1;
+
+NOTE: Changes made with the Registry Editor do not take effect until you reboot your
+computer.
+
+----------------------------------------------------------------
+
+Option: Performance/Compatibility Settings
+
+Definition: This registry option tunes the setting for performance purpose. This
+registry option modifies the maximum number of I/Os and maximum number of scatter
+gather elements or number of physical breaks. The setting can be set as high or
+normal. When set to high it modifies the maximum I/Os to 255 and maximum scatter
+gather list to 33. In this mode, system hibernation may not work. Use the following
+parameter and value to modify the driver behavior.
+
+To run driver in high performance:
+Use the registry file HIGHPERF.REG.
+
+To run driver in normal mode:
+Use the registry file WHQL.REG.
+
+Follow these steps to change the settings:
+
+1) Select Run from the Start button.
+2) Browse to the folder containing above mentioned version of the HostRAID driver,
+select file "HIGHPERF.REG" or "WHQL.REG" and click OK.
+
+NOTE: The default value for this parameter is normal mode and it supports system
+hibernation.
+
+                    
+Possible Values: Normal Mode - High Performance Mode
+Default Value: Normal Mode
+
+----------------------------------------------------------------
+
+Option: ExposeEnclosure
+
+Definition: This registry option changes the appearance of enclosure management
+devices to the operating system. One can directly edit the registry and apply
+the required changes to this option as explained in section 8.1.
+
+There is another way to reflect expose enclosure change using the "ENCLOSURE.REG"
+file. Follow these steps to change the settings:
+
+1) Select Run from the Start button.
+2) Browse to the folder containing above mentioned version of the HostRAID driver,
+select file "ENCLOSURE.REG" and click OK.
+
+Note: If you use the second option to expose enclosure, then use the 
+"Performance/Compatibility Settings" option to bring driver to Normal Mode
+using "WHQL.REG" file.
+
+Possible Values: 0-1 (0=do not expose enclosure, 1=expose enclosure)
+Default Value: 0
+
+----------------------------------------------------------------
+
+8.2 Windows Specific Registry Parameters
+
+NOTE: This setting applies to Windows Server 2003, Windows 2000, and Windows XP.
+
+The only Windows-specific parameter that you can currently change is the
+TimeOutValue. This registry option increases the timeout for all disk class devices
+(in contrast to the driver-specific registry parameters that affect only your HostRAID
+adapter).
+
+The default TimeOutValue is 10 seconds. Follow these steps to increase this value to
+60 seconds:
+
+1) Select Run from the Start button.
+2) Browse to the folder containing above mentioned version of the HostRAID driver,
+select the file "TIMEOUT.REG" and click OK.
+
+Note: Changes made with the Registry Editor do not take effect until you reboot your
+computer.
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+(c) 2007 Adaptec, Inc. All Rights Reserved. 
+
+This software contains the valuable trade secrets of Adaptec or its 
+licensors. The software is protected under international copyright 
+laws and treaties. This software may only be used in accordance with 
+the terms of its accompanying license agreement.
+
+No part of this publication may be reproduced, stored in a retrieval 
+system, or transmitted in any form or by any means, electronic, 
+mechanical, photocopying, recording or otherwise, without prior 
+written consent of Adaptec, Inc., 
+691 South Milpitas Blvd.,Milpitas, CA 95035
+

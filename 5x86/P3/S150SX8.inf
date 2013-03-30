@@ -1,0 +1,106 @@
+; S150sx8.INF
+; Copyright 2003 - 2004 Promise Technology, Inc.
+;
+[Version]
+CatalogFile=s150sx8.cat
+Signature="$Chicago$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=07/23/2004,1.00.0.51
+
+[SourceDisksNames]
+1 = %S150SX8_DESC%,,,
+
+[SourceDisksFiles]
+S150sx8.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; Drivers directory
+MoveS150sx8.NT = 12
+
+[ControlFlags]
+;ExcludeFromSelect = *
+
+[Manufacturer] 
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_8000.DeviceDesc%=S150sx8PCI,PCI\VEN_105A&DEV_8000,PCI\VEN_105A&DEV_8002,PCI\VEN_105A&DEV_8004,PCI\VEN_105A&DEV_8006
+%Promise_Api_ControllerDesc%=NODRV,SCSI\ProcessorPromise_
+;%Promise_Enclosure_ControllerDesc%=NODRV,SCSI\ProcessorPromise_SuperSwap_______
+
+[NODRV]
+CopyFiles=MoveNODRV
+
+[MoveNODRV]
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[S150sx8PCI.NT]
+CopyFiles=MoveS150sx8.NT
+Reboot
+
+[MoveS150sx8.NT]
+S150sx8.sys
+
+[S150sx8PCI.NT.Services]
+AddService=S150sx8,2,S150sx8PCI_Service_Inst,Miniport_EventLog_Inst
+
+[S150sx8PCI_Service_Inst]
+ServiceType  = 1 ; SERVICE_KERNEL_DRIVER
+StartType    = 0 ; SERVICE_BOOT_START
+;StartType    = 1 ; SERVICE_SYSTEM_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\S150sx8.sys
+LoadOrderGroup = SCSI Miniport
+AddReg = pnpsafe_pci_addreg
+
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+;HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x00000040
+
+;[pnpsafe_isa_addreg]
+;HKR, "Parameters\PnpInterface", "1", 0x00010001, 0x00000001
+
+;[pnpsafe_eisa_addreg]
+;HKR, "Parameters\PnpInterface", "2", 0x00010001, 0x00000001
+
+;[pnpsafe_mca_addreg]
+;HKR, "Parameters\PnpInterface", "3", 0x00010001, 0x00000001
+
+;[cardbus_interface_type]
+;HKR, "ScsiPort", "LegacyInterfaceType", 0x00010001, 0x00000005
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+Promise="Promise Technology, Inc."
+PCI\VEN_105A&DEV_8000.DeviceDesc="Windows XP Promise SATAII150 SX8 (tm) Controller"
+
+Promise_Api_ControllerDesc= "Windows XP Promise API Console SCSI Processor Device"
+Promise_Enclosure_ControllerDesc= "Windows XP Promise SAF-TE Processor Device"
+SPSVCINST_ASSOCSERVICE = 0x00000002
+
+S150SX8_DESC="Promise SATAII150 SX8 Series Driver Diskette" 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 
+IOLOGMSGDLL="\IoLogMsg.dll"

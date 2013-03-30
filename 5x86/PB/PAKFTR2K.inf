@@ -1,0 +1,77 @@
+; FASTTX2K.INF
+; Copyright Mon 04/28/2003 Promise Technology, Inc.
+;
+[Version]
+CatalogFile=fasttx2k.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=04/28/2003, 1.00.0020.41
+;
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+MoveMiniPort.NT = 12;
+
+[ControlFlags]
+
+[Manufacturer]
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_3320.DeviceDesc% = FasttrakPCI_S150SX4L , PCI\VEN_105A&DEV_3320
+%PCI\VEN_105A&DEV_6620.DeviceDesc% = FasttrakPCI_620 , PCI\VEN_105A&DEV_6620
+
+[FasttrakPCI_620.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI_620.NT.Services]
+AddService = fasttx2k, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\fasttx2k.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg         = pnpsafe_pci_addreg,ftsata_cache_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[ftsata_cache_addreg]
+HKR, "Parameters\Cache", "DefSize", 0x00010001, 0x00900000
+HKR, "Parameters\Cache", "Flag",0x00010001, 0x00000000
+HKR, "Parameters\Cache", "WriteMode",0x00010001, 0x00000001
+HKR, "Parameters\Cache", "ThreadNum",0x00010001, 0x00000002
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[MoveMiniPort.NT]
+Fasttx2k.sys
+
+[SourceDisksFiles]
+;Fasttx2k.inf = 1
+Fasttx2k.sys = 1
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[strings]
+Promise="Promise Technology"
+PCI\VEN_105A&DEV_3320.DeviceDesc="Win200x Promise FastTrak S150 SX4 Lite (tm) Controller"
+PCI\VEN_105A&DEV_6620.DeviceDesc="Win200x Promise FastTrak 620 (tm) Controller"
+
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="Promise FastTrak Series Driver Diskette"
+DISKNAME2="Windows system"

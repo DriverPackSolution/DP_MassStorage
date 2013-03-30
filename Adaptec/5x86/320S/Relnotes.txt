@@ -1,0 +1,325 @@
+----------------------------------------------------------------------------------------
+Release notes for the ASC-29320LPE dated: February 27, 2007
+----------------------------------------------------------------------------------------
+
+This release notes contains the following:
+
+1. Description of the release
+2. Supported hardware
+3. Supported Operating Systems
+4. Major functional changes
+5. Prerequisites of using the Software
+6. Tested Configuration
+7. Known Issues
+8. Windows Registry Parameters
+	
+	
+
+1. Description of the Release:
+------------------------------
+
+Date of release: February 27, 2007
+
+This is the official software release containing the list of software components listed in 
+the section 3 of the release note.
+
+
+2. Supported Hardware:
+--------------------------
+
+The software release supports the following hardware listed below:
+
+a. Adaptec SCSI Card 29320LPE Ultra320 PCIe SCSI Controller
+
+The operating system drivers listed under 3.1 also support the following hardware:
+
+b. Adaptec SCSI Card 29320ALP-R Ultra320 PCI-X SCSI Controller
+c. Adaptec SCSI Card 29320A-R Ultra320 PCI-X SCSI Controller
+d. Adaptec SCSI Card 39320A-R Dual Channel Ultra320 PCI-X SCSI Controller
+e. Adaptec SCSI Card 29320-R Ultra320 PCI-X SCSI Controller
+f. Adaptec SCSI Card 39320-R Dual Channel Ultra320 PCI-X SCSI Controller
+g. Adaptec SCSI Card 39320D Dual Channel Ultra320 PCI-X SCSI Controller
+h. Adaptec SCSI Card 39320D-R Dual Channel Ultra320 PCI-X SCSI Controller
+i. Adaptec SCSI Card 29320LP-R Ultra320 PCI-X SCSI Controller
+j. AIC-7901B Single Channel 64-bit PCI-X Ultra320 SCSI ASIC
+k. AIC-7902B Dual Channel 64-bit PCI-X Ultra320 SCSI ASIC
+l. AIC-7901A Single Channel 64-bit PCI-X Ultra320 SCSI ASIC
+m. AIC-7902A4 Dual Channel 64-bit PCI-X Ultra320 SCSI ASIC
+
+
+3. List of Software deliverables:
+---------------------------------
+These are the following set of deliverables for this release:
+
+
+3.1 Operating System Drivers:
+-----------------------------
+
+Windows Driver 32-bit and 64-bit (AMD & EM-64T)			- v7.0.0.6
+
+Supported OS:            	
+- Windows Server 2003 Service Pack 1 (Standard, Enterprise, Web Edition)
+- Windows Server 2003 x64 Edition Service Pack 1
+- Windows XP Professional Service Pack 2
+- Windows XP Professional x64 Edition Service Pack 1
+- Windows Vista x86, x64
+
+
+Linux Driver							 - v2.0.25
+
+Supported OS:
+- Red Hat Enterprise Linux 4.0, IA-32 and x64, OOB and QU4
+- SUSE Linux Enterprise Server 9, IA-32 and x64, OOB and SP3 
+- SUSE Linux Enterprise Server 10, IA-32 and x64, OOB
+
+        
+Netware Driver							- v3.03.13
+
+Supported OS:
+- Netware 6.5 SP5
+
+
+
+3.2 BIOS and DOS Tools:
+----------------------------
+
+1. Expansion ROM BIOS for ASC-29320LPE only				- v4.31.2
+2. Flash Utility (Flash6.exe)						- v6.0	
+
+
+4. Major Functional changes:
+--------------------------------
+	
+1. added support for Adaptec ASC-29320LPE Ultra320 PCIe SCSI Controller
+
+
+5. Prerequisites of Using the Software:
+-------------------------------------------
+
+- BIOS and the driver should use above stated software version.
+
+
+6. Tested Configuration:
+---------------------------
+
+The software was tested with the Hardware Supported list on the motherboard with the IBM PC/AT 
+compatible PCIe platforms. These are the various components used during the testing:
+
+- IBM x86 PC/AT compatible platforms with Intel Xeon, Intel Pentium, or AMD Opteron
+- Tested with direct attached Ultra160 and Ultra320 disk drives, tape devices and enclosures
+
+
+7. Known Issues/Limitations:
+--------------------------------
+
+1. Multi-initiator configurations are supported with Ultra160 and previous generation hard 
+   drives:
+   Current generation Ultra320 hard drives do not support this configuration.
+
+2. An Event 9 in the Event Viewer may occur with a DLT 7000 or 8000 tape device:
+   If this occurs, install the registry fix (MAXIO64K.REG) located in the Windows Driver 
+   directory.
+
+3. Ultra320 hard disk drive support
+   Adaptec only supports Ultra320 hard drives that have the latest firmware available. Please 
+   check with your hard drive manufacturer to ensure you have the latest version. 
+	
+4. Linux SLES 9 Installation:
+   During SLES 9 installation and during reboots, the following messages appears:       
+   "kernel BUG at include/linux/dcache.h:285!"
+   Workaround: Use the following boot option during installation
+   		broken_modules=aic7xxx  
+
+5. Linux - lspci command reports the wrong controller
+   The Device ID for 29320LPE and 29320ALP is same "0x8017". lspci prints the controller 
+   info based on the Device IDs. Since lspci tool in its list of pci.ids has 0x8017 
+   marked as "Adaptec ASC-29320ALP", it prints it as ASC-29320ALP instead of ASC-29320LPE.
+ 
+6. Linux - rmmod aic79xx failure
+   rmmod aic79xx fails with the following error:
+   ERROR: aic79xx module is in use
+   On some Linux OSs, the dmraid stamps its metadata on the scsi disks which are
+   attached to Adaptec SCSI controllers. This is evident when we look into "used by" 
+   column in the output of lsmod command. The "used by" column shows a number more than "0".
+   Use the following as a workaround:
+   	$dmraid -r -E /dev/sda 
+   Here "/dev/sda" is the device attached to Adaptec SCSI 29320LPE controller.
+
+
+8. Windows REGISTRY PARAMETERS:
+----------------------------------------------
+
+8.1 Driver Specific Registry Parameters
+
+WARNING: Altering or adding these driver parameters incorrectly can render your system 
+inoperable. Use them with caution.
+
+Follow the instructions below to enter the registry values that affect the configuration 
+information for Adaptec SCSI Card drivers. All SCSI Cards supported by the installed
+driver are affected by the values you enter here.
+
+Each driver has its own "key" reference. In this example, the Ultra320 key is used (adpu320). 
+To enter driver-specific parameters, follow these steps: 
+
+1) Select Run from the Start button.
+2) Type "regedt32" and press Enter.
+3) Open the registry list to the following location: 
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\
+adpu320\Parameters\Device\
+   
+If the \Parameters\Device\ keys already exist, skip to step 6 below to begin entering parameters. 
+If the keys do not yet exist, you will need to create them by continuing with step 4.
+
+4) Click on the adpu320 key. Select the Add Key from the Edit menu; Type "Parameters" in the 
+Key Name edit box. Leave the Class edit box blank.
+5) Click on the Parameters key. Select the Add Key from the Edit menu; Type "Device" in the 
+Key Name edit box. Leave the Class edit box blank. To specify a certain host adapter, append 
+Device with the number of the host adapter. For example, type "Device0" for the first host
+adapter, "Device1" for the second, etc. If you omit the host adapter number, the configuration 
+information applies to all supported host adapters.
+6) Click on the Device key. Select Add Value from the Edit menu; type "DriverParameters" in the 
+Value Name edit box. Enter the Data Type and press Enter. A String Editor text box appears. 
+Enter valid parameters in the text box. When entering multiple parameters, each parameter must 
+be separated by a space. To enter additional values, repeat step 6. 
+   
+Note: Changes made with the Registry Editor do not take effect until you shut down and then 
+restart your system.
+
+   ----------------------------------------------------------------
+            Option: /MAXTAGS=[value]
+        Definition: Specifies a tagged command queue depth per
+                    target.
+         Data Type: REG_SZ
+   Possible Values: 1-255
+     Default Value: 32
+   ----------------------------------------------------------------
+            Option: /INSTRUMENTATION
+        Definition: Enables instrumentation support in the driver.
+         Data Type: REG_SZ
+   Possible Values: N/A
+     Default Value: N/A
+   ----------------------------------------------------------------
+            Option: /INSTR_ERRLOG_Z=[value]
+        Definition: Specifies the length of the instrumentation 
+                    error log.
+         Data Type: REG_SZ
+   Possible Values: 0-127
+     Default Value: 32
+   ----------------------------------------------------------------
+            Option: /RDSTRM
+        Definition: Enables read streaming to be negotiated for all
+                    drives.
+         Data Type: REG_SZ
+   Possible Values: N/A
+     Default Value: Off
+   ----------------------------------------------------------------
+            Option: /MAXIMUMSGLIST=[value]
+        Definition: Sets the maximum transfer size for an 
+                    individual command. The formula is:
+                    TRANSFER SIZE = PAGE_SIZE * (number of 
+                    elements -1)
+         Data Type: REG_SZ
+   Possible Values: 2-255
+     Default Value: 65
+   ----------------------------------------------------------------
+
+8.2. Windows SCSI Driver Parameters
+
+WARNING: Altering or adding these driver parameters incorrectly can render your system 
+inoperable. Use them with caution.
+
+Follow the instructions below to enter the registry values that affect how the Windows SCSI 
+manager interprets the generic configuration information of SCSI device drivers. All SCSI 
+Cards supported by the installed driver are affected by the values you enter here.
+
+Follow the instructions below to enter the registry values that affect the configuration 
+information for Adaptec SCSI Card drivers. All SCSI Cards supported by the installed driver 
+are affected by the values you enter here.
+
+Each driver has its own "key" reference. In this example, the Ultra320 key is used (adpu320). 
+To enter Windows parameters, follow these steps: 
+
+1) Select Run from the start button.
+2) Type "regedt32" and press Enter.
+3) Open the registry list to the following location: 
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\
+adpu320\Parameters\Device\
+   
+If the \Parameters\Device\ keys already exist, skip to step 6 below to begin entering parameters. If the 
+keys do not yet exist, you will need to create them by continuing with step 4.
+
+4) Click on the adpu320 key. Select the Add Key from the Edit menu; Type "Parameters" in the 
+Key Name edit box. Leave the Class edit box blank.
+5) Click on the Parameters key. Select the Add Key from the Edit menu; Type "Device" in the 
+Key Name edit box. Leave the Class edit box blank. To specify a certain host adapter, append 
+Device with the number of the host adapter. For example, type "Device0" for the first host adapter, 
+"Device1" for the second, etc. If you omit the host adapter number, the configuration information applies 
+to all supported host adapters.
+6) Click on the Device key. Select Add Value from the Edit menu. In the Value Name edit box, enter 
+one of the valid parameter values. Make sure to enter the appropriate Data Type for the value. To enter 
+additional values, repeat step 6. 
+   
+Note: Changes made with the Registry Editor do not take effect until you shut down and then restart 
+your system.
+
+   ----------------------------------------------------------------
+            Option: MaximumLogicalUnit
+        Definition: This command allows the user to specify how
+                    many LUNs the SCSI bus scans for during system
+                    initialization.
+         Data Type: REG_DWORD
+   Possible Values: 0-8 (Windows NT 4), 0-32 (Windows 2000/XP/Server 2003)
+     Default Value: 8 (Windows NT 4), 32 (Windows 2000/XP/Server 2003)
+   ----------------------------------------------------------------
+            Option: NumberOfRequests
+        Definition: Specifies the maximum number of outstanding or 
+                    concurrent requests that can be delivered to 
+                    the SCSI adapter.
+         Data Type: REG_DWORD
+   Possible Values: 16-512
+     Default Value: 255
+   ----------------------------------------------------------------
+            Option: DisableTaggedQueuing
+        Definition: If present, tells the SCSI adapter to 
+                    disable tagged queuing for all devices.
+         Data Type: REG_DWORD
+   Possible Values: N/A
+     Default Value: N/A
+   ----------------------------------------------------------------
+            Option: DisableDisconnects
+        Definition: If present, tells the SCSI adapter not to
+                    allow any target device disconnect privileges 
+                    for I/O.
+         Data Type: REG_DWORD
+   Possible Values: N/A
+     Default Value: N/A
+   ----------------------------------------------------------------
+            Option: DisableMultipleRequests
+        Definition: Limits the number of commands to each logical
+                    unit to one.
+         Data Type: REG_DWORD
+   Possible Values: N/A
+     Default Value: N/A
+   ----------------------------------------------------------------
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+(c) 2007 Adaptec, Inc. All Rights Reserved. 
+
+This software contains the valuable trade secrets of Adaptec or its 
+licensors. The software is protected under international copyright 
+laws and treaties. This software may only be used in accordance with 
+the terms of its accompanying license agreement.
+
+No part of this publication may be reproduced, stored in a retrieval 
+system, or transmitted in any form or by any means, electronic, 
+mechanical, photocopying, recording or otherwise, without prior 
+written consent of Adaptec, Inc., 
+691 South Milpitas Blvd.,Milpitas, CA 95035
+
+
+
+	 

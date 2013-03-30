@@ -1,0 +1,100 @@
+; asahxp.INF
+; Installation INF for ASMEDIA AHCI SATA Controller for Windows XP/2003
+; Copyright (C) 2010 Asmedia Technology
+
+[Version]
+Signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%ASMEDIA%
+DriverVer=09/17/2012,1.3.9.000
+CatalogFile=asahxp64.cat
+
+[Manufacturer]
+%ASMEDIA%=ASMEDIA_AHCI,NTamd64
+
+[ASMEDIA_AHCI.NTamd64]
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612
+
+[ControlFlags]
+ExcludeFromSelect =*
+
+; --------------source
+[SourceDisksNames]
+1=%SOURCE_DISK%
+
+[SourceDisksFiles]
+asahxp64.sys = 1
+ahcipp64.dll = 1
+
+; --------------dest
+[DestinationDirs]
+AhciPropPageFile = 11
+DefaultDestDir = 12 
+
+[asahci_Inst]
+CopyFiles=@asahxp64.sys, AhciPropPageFile
+AddReg = AhciPropPageReg
+
+[AhciPropPageFile] 
+ahcipp64.dll
+
+[asahci_Inst.Services]
+AddService = %SERVICE_NAME%, %SPSVCINST_ASSOCSERVICE%, asahci_Service_Inst, asahci_EventLog_Inst
+
+[asahci_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\asahxp64.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg         = asahci_Service_Inst.AddReg
+
+[asahci_Service_Inst.AddReg]
+HKR,"Parameters\PnpInterface", "5", %REG_DWORD%, 0x00000001
+HKR, Parameters, BusType, %REG_DWORD%, 0x0000003
+HKR,"Parameters\Device", MaximumSGList,  %REG_DWORD%, 0x21
+HKR,"Parameters\Device", NumberOfRequests,  %REG_DWORD%, 0xF1
+
+[AhciPropPageReg]
+HKR,, EnumPropPages32,, "ahcipp64.dll, AhciPropPageProvider"
+
+[asahci_EventLog_Inst]
+AddReg = asahci_EventLog_Inst.AddReg
+
+[asahci_EventLog_Inst.AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+; ******** Uninstall section ********
+[DefaultUninstall]
+DelFiles = @asahxp64.sys, AhciPropPageFile
+
+[DefaultUninstall.Services]
+DelService = %SERVICE_NAME%
+
+;********************************************************
+; Extra Registry Entries
+
+[Strings]
+ASMEDIA = "Asmedia Technology"
+PCI\VEN_1B21&DEV_0611.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0612.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0601.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0602.DeviceDesc ="Asmedia 106x SATA Controller"
+SOURCE_DISK  = "Asmedia 106x SATA Controller"
+SERVICE_NAME = "asahxp64"
+
+;*******************************************
+;Non-localizable, Handy macro substitutions
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+SERVICE_ERROR_CRITICAL = 3
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_MULTI_SZ           = 0x00010000

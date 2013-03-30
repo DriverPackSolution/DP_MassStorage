@@ -1,0 +1,69 @@
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=10/27/2010, 5.10
+
+[ClassInstall32.NT]
+Addreg=DC93M2_Reg
+
+[DC93M2_Reg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.Dll,ScsiClassInstaller"
+HKR,,Icon,,"-10"
+HKR,,LegacyInfOption,,"SCSI"
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %StrgDiskLabel%,,
+
+[SourceDisksFiles]
+DC93M2.SYS = 1
+
+[Manufacturer]
+%StrgCompany%=DC93M2_Section
+
+[DC93M2_Section]
+%StrgDevice%=DC93M2_Install, *DC93M2
+
+[DC93M2_Install]
+CopyFiles=@DC93M2.SYS
+LogConfig=DC93M2_Config
+
+[DC93M2_Config]
+ConfigPriority = HARDRECONFIG
+IOConfig       = 300-305(3FF::),310-315(3FF::),320-325(3FF::),340-345(3FF::)
+IRQConfig      = 3,5,7,12,15
+
+[DC93M2_Install.Services]
+AddService = DC93M2, 2, DC93M2_Service_Inst, DC93M2_EventLog_Inst
+
+[DC93M2_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DC93M2.SYS
+LoadOrderGroup = SCSI Miniport
+AddReg         = DC93M2_PNP_AddReg
+AddReg         = DC93M2_Parm_AddReg
+
+[DC93M2_EventLog_Inst]
+AddReg = DC93M2_EventLog_AddReg
+
+[DC93M2_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[DC93M2_PNP_AddReg]
+HKR, "Parameters\PnpInterface", "1", 0x00010001, 0x00000001
+
+[DC93M2_Parm_AddReg]
+HKR, "Parameters\Device", "DriverParameter", REG_SZ, ""
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="DC-93 MACH2 SCSI Hostadapter"
+StrgDiskLabel="SCSI Software Installation Disk"

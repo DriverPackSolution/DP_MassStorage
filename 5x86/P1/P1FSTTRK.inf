@@ -1,0 +1,149 @@
+; FASTTRAK.INF
+; Copyright 2001 Promise Technology, Inc.
+
+[Version]
+CatalogFile=Fasttrak.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=04/25/2003, 2.00.0.34
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+MoveMiniPort.NT = 12;
+
+[ControlFlags]
+
+[Manufacturer]
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_0D30&CC_0104.DeviceDesc% = FasttrakPCI100, PCI\VEN_105A&DEV_0D30&CC_0104
+%PCI\VEN_105A&DEV_1275&CC_0104.DeviceDesc% = FasttrakPCI_TX2, PCI\VEN_105A&DEV_1275&CC_0104
+%PCI\VEN_105A&DEV_4D30&CC_0104.DeviceDesc% = FasttrakPCI100, PCI\VEN_105A&DEV_4D30&CC_0104
+%PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A.DeviceDesc% = FasttrakPCI100 , PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A
+%PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A.DeviceDesc% = FasttrakPCI100 , PCI\VEN_105A&DEV_4D30&SUBSYS_4D32105A
+; dps %PCI\VEN_105A&DEV_4d33.DeviceDesc% = FasttrakPCI33 , PCI\VEN_105A&DEV_4d33
+%PCI\VEN_105A&DEV_4D38&CC_0104.DeviceDesc% = FasttrakPCI66,  PCI\VEN_105A&DEV_4D38&CC_0104
+%PCI\VEN_105A&DEV_4D38&SUBSYS_4D39105A.DeviceDesc% = FasttrakPCI66 , PCI\VEN_105A&DEV_4D38&SUBSYS_4D39105A
+%PCI\VEN_105A&DEV_6268&CC_0104.DeviceDesc% = FasttrakPCI_TX2, PCI\VEN_105A&DEV_6268&CC_0104
+%PCI\VEN_105A&DEV_6268.DeviceDesc% = FasttrakPCI_TX2 , PCI\VEN_105A&DEV_6268
+%PCI\VEN_105A&DEV_6269.DeviceDesc% = FasttrakPCI_TX2000 , PCI\VEN_105A&DEV_6269
+%PCI\VEN_105A&DEV_5275.DeviceDesc% = FasttrakPCI133_2 , PCI\VEN_105A&DEV_5275&SUBSYS_1275105A
+%PCI\VEN_105A&DEV_5275.DeviceDesc% = FasttrakPCI133_2 , PCI\VEN_105A&DEV_5275&SUBSYS_B0001458
+%PCI\VEN_105A&DEV_5275&CC_0104.DeviceDesc% = Fasttrak133_2, PCI\VEN_105A&DEV_5275&CC_0104
+%PCI\VEN_105A&DEV_7275&CC_0104.DeviceDesc% = FasttrakPCI133, PCI\VEN_105A&DEV_7275&CC_0104
+%PCI\VEN_105A&DEV_7275.DeviceDesc% = FasttrakPCI133 , PCI\VEN_105A&DEV_7275
+%Promise_Raid_ControllerDesc%=NODRV,SCSI\ProcessorPromise_RAID_CONSOLE__
+
+[NODRV]
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[FasttrakPCI33.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI33.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI66.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI66.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI100.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI100.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI133.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI133.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI133_2.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI133_2.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_TX2.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI_TX2.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_TX2000.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI_TX2000.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\fasttrak.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[MoveMiniPort.NT]
+Fasttrak.sys
+
+[SourceDisksFiles]
+Fasttrak.inf = 1
+Fasttrak.sys = 1
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[strings]
+Promise="Promise Technology"
+PCI\VEN_105A&DEV_0D30&CC_0104.DeviceDesc="WinXP Promise FastTrak100 (tm) Controller (PDC20265)"
+PCI\VEN_105A&DEV_1275&CC_0104.DeviceDesc="WinXP Promise FastTrak TX (tm) Controller (PDC20275)"
+PCI\VEN_105A&DEV_4D30&CC_0104.DeviceDesc="WinXP Promise FastTrak100 (tm) Controller (PDC20267)"
+PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A.DeviceDesc="WinXP Promise FastTrak100 (tm) Controller"
+; dps PCI\VEN_105A&DEV_4d33.DeviceDesc="WinXP Promise FastTrak (tm) Controller"
+PCI\VEN_105A&DEV_4D38&CC_0104.DeviceDesc="WinXP Promise FastTrak66 (tm) Controller (PDC20262)"
+PCI\VEN_105A&DEV_4D38&SUBSYS_4D39105A.DeviceDesc="WinXP Promise FastTrak66 (tm) Controller (PDC20262)"
+PCI\VEN_105A&DEV_6268&CC_0104.DeviceDesc="WinXP Promise FastTrak TX/LP (tm) Series Controller"
+PCI\VEN_105A&DEV_6268.DeviceDesc="WinXP Promise FastTrak100 TX2/TX4 (tm) Controller"
+PCI\VEN_105A&DEV_6269.DeviceDesc="WinXP Promise FastTrak TX2000 (tm) Controller"
+PCI\VEN_105A&DEV_5275.DeviceDesc="WinXP Promise MBFastTrak133 Lite (tm) Controller"
+PCI\VEN_105A&DEV_5275&CC_0104.DeviceDesc="WinXP Promise FastTrak TX (tm) Controller (PDC20276)"
+PCI\VEN_105A&DEV_7275&CC_0104.DeviceDesc="WinXP Promise FastTrak TX (tm) Controller (PDC20277)"
+PCI\VEN_105A&DEV_7275.DeviceDesc="WinXP Promise SBFastTrak133 Lite (tm) Controller"
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="Promise FastTrak Series Driver Diskette"
+DISKNAME2="Windows system"
+
+Promise_Raid_ControllerDesc= "WinXP Promise Raid Console SCSI Processor Device" 
+SPSVCINST_ASSOCSERVICE = 0x00000002

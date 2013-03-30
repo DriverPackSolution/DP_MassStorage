@@ -1,0 +1,49 @@
+[Disks]
+d1 = "SiS Raid/IDE Driver Diskette", \SISAHCI, \
+d2 = "SiS AHCI Driver Diskette", \SISAHCI, \RAID\Srv2003
+d3 = "SiS AHCI Driver Diskette", \SISAHCI, \RAID\WinXP_2K
+d4 = "SiS AHCI Driver Diskette", \SISAHCI, \RAID\WS03XP64
+
+
+[Defaults]
+SCSI = SISAHCI_WIN32
+
+[SCSI]
+SISAHCI_2003 = "WinSrv2003 SiS AHCI Controller"
+SISAHCI_WIN32 = "Windows 32bit(W2K,XP) SiS AHCI Controller"
+SISAHCI_WIN64 = "Windows 64bit SiS AHCI Controller"
+
+
+[Files.SCSI.SISAHCI_2003]
+driver = d2, SiSRaid4.sys, SiSRaid4
+dll    = d2, Property.dll
+inf    = d2, SiSRaid4.inf
+catalog= d2,sisraid.cat
+
+[HardwareIds.SCSI.SISAHCI_2003]
+id="PCI\VEN_1039&DEV_1184", "SiSRaid4"
+id="PCI\VEN_1039&DEV_1185", "SiSRaid4"
+
+[Files.SCSI.SISAHCI_WIN32]
+driver = d3, SiSRaid4.sys, SiSRaid4
+dll    = d3, Property.dll
+inf    = d3, SiSRaid4.inf
+catalog= d3,sisraid.cat
+
+[HardwareIds.SCSI.SISAHCI_WIN32]
+id="PCI\VEN_1039&DEV_1184", "SiSRaid4"
+id="PCI\VEN_1039&DEV_1185", "SiSRaid4"
+
+[Files.SCSI.SISAHCI_WIN64]
+driver = d4, SiSRaid4.sys, SiSRaid4
+inf    = d4, SiSRaid4.inf
+catalog= d4,sisraid.cat
+
+[HardwareIds.SCSI.SISAHCI_WIN64]
+id="PCI\VEN_1039&DEV_1184", "SiSRaid4"
+id="PCI\VEN_1039&DEV_1185", "SiSRaid4"
+
+[Config.SiSRaid4]
+value = parameters\PnpInterface,"5",REG_DWORD,1
+
+

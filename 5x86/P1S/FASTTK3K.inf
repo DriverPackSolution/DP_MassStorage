@@ -1,0 +1,116 @@
+; FASTTRAK.INF
+; Copyright 2001 Promise Technology, Inc.
+
+[Version]
+CatalogFile=Fasttrak.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=04/25/2003, 2.00.0.34
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+MoveMiniPort.NT = 12;
+
+[ControlFlags]
+
+[Manufacturer]
+%Promise%=Promise
+
+[Promise]
+; dps %PCI\VEN_105A&DEV_4d33.DeviceDesc% = FasttrakPCI33 , PCI\VEN_105A&DEV_4d33
+%PCI\VEN_105A&DEV_4D38&SUBSYS_4D39105A.DeviceDesc% = FasttrakPCI66 , PCI\VEN_105A&DEV_4D38&SUBSYS_4D39105A
+%PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A.DeviceDesc% = FasttrakPCI100 , PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A
+%PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A.DeviceDesc% = FasttrakPCI100 , PCI\VEN_105A&DEV_4D30&SUBSYS_4D32105A
+%PCI\VEN_105A&DEV_6268.DeviceDesc% = FasttrakPCI_TX2 , PCI\VEN_105A&DEV_6268
+%PCI\VEN_105A&DEV_6269.DeviceDesc% = FasttrakPCI_TX2000 , PCI\VEN_105A&DEV_6269
+%Promise_Raid_ControllerDesc%=NODRV,SCSI\ProcessorPromise_RAID_CONSOLE__
+
+[NODRV]
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[FasttrakPCI33.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI33.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI66.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI66.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI100.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI100.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_TX2.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI_TX2.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_TX2000.NT]
+CopyFiles=MoveMiniPort.NT
+Reboot
+
+[FasttrakPCI_TX2000.NT.Services]
+AddService = fasttrak, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\fasttrak.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[MoveMiniPort.NT]
+Fasttrak.sys
+
+[SourceDisksFiles]
+;Fasttrak.inf = 1
+Fasttrak.sys = 1
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[strings]
+Promise="Promise Technology"
+; dps PCI\VEN_105A&DEV_4d33.DeviceDesc="Win.Net Server 2003 Promise FastTrak (tm) Controller"
+PCI\VEN_105A&DEV_4D38&SUBSYS_4D39105A.DeviceDesc="Win.Net Server 2003 Promise FastTrak66 (tm) Controller (PDC20262)"
+PCI\VEN_105A&DEV_4D30&SUBSYS_4D39105A.DeviceDesc="Win.Net Server 2003 Promise FastTrak100 (tm) Controller"
+PCI\VEN_105A&DEV_6268.DeviceDesc="Win.Net Server 2003 Promise FastTrak100 TX2/TX4 (tm) Controller"
+PCI\VEN_105A&DEV_6269.DeviceDesc="Win.Net Server 2003 Promise FastTrak TX2000 (tm) Controller"
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="Promise FastTrak Series Driver Diskette"
+DISKNAME2="Windows system"
+
+Promise_Raid_ControllerDesc= "Win.Net Server 2003 Promise Raid Console SCSI Processor Device" 
+SPSVCINST_ASSOCSERVICE = 0x00000002

@@ -1,0 +1,263 @@
+
+[Disks]
+
+MegaRAID490 = "LSI Logic MegaRAID Express 300 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID1CH = "LSI Logic MegaRAID Express 500/500LC RAID Controller Driver", \mraid35x.sys, \
+MegaRAID2CH = "LSI Logic MegaRAID Elite 1600 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID494 = "LSI Logic MegaRAID Elite 1650/1700 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID467 = "LSI Logic MegaRAID Enterprise 1500 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID4CH = "LSI Logic MegaRAID Enterprise 1600 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID503 = "LSI Logic MegaRAID Enterprise 1700 RAID Controller Driver", \mraid35x.sys, \
+MegaRAIDZCR = "MegaRAID SCSI 320-0 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID520 = "MegaRAID SCSI 320-1 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID518 = "MegaRAID SCSI 320-2 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID532 = "MegaRAID SCSI 320-2X RAID Controller Driver", \mraid35x.sys, \
+MegaRAID531 = "MegaRAID SCSI 320-4X RAID Controller Driver", \mraid35x.sys, \
+MegaRAID511 = "LSI Logic MegaRAID i4 IDE RAID Controller", \mraid35x.sys, \
+MegaRAID522 = "LSI Logic MegaRAID i4133 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID523 = "LSI Logic MegaRAID SATA 150-6 RAID Controller Driver", \mraid35x.sys, \
+MegaRAID4523 = "LSI Logic MegaRAID SATA 150-4 RAID Controller Driver", \mraid35x.sys, \
+Intelu3202X = "Intel(R) Storage RAID Controller SRCU42", \mraid35x.sys, \
+
+NETRAID1M = "HP NetRAID-1M RAID Controller Driver", \mraid35x.sys, \
+NETRAID2M = "HP NetRAID-2M RAID Controller Driver", \mraid35x.sys, \
+
+[Defaults]
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+scsi = MegaRAID4CH
+
+
+
+[scsi]
+
+# This section lists the options available for a particular component.
+#
+# <id> is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name> gives the name of the key to be created for the component in
+#   HKEY_LOCAL_MACHINE\ControlSet001\Services
+
+
+MegaRAID490 = "LSI Logic MegaRAID Express 300 RAID Controller Driver", mraid35x
+MegaRAID1CH = "LSI Logic MegaRAID Express 500/500LC RAID Controller Driver", mraid35x
+MegaRAID2CH = "LSI Logic MegaRAID Elite 1600 RAID Controller Driver", mraid35x
+MegaRAID494 = "LSI Logic MegaRAID Elite 1650/1700 RAID Controller Driver", mraid35x
+MegaRAID467 = "LSI Logic MegaRAID Enterprise 1500 RAID Controller Driver", mraid35x
+MegaRAID4CH = "LSI Logic MegaRAID Enterprise 1600 RAID Controller Driver", mraid35x
+MegaRAID503 = "LSI Logic MegaRAID Enterprise 1700 RAID Controller Driver", mraid35x
+MegaRAIDZCR = "MegaRAID SCSI 320-0 RAID Controller Driver", mraid35x
+MegaRAID520 = "MegaRAID SCSI 320-1 RAID Controller Driver", mraid35x
+MegaRAID518 = "MegaRAID SCSI 320-2 RAID Controller Driver", mraid35x
+MegaRAID532 = "MegaRAID SCSI 320-2X RAID Controller Driver", mraid35x
+MegaRAID531 = "MegaRAID SCSI 320-4X RAID Controller Driver", mraid35x
+MegaRAID511 = "LSI Logic MegaRAID i4 IDE RAID Controller", mraid35x
+MegaRAID522 = "LSI Logic MegaRAID i4133 RAID Controller Driver", mraid35x
+MegaRAID523 = "LSI Logic MegaRAID SATA 150-6 RAID Controller Driver", mraid35x
+MegaRAID4523 = "LSI Logic MegaRAID SATA 150-4 RAID Controller Driver", mraid35x
+Intelu3202X = "Intel(R) Storage RAID Controller SRCU42", mraid35x
+
+NETRAID1M = "HP NetRAID-1M RAID Controller Driver", mraid35x
+NETRAID2M = "HP NetRAID-2M RAID Controller Driver", mraid35x
+
+[Files.scsi.MegaRAID494]
+driver = MegaRAID494, mraid35x.sys, mraid35x
+inf    = MegaRAID494, oemsetup.inf, mraid35x
+inf    = MegaRAID494, nodev.inf
+catalog = MegaRAID494, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID494]
+MegaRAID494 = "PCI\VEN_101E&DEV_1960&SUBSYS_0494101E", "mraid35x"
+
+
+[Files.scsi.MegaRAID503]
+driver = MegaRAID503, mraid35x.sys, mraid35x
+inf    = MegaRAID503, oemsetup.inf, mraid35x
+inf    = MegaRAID503, nodev.inf
+catalog = MegaRAID503, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID503]
+MegaRAID503 = "PCI\VEN_101E&DEV_1960&SUBSYS_0503101E", "mraid35x"
+
+
+[Files.scsi.MegaRAID467]
+driver = MegaRAID467, mraid35x.sys, mraid35x
+inf    = MegaRAID467, oemsetup.inf, mraid35x
+inf    = MegaRAID467, nodev.inf
+catalog = MegaRAID467, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID467]
+MegaRAID467 = "PCI\VEN_8086&DEV_1960&SUBSYS_0467101E", "mraid35x"
+
+
+[Files.scsi.MegaRAID490]
+driver = MegaRAID490, mraid35x.sys, mraid35x
+inf    = MegaRAID490, oemsetup.inf, mraid35x
+inf    = MegaRAID490, nodev.inf
+catalog = MegaRAID490, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID490]
+MegaRAID490 = "PCI\VEN_8086&DEV_1960&SUBSYS_0490101E", "mraid35x"
+
+
+
+
+[Files.scsi.MegaRAID4CH]
+driver = MegaRAID4CH, mraid35x.sys, mraid35x
+inf    = MegaRAID4CH, oemsetup.inf, mraid35x
+inf    = MegaRAID4CH, nodev.inf
+catalog = MegaRAID4CH, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID4CH]
+MegaRAID4CH = "PCI\VEN_101E&DEV_1960&SUBSYS_0471101E", "mraid35x"
+
+[Files.scsi.MegaRAID2CH]
+driver = MegaRAID2CH, mraid35x.sys, mraid35x
+inf    = MegaRAID2CH, oemsetup.inf, mraid35x
+inf    = MegaRAID2CH, nodev.inf
+catalog = MegaRAID2CH, mraid32.cat
+
+
+[HardwareIds.scsi.MegaRAID2CH]
+MegaRAID2CH = "PCI\VEN_101E&DEV_1960&SUBSYS_0493101E", "mraid35x"
+
+[Files.scsi.MegaRAID1CH]
+driver = MegaRAID1CH, mraid35x.sys, mraid35x
+inf    = MegaRAID1CH, oemsetup.inf, mraid35x
+inf    = MegaRAID1CH, nodev.inf
+catalog = MegaRAID1CH, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID1CH]
+MegaRAID1CH = "PCI\VEN_101E&DEV_1960&SUBSYS_0475101E", "mraid35x"
+
+[Files.scsi.MegaRAID511]
+driver = MegaRAID511, mraid35x.sys, mraid35x
+inf    = MegaRAID511, oemsetup.inf, mraid35x
+inf    = MegaRAID511, nodev.inf
+catalog = MegaRAID511, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID511]
+MegaRAID511 = "PCI\VEN_101E&DEV_1960&SUBSYS_0511101E", "mraid35x"
+
+
+[Files.scsi.MegaRAIDZCR]
+driver = MegaRAIDZCR, mraid35x.sys, mraid35x
+inf    = MegaRAIDZCR, oemsetup.inf, mraid35x
+inf    = MegaRAIDZCR, nodev.inf
+catalog = MegaRAIDZCR, mraid32.cat
+
+[HardwareIds.scsi.MegaRAIDZCR]
+MegaRAIDZCR = "PCI\VEN_1000&DEV_1960&SUBSYS_A5201000", "mraid35x"
+
+
+[Files.scsi.MegaRAID518]
+driver = MegaRAID518, mraid35x.sys, mraid35x
+inf    = MegaRAID518, oemsetup.inf, mraid35x
+inf    = MegaRAID518, nodev.inf
+catalog = MegaRAID518, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID518]
+MegaRAID518 = "PCI\VEN_1000&DEV_1960&SUBSYS_05181000", "mraid35x"
+
+
+[Files.scsi.MegaRAID520]
+driver = MegaRAID520, mraid35x.sys, mraid35x
+inf    = MegaRAID520, oemsetup.inf, mraid35x
+inf    = MegaRAID520, nodev.inf
+catalog = MegaRAID520, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID520]
+MegaRAID520 = "PCI\VEN_1000&DEV_1960&SUBSYS_05201000", "mraid35x"
+
+
+[Files.scsi.MegaRAID531]
+driver = MegaRAID531, mraid35x.sys, mraid35x
+inf    = MegaRAID531, oemsetup.inf, mraid35x
+inf    = MegaRAID531, nodev.inf
+catalog = MegaRAID531, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID531]
+MegaRAID531 = "PCI\VEN_1000&DEV_0407&SUBSYS_05311000", "mraid35x"
+
+[Files.scsi.MegaRAID532]
+driver = MegaRAID532, mraid35x.sys, mraid35x
+inf    = MegaRAID532, oemsetup.inf, mraid35x
+inf    = MegaRAID532, nodev.inf
+catalog = MegaRAID532, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID532]
+MegaRAID532 = "PCI\VEN_1000&DEV_0407&SUBSYS_05321000", "mraid35x"
+
+
+[Files.scsi.MegaRAID522]
+driver = MegaRAID522, mraid35x.sys, mraid35x
+inf    = MegaRAID522, oemsetup.inf, mraid35x
+inf    = MegaRAID522, nodev.inf
+catalog = MegaRAID522, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID522]
+MegaRAID522 = "PCI\VEN_1000&DEV_1960&SUBSYS_05221000", "mraid35x"
+MegaRAID522 = "PCI\VEN_101E&DEV_1960&SUBSYS_0522101E", "mraid35x"
+
+
+[Files.scsi.MegaRAID523]
+driver = MegaRAID523, mraid35x.sys, mraid35x
+inf    = MegaRAID523, oemsetup.inf, mraid35x
+inf    = MegaRAID523, nodev.inf
+catalog = MegaRAID523, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID523]
+MegaRAID523 = "PCI\VEN_1000&DEV_1960&SUBSYS_05231000", "mraid35x"
+
+
+[Files.scsi.MegaRAID4523]
+driver = MegaRAID4523, mraid35x.sys, mraid35x
+inf    = MegaRAID4523, oemsetup.inf, mraid35x
+inf    = MegaRAID4523, nodev.inf
+catalog = MegaRAID4523, mraid32.cat
+
+[HardwareIds.scsi.MegaRAID4523]
+MegaRAID4523 = "PCI\VEN_1000&DEV_1960&SUBSYS_45231000", "mraid35x"
+
+[Files.scsi.Intelu3202X]
+driver = Intelu3202X, mraid35x.sys, mraid35x
+inf    = Intelu3202X, oemsetup.inf, mraid35x
+inf    = Intelu3202X, nodev.inf
+catalog = Intelu3202X, mraid32.cat
+
+[HardwareIds.scsi.Intelu3202X]
+Intelu3202X = "PCI\VEN_1000&DEV_0407&SUBSYS_05328086", "mraid35x"
+
+
+
+[Files.scsi.NETRAID1M]
+driver = NETRAID1M, mraid35x.sys, mraid35x
+inf    = NETRAID1M, oemsetup.inf, mraid35x
+inf    = NETRAID1M, nodev.inf
+catalog = NETRAID1M, mraid32.cat
+
+[HardwareIds.scsi.NETRAID1M]
+NETRAID1M = "PCI\VEN_101E&DEV_1960&SUBSYS_60E7103C", "mraid35x"
+
+[Files.scsi.NETRAID2M]
+driver = NETRAID2M, mraid35x.sys, mraid35x
+inf    = NETRAID2M, oemsetup.inf, mraid35x
+inf    = NETRAID2M, nodev.inf
+catalog = NETRAID2M, mraid32.cat
+
+[HardwareIds.scsi.NETRAID2M]
+NETRAID2M = "PCI\VEN_101E&DEV_1960&SUBSYS_60E8103C", "mraid35x"
+
+
+[Config.mraid35x]
+value=parameters\PnpInterface,5, REG_DWORD,1 
+value = "", Tag, REG_DWORD, 20
+value = "", DriverVersion, REG_SZ, "MegaRAID RAID Controller Driver"

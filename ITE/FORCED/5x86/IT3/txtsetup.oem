@@ -1,0 +1,89 @@
+#
+# TXTSETUP.OEM for IT8211 ATA ATAPI Controller
+#
+
+[Disks]
+d1 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \
+d2 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \WINNT
+d3 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \WIN2K
+d4 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \WINXP
+d5 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \WIN2003
+d6 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \WIN64
+d7 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \Vista32
+d8 = "ITE IT8211 ATA ATAPI Driver Diskette", \ITEATAPI, \Vista64
+
+
+
+[Defaults]
+scsi = ITEATAPI_2000
+
+[scsi]
+ITEATAPI_NT     = "ITE IT8211 ATA ATAPI Controller (Windows NT)", ITEATAPI
+ITEATAPI_2000   = "ITE IT8211 ATA ATAPI Controller (Windows 2000)", ITEATAPI
+ITEATAPI_XP     = "ITE IT8211 ATA ATAPI Controller (Windows XP)", ITEATAPI
+ITEATAPI_2003   = "ITE IT8211 ATA ATAPI Controller (Windows 2003)", ITEATAPI
+ITEATAPI_WIN64  = "ITE IT8211 ATA ATAPI Controller (Windows XP, Windows 2003 64bit )", ITEATAPI
+ITEATAPI_Vista32   = "ITE IT8211 ATA ATAPI Controller (Windows Vista32)", ITEATAPI
+ITEATAPI_Vista64   = "ITE IT8211 ATA ATAPI Controller (Windows Vista64)", ITEATAPI
+
+[Files.scsi.ITEATAPI_NT]
+driver = d2, iteatapi.sys, ITEATAPI
+inf    = d2, iteatapi.inf
+
+[Files.scsi.ITEATAPI_2000]
+driver = d3, iteatapi.sys, ITEATAPI
+inf    = d3, iteatapi.inf
+catalog = d3, iteatapi.cat
+
+[Files.scsi.ITEATAPI_XP]
+driver = d4, iteatapi.sys, ITEATAPI
+inf    = d4, iteatapi.inf
+catalog = d4, iteatapi.cat
+
+[Files.scsi.ITEATAPI_2003]
+driver = d5, iteatapi.sys, ITEATAPI
+inf    = d5, iteatapi.inf
+catalog = d5, iteatapi.cat
+
+[Files.scsi.ITEATAPI_WIN64]
+driver = d6, iteatapi.sys, ITEATAPI
+inf    = d6, iteatapi.inf
+catalog = d6, iteatapi.cat
+
+[Files.scsi.ITEATAPI_Vista32]
+driver = d7, iteatapi.sys, ITEATAPI
+inf    = d7, iteatapi.inf
+catalog = d7, iteatapi.cat
+
+[Files.scsi.ITEATAPI_Vista64]
+driver = d8, iteatapi.sys, ITEATAPI
+inf    = d8, iteatapi.inf
+catalog = d8, iteatapi.cat
+
+
+[HardwareIds.scsi.ITEATAPI_NT]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+[HardwareIds.scsi.ITEATAPI_2000]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+[HardwareIds.scsi.ITEATAPI_XP]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+[HardwareIds.scsi.ITEATAPI_2003]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+[HardwareIds.scsi.ITEATAPI_WIN64]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+[HardwareIds.scsi.ITEATAPI_Vista32]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+[HardwareIds.scsi.ITEATAPI_Vista64]
+id = "PCI\VEN_1283&DEV_8211","ITEATAPI"
+
+
+
+[Config.ITEATAPI]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1

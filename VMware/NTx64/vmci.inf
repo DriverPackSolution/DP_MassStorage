@@ -1,0 +1,93 @@
+;-------------------------------------------------------------------------
+; vmci.inf
+;
+; Copyright (c) 1993-1999, Microsoft Corporation
+; Copyright 1999-2012 VMware, Inc.  All rights reserved.
+;-------------------------------------------------------------------------
+[version]
+Signature   = "$Windows NT$"
+Class       = System
+ClassGUID   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %VMware%
+DriverVer   = 02/16/2012, 9.3.51.0
+CatalogFile = vmci.cat
+
+[SourceDisksNames]
+1 = %DiskDescription%,"",,
+
+[SourceDisksFiles]
+vmci.sys = 1
+
+[vmci.CopyFiles]
+vmci.sys,,,2
+
+[DestinationDirs]
+vmci.CopyFiles = 12
+
+[ControlFlags]
+; Exclude all devices from Select Device list
+ExcludeFromSelect = *
+
+[Manufacturer]
+%VMware%                = VMware, NTx86, NTia64, NTamd64
+
+[VMware]
+%VMware.DeviceDesc%     = vmci.install, PCI\VEN_15AD&DEV_0740&SUBSYS_074015AD, PCI\VEN_15AD&DEV_0740
+%VMwareHost.DeviceDesc% = vmci.install, ROOT\VMWVMCIHOSTDEV
+
+; Windows XP and later
+[VMware.NTx86]
+%VMware.DeviceDesc%     = vmci.install, PCI\VEN_15AD&DEV_0740&SUBSYS_074015AD, PCI\VEN_15AD&DEV_0740
+%VMwareHost.DeviceDesc% = vmci.install, ROOT\VMWVMCIHOSTDEV
+
+; 64-bit Windows
+[VMware.NTamd64]
+%VMware.DeviceDesc%     = vmci.install, PCI\VEN_15AD&DEV_0740&SUBSYS_074015AD, PCI\VEN_15AD&DEV_0740
+%VMwareHost.DeviceDesc% = vmci.install, ROOT\VMWVMCIHOSTDEV
+
+; Itanium-based systems (not supported)
+[VMware.NTia64]
+
+
+[vmci.install.NT]
+AddReg          = vmci.reg
+CopyFiles       = vmci.CopyFiles
+
+[vmci.install.NT.Services]
+AddService = vmci, 2, vmci.Service, common.EventLog
+
+[vmci.reg]
+
+[vmci.install.NT.HW]
+AddReg = enableMSI.reg
+
+[enableMSI.reg]
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 2
+
+[vmci.Service]
+DisplayName     = %vmci.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 0 ;%SERVICE_BOOT_START%
+ErrorControl    = 0 ;%SERVICE_ERROR_IGNORE%
+ServiceBinary   = %12%\vmci.sys
+LoadOrderGroup  = System Bus Extender
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\vmci.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[VMwarePathInfo]
+OriginalInfSourcePath = %1%
+
+[Strings]
+VMware                      = "VMware, Inc."
+vmware.DeviceDesc           = "VMware VMCI Bus Device"
+vmwarehost.DeviceDesc       = "VMware VMCI Host Device"
+vmci.Service.DispName       = "VMware VMCI Bus Driver"
+DiskDescription             = "VMware VMCI Device Disk"

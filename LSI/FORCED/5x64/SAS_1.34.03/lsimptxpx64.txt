@@ -1,0 +1,338 @@
+***************************************************************************** 
+                               LSIMPTXPX64.TXT  
+***************************************************************************** 
+
+Installation Guide for the LSI Fusion-MPT (TM) Drivers: 
+LSI_SCSI.SYS (StorPort) V1.34.03
+LSI_FC.SYS (StorPort) V1.34.03
+LSI_SAS.SYS (StorPort) V1.34.03
+                                                 
+This file describes the features and use of the LSI Fusion-MPT U320 SCSI, Fibre
+Channel and SAS (Serial Attached SCSI) device drivers for the Windows XP x64
+(AMD64/EM64T) operating system environment. It is divided into the following
+sections:
+
+Introduction for Windows XP x64
+Features
+     LSI Devices Supported
+     Description
+
+Installing the Driver(s)
+     New System Installation
+          CD-ROM Installation
+     Existing System Installation 
+     Performance Tuning for Windows XP x64
+          Miniport Driver Configuration Options
+     Troubleshooting 
+
+
+.........................................................................
+1.0 Introduction for Windows XP x64
+
+
+Windows XP x64 is an operating system designed to run on Extended-64 (x64)
+(AMD64/EM64T) processors using current technology. It provides a graphical
+user interface environment incorporating many high-level features. Refer to the
+Microsoft Windows XP x64 documentation for details.
+
+An I/O manager handles I/O requests in Windows XP x64. To address a
+peripheral, the I/O manager goes through the appropriate drivers. Windows
+XP x64 provides class drivers for hard disk, optical, CD-ROM, printer,
+and scanner peripherals. Other class drivers, provided by peripheral
+manufacturers, may be added to support new devices. Tape device support is
+built into the operating system itself and does not require a class driver. 
+
+Microsoft provides the port driver and LSI Corporation provides the miniport
+drivers, which are called LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS.  These
+drivers complete the path to the LSI controller or processor with an optional
+U320 SCSI, Fibre Channel or SAS BIOS.
+
+These miniport drivers use the Microsoft StorPort port driver (rather than
+the Microsoft ScsiPort driver in earlier versions of Windows).  The StorPort
+driver has architectural enhancements that provide performance improvements on
+large server systems with many storage adapters.  These miniport drivers are
+designed to take advantage of these enhancements for improved performance.
+
+.........................................................................
+1.1 Features 
+
+The LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS miniport drivers support these
+features:
+
+o  Supports 320 Mbytes/s parallel SCSI transfers (for LSI53C1020 and
+   LSI53C1030)
+o  Supports 1GB, 2GB and 4GB Fibre Channel transfers (for LSIFC949X,
+   LSIFC949E, LSIFC929X, LSIFC919X, LSIFC929 and LSIFC919)
+o  Supports End-to-End Data Protection (EEDP) for LSIFC949X, LSIFC949E
+o  Supports 1.5GB and 3GB SAS expanders/devices and SATA devices
+   (LSISAS1064, LSISAS1068, LSISAS1064E, LSISAS1068E, LSISAS1078)
+o  Supports PCI, PCI-X, and PCI-Express bus protocols
+o  Supports LSI MPT common software interface 
+o  Supports multiple host adapters 
+o  Supports multiple Logical Unit Numbers (LUNs) 
+o  Supports Scatter-Gather 
+o  Supports SCSI pass-through functionality 
+o  Supports disk array configurations with no LUN 0 
+o  Supports disk array configurations with non-contiguous LUNs 
+o  Auto request sense 
+o  Maximum block size support: 1 Mbyte (32-bit), 2 Mbyte (64-bit)
+o  Supports Microsoft WMI HBA API for Fibre Channel devices (LSI_FC.SYS only)
+.........................................................................
+1.2 LSI Devices Supported 
+
+The miniport driver names are listed below, along with their supported
+devices and associated host adapters:
+
+LSI_SCSI.SYS - "LSI Fusion-MPT SCSI Miniport Driver"
+o  LSI53C1020 / LSI53C1020A
+o  LSI53C1030 / LSI53C1030T
+
+LSI_FC.SYS - "LSI Fusion-MPT FC Miniport Driver"
+o  LSIFC919 
+o  LSIFC919X 
+o  LSIFC929
+o  LSIFC929X
+o  LSIFC949X
+o  LSIFC949E
+
+LSI_SAS.SYS - "LSI Fusion-MPT SAS Miniport Driver"
+o  LSISAS1064
+o  LSISAS1068
+o  LSISAS1064E
+o  LSISAS1068E
+o  LSISAS1078
+.........................................................................
+1.3 Description
+
+The LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS drivers meet the Microsoft
+specification for miniport drivers.  These drivers allow connection of
+parallel SCSI, Fibre Channel and SAS devices including disk drives, CD-ROMs,
+and tape drives for PCI and PCI-X based machines. To support a different
+parallel SCSI, Fibre Channel or SAS device type, the Windows XP x64
+architecture requires that a class driver for that type of device be present
+(usually supplied by Microsoft, or possibly by the peripheral manufacturer).
+No changes to the LSI drivers are required. The driver supports only Windows
+XP x64 and all subsequent Service Packs. 
+
+A Windows application passes SCSI commands directly to the parallel SCSI,
+Fibre Channel or SAS Protocol devices by using the SCSI pass-through facility.
+This facility allows applications to directly control and access devices by
+filling in a data structure and calling into the port or class driver. Refer
+to the Microsoft Windows XP x64 documentation for more details.
+
+............................................................................
+2.0 Installing the LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS Drivers
+
+
+This procedure installs the LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS drivers
+onto a new or existing Windows XP x64 system. Depending upon the media
+used to distribute LSI drivers (web or CD-ROM) and the type of adapter, you
+will create a driver diskette.
+
+Copy the files listed in this section to the root directory of a clean
+diskette as shown below.  Label this diskette "Windows XP x64 Driver
+Diskette". You will use this diskette during the installation process.
+
+For LSI_SCSI:
+        txtsetup.oem
+        lsi_scsi.tag
+        pxpam64.cat
+        lsi_scsi.inf
+        lsi_scsi.sys
+        
+For LSI_FC:
+        txtsetup.oem
+        lsi_fc.tag
+        fxpam64.cat
+        lsi_fc.inf
+        lsi_fc.sys
+        
+For LSI_SAS:
+        txtsetup.oem
+        lsi_sas.tag
+        sxpam64.cat
+        lsi_sas.inf
+        lsi_sas.sys
+        
+For a driver upgrade the driver files can also be copied onto a hard drive,
+CD or DVD, or a USB flash drive.
+        
+For the following driver installation sections, the designation LSI_xxx is used
+to indicate the LSI_SCSI, LSI_FC or LSI_SAS driver, depending on which driver
+is being installed.
+
+............................................................................
+2.1 New System Installation 
+
+This procedure installs the LSI_xxx.SYS driver onto a Windows XP x64
+system. Use this procedure when installing Windows XP x64 onto an
+unused drive. Windows XP x64 automatically adds the driver to the
+registry and copies the driver to the appropriate directory.
+
+Note: Windows XP x64 contains a SYMMPI.SYS driver that supports the
+      U320, 919 and 929 devices.  When performing a fresh installation with a
+      device that is supported by the bundled SYMMPI.SYS driver, loading
+      of the LSI_xxx.SYS driver using the F6 key will have no effect and
+      the SYMMPI.SYS driver will be used.  To use the LSI_xxx.SYS driver,
+      upgrade the driver after installation has completed as described
+      in Section 2.2.
+
+The method for installing Windows XP x64 on a new system involves using
+a CD-ROM. Installation using boot floppy diskettes is not supported by
+Windows XP x64.
+
+............................................................................
+2.1.1 CD-ROM Installation
+
+1. Start the Windows XP x64 installation by booting from the Windows
+   XP x64 CD-ROM:
+
+   The system BIOS must support booting from a CD-ROM. BIOS settings may need
+   to be changed to allow CD-ROM booting.
+
+2. Press the F6 key to install the LSI_xxx.SYS driver when the screen displays
+   "Windows Setup".
+
+   This must be done or else the new driver will not be recognized.
+
+   Note: Be sure to press the F6 key as any driver loaded later in the
+         installation process is not recognized by Windows XP x64 Setup.
+         If F6 is not pressed, all devices controlled by the drivers are
+         not available during Windows XP x64 setup.
+
+3. Choose S to specify an additional device when the screen displays "Setup
+   could not determine the type of one or more mass storage devices...". 
+
+   NOTE: If this screen is not displayed as the first user input, then 
+         pressing the F6 key was not seen by the setup program. Reboot the 
+         system and try again.
+
+   The system prompts for the manufacturer-supplied hardware support disk.
+
+4. Insert the appropriate driver diskette containing the Windows XP x64
+   driver required to support your LSI adapter(s) and press Enter.
+    
+   Note: Current Windows XP x64 drivers can be downloaded from the
+         LSI Corporation web site at:
+             http://www.lsi.com/downloads/selectDownload.do
+         After you are connected to this web site, select the product
+         category, family, and the appropriate product.  Select the Driver
+         checkbox and click Go.  Click on the desired Windows XP x64 driver
+         to begin the download.
+
+5. The screen will display the driver to be installed:
+
+       "LSI Fusion-MPT xxx Driver (XP x64)"
+       
+       (where xxx is U320, FC, or SAS depending on the driver beign installed)
+   
+   Press Enter to proceed.
+
+   Return to the Windows XP x64 Setup screen.
+
+6. Press Enter to proceed.
+
+   The message about setup loading files appears.
+
+7. Follow the Microsoft Windows XP x64 installation procedure at this point.
+
+............................................................................
+2.2 Existing System Installation
+
+This procedure installs or upgrades the LSI_xxx.SYS drivers onto an existing
+Windows XP x64 system.
+
+NOTE: When a LSI SCSI, Fibre Channel or SAS adapter is added to an existing
+      system installation, the new adapter is automatically detected at the
+	  next reboot. When the Device Driver Wizard appears at boot, click on the
+	  Next button and continue at step 8 below.
+
+1. Boot Windows XP x64 and logon as a user that has Administrator
+   privileges.
+
+2. Click on the Start button, then right-click on the My Computer entry in
+   the menu.
+
+3. Click on the Properties selection.
+
+4. Click on the Hardware tab, and then the Device Manager button.
+
+5. Click the "+" to the left of the SCSI and RAID controllers line.  Find the
+   adapter desired for the driver upgrade and double-click the entry.  Click
+   on the Driver tab.
+
+6. Information on the currently installed driver is displayed, and additional
+   driver details can be viewed by clicking the "Driver Details" button.
+
+7. Click on the "Update Driver" button to update the existing driver.  The
+   Hardware Update Wizard begins.
+   
+8. Click on the "Install from a list or specific location..." button to select
+   it, then click on the Next button.
+
+9. Click on the "Don't search, I will choose the driver to install." button
+   to select it, then click on the Next button.
+
+10. Click on the "Have Disk" button and type the path to the driver, or click
+    on the Browse button.  Click the OK button.
+
+11. Select the driver from the list and click on the Next button.
+
+12. Click on the Next button again to start the driver update.
+
+    In some cases, a message will display saying that this driver has not
+    passed logo testing. This message informs you that a nonsigned driver is
+    being installed.
+
+    Note: Drivers are digitally signed by the Microsoft Windows Hardware
+          Quality Lab (WHQL) on completion of logo testing.  Due to the time
+          lag between the general customer release by LSI of Windows drivers
+          and the completion of WHQL logo testing, some drivers distributed
+          with adapters or downloaded from the www.lsi.com web site may not be
+		  digitally signed.
+
+13. Click STOP Installation to cancel the installation if a nonsigned driver
+    is not desired.
+
+      or
+
+    Click Continue Anyway to continue the installation.
+
+    The system will load the driver from the Windows XP x64 driver
+    diskette. A message box may display indicating that the target (existing)
+    driver is newer than the source (upgrade) driver.
+
+14. Click No to cancel the driver upgrade at this point.
+
+      or
+
+    Click Yes to continue the installation.
+
+    The system copies the driver to the system disk. For any adapter other
+    than the boot adapter, the updated driver will become active immediately.
+    For the boot adapter, a message box displays indicating that you must
+    reboot your system for the new driver to take effect.
+
+15. Click on the Finish button to complete the driver upgrade.
+
+............................................................................
+2.3 Performance Tuning for Windows XP x64
+
+Windows XP x64 has registry entries that can be used to tune the
+performance of SCSI I/O for certain configurations. The registry settings of
+NumberOfRequests and MaximumSGList are not used by StorPort and will have no
+effect on the LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS drivers.
+
+............................................................................
+2.3.1 Miniport Driver Configuration Options
+
+The LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS drivers are configured by default
+to provide optimum performance in most standard systems.
+
+............................................................................
+3.0 Troubleshooting 
+
+The LSI_SCSI.SYS, LSI_FC.SYS and LSI_SAS.SYS driver will log error messages to
+the system error log. For these errors, the system errorlog EventID will be 11,
+and the specific error code values will be displayed at offset 0x10. Data
+should be displayed in words.

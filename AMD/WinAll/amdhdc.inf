@@ -1,0 +1,100 @@
+; AMDIDE.INF
+; Copyright (c) 2006-2012 Advanced Micro Devices, Inc.  All rights reserved.
+;
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%AMD%
+
+CatalogFile = amdhdc.cat
+
+DriverVer=12/04/2012,5.2.2.0179
+
+;32x86
+[SourceDisksNames]
+1 = %DiskDesc%
+[SourceDisksFiles]
+amdide.sys  = 1
+
+;64x86
+[SourceDisksNames.amd64]
+1 = %DiskDesc%
+[SourceDisksFiles.amd64]
+amdide64.sys  = 1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+;%AMD%=AMD_HDC
+%AMD%=AMD_HDC,NTamd64
+
+[AMD_HDC]
+%SATA_TO_IDE%	= amdide_Inst,PCI\VEN_1002&DEV_4390				;SB700/SB800
+%SATA_TO_IDE%	= amdide_Inst,PCI\VEN_1002&DEV_4380&CC_0101		;SB600
+%SATA_TO_IDE%	= amdide_Inst,PCI\VEN_1022&DEV_7800				;SB900 first IDE controller
+;%SATA_TO_IDE%	= amdide_Inst,PCI\VEN_1002&DEV_437A				;SB450/SB460
+;%SATA_TO_IDE%	= amdide_Inst,PCI\VEN_1002&DEV_4379				;SB450/SB460
+%PCI_IDE%		= amdide_Inst,PCI\VEN_1002&DEV_439C				;SB700/SB800
+%PCI_IDE%		= amdide_Inst,PCI\VEN_1002&DEV_438C				;SB600
+%PCI_IDE%		= amdide_Inst,PCI\VEN_1002&DEV_4376				;SB450/SB460
+%PCI_IDE%		= amdide_Inst,PCI\VEN_1022&DEV_780C				;SB900 Second IDE controller
+
+[AMD_HDC.NTamd64]
+%SATA_TO_IDE%	= amdide_Inst_64,PCI\VEN_1002&DEV_4390			;SB700/SB800
+%SATA_TO_IDE%	= amdide_Inst_64,PCI\VEN_1002&DEV_4380&CC_0101  ;SB600
+%SATA_TO_IDE%	= amdide_Inst_64,PCI\VEN_1022&DEV_7800			;SB900 first IDE controller
+;%SATA_TO_IDE%	= amdide_Inst_64,PCI\VEN_1002&DEV_437A			;SB450/SB460
+;%SATA_TO_IDE%	= amdide_Inst_64,PCI\VEN_1002&DEV_4379			;SB450/SB460
+%PCI_IDE%		= amdide_Inst_64,PCI\VEN_1002&DEV_439C			;SB700/SB800
+%PCI_IDE%		= amdide_Inst_64,PCI\VEN_1002&DEV_438C			;SB600
+%PCI_IDE%		= amdide_Inst_64,PCI\VEN_1002&DEV_4376			;SB450/SB460
+%PCI_IDE%		= amdide_Inst_64,PCI\VEN_1022&DEV_780C			;SB900 Second IDE controller
+
+
+[amdide_Inst]
+CopyFiles = @amdide.sys
+
+[amdide_Inst_64]
+CopyFiles = @amdide64.sys
+
+[amdide_Inst.Services]
+AddService = amdide, %SPSVCINST_ASSOCSERVICE%, amdide_Service_Inst
+
+[amdide_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+LoadOrderGroup = System Bus Extender
+ServiceBinary  = %12%\amdide.sys
+
+[amdide_Inst_64.Services]
+AddService = amdide64, %SPSVCINST_ASSOCSERVICE%, amdide_Service_Inst_64
+
+[amdide_Service_Inst_64]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+LoadOrderGroup = System Bus Extender
+ServiceBinary  = %12%\amdide64.sys
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Strings]
+AMD         = "Advanced Micro Devices"
+SATA_TO_IDE = "AMD SATA Controller (IDE Mode)"
+PCI_IDE     = "AMD PCI IDE Controller"
+DiskDesc    = "Installation Disk for AMD PCI SATA/IDE Controller"
+
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+
+

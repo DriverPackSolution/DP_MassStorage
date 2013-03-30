@@ -1,0 +1,95 @@
+; Copyright (c) 3ware, Inc.
+; INF file for the 3ware Escalade 6000 Storage Switch
+; SCSI Miniport Driver running Windows 2000 and Windows XP
+
+[Version]
+Signature   ="$Windows NT$"
+Class       = SCSIAdapter
+ClassGUID   = {4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider    = %COMPANY_NAME%
+CatalogFile = 3waregsm.cat
+DriverVer   = 12/19/2001,1.11.00.001
+
+; DiskId = DiskDescriptionString, DiskLabel, DiskSerialNumber
+[SourceDisksNames]
+1 = %DISK_DESCRIPTION%,,
+
+; Filename = DiskId
+[SourceDisksFiles]
+3waregsm.sys = 1
+3waresrv.exe = 1
+3warerun.exe = 1
+
+; 11 = \windows\system32
+; 12 = \windows\system32\drivers
+[DestinationDirs]
+DefaultDestDir = 12
+3ware_Drv_Copy = 12
+3ware_Srv_Copy = 11
+3ware_Run_Copy = 11
+
+[Manufacturer]
+%COMPANY_NAME% = 3ware
+
+[3ware]
+%DEVICE_DESCRIPTION% = 3ware_Install, PCI\VEN_13C1&DEV_1000
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_13C1&DEV_1000
+
+[3ware_Install]
+CopyFiles = 3ware_Drv_Copy, 3ware_Srv_Copy, 3ware_Run_Copy
+AddReg = 3ware_AddRegistry
+Reboot
+
+[3ware_Drv_Copy]
+3waregsm.sys,,,6
+
+[3ware_Srv_Copy]
+3waresrv.exe,,3waresrv.tmp,6
+
+[3ware_Run_Copy]
+3warerun.exe,,,6
+
+[3ware_AddRegistry]
+HKLM,"System\CurrentControlSet\Services\3waregsm\Parameters\PnpInterface",%PCIBus%,%REG_DWORD%,1
+HKLM,"System\CurrentControlSet\Services\Disk",%TIMEOUT_VALUE%,%REG_DWORD%,%TIMEOUT_SECONDS%
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",%INSTALL_DESCRIPTION%,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\%INSTALL_COMMAND%"
+
+[3ware_Install.Services]
+AddService = %SERVICE_NAME%,%SPSVCINST_ASSOCSERVICE%,3ware_Service_Install,3ware_EventLog_Install
+
+[3ware_Service_Install]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\3waregsm.sys
+LoadOrderGroup = SCSI miniport
+
+[3ware_EventLog_Install]
+AddReg = 3ware_EventLog_AddReg
+
+[3ware_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\3waregsm.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+COMPANY_NAME            = "3ware, Inc."
+DISK_DESCRIPTION        = "3ware Escalade Driver Installation Disk"
+DEVICE_DESCRIPTION      = "3ware Escalade 6000 Storage Switch"
+INSTALL_DESCRIPTION     = "3ware Service Installation"
+
+PCIBUS                  = 5
+TIMEOUT_SECONDS         = 31
+TIMEOUT_VALUE           = "TimeoutValue"
+
+SERVICE_NAME            = 3waregsm
+INSTALL_COMMAND         = "3wareRun install"
+
+SERVICE_BOOT_START      = 0
+SERVICE_ERROR_NORMAL    = 1
+SERVICE_KERNEL_DRIVER   = 1
+SPSVCINST_ASSOCSERVICE  = 0x02
+
+REG_DWORD               = 0x00010001
+REG_EXPAND_SZ           = 0x00020000

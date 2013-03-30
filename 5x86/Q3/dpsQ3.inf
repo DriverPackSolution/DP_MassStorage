@@ -1,0 +1,135 @@
+; DriverPacks.net 
+; Secondary INF file for QLogic ql2x00.inf
+; Driver for 32-bit Windows XP, Windows 2003
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%QLOGIC%
+CatalogFile=ql2300.cat
+DriverVer=05/22/2008,9.1.7.18
+[SourceDisksNames]
+1=%Floppy_Desc%,,,
+
+[SourceDisksFiles]
+ql2300.sys=1
+qlsdm.dll=1
+qlco.dll=1
+
+[DestinationDirs]
+ApiFileList = 11
+DefaultDestDir = 12 ; DIRID_DRIVERS
+CoInstallerFileList = 11
+
+[ApiFileList]
+qlsdm.dll
+
+[CoInstallerFileList]
+qlco1004.dll, qlco.dll
+
+[Manufacturer]
+%QLOGIC%=QLOGIC, NTx86, NTx86.6.0
+
+;*******************************
+;QLogic Manufacturer device list
+
+[QLOGIC]
+
+[QLOGIC.NTx86]
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_00091077
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_01031077
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_011A1028
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_013B1028
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_013C1028
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_010C1077
+%ql2300.DeviceDesc% = ql2300_Inst, PCI\VEN_1077&DEV_2312&SUBSYS_010D1077
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_00091077
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_01031077
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_011A1028
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_013B1028
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_013C1028
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_010C1077
+ExcludeFromSelect = PCI\VEN_1077&DEV_2312&SUBSYS_010D1077
+
+
+[ql2300_Inst]
+CopyFiles = @ql2300.sys
+CopyFiles = ApiFileList
+AddReg = ql2300_Registry_Update
+AddReg = ql2xhai2_Registry_Update
+
+[ql2300_LM_Inst]
+CopyFiles = @ql2300.sys
+CopyFiles = ApiFileList
+AddReg = ql2300_Registry_Update
+AddReg = ql2xhai2_Registry_Update
+
+[ql2300_Registry_Update]
+HKLM,SYSTEM\CurrentControlSet\Services\ql2300\Parameters\Device,BusType,0x00010001,0x00000006
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x3C
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Run,QLogicSaveSystemInfo,%REG_EXPAND_SZ%,"rundll32.exe qlco1004.dll,QLSaveSystemInfo"
+
+[ql2xhai2_Registry_Update]
+HKLM,SOFTWARE\SNIA\HBA\QL2X00,LibraryFile,0x00000000,"%11%"
+
+[ql2300_Inst.Services]
+AddService = ql2300, %SPSVCINST_ASSOCSERVICE%, ql2300_Service_Inst, Miniport_EventLog_Inst
+
+[ql2300_LM_Inst.Services]
+AddService = ql2300, %SPSVCINST_ASSOCSERVICE%, ql2300_Service_Inst, Miniport_EventLog_Inst
+
+[ql2300_Service_Inst]
+DisplayName    = %ql2300.DriverDesc%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ql2300.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%%SystemRoot%%"\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[ql2300_LM_Inst.HW]
+AddReg = ql2300_LM_Registry_Update
+
+[ql2300_LM_Registry_Update]
+HKR, Interrupt Management\MessageSignaledInterruptProperties, 0, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+
+[ql2300_Inst.CoInstallers]
+CopyFiles = CoInstallerFileList
+AddReg = CoInstallers_AddReg
+
+[ql2300_LM_Inst.CoInstallers]
+CopyFiles = CoInstallerFileList
+AddReg = CoInstallers_AddReg
+
+[CoInstallers_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\ql2300\Parameters\Device,DriverParameter,0x00000000,""
+HKR,,CoInstallers32,0x00010000,"qlco1004.dll, QLCoDeviceInstall"
+
+[Strings]
+QLOGIC = "QLogic"
+ql2300.DriverDesc = "QLogic Fibre Channel STOR Miniport Driver (w32 IP)"
+ql2300.DeviceDesc = "QLogic Fibre Channel Adapter"
+Floppy_Desc = "QLogic Software Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

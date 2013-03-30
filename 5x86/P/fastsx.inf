@@ -1,0 +1,90 @@
+; FASTSX.INF
+; Copyright Mon 09/27/2004 Promise Technology, Inc.
+;
+[Version]
+CatalogFile=fastsx.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=09/27/2004, 2.00.64.23
+;
+
+[SourceDisksNames]
+1 = %DRIVERDISK%,,,
+
+[SourceDisksFiles]
+FastSx.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; Drivers directory
+MoveFastSx.NT = 12
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer] 
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_6622&SUBSYS_6622105A.DeviceDesc%=FastS150PCI,PCI\VEN_105A&DEV_6622&SUBSYS_6622105A
+%Promise_Raid_ControllerDesc%=NODRV,SCSI\ProcessorPromise_
+
+
+[NODRV]
+CopyFiles=MoveNODRV
+
+[MoveNODRV]
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+
+[FastS150PCI.NT]
+CopyFiles=MoveFastSx.NT
+Reboot
+
+[MoveFastSx.NT]
+FastSx.sys
+
+[FastS150PCI.NT.Services]
+AddService=FastSx,2,FastS150PCI_Service_Inst,Miniport_EventLog_Inst
+
+[FastS150PCI_Service_Inst]
+ServiceType  = 1 ; SERVICE_KERNEL_DRIVER
+StartType    = 0 ; SERVICE_BOOT_START
+;StartType    = 1 ; SERVICE_SYSTEM_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\FastSx.sys
+LoadOrderGroup = SCSI Miniport
+AddReg = pnpsafe_pci_addreg
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+
+[Strings]
+Promise="Promise Technology, Inc."
+PCI\VEN_105A&DEV_6622&SUBSYS_6622105A.DeviceDesc="Windows Promise FastTrak S150 SX4 (tm) Controller"
+Promise_Raid_ControllerDesc= "Promise RAID Console" 
+SPSVCINST_ASSOCSERVICE = 0x00000002
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+DRIVERDISK="Promise FastTrak SX4000/S150 SX4 (tm) Driver Diskette"

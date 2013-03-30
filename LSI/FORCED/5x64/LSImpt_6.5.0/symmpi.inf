@@ -1,0 +1,174 @@
+;
+; SYMMPI.INF - version XP.10 (Windows XP)
+;
+; This is the INF file for Windows XP for the SYMMPI based PCI MPI
+; environment
+;
+; ********************************************************************
+;                                                                    *
+;   Copyright 2007 LSI Corporation, Inc. All rights reserved.        *
+;                                                                    *
+;   This file is property of LSI Corporation, Inc. and is licensed   *
+;   for use as is.  The receipt of or possession of this file does   *
+;   convey any rights to modify its contents, in whole, or in part,  *
+;   without the specific written consent of LSI Corporation.         *
+;                                                                    *
+; ********************************************************************
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=06/03/2008,1.28.03.00
+CatalogFile.ntia64=mpixia64.cat
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[SourceDisksFiles.ia64]
+symmpi.sys = 1
+lsipseud.inf = 1
+
+[SourceDisksNames]
+1 = %DiskDesc%,,
+
+[Manufacturer]
+%LSI%=LSI, NTia64
+%DELL%=DELL, NTia64
+
+[LSI]
+
+[LSI.NTia64]
+%DevDesc2% = SYMMPI_Inst, PCI\VEN_1000&DEV_0622
+%DevDesc3% = SYMMPI_Inst, PCI\VEN_1000&DEV_0624
+%DevDesc4% = SYMMPI_Inst, PCI\VEN_1000&DEV_0626
+%DevDesc5% = SYMMPI_Inst, PCI\VEN_1000&DEV_0628
+%DevDesc6% = SYMMPI_Inst, PCI\VEN_1000&DEV_0030
+%DevDesc7% = SYMMPI_Inst, PCI\VEN_1000&DEV_0032
+%DevDesc8% = SYMMPI_Inst, PCI\VEN_1000&DEV_0050
+%DevDesc9% = SYMMPI_Inst, PCI\VEN_1000&DEV_0054
+%DevDesc10% = SYMMPI_Inst, PCI\VEN_1000&DEV_0058
+%DevDesc11% = SYMMPI_Inst, PCI\VEN_1000&DEV_0056
+%DevDesc12% = SYMMPI_Inst, PCI\VEN_1000&DEV_0640
+%DevDesc13% = SYMMPI_Inst, PCI\VEN_1000&DEV_0646
+%DevDesc14% = SYMMPI_Inst, PCI\VEN_1000&DEV_0062
+
+[DELL]
+
+[DELL.NTia64]
+%DevDescD1% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F041028
+%DevDescD3% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F061028
+%DevDescD4% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F071028
+%DevDescD5% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F081028
+%DevDescD6% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F091028
+%DevDescD7% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_1F0E1028
+%DevDescD8% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_1F0F1028
+%DevDescD9% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_1F101028
+%DevDescD10% = SYMMPI_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_021D1028
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SYMMPI_Inst]
+CopyFiles = SYMMPI_CopyFiles
+AddReg = SYMMPI_AddReg
+CopyINF = lsipseud.inf
+
+[SYMMPI_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+
+[SYMMPI_Inst.Services]
+AddService = SYMMPI, %SPSVCINST_ASSOCSERVICE%, SYMMPI_Service_Inst, Miniport_EventLog_Inst
+
+[SYMMPI_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\Symmpi\Parameters\Device,DriverParameter,0x00000002,"EnablePseudoDevice=1;"
+HKLM,SYSTEM\CurrentControlSet\Services\Symmpi\Parameters\Device,MaximumSGList,0x00010001,0xFF
+HKLM,SYSTEM\CurrentControlSet\Services\Symmpi\Parameters\Device,NumberOfRequests,0x00010001,0xFF
+
+[SYMMPI_Dell_Inst]
+CopyFiles = SYMMPI_CopyFiles
+AddReg = SYMMPI_Dell_AddReg
+
+[SYMMPI_Dell_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+
+[SYMMPI_Dell_Inst.Services]
+AddService = SYMMPI, %SPSVCINST_ASSOCSERVICE%, SYMMPI_Service_Inst, Miniport_EventLog_Inst
+
+[SYMMPI_Dell_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\Symmpi\Parameters\Device,DriverParameter,0x00000002,"EnablePseudoDevice=1;"
+HKLM,SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue,0x00010001,0x000000A0
+HKLM,SYSTEM\CurrentControlSet\Services\Symmpi\Parameters\Device,MaximumSGList,0x00010001,0xFF
+HKLM,SYSTEM\CurrentControlSet\Services\Symmpi\Parameters\Device,NumberOfRequests,0x00010001,0xFF
+
+[SYMMPI_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\symmpi.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = bus_type_scsi
+
+[SYMMPI_CopyFiles]
+symmpi.sys,,,1
+
+[Shutdown_addreg]
+HKR,"ScsiPort","NeedsSystemShutdownNotification",0x00010001,1
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[bus_type_scsi]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+LSI = "LSI Corporation"
+DELL = "Dell Inc."
+DiskDesc = "LSI PCI Fusion-MPT Driver Install Disk"
+DevDesc2 = "LSI Adapter, 2Gb FC, models 44929, G2 with 929"
+DevDesc3 = "LSI Adapter, 2Gb FC, models 40919 with 919"
+DevDesc4 = "LSI Adapter, 2Gb FC, models 7202,7402 with 929X"
+DevDesc5 = "LSI Adapter, 2Gb FC, models 7102 with 919X"
+DevDesc6 = "LSI Adapter, Ultra320 SCSI 2000 series, w/1020/1030"
+DevDesc7 = "LSI Adapter, Ultra320 SCSI RAID series, w/1035"
+DevDesc8 = "LSI Adapter, SAS 3000 series, 4-port with 1064"
+DevDesc9 = "LSI Adapter, SAS 3000 series, 8-port with 1068"
+DevDesc10 = "LSI Adapter, SAS 3000 series, 8-port with 1068E"
+DevDesc11 = "LSI Adapter, SAS 3000 series, 4-port with 1064E"
+DevDesc12 = "LSI Adapter, 4Gb FC, models 7104,7204,7404 with 949X"
+DevDesc13 = "LSI Adapter, 4Gb FC, models 7104,7204,7404 with 949E"
+DevDesc14 = "LSI Adapter, SAS RAID-on-Chip, 8-port with 1078"
+DevDescD1 = "Dell SAS 5/E Adapter Controller"
+DevDescD3 = "Dell SAS 5/i Integrated Controller"
+DevDescD4 = "Dell SAS 5/iR Integrated Controller"
+DevDescD5 = "Dell SAS 5/iR Integrated Controller"
+DevDescD6 = "Dell SAS 5/iR Adapter Controller"
+DevDescD7 = "Dell SAS 6/iR Adapter Controller"
+DevDescD8 = "Dell SAS 6/iR Integrated Blades Controller"
+DevDescD9 = "Dell SAS 6/iR Integrated Controller"
+DevDescD10 = "Dell SAS 6/iR Integrated Workstation Controller"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

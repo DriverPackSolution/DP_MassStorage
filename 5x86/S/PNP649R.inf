@@ -1,0 +1,113 @@
+; This INF file installs the 649 IDE Raid driver on Windows 98/ME, NT 4.0,
+; Windows 2000, and Windows XP systems.
+
+[Version]
+Signature="$Chicago$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%CMD%
+;CatalogFile=pnp649r.cat
+DriverVer=06/09/2001
+
+; Class Install
+[ClassInstall]
+Addreg=SCSIReg
+
+[SCSIReg]
+HKR,,,,%SCSIClassName%
+HKR,,EnumPropPages,,"iosclass.dll,SCSIEnumPropPages"
+HKR,,Icon,,-10
+
+
+[SourceDisksNames]
+1="CMD Technology IDE Raid Driver Installation Disk",pnp649r.sys,,
+
+[SourceDisksFiles]
+pnp649r.sys = 1
+pnp649r.mpd = 1
+
+
+[DestinationDirs]
+DefaultDestDir	= 12
+DriverFiles		= 12
+DriverFiles.NT	= 12
+
+[DriverFiles]
+pnp649r.mpd,,,0x20
+
+[DriverFiles.NTX86]
+pnp649r.sys,,,0x20
+
+[Manufacturer]
+%CMD%=CMD_HDC
+
+[CMD_HDC]
+%PCI\VEN_1095&DEV_0649.DeviceDesc%=DUAL_DMA_IDE, PCI\VEN_1095&DEV_0649&SUBSYS_36491095
+
+[DUAL_DMA_IDE]
+Copyfiles=DriverFiles
+AddReg = ios, win98.reg, Win98ProblemDeviceList, Win98SupportedControllersList
+
+[DUAL_DMA_IDE.NTX86]
+Copyfiles=DriverFiles.NTX86
+
+[DUAL_DMA_IDE.NTX86.Services]
+AddService=Pnp649r,0x00000003,DUAL_DMA_IDE_Service_Install, Miniport_EventLog_Inst
+
+[DUAL_DMA_IDE_Service_Install]
+DisplayName=%CMDIDE.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\pnp649r.sys
+LoadOrderGroup=Scsi miniport
+AddReg=PnPSupport_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedControllersList_AddReg
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+
+; List of devices with known configuration issues.
+[SupportedControllersList_AddReg]
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_0649.DeviceDesc%,0x00010001, 0x36491095
+
+
+[Win98ProblemDeviceList]
+HKLM,%Win98ProblemDeviceSubKey%
+
+[Win98SupportedControllersList]
+HKLM, %Win98SupportedControllersSubKey%,%PCI\VEN_1095&DEV_0649.DeviceDesc%,0x00010001, 0x36491095
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[IOS]
+HKR,,DevLoader,,*IOS
+HKR,,DontLoadIfConflict,,"Y"
+
+[WIN98.REG]
+HKR,,PortDriver,,pnp649r.mpd
+
+
+[Strings]
+CMD="CMD Technology"
+SCSIClassName="SCSI and RAID controllers"
+PCI\VEN_1095&DEV_0649.DeviceDesc="CMD PCI-0649 Ultra100 IDE Raid Controller"
+CMDIDE.SvcDesc="CMD IDE Raid Controller"
+Win98ProblemDeviceSubKey = "System\CurrentControlSet\Services\PnP649r\ProblemDevices"
+Win98SupportedControllersSubKey = "System\CurrentControlSet\Services\PnP649r\SupportedSubsystemIDs"
+

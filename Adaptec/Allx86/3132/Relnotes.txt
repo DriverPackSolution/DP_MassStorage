@@ -1,0 +1,255 @@
+--------------------------------------------------------------------------------
+Release notes for the AAR-1220SA, AAR-1225SA SATA HostRAID dated: 
+February 10, 2010
+--------------------------------------------------------------------------------
+
+This release notes contains the following:
+
+1. Description of the release
+2. Supported hardware
+3. Supported Operating Systems
+4. Major functional changes
+5. Prerequisites of using the Software
+6. Tested Configuration
+7. Known Issues
+8. Windows Registry Parameters
+	
+	
+
+1. Description of the Release:
+---------------------------------
+
+Date of release: February 10, 2010
+
+This is the official software release containing the list of software components 
+listed in the section 3 of the release note.
+
+2. Supported Hardware:
+--------------------------
+
+The software release supports the following hardware listed below:
+
+a. Adaptec AAR-1220SA SATA HostRAID controller
+b. Adaptec AAR-1225SA eSATA HostRAID controller
+
+
+3. Supported Operating Systems:
+------------------------------------
+
+Windows Driver 32-bit and 64-bit (AMD & EM-64T) 	- 1.6-0 Build 12089
+            	
+- Windows 7, All versions
+- Windows Server 2008R2, Standard, Enterprise, and x64 Edition
+
+
+3.1 BIOS and DOS Tools:
+----------------------------
+
+1. Expansion ROM BIOS 					- 6.0-0 Build 2330
+2. Adaptec Flash Utility (AFU.EXE)           		- 6.0-0 Build 2330
+
+ 
+4. Major Functional Changes:
+--------------------------------
+	
+1. Added support for Windows Server 2008
+
+
+5. Prerequisites of Using the Software:
+-------------------------------------------
+
+- The BIOS and driver should be used with the following software versions:
+
+Adaptec Storage Manager (ASM) and HRCONF       		- 5.10.0 Build 17173
+
+
+
+6. Tested Configuration:
+---------------------------
+
+The software was tested with the Hardware Supported list on the motherboard with the IBM PC/AT 
+compatible PCI-X/PCIExpress platforms. These are the various components used during the testing:
+
+- IBM x86 PC/AT compatible platform with Intel Xeon 
+- Tested with direct attached SATA-I and SATA-II drives 
+- Adaptec Storage Enclosure 335SAS enclosures with SATA drives
+
+
+7. Known Issues/Limitations:
+--------------------------------
+
+1.  1225SA does not support bootable devices.
+
+2.  After an successful installation of Windows Server 2008 onto a bootable volume connected 
+    with the HostRAID controller, the Windows Device Manager will show a device named 
+    “Adaptec HostRAID SCSI Processor Device” under Other Devices with a question mark. That 
+    happens because the installation routine does not copy the pseudo driver for the management 
+    application (adpmgt.inf) during a fresh install of Windows Server 2008. Please double-click 
+    on the “Adaptec HostRAID SCSI Processor Device” in Device Manager and manually install the 
+    missing driver. 
+    Please note that this only happens if the Adaptec HostRAID controller is the boot controller.
+
+3.  Before rebooting the system,, make sure to initiate and fully complete the clear operation 
+    in the BIOS ACU on the RAID array which resides on the SIL 3726 Port Multiplier.
+
+4.  The SR1500 and SR2500 platforms do not complete the resource assignment to the PCI 
+    configuration space of the 1220SA. Hence, the 1220SA BIOS cannot be loaded successfully during 
+    POST.  
+
+5.  1225SA is not detected in SuperMicro X7DBE/X6DA8-G2 system, when the HBA is inserted in a 
+    'non-PCIe x4' slot.
+
+6.  Issues have been seen with drive ordering during the installation of Windows Server 2008 when 
+    more than one bootable controller is installed in the system. Microsoft recommends having only 
+    one bootable controller active/installed during the installation of the operating system. 
+    Controllers that have the BIOS or INT13 Support disabled are not causing an issue.
+
+7.  Drive Letter may disappear after Medium Error on a Simple Volume
+    On a simple volume with Medium error, the error is reported to the Windows OS. All the error 
+    handling is done by the operating system. The expected behavior is intermittent and sometimes 
+    drive letter disappear. 
+
+8.  OS causes invalid data in file copy from Medium Error locations in specific conditions    
+    When read medium error occur in simple volume or RAID-0 or a good member of a degraded 
+    RAID-1/RAID-10, file copy in Windows Explorer will fail the first few times but will pass 
+    on the later attempts; however, the file gets copied has invalid data in the section where the 
+    medium error was. This happens because of the Windows OS caching invalid data.
+
+9.  An array cannot be created with one eSATA drive attached directly to the 1225SA, and one or 
+    more drives from a Port Multiplier enclosure connected to the other port of 1225SA.
+
+10. With 1225SA and Port Multiplier configuration it is recommended to rebuild degraded arrays in 
+    the BIOS ACU.
+
+
+8. Windows REGISTRY PARAMETERS:
+----------------------------------------------
+
+8.1 Driver Specific Registry Parameters
+
+ 
+WARNING: Altering or adding these driver parameters incorrectly can render your system inoperable. 
+Use them with caution.
+
+Follow the instructions below to enter registry values that affect the configuration information for 
+the ADP3132 driver. Note that all HostRAID adapters supported by the installed driver are affected 
+by the values you enter here.
+
+ 
+The key used for this HostRAID release is "ADP3132". To enter driver-specific parameters, follow these 
+steps: 
+
+1) Select Run from the Start button.
+
+2) Type "regedt32" and press Enter.
+
+3) Open the registry list to the following location: 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ADP3132
+
+If the \Parameters\Device\ keys already exist, skip to step 6 to begin entering parameters. If the 
+keys do not yet exist, follow steps 4 and 5 to create them.
+
+4) Click on the ADP3132 key. Select "New -> Key" from the Edit menu, type "Parameters" in the 
+"New Key #1" edit box, and press Enter. 
+
+5) Click on the Parameters key. Select the "New -> Key" from the Edit menu, type "Device" in the 
+"New Key #1" edit box, and press Enter. To specify a specific host adapter, append Device with the 
+number of the host adapter. For example, type "Device0" for the first host adapter, "Device1" for 
+the second, etc. If you omit the host adapter number, the configuration information will apply to 
+all supported host adapters.
+
+6) Go to the Parameters\Device key. Select "New -> String Value" from the Edit menu, type 
+"DriverParameters" in the "New Value #1" box, and press Enter twice.
+The Edit String text box appears. Enter valid parameters in the text box. Use a semicolon to separate 
+multiple parameters. For example:
+
+<Parameter1>=<Value1>;<Parameter2>=<Value2>;MaximumSGList=17;PK=1;
+
+NOTE: Changes made with the Registry Editor do not take effect until you reboot your computer.
+
+----------------------------------------------------------------
+
+Option: Performance/Compatibility Settings
+
+Definition: This registry option tunes the setting for performance purpose. This registry option 
+modifies the maximum number of I/Os and maximum number of scatter gather elements or number of 
+physical breaks. The setting can be set as high or normal. When set to high it modifies the maximum 
+I/Os to 255 and maximum 
+scatter gather list to 33. In this mode, system hibernation may not work. Use the following parameter 
+and value to modify the driver behavior.
+
+To run driver in high performance:
+Use the registry file HIGHPERF.REG.
+
+To run driver in normal mode:
+Use the registry file WHQL.REG.
+
+Follow these steps to change the settings:
+
+1) Select Run from the Start button.
+2) Browse to the folder containing above mentioned version of the HostRAID driver, select file 
+"HIGHPERF.REG" or "WHQL.REG" and click OK.
+
+NOTE: The default value for this parameter is normal mode and it supports system hibernation.
+
+                    
+Possible Values: Normal Mode - High Performance Mode
+Default Value: Normal Mode
+
+----------------------------------------------------------------
+
+Option: ExposeEnclosure
+
+Definition: This registry option changes the appearance of enclosure management devices to the 
+operating system. One can directly edit the registry and apply the required changes to this option 
+as explained in section 8.1.
+
+There is another way to reflect expose enclosure change using the "ENCLOSURE.REG" file. Follow these 
+steps to change the settings:
+
+1) Select Run from the Start button.
+2) Browse to the folder containing above mentioned version of the HostRAID driver, select file 
+"ENCLOSURE.REG" and click OK.
+
+Note: If you use the second option to expose enclosure, then use the 
+"Performance/Compatibility Settings" option to bring driver to Normal Mode using "WHQL.REG" file.
+
+Possible Values: 0-1 (0=do not expose enclosure, 1=expose enclosure)
+Default Value: 0
+
+----------------------------------------------------------------
+
+8.2 Windows Specific Registry Parameters
+
+NOTE: This setting applies to Windows Server 2003, Windows 2000, and Windows XP.
+
+The only Windows-specific parameter that you can currently change is the TimeOutValue. This registry 
+option increases the timeout for all disk class devices (in contrast to the driver-specific registry 
+parameters that affect only your HostRAID adapter).
+
+The default TimeOutValue is 10 seconds. Follow these steps to increase this value to 60 seconds:
+
+1) Select Run from the Start button.
+2) Browse to the folder containing above mentioned version of the HostRAID driver, select the file 
+"TIMEOUT.REG" and click OK.
+
+Note: Changes made with the Registry Editor do not take effect until you reboot your computer.
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+(c) 2008 Adaptec, Inc. All Rights Reserved. 
+
+This software contains the valuable trade secrets of Adaptec or its 
+licensors. The software is protected under international copyright 
+laws and treaties. This software may only be used in accordance with 
+the terms of its accompanying license agreement.
+
+No part of this publication may be reproduced, stored in a retrieval 
+system, or transmitted in any form or by any means, electronic, 
+mechanical, photocopying, recording or otherwise, without prior 
+written consent of Adaptec, Inc., 
+691 South Milpitas Blvd.,Milpitas, CA 95035
+
+
+
+	 

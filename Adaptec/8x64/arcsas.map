@@ -1,0 +1,803 @@
+ arcsas
+
+ Timestamp is 50b7fa1f (Thu Nov 29 16:13:19 2012)
+
+ Preferred load address is 0000000140000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00011819H .text                   CODE
+ 0001:00011820 0000355aH .text$s                 CODE
+ 0002:00000000 000000b0H .idata$5                DATA
+ 0002:000000b0 00000220H .rdata                  DATA
+ 0002:000002d0 0000004cH .rdata$debug            DATA
+ 0002:00000320 000007ccH .xdata                  DATA
+ 0003:00000000 00000900H .data                   DATA
+ 0003:00000900 00000228H .bss                    DATA
+ 0004:00000000 0000060cH .pdata                  DATA
+ 0005:00000000 0000009aH INIT                    CODE
+ 0005:0000009c 00000028H .idata$2                CODE
+ 0005:000000c4 00000014H .idata$3                CODE
+ 0005:000000d8 000000b0H .idata$4                CODE
+ 0005:00000188 000001feH .idata$6                CODE
+ 0006:00000000 000000c8H .rsrc$01                DATA
+ 0006:000000d0 00001118H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0001:00000008       RxCheckAdapterHealth       0000000140001008 f   rxdevice.obj
+ 0001:00000040       RxCheckSyncCommandComplete 0000000140001040 f   rxdevice.obj
+ 0001:0000014c       RxDpcInterruptHandler      000000014000114c f   rxdevice.obj
+ 0001:00000158       RxNewCommProcessInterrupt  0000000140001158 f   rxdevice.obj
+ 0001:000004e0       RxInterruptHandler         00000001400014e0 f   rxdevice.obj
+ 0001:00000674       NonMSIXInterruptHandler    0000000140001674 f   rxdevice.obj
+ 0001:000008ec       PMCDpcResponseHandler      00000001400018ec f   rxdevice.obj
+ 0001:000010ac       PMCInterruptHandler        00000001400020ac f   rxdevice.obj
+ 0001:0000133c       RxNotifyAdapter            000000014000233c f   rxdevice.obj
+ 0001:000013b4       RxPullMessageUnitQueueCompletedFib 00000001400023b4 f   rxdevice.obj
+ 0001:00001508       RxPushMessageUnitQueueFib  0000000140002508 f   rxdevice.obj
+ 0001:000015f4       PMCPushMessageUnitQueueFib 00000001400025f4 f   rxdevice.obj
+ 0001:00001a98       RxSendSynchCommand         0000000140002a98 f   rxdevice.obj
+ 0001:00001e90       RxStartAdapter             0000000140002e90 f   rxdevice.obj
+ 0001:00002308       RxWaitForAdapterToBoot     0000000140003308 f   rxdevice.obj
+ 0001:00002388       RxAccessDeviceRegister     0000000140003388 f   rxdevice.obj
+ 0001:000024dc       RxMapMailBoxFirmwareBase   00000001400034dc f   rxdevice.obj
+ 0001:0000259c       RxGetOMRx0                 000000014000359c f   rxdevice.obj
+ 0001:000025cc       RxGetODR                   00000001400035cc f   rxdevice.obj
+ 0001:00002604       RxWriteODR                 0000000140003604 f   rxdevice.obj
+ 0001:00002648       RxWriteIDR                 0000000140003648 f   rxdevice.obj
+ 0001:00002680       RevGetBuildNumber          0000000140003680 f   revision.obj
+ 0001:0000268c       RevGetExternalRev          000000014000368c f   revision.obj
+ 0001:00002698       RevCheckCompatibility      0000000140003698 f   revision.obj
+ 0001:00002714       GetDriverParameter         0000000140003714 f   helpers.obj
+ 0001:00002840       MatchRegistryString        0000000140003840 f   helpers.obj
+ 0001:000028d4       ZeroStructure              00000001400038d4 f   helpers.obj
+ 0001:000028e4       LongToAscii                00000001400038e4 f   helpers.obj
+ 0001:0000298c       CompareStrings             000000014000398c f   helpers.obj
+ 0001:000029d8       ArcPrintf                  00000001400039d8 f   arcdebug.obj
+ 0001:00002ba0       GetFwDebugBuffer           0000000140003ba0 f   arcdebug.obj
+ 0001:00002d78       RealSprintf                0000000140003d78 f   arcdebug.obj
+ 0001:00003148       MainTimeThread             0000000140004148 f   timer.obj
+ 0001:00003280       SynchCommandCompletionTimer 0000000140004280 f   timer.obj
+ 0001:0000333c       SynchFibCompletionTimer    000000014000433c f   timer.obj
+ 0001:00003444       Reset_IOP_CompletionTimer  0000000140004444 f   timer.obj
+ 0001:0000366c       RequestAif                 000000014000466c f   timer.obj
+ 0001:000037b0       StopTimer                  00000001400047b0 f   timer.obj
+ 0001:00003850       RequestTimer               0000000140004850 f   timer.obj
+ 0001:00003918       ConfigureContainersTimer   0000000140004918 f   timer.obj
+ 0001:000039a0       RestartAdapterPendingTimer 00000001400049a0 f   timer.obj
+ 0001:00003ad4       DequeueSortingQTimer       0000000140004ad4 f   timer.obj
+ 0001:00003bb0       CheckingFWAfterPowerStateChange 0000000140004bb0 f   timer.obj
+ 0001:00003d60       ProcessAgeOfSortingQueue   0000000140004d60 f   timer.obj
+ 0001:00003db0       DriverEntry                0000000140004db0 f   arcinit.obj
+ 0001:00003eb8       HwInitializeAdapter        0000000140004eb8 f   arcinit.obj
+ 0001:0000416c       FindAdapter                000000014000516c f   arcinit.obj
+ 0001:00005590       ResetAdapter               0000000140006590 f   arcinit.obj
+ 0001:00005b74       InitializeAdapter          0000000140006b74 f   arcinit.obj
+ 0001:00005c34       InitializeDPCs             0000000140006c34 f   arcinit.obj
+ 0001:00005d54       AllocateConsumerProducerCommArea 0000000140006d54 f   arcinit.obj
+ 0001:00006080       AllocateMessageUnitQueueCommArea 0000000140007080 f   arcinit.obj
+ 0001:000063cc       ConfigureContainers        00000001400073cc f   arcinit.obj
+ 0001:00006844       GetElapsedSeconds          0000000140007844 f   arcinit.obj
+ 0001:000068d8       IsAdapterReadyForConfigCommand 00000001400078d8 f   arcinit.obj
+ 0001:000069f4       CheckMSIxPossibility       00000001400079f4 f   arcinit.obj
+ 0001:00006c90       HandleAdapterConfigIssues  0000000140007c90 f   arcinit.obj
+ 0001:00006e70       InitializeConsumerProducerCommRegion 0000000140007e70 f   arcinit.obj
+ 0001:000070d4       InitializeConsumerProducerNewAdapter 00000001400080d4 f   arcinit.obj
+ 0001:000071ac       InitializeMessageUnitQueueNewAdapter 00000001400081ac f   arcinit.obj
+ 0001:00007260       MapDeviceBase              0000000140008260 f   arcinit.obj
+ 0001:000076c8       MatchPciIds                00000001400086c8 f   arcinit.obj
+ 0001:0000786c       ResetAndInitializeAdapter  000000014000886c f   arcinit.obj
+ 0001:00007d6c       IOPReset                   0000000140008d6c f   arcinit.obj
+ 0001:000081cc       InitializeAdapterAfterIOPReset 00000001400091cc f   arcinit.obj
+ 0001:0000850c       SetFwTime                  000000014000950c f   arcinit.obj
+ 0001:000085b0       ArcLogEvent                00000001400095b0 f   arcinit.obj
+ 0001:0000861c       DynamicallyThrottleLunQueueDepth 000000014000961c f   arcinit.obj
+ 0001:000088d4       CheckForVersionMisMatch    00000001400098d4 f   arcinit.obj
+ 0001:00008a20       StartIo                    0000000140009a20 f   cmddelivery.obj
+ 0001:000092c4       HandleInterrupt            000000014000a2c4 f   cmddelivery.obj
+ 0001:000092d8       PostProcessScsiCommand     000000014000a2d8 f   cmddelivery.obj
+ 0001:000095d8       SendFib                    000000014000a5d8 f   cmddelivery.obj
+ 0001:0000981c       HandleMSIXInterrupt        000000014000a81c f   cmddelivery.obj
+ 0001:000098f4       QueueRawIoReadWriteRequest 000000014000a8f4 f   cmddelivery.obj
+ 0001:00009fb4       CompleteQueuedRequest      000000014000afb4 f   cmddelivery.obj
+ 0001:0000a01c       DequeueRawIoReadWriteRequest 000000014000b01c f   cmddelivery.obj
+ 0001:0000a1f4       ProcessContainerInquiry    000000014000b1f4 f   cmddelivery.obj
+ 0001:0000a5e8       ProcessScsiCommand         000000014000b5e8 f   cmddelivery.obj
+ 0001:0000ae7c       QueuePrintf                000000014000be7c f   cmddelivery.obj
+ 0001:0000af50       SendRawIoFib               000000014000bf50 f   cmddelivery.obj
+ 0001:0000b2f8       SendSynchFib               000000014000c2f8 f   cmddelivery.obj
+ 0001:0000b3f4       AdapterControl             000000014000c3f4 f   cmdproc.obj
+ 0001:0000b924       BuildIo                    000000014000c924 f   cmdproc.obj
+ 0001:0000be78       BuildRawIoFib              000000014000ce78 f   cmdproc.obj
+ 0001:0000c128       BuildRawIoScatterGather    000000014000d128 f   cmdproc.obj
+ 0001:0000c2b4       BuildRawIo2ScatterGather   000000014000d2b4 f   cmdproc.obj
+ 0001:0000c42c       ConvertRawIo2ScatterGather 000000014000d42c f   cmdproc.obj
+ 0001:0000c56c       BuildReadWriteFib          000000014000d56c f   cmdproc.obj
+ 0001:0000c81c       BuildScatterGather         000000014000d81c f   cmdproc.obj
+ 0001:0000c884       BuildScatterGather64       000000014000d884 f   cmdproc.obj
+ 0001:0000c904       BuildSrbFib                000000014000d904 f   cmdproc.obj
+ 0001:0000cb04       InitializeFib              000000014000db04 f   cmdproc.obj
+ 0001:0000cb34       ProcessIoctl               000000014000db34 f   ioctl.obj
+ 0001:0000df10       BuildRawScatterGather      000000014000ef10 f   ioctl.obj
+ 0001:0000dfb8       BuildRawScatterGather64    000000014000efb8 f   ioctl.obj
+ 0001:0000e074       CSMIGetControllerConfig    000000014000f074 f   ioctl.obj
+ 0001:0000e1ac       CSMIGetControllerStatus    000000014000f1ac f   ioctl.obj
+ 0001:0000e1f8       CSMIGetDriverInfo          000000014000f1f8 f   ioctl.obj
+ 0001:0000e280       CSMIGetRAIDConfig          000000014000f280 f   ioctl.obj
+ 0001:0000e514       CSMIGetRAIDInfo            000000014000f514 f   ioctl.obj
+ 0001:0000e664       CSMIGetPhyInfo             000000014000f664 f   ioctl.obj
+ 0001:0000e788       CSMIGetSATASignature       000000014000f788 f   ioctl.obj
+ 0001:0000e8b4       CSMIGetSCSIAddress         000000014000f8b4 f   ioctl.obj
+ 0001:0000e9f8       CSMIGetDeviceAddress       000000014000f9f8 f   ioctl.obj
+ 0001:0000eb34       CSMISTPPassThru            000000014000fb34 f   ioctl.obj
+ 0001:0000ed60       HandleCSMI                 000000014000fd60 f   ioctl.obj
+ 0001:0000edec       AdapterIsAlive             000000014000fdec f   comm.obj
+ 0001:0000ee10       ServiceHostResponseNormalQueue 000000014000fe10 f   comm.obj
+ 0001:0000f204       FreeConsumerProducerAif    0000000140010204 f   comm.obj
+ 0001:0000f2c0       GetConsumerEntry           00000001400102c0 f   comm.obj
+ 0001:0000f2f0       GetConsumerProducerAif     00000001400102f0 f   comm.obj
+ 0001:0000f344       GetConsumerProducerCompletedFib 0000000140010344 f   comm.obj
+ 0001:0000f3ec       GetEntry                   00000001400103ec f   comm.obj
+ 0001:0000f4d8       GetMessageUnitQueueCompletedFib 00000001400104d8 f   comm.obj
+ 0001:0000f4ec       GetQueueEntry              00000001400104ec f   comm.obj
+ 0001:0000f5dc       InsertQueueEntry           00000001400105dc f   comm.obj
+ 0001:0000f654       ProcessAif                 0000000140010654 f   comm.obj
+ 0001:0000f804       SendConsumerProducerFib    0000000140010804 f   comm.obj
+ 0001:0000f868       SubDeQueueSortingQueue     0000000140010868 f   comm.obj
+ 0001:0000f954       DeQueueSortingQueue        0000000140010954 f   comm.obj
+ 0001:0000fae8       CompleteAllSortingQueue    0000000140010ae8 f   comm.obj
+ 0001:0000fb7c       CompleteSortingQueueRequest 0000000140010b7c f   comm.obj
+ 0001:0000fc18       QueueSortingQ              0000000140010c18 f   comm.obj
+ 0001:0000fe4c       CompleteBufferedRequest    0000000140010e4c f   comm.obj
+ 0001:0000ffbc       QueueIoAfterVectorsFull    0000000140010fbc f   comm.obj
+ 0001:0000fff4       TryDeQueueIoList           0000000140010ff4 f   comm.obj
+ 0001:00010128       SendMessageUnitQueueFib    0000000140011128 f   comm.obj
+ 0001:00010258       ServiceHostCommandNormalQueue 0000000140011258 f   comm.obj
+ 0001:0001030c       DpcDequeueRawIoReadWriteRequest 000000014001130c f   comm.obj
+ 0001:00010378       ProcessNormalFib           0000000140011378 f   comm.obj
+ 0001:00010880       ServiceInternalAifQueue    0000000140011880 f   comm.obj
+ 0001:00010938       InitializeWmiInterface     0000000140011938 f   wmi.obj
+ 0001:00010a40       ProcessWmi                 0000000140011a40 f   wmi.obj
+ 0001:00010abc       HwScsiWmiExecuteMethod     0000000140011abc f   wmi.obj
+ 0001:00010b60       HwScsiWmiQueryDataBlock    0000000140011b60 f   wmi.obj
+ 0001:00010b60       HwScsiWmiFunctionControl   0000000140011b60 f   wmi.obj
+ 0001:00010b80       HwScsiWmiQueryReginfo      0000000140011b80 f   wmi.obj
+ 0001:00010b94       HwScsiWmiSetDataItem       0000000140011b94 f   wmi.obj
+ 0001:00010b94       HwScsiWmiSetDataBlock      0000000140011b94 f   wmi.obj
+ 0001:00010bb0       __security_check_cookie    0000000140011bb0 f   BufferOverflowK:amdsecgs.obj
+ 0001:00010bd8       __report_gsfailure         0000000140011bd8 f   BufferOverflowK:gs_report.obj
+ 0001:00010c08       __report_securityfailure   0000000140011c08 f   BufferOverflowK:gs_report.obj
+ 0001:00010c38       __report_rangecheckfailure 0000000140011c38 f   BufferOverflowK:gs_report.obj
+ 0001:00010c60       memmove                    0000000140011c60     ntoskrnl:memcpy.obj
+ 0001:00010c60       memcpy                     0000000140011c60 f   ntoskrnl:memcpy.obj
+ 0001:00010f9c       __GSHandlerCheckCommon     0000000140011f9c f   ntoskrnl:gshandler.obj
+ 0001:00011008       __GSHandlerCheck           0000000140012008 f   ntoskrnl:gshandler.obj
+ 0001:00011040       memset                     0000000140012040 f   ntoskrnl:memset.obj
+ 0001:00011130       ScsiPortWmiDispatchFunction 0000000140012130 f   scsiwmi:wmilib.obj
+ 0001:000111d4       ScsiWmipProcessRequest     00000001400121d4 f   scsiwmi:wmilib.obj
+ 0001:00011608       ScsiPortWmiPostProcess     0000000140012608 f   scsiwmi:wmilib.obj
+ 0001:00011640       ScsiWmipPostProcess        0000000140012640 f   scsiwmi:wmilib.obj
+ 0001:000117ac       ScsiWmipFindGuid           00000001400127ac f   scsiwmi:wmilib.obj
+ 0001:00011820       ??_C@_0BF@JNCAAJNE@pFibContext?$DNNULL?5?$CB?$CB?6?$AA@FNODOBFM@ 0000000140012820     rxdevice.obj
+ 0001:00011840       ??_C@_0EG@FJGLAIMH@We?5may?5have?5problem?0?5FW?5is?5idle?0@FNODOBFM@ 0000000140012840     rxdevice.obj
+ 0001:00011890       ??_C@_0CJ@EIPFCLHM@pFibContext?$DNNULL?5?$CB?$CBline?5?$CFd?5messa@FNODOBFM@ 0000000140012890     rxdevice.obj
+ 0001:000118c0       ??_C@_0ED@LPIHDLIB@Handle?5IOCTL?5CMD?5with?5vector?50?4?5@FNODOBFM@ 00000001400128c0     rxdevice.obj
+ 0001:00011910       ??_C@_0BH@CEIDANBI@SHOULD?5NOT?5BE?5HERE?5?$CB?$CB?6?$AA@FNODOBFM@ 0000000140012910     rxdevice.obj
+ 0001:00011930       ??_C@_0CK@MOHMAEBA@pFibContext?$DNNULL?5?$CB?$CB?5line?5?$CFd?5mess@FNODOBFM@ 0000000140012930     rxdevice.obj
+ 0001:00011960       ??_C@_0BL@OCMKMPMG@PMCPushMessageUnitQueueFib?$AA@FNODOBFM@ 0000000140012960     rxdevice.obj
+ 0001:00011980       ??_C@_0DM@HGFILPIE@SHOULD?5NOT?5BE?5HERE?$CB?5?$CI?$CFs?$CJ?5line?5?$CFd@FNODOBFM@ 0000000140012980     rxdevice.obj
+ 0001:000119c0       ??_C@_0BE@HCGBMGEE@Vector?5?$CFd?5is?5full?4?6?$AA@FNODOBFM@ 00000001400129c0     rxdevice.obj
+ 0001:000119e0       ??_C@_0BG@FJINCNLP@Change?5to?5vector?5?$CFd?4?6?$AA@FNODOBFM@ 00000001400129e0     rxdevice.obj
+ 0001:00011a00       ??_C@_0DE@BCFPBIPH@assigned?5vector?5?$CD?$CFd?5for?5IOCTL?5CM@FNODOBFM@ 0000000140012a00     rxdevice.obj
+ 0001:00011a40       ??_C@_0CN@JMIDMPAA@?5RxSendSynchCommand?5Failed?5?$CFd?4?5W@FNODOBFM@ 0000000140012a40     rxdevice.obj
+ 0001:00011a70       ??_C@_0DB@JEAHJGPL@?$CK?5pDeviceExtension?9?$DOMaxMSIXVecto@FNODOBFM@ 0000000140012a70     rxdevice.obj
+ 0001:00011ab0       ??_C@_0CB@JPABDNKH@?$CK?5Begins?5StatusBatching?0?5Yeaaa?$CB?6@FNODOBFM@ 0000000140012ab0     rxdevice.obj
+ 0001:00011ae0       ??_C@_0CF@BPKEMKA@?$CK?5ACI2?5Command?5Delivery?5is?5enabl@FNODOBFM@ 0000000140012ae0     rxdevice.obj
+ 0001:00011b10       ??_C@_06CMBKHLEL@Arcsas?$AA@FNODOBFM@ 0000000140012b10     arcdebug.obj
+ 0001:00011b20       ??_C@_02DKCKIIND@?$CFs?$AA@FNODOBFM@ 0000000140012b20     arcdebug.obj
+ 0001:00011b30       ??_C@_0N@PMBAFHAC@7?41?40?430034?$AA?$AA@FNODOBFM@ 0000000140012b30     timer.obj
+ 0001:00011b40       ??_C@_0DO@GCDGNMH@?$CK?5FW?5is?5back?5from?5S3?1S4?4?5StorPor@FNODOBFM@ 0000000140012b40     timer.obj
+ 0001:00011b80       ??_C@_0DO@OBELKDEH@?$CK?5set?5timer?5AGAIN?5to?5check?5the?5F@FNODOBFM@ 0000000140012b80     timer.obj
+ 0001:00011bc0       ??_C@_0EC@MICIKMJM@?$CK?5set?5timer?5AGAIN?5to?5check?5the?5F@FNODOBFM@ 0000000140012bc0     timer.obj
+ 0001:00011c10       ??_C@_0EL@PCHMIFAO@?$CK?5leaving?5Reset_IOP_CompletionTi@FNODOBFM@ 0000000140012c10     timer.obj
+ 0001:00011c60       ??_C@_0CD@MKPFBJDC@leaving?5Reset_IOP_CompletionTime@FNODOBFM@ 0000000140012c60     timer.obj
+ 0001:00011c90       ??_C@_0DH@KAAGAFOD@?$CK?5leaving?5Reset_IOP_CompletionTi@FNODOBFM@ 0000000140012c90     timer.obj
+ 0001:00011cd0       ??_C@_0DH@DFJOPAAJ@?$CK?5RESET?5IOP?5done?4?5StorPort?5minip@FNODOBFM@ 0000000140012cd0     timer.obj
+ 0001:00011d10       ??_C@_0BJ@HIBCALL@ProcessAgeOfSortingQueue?$AA@FNODOBFM@ 0000000140012d10     timer.obj
+ 0001:00011d30       ??_C@_0DA@GEMOEFPE@Dequeue?5Sorting?5Queue?5failed?5in?5@FNODOBFM@ 0000000140012d30     timer.obj
+ 0001:00011d60       ??_C@_0ID@HFHPGANL@Dequeue?5Sorting?5Queue?5failed?5whe@FNODOBFM@ 0000000140012d60     timer.obj
+ 0001:00011df0       ??_C@_0CL@MJMGCLDD@entering?5AllocateConsumerProduce@FNODOBFM@ 0000000140012df0     arcinit.obj
+ 0001:00011e20       ??_C@_0DK@IJIOFPFH@leaving?5AllocateConsumerProducer@FNODOBFM@ 0000000140012e20     arcinit.obj
+ 0001:00011e60       ??_C@_0CI@FFOEPFMJ@?$CK?5ConsumerProducerCommArea?0?5VAdd@FNODOBFM@ 0000000140012e60     arcinit.obj
+ 0001:00011e90       ??_C@_0CN@MBHLABKL@?$CK?5Adapter?5got?5an?5invalid?5host?5me@FNODOBFM@ 0000000140012e90     arcinit.obj
+ 0001:00011ec0       ??_C@_0DJ@JGKEIEFI@leaving?5AllocateConsumerProducer@FNODOBFM@ 0000000140012ec0     arcinit.obj
+ 0001:00011f00       ??_C@_0CL@KCDMGIOM@entering?5AllocateMessageUnitQueu@FNODOBFM@ 0000000140012f00     arcinit.obj
+ 0001:00011f30       ??_C@_0FP@JFBPKCDF@?$CK?5AllocateMessageUnitQueueCommAr@FNODOBFM@ 0000000140012f30     arcinit.obj
+ 0001:00011f90       ??_C@_0DM@JMMHKBOC@?$CK?5AllocateMessageUnitQueueCommAr@FNODOBFM@ 0000000140012f90     arcinit.obj
+ 0001:00011fd0       ??_C@_0DK@BKFHOPDI@leaving?5AllocateMessageUnitQueue@FNODOBFM@ 0000000140012fd0     arcinit.obj
+ 0001:00012010       ??_C@_0DA@ICFHAOHF@?$CK?5AllocateMessageUnitQueueCommAr@FNODOBFM@ 0000000140013010     arcinit.obj
+ 0001:00012040       ??_C@_0DJ@EGOLHGNF@leaving?5AllocateMessageUnitQueue@FNODOBFM@ 0000000140013040     arcinit.obj
+ 0001:00012080       ??_C@_0BO@ONNHJMAM@entering?5ConfigureContainers?6?$AA@FNODOBFM@ 0000000140013080     arcinit.obj
+ 0001:000120a0       ??_C@_0EF@ECHMIPBP@?$CK?5Found?5a?5new?5container?5?9?5tid?3?5?$CF@FNODOBFM@ 00000001400130a0     arcinit.obj
+ 0001:000120f0       ??_C@_0DD@CIBJPHMD@ConfigureContainers?3?5UID?5change?5@FNODOBFM@ 00000001400130f0     arcinit.obj
+ 0001:00012130       ??_C@_0CK@OAAKCGLI@leaving?5ConfigureContainers?0?5rtn@FNODOBFM@ 0000000140013130     arcinit.obj
+ 0001:00012160       ??_C@_0CC@KOGKIGDL@entering?5CheckForVersionMisMatch@FNODOBFM@ 0000000140013160     arcinit.obj
+ 0001:00012190       ??_C@_0CB@BOFDNAKM@This?5is?5a?5code?5stream?5identifier@FNODOBFM@ 0000000140013190     arcinit.obj
+ 0001:000121c0       ??_C@_0DF@MNNMPGOO@?$CK?5Version?5Mismatch?3?5Bios?3?$CFd?0?5Fir@FNODOBFM@ 00000001400131c0     arcinit.obj
+ 0001:00012200       ??_C@_0EC@DEDLMEPI@leving?5CheckForVersionMisMatch?5w@FNODOBFM@ 0000000140013200     arcinit.obj
+ 0001:00012250       ??_C@_0BN@GKEKJNDP@?$CFs?5Driver?5entry?5rtnval?5?$DN?5?$CFx?6?$AA@FNODOBFM@ 0000000140013250     arcinit.obj
+ 0001:00012270       ??_C@_0DD@FIIKPLIC@?$CFs?3?5Driver?5FindAdapter?5?9?5invalid@FNODOBFM@ 0000000140013270     arcinit.obj
+ 0001:000122b0       ??_C@_0BG@INJAEJHE@entering?5FindAdapter?6?$AA@FNODOBFM@ 00000001400132b0     arcinit.obj
+ 0001:000122d0       ??_C@_0FD@NLKPIIHJ@?$CK?5This?5is?5WS03?5R2?0?5Vista?5or?5Long@FNODOBFM@ 00000001400132d0     arcinit.obj
+ 0001:00012330       ??_C@_0FF@EIPBDAPC@?$CK?$CK?$CK?$CK?$CK?5Size?5of?5PORT_CONFIGURATION@FNODOBFM@ 0000000140013330     arcinit.obj
+ 0001:00012390       ??_C@_0EF@MDPAOPOH@?$CK?5HwScsiFindAdapter?3?5DeviceExten@FNODOBFM@ 0000000140013390     arcinit.obj
+ 0001:000123e0       ??_C@_0CD@BBBDOKPE@?$CK?5Returned?5PCI?5bus?5data?5length?$DN?$CF@FNODOBFM@ 00000001400133e0     arcinit.obj
+ 0001:00012410       ??_C@_0DD@OAOECDIB@leaving?5FindAdapter?5?9?5StorPortGe@FNODOBFM@ 0000000140013410     arcinit.obj
+ 0001:00012450       ??_C@_0DF@ODNFGMFG@?$CK?5leaving?5FindAdapter?5?9?5StorPort@FNODOBFM@ 0000000140013450     arcinit.obj
+ 0001:00012490       ??_C@_0BN@FJDEMAMC@?$CK?50x40?5PCI?5Bus?5Data?5read?5in?6?$AA@FNODOBFM@ 0000000140013490     arcinit.obj
+ 0001:000124b0       ??_C@_0BN@INBKDNHG@?$CK?50xFF?5PCI?5Bus?5Data?5read?5in?6?$AA@FNODOBFM@ 00000001400134b0     arcinit.obj
+ 0001:000124d0       ??_C@_0DB@DAIGEFPJ@?$CK?5No?5Support?5on?5Capabilties?5list@FNODOBFM@ 00000001400134d0     arcinit.obj
+ 0001:00012510       ??_C@_0BM@KCLFMKNE@?$CK?5Capability_offset?5?$DN?50x?$CFx?5?$AA@FNODOBFM@ 0000000140013510     arcinit.obj
+ 0001:00012530       ??_C@_0BJ@KNABCMMM@?5?9?9?$DOcapabilty_id?5?$DN?50x?$CFx?6?$AA@FNODOBFM@ 0000000140013530     arcinit.obj
+ 0001:00012550       ??_C@_0BK@JIIOJNIO@?$CK?5Message_control?5?$DN?50x?$CFx?6?$AA@FNODOBFM@ 0000000140013550     arcinit.obj
+ 0001:00012570       ??_C@_0BF@HNFCBKLM@?$CK?5HW?5supports?5MSI?9X?6?$AA@FNODOBFM@ 0000000140013570     arcinit.obj
+ 0001:00012590       ??_C@_0DI@MNEPEDIK@?$CK?5StorPortGetActiveGroupCount?5ha@FNODOBFM@ 0000000140013590     arcinit.obj
+ 0001:000125d0       ??_C@_0ED@JJDFFHPI@?$CK?5StorPortGetActiveGroupCount?5re@FNODOBFM@ 00000001400135d0     arcinit.obj
+ 0001:00012620       ??_C@_0DO@FMAFBNDE@?$CK?5StorPortGetCurrentProcessorNum@FNODOBFM@ 0000000140013620     arcinit.obj
+ 0001:00012660       ??_C@_0FJ@MEGLAFKH@?$CK?5StorPortGetCurrentProcessorNum@FNODOBFM@ 0000000140013660     arcinit.obj
+ 0001:000126c0       ??_C@_0FB@CBENABKH@?$CK?5StorPortGetCurrentProcessorNum@FNODOBFM@ 00000001400136c0     arcinit.obj
+ 0001:00012720       ??_C@_04GGLOKIEE@dump?$AA@FNODOBFM@ 0000000140013720     arcinit.obj
+ 0001:00012730       ??_C@_05FDLGEGEK@ntldr?$AA@FNODOBFM@ 0000000140013730     arcinit.obj
+ 0001:00012740       ??_C@_05PMICOLGA@hiber?$AA@FNODOBFM@ 0000000140013740     arcinit.obj
+ 0001:00012750       ??_C@_0CD@JEMNEMMP@?$CK?$CK?$CK?$CK?5dump?5?$HM?5ntldr?5?$HM?5hiber?5is?5TRU@FNODOBFM@ 0000000140013750     arcinit.obj
+ 0001:00012780       ??_C@_0BK@NELCFLHO@?$CK?5Switching?5to?5INTx?5mode?6?$AA@FNODOBFM@ 0000000140013780     arcinit.obj
+ 0001:000127a0       ??_C@_09IPELKJIO@BLEDCheck?$AA@FNODOBFM@ 00000001400137a0     arcinit.obj
+ 0001:000127b0       ??_C@_0L@NIPCGJOG@DPCAllowed?$AA@FNODOBFM@ 00000001400137b0     arcinit.obj
+ 0001:000127c0       ??_C@_09CHINNNMJ@CSMI?$DNNone?$AA@FNODOBFM@ 00000001400137c0     arcinit.obj
+ 0001:000127d0       ??_C@_0BA@BKKNJKOP@CSMI?$DNRestricted?$AA@FNODOBFM@ 00000001400137d0     arcinit.obj
+ 0001:000127e0       ??_C@_09PKBPEONE@CSMI?$DNFull?$AA@FNODOBFM@ 00000001400137e0     arcinit.obj
+ 0001:000127f0       ??_C@_0CJ@JHBMKCEI@leaving?5FindAdapter?5?9?5PCI?5Id?5not@FNODOBFM@ 00000001400137f0     arcinit.obj
+ 0001:00012820       ??_C@_0CL@HDBMPJMP@?$CK?5leaving?5FindAdapter?5?9?5PCI?5Id?5n@FNODOBFM@ 0000000140013820     arcinit.obj
+ 0001:00012850       ??_C@_0CH@LNPKNDMP@Rx?3?5BAR0?5Range?50x?$CFlx?5MappedSize?5@FNODOBFM@ 0000000140013850     arcinit.obj
+ 0001:00012880       ??_C@_0DF@OFCBAPFL@leaving?5FindAdapter?5?9?5fail?5mappi@FNODOBFM@ 0000000140013880     arcinit.obj
+ 0001:000128c0       ??_C@_0DH@MNDLADLD@?$CK?5leaving?5FindAdapter?5?9?5fail?5map@FNODOBFM@ 00000001400138c0     arcinit.obj
+ 0001:00012900       ??_C@_0DC@NODBFDAD@leaving?5FindAdapter?5?9?5illegal?5FW@FNODOBFM@ 0000000140013900     arcinit.obj
+ 0001:00012940       ??_C@_0EH@FLDBENFC@?$CK?5leaving?5FindAdapter?5?9?5illegal?5@FNODOBFM@ 0000000140013940     arcinit.obj
+ 0001:00012990       ??_C@_0CO@NGAJFGIM@?$CK?5pDeviceExtension?9?$DONewCommInter@FNODOBFM@ 0000000140013990     arcinit.obj
+ 0001:000129c0       ??_C@_0CE@MCFGELJ@?$CK?5pDeviceExtension?9?$DOVendorId?3?50x@FNODOBFM@ 00000001400139c0     arcinit.obj
+ 0001:000129f0       ??_C@_0CE@PNKCKBKJ@?$CK?5pDeviceExtension?9?$DODeviceId?3?50x@FNODOBFM@ 00000001400139f0     arcinit.obj
+ 0001:00012a20       ??_C@_0CH@NNKEKBEL@?$CK?5pDeviceExtension?9?$DOSubVendorId?3@FNODOBFM@ 0000000140013a20     arcinit.obj
+ 0001:00012a50       ??_C@_0CH@BEBMHIHH@?$CK?5pDeviceExtension?9?$DOSubSystemId?3@FNODOBFM@ 0000000140013a50     arcinit.obj
+ 0001:00012a80       ??_C@_0CI@LFOBEGIG@?$CK?5This?5is?564?9bit?5Vista?5or?5Longho@FNODOBFM@ 0000000140013a80     arcinit.obj
+ 0001:00012ab0       ??_C@_0DB@NLEKMFMO@?$CK?5This?5is?532?9bit?5WS03?5R2?0?5Vista?5@FNODOBFM@ 0000000140013ab0     arcinit.obj
+ 0001:00012af0       ??_C@_0CA@DJAEOOFI@?$CK?5This?5is?564?9bit?5WS03?5SP1?5?4?4?4?5?6?$AA@FNODOBFM@ 0000000140013af0     arcinit.obj
+ 0001:00012b10       ??_C@_0CA@IELABMFO@?$CK?5This?5is?532?9bit?5WS03?5SP1?5?4?4?4?5?6?$AA@FNODOBFM@ 0000000140013b10     arcinit.obj
+ 0001:00012b30       ??_C@_0CA@MNGBKCLD@?$CK?5This?5is?532?9bit?5WS03?5RTM?5?4?4?4?5?6?$AA@FNODOBFM@ 0000000140013b30     arcinit.obj
+ 0001:00012b50       ??_C@_0DK@INJPNBCP@?$CK?5MailBox?51?3?$CFx?0?5MailBox?52?3?$CFx?0?5Ma@FNODOBFM@ 0000000140013b50     arcinit.obj
+ 0001:00012b90       ??_C@_0EK@GNODIBNL@?$CK?5MiniARC?5Interface?5?9?5?5CommandSi@FNODOBFM@ 0000000140013b90     arcinit.obj
+ 0001:00012be0       ??_C@_0EL@HJMLPDNI@?$CK?5New?5Comm?5Interface?5?9?5?5CommandS@FNODOBFM@ 0000000140013be0     arcinit.obj
+ 0001:00012c30       ??_C@_0BH@CDLDBOJF@?$CK?5SrbExtensionSize?3?$CFx?6?$AA@FNODOBFM@ 0000000140013c30     arcinit.obj
+ 0001:00012c50       ??_C@_0EC@KMMHNEKL@?$CK?5ConfigInfo?9?$DOHwMSInterruptRouti@FNODOBFM@ 0000000140013c50     arcinit.obj
+ 0001:00012ca0       ??_C@_0N@OEGLNJCG@ioctlbufsize?$AA@FNODOBFM@ 0000000140013ca0     arcinit.obj
+ 0001:00012cb0       ??_C@_0BL@FPDNGGII@?$CK?5Adapter?5is?5in?5poll?5mode?6?$AA@FNODOBFM@ 0000000140013cb0     arcinit.obj
+ 0001:00012cd0       ??_C@_0CM@NKHNJDEG@leaving?5FindAdapter?5?9?5fail?5initi@FNODOBFM@ 0000000140013cd0     arcinit.obj
+ 0001:00012d00       ??_C@_0CO@GHEIBKDI@?$CK?5leaving?5FindAdapter?5?9?5fail?5ini@FNODOBFM@ 0000000140013d00     arcinit.obj
+ 0001:00012d30       ??_C@_0DC@BFHJHJOO@?$CK?5fail?5SynFibCT_SET_MINIARC_HOST@FNODOBFM@ 0000000140013d30     arcinit.obj
+ 0001:00012d70       ??_C@_0CE@IADADNNA@?$CK?5Use?5MU?5Register?5for?5IOP_Reset?4@FNODOBFM@ 0000000140013d70     arcinit.obj
+ 0001:00012da0       ??_C@_0CJ@LHHNJCHI@?$CK?5Use?5inbound?5doorbell?5for?5IOP_R@FNODOBFM@ 0000000140013da0     arcinit.obj
+ 0001:00012dd0       ??_C@_0BP@DJKPJIGJ@?$CK?5Ignore_IOP_Reset?5is?5set?5?4?4?4?6?$AA@FNODOBFM@ 0000000140013dd0     arcinit.obj
+ 0001:00012df0       ??_C@_0CK@LEDHDPPJ@?$CK?5Disk?5Power?5Management?5is?5suppo@FNODOBFM@ 0000000140013df0     arcinit.obj
+ 0001:00012e20       ??_C@_0CJ@PJOACPGJ@?$CK?5This?5firmware?5supports?5fast?5JB@FNODOBFM@ 0000000140013e20     arcinit.obj
+ 0001:00012e50       ??_C@_0BH@LMHJIEKF@?$CK?5ExposeNonDASD?5is?5?$CFx?6?$AA@FNODOBFM@ 0000000140013e50     arcinit.obj
+ 0001:00012e70       ??_C@_0BB@JIKBMNNG@QueueDepthPerLun?$AA@FNODOBFM@ 0000000140013e70     arcinit.obj
+ 0001:00012e90       ??_C@_0N@GDDJMKFE@PauseIOLimit?$AA@FNODOBFM@ 0000000140013e90     arcinit.obj
+ 0001:00012ea0       ??_C@_0O@LIIBGGCF@ResumeIOLimit?$AA@FNODOBFM@ 0000000140013ea0     arcinit.obj
+ 0001:00012eb0       ??_C@_0O@OKMDGJBG@ConvertSGList?$AA@FNODOBFM@ 0000000140013eb0     arcinit.obj
+ 0001:00012ec0       ??_C@_0BE@IIJOOEPG@QueueStartThreshold?$AA@FNODOBFM@ 0000000140013ec0     arcinit.obj
+ 0001:00012ee0       ??_C@_0BD@CEDPKLI@QueueDumpThreshold?$AA@FNODOBFM@ 0000000140013ee0     arcinit.obj
+ 0001:00012f00       ??_C@_0BA@NLIGFJMK@MaxIoSizeQueued?$AA@FNODOBFM@ 0000000140013f00     arcinit.obj
+ 0001:00012f10       ??_C@_0N@MLHJOFDC@QueueAllowed?$AA@FNODOBFM@ 0000000140013f10     arcinit.obj
+ 0001:00012f20       ??_C@_0BC@IEBJFOIJ@FlushSizeInBlocks?$AA@FNODOBFM@ 0000000140013f20     arcinit.obj
+ 0001:00012f40       ??_C@_0EA@OJJGPBKL@leaving?5FindAdapter?5?9?5fail?5Handl@FNODOBFM@ 0000000140013f40     arcinit.obj
+ 0001:00012f80       ??_C@_0EC@HNCBOCML@?$CK?5leaving?5FindAdapter?5?9?5fail?5Han@FNODOBFM@ 0000000140013f80     arcinit.obj
+ 0001:00012fd0       ??_C@_09NBOIBGGK@EnableWMI?$AA@FNODOBFM@ 0000000140013fd0     arcinit.obj
+ 0001:00012fe0       ??_C@_0DH@OIMAJCMK@?$CK?5?9?5Driver?5version?5?$CFs?0?5adapter?5n@FNODOBFM@ 0000000140013fe0     arcinit.obj
+ 0001:00013020       ??_C@_0DF@NGIHOECA@?$CK?5?9?5Size?5of?5HwDevExt?$DN0x?$CFx?4?5Size?5@FNODOBFM@ 0000000140014020     arcinit.obj
+ 0001:00013060       ??_C@_0BG@JAEBOKND@?$CK?5?9?5Done?5FindAdapter?6?$AA@FNODOBFM@ 0000000140014060     arcinit.obj
+ 0001:00013080       ??_C@_0CG@GOHAMHPA@leaving?5FindAdapter?5?9?5adapter?5fo@FNODOBFM@ 0000000140014080     arcinit.obj
+ 0001:000130b0       ??_C@_0BN@DGMFEGDN@entering?5GetElapsedSeconds?5?6?$AA@FNODOBFM@ 00000001400140b0     arcinit.obj
+ 0001:000130d0       ??_C@_0DD@GOLHMOHG@leaving?5GetElapsedSeconds?5?9?5seco@FNODOBFM@ 00000001400140d0     arcinit.obj
+ 0001:00013110       ??_C@_0CJ@KCPJKGH@entering?5IsAdapterReadyForConfig@FNODOBFM@ 0000000140014110     arcinit.obj
+ 0001:00013140       ??_C@_0CH@PFKKGKLP@IsAdapterReadyForConfigCommand?3?5@FNODOBFM@ 0000000140014140     arcinit.obj
+ 0001:00013170       ??_C@_0DJ@FMKIDFML@?$CK?5leaving?5IsAdapterReadyForConfi@FNODOBFM@ 0000000140014170     arcinit.obj
+ 0001:000131b0       ??_C@_0CI@DLDHKJIO@IsAdapterReadyForConfigCommand?3?5@FNODOBFM@ 00000001400141b0     arcinit.obj
+ 0001:000131e0       ??_C@_0CI@LLJGECEO@leaving?5IsAdapterReadyForConfigC@FNODOBFM@ 00000001400141e0     arcinit.obj
+ 0001:00013210       ??_C@_0BD@LJONEFCN@entering?5IOPReset?6?$AA@FNODOBFM@ 0000000140014210     arcinit.obj
+ 0001:00013230       ??_C@_0EN@CPGMGMBD@?$CK?$CK?5Fail?5to?5iopreset?5the?5adapter?5@FNODOBFM@ 0000000140014230     arcinit.obj
+ 0001:00013280       ??_C@_0DE@GCJLBNBN@?$CK?$CK?5Fail?5to?5iopreset?5the?5adapter?0@FNODOBFM@ 0000000140014280     arcinit.obj
+ 0001:000132c0       ??_C@_0BI@DKKBLGKC@?$CK?$CK?5IOPReset?5succeeded?4?6?$AA@FNODOBFM@ 00000001400142c0     arcinit.obj
+ 0001:000132e0       ??_C@_0CI@GNLBMFGK@?$CK?$CK?5Trying?5to?5return?5pending?5SRB?5@FNODOBFM@ 00000001400142e0     arcinit.obj
+ 0001:00013310       ??_C@_0DN@FCBCELNC@?$CK?$CK?5outstandingIO?5before?5calling?5@FNODOBFM@ 0000000140014310     arcinit.obj
+ 0001:00013350       ??_C@_0BL@FAOIMEOD@?$CK?$CK?5returned?5?$CFd?5SRB?5to?5OS?4?6?$AA@FNODOBFM@ 0000000140014350     arcinit.obj
+ 0001:00013370       ??_C@_0DG@MCABGJKN@Driver?5should?5not?5work?5under?5MSI@FNODOBFM@ 0000000140014370     arcinit.obj
+ 0001:000133b0       ??_C@_0DE@DDNIODIO@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00000001400143b0     arcinit.obj
+ 0001:000133f0       ??_C@_0BC@JKJGEENA@leaving?5IOPReset?6?$AA@FNODOBFM@ 00000001400143f0     arcinit.obj
+ 0001:00013410       ??_C@_01EEMJAFIK@?6?$AA@FNODOBFM@ 0000000140014410     arcinit.obj
+ 0001:00013420       ??_C@_0CH@DPKMOBPP@?$CK?5StorPort?5miniport?5driver?5versi@FNODOBFM@ 0000000140014420     arcinit.obj
+ 0001:00013450       ??_C@_0DI@EADLFBBO@?$CK?5IopReset?3?5Adapter?5properties?5?$DN@FNODOBFM@ 0000000140014450     arcinit.obj
+ 0001:00013490       ??_C@_0CE@OJCBEKFM@?$CK?5IopReset?3?5ADAPTER?5NOT?5RUNNING?$CB@FNODOBFM@ 0000000140014490     arcinit.obj
+ 0001:000134c0       ??_C@_0CL@CHDKOHLO@?$DN?$DN?$DN?$DN?$DN?$DN?$DO?5Final?5Vector?5Number?5is?5?$CF@FNODOBFM@ 00000001400144c0     arcinit.obj
+ 0001:000134f0       ??_C@_0CI@BJJEDHMG@?$CK?5pDeviceExtension?9?$DOVectorCapaci@FNODOBFM@ 00000001400144f0     arcinit.obj
+ 0001:00013520       ??_C@_0DE@JJAKLEJD@?$CK?5pDeviceExtension?9?$DOMSIXIoThrott@FNODOBFM@ 0000000140014520     arcinit.obj
+ 0001:00013560       ??_C@_0DF@LMKAIIEG@?$CK?5pDeviceExtension?9?$DOMSIXIoThrott@FNODOBFM@ 0000000140014560     arcinit.obj
+ 0001:000135a0       ??_C@_0BK@OLLEIHIC@?$CK?5Switching?5to?5MSIx?5mode?6?$AA@FNODOBFM@ 00000001400145a0     arcinit.obj
+ 0001:000135c0       ??_C@_0BA@EAOKKBLN@?$CK?5MSIx?5Enabled?6?$AA@FNODOBFM@ 00000001400145c0     arcinit.obj
+ 0001:000135d0       ??_C@_0EB@JEEKIEDM@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00000001400145d0     arcinit.obj
+ 0001:00013620       ??_C@_0EA@DFHNCIMC@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 0000000140014620     arcinit.obj
+ 0001:00013660       ??_C@_0BE@OKKJEBLK@?$CK?5MSIX?5NOT?5Enabled?6?$AA@FNODOBFM@ 0000000140014660     arcinit.obj
+ 0001:00013680       ??_C@_0CE@FDDAIENL@entering?5HandleAdapterConfigIssu@FNODOBFM@ 0000000140014680     arcinit.obj
+ 0001:000136b0       ??_C@_0EG@EOLGKFDM@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 00000001400146b0     arcinit.obj
+ 0001:00013700       ??_C@_0EI@BLLNCBDL@?$CK?5leaving?5HandleAdapterConfigIss@FNODOBFM@ 0000000140014700     arcinit.obj
+ 0001:00013750       ??_C@_0EC@KFDDDOGD@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 0000000140014750     arcinit.obj
+ 0001:000137a0       ??_C@_0EE@EEHAIAKN@?$CK?5leaving?5HandleAdapterConfigIss@FNODOBFM@ 00000001400147a0     arcinit.obj
+ 0001:000137f0       ??_C@_0EC@EGKDAAOP@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 00000001400147f0     arcinit.obj
+ 0001:00013840       ??_C@_0EE@KHOALOCB@?$CK?5leaving?5HandleAdapterConfigIss@FNODOBFM@ 0000000140014840     arcinit.obj
+ 0001:00013890       ??_C@_0CD@FIHDJCJC@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 0000000140014890     arcinit.obj
+ 0001:000138c0       ??_C@_0BM@OLPDNDAC@entering?5InitializeAdapter?6?$AA@FNODOBFM@ 00000001400148c0     arcinit.obj
+ 0001:000138e0       ??_C@_0CP@OADFCMNE@leaving?5InitializeAdapter?3?5fail?5@FNODOBFM@ 00000001400148e0     arcinit.obj
+ 0001:00013910       ??_C@_0DB@CKIIOBC@?$CK?5leaving?5InitializeAdapter?3?5fai@FNODOBFM@ 0000000140014910     arcinit.obj
+ 0001:00013950       ??_C@_0BL@CPLHAEBI@leaving?5InitializeAdapter?6?$AA@FNODOBFM@ 0000000140014950     arcinit.obj
+ 0001:00013970       ??_C@_0BO@IEENCLHE@entering?5HwInitializeAdapter?6?$AA@FNODOBFM@ 0000000140014970     arcinit.obj
+ 0001:00013990       ??_C@_0EH@ONHPKJKD@?$CK?5StorPortGetMSIInfo?5returned?5Fa@FNODOBFM@ 0000000140014990     arcinit.obj
+ 0001:000139e0       ??_C@_0EC@KLPNNIKH@?$CK?5StorPortGetMSIInfo?5returned?5st@FNODOBFM@ 00000001400149e0     arcinit.obj
+ 0001:00013a30       ??_C@_0EE@OLLCNNAO@?$CK?5StorPortGetMSIInfo?5returned?5st@FNODOBFM@ 0000000140014a30     arcinit.obj
+ 0001:00013a80       ??_C@_0EJ@OBPFJGIJ@?$CK?5StorPortGetMSIInfo?5returned?5st@FNODOBFM@ 0000000140014a80     arcinit.obj
+ 0001:00013ad0       ??_C@_0BH@KAJFPLII@?$CK?5?9?5Done?5HwInitialize?6?$AA@FNODOBFM@ 0000000140014ad0     arcinit.obj
+ 0001:00013af0       ??_C@_0DG@IDIIGHJK@leaving?5HwInitializeAdapter?0?5lin@FNODOBFM@ 0000000140014af0     arcinit.obj
+ 0001:00013b30       ??_C@_0BN@CMNHFCJM@leaving?5HwInitializeAdapter?6?$AA@FNODOBFM@ 0000000140014b30     arcinit.obj
+ 0001:00013b50       ??_C@_0BI@BOGNCAIA@entering?5InitializeDPC?6?$AA@FNODOBFM@ 0000000140014b50     arcinit.obj
+ 0001:00013b70       ??_C@_0BJ@CFFELFMJ@?$CK?5MSIx?5DPCs?5initialized?6?$AA@FNODOBFM@ 0000000140014b70     arcinit.obj
+ 0001:00013b90       ??_C@_0BI@LAPEOFCN@?$CK?5?9?5Done?5InitializeDPC?6?$AA@FNODOBFM@ 0000000140014b90     arcinit.obj
+ 0001:00013bb0       ??_C@_0BH@PAHICDNJ@leaving?5InitializeDPC?6?$AA@FNODOBFM@ 0000000140014bb0     arcinit.obj
+ 0001:00013bd0       ??_C@_0CP@OJKLKHLO@entering?5InitializeConsumerProdu@FNODOBFM@ 0000000140014bd0     arcinit.obj
+ 0001:00013c00       ??_C@_0DE@MJJEGAKI@leaving?5InitializeConsumerProduc@FNODOBFM@ 0000000140014c00     arcinit.obj
+ 0001:00013c40       ??_C@_0CO@NEGLFCOP@leaving?5InitializeConsumerProduc@FNODOBFM@ 0000000140014c40     arcinit.obj
+ 0001:00013c70       ??_C@_0CP@IKCNDLML@entering?5InitializeConsumerProdu@FNODOBFM@ 0000000140014c70     arcinit.obj
+ 0001:00013ca0       ??_C@_0DF@IICIHNDP@leaving?5InitializeConsumerProduc@FNODOBFM@ 0000000140014ca0     arcinit.obj
+ 0001:00013ce0       ??_C@_0DE@OBANPGHF@leaving?5InitializeConsumerProduc@FNODOBFM@ 0000000140014ce0     arcinit.obj
+ 0001:00013d20       ??_C@_0CP@GDFIJJML@entering?5InitializeMessageUnitQu@FNODOBFM@ 0000000140014d20     arcinit.obj
+ 0001:00013d50       ??_C@_0DF@CLHHLLI@leaving?5InitializeMessageUnitQue@FNODOBFM@ 0000000140014d50     arcinit.obj
+ 0001:00013d90       ??_C@_0DE@BBDIIBAC@leaving?5InitializeMessageUnitQue@FNODOBFM@ 0000000140014d90     arcinit.obj
+ 0001:00013dd0       ??_C@_0BI@PNFIHJKN@entering?5MapDeviceBase?6?$AA@FNODOBFM@ 0000000140014dd0     arcinit.obj
+ 0001:00013df0       ??_C@_0DL@HHJHAPNC@?$CK?5StorPortGetDeviceBase?5failed?0?5@FNODOBFM@ 0000000140014df0     arcinit.obj
+ 0001:00013e30       ??_C@_0FM@FAGAFMJI@?$CK?5StorPortGetDeviceBaseB1?5failed@FNODOBFM@ 0000000140014e30     arcinit.obj
+ 0001:00013e90       ??_C@_0FM@DFFNMELK@?$CK?5StorPortGetDeviceBaseB0?5failed@FNODOBFM@ 0000000140014e90     arcinit.obj
+ 0001:00013ef0       ??_C@_0DH@GMHBCEJM@?$CK?5GET_MINIARC_PROPERTIES?5fails?0?5@FNODOBFM@ 0000000140014ef0     arcinit.obj
+ 0001:00013f30       ??_C@_0CE@JIIGOPEA@?$CK?5This?5is?5a?5BEDROC?5inplementatio@FNODOBFM@ 0000000140014f30     arcinit.obj
+ 0001:00013f60       ??_C@_0CF@HKNELPOC@leaving?5MapDeviceBase?5?9?5rtnval?5?$DN@FNODOBFM@ 0000000140014f60     arcinit.obj
+ 0001:00013f90       ??_C@_0BG@LOIMFNHP@entering?5MatchPciIds?6?$AA@FNODOBFM@ 0000000140014f90     arcinit.obj
+ 0001:00013fb0       ??_C@_08HNOCAICB@Adaptec?5?$AA@FNODOBFM@ 0000000140014fb0     arcinit.obj
+ 0001:00013fc0       ??_C@_0CC@GEDCIDMJ@leaving?5MatchPciIds?0?5rtnval?5?$DN?5?$CFx@FNODOBFM@ 0000000140014fc0     arcinit.obj
+ 0001:00013ff0       ??_C@_0CE@NAJHAKAL@entering?5ResetAndInitializeAdapt@FNODOBFM@ 0000000140014ff0     arcinit.obj
+ 0001:00014020       ??_C@_0CJ@ICCABACH@?$CK?$CK?5Adapter?5is?5running?5after?5an?5I@FNODOBFM@ 0000000140015020     arcinit.obj
+ 0001:00014050       ??_C@_0DN@NGJKEOMO@?$CK?5IopReset?3?5Can?8t?5determine?5adap@FNODOBFM@ 0000000140015050     arcinit.obj
+ 0001:00014090       ??_C@_0CD@NLNEBMEC@leaving?5ResetAndInitializeAdapte@FNODOBFM@ 0000000140015090     arcinit.obj
+ 0001:000140c0       ??_C@_0BH@IFFPEJNM@entering?5ResetAdapter?6?$AA@FNODOBFM@ 00000001400150c0     arcinit.obj
+ 0001:000140e0       ??_C@_0CF@FBOKKCLF@?$CK?5Entering?5Reset?5Adapter?5Routine@FNODOBFM@ 00000001400150e0     arcinit.obj
+ 0001:00014110       ??_C@_0EH@ECEBKEGJ@?$CK?5FW?5is?5processing?5IOP_RESET?0?5le@FNODOBFM@ 0000000140015110     arcinit.obj
+ 0001:00014160       ??_C@_0BG@JODNDMNO@leaving?5ResetAdapter?6?$AA@FNODOBFM@ 0000000140015160     arcinit.obj
+ 0001:00014180       ??_C@_0DN@KLBLIJBD@?$CK?5An?5IOPReset?5DPC?5is?5pending?0?5ju@FNODOBFM@ 0000000140015180     arcinit.obj
+ 0001:000141c0       ??_C@_0BF@GMFKAGLA@?$CK?$CK?5BlinLed?5Code?3?5?$CFx?6?$AA@FNODOBFM@ 00000001400151c0     arcinit.obj
+ 0001:000141e0       ??_C@_0DM@EBNPFHJD@?$CK?5set?5timer?5to?5check?5the?5FW?5stat@FNODOBFM@ 00000001400151e0     arcinit.obj
+ 0001:00014220       ??_C@_0CL@EEBCPBAP@?$CK?5leaving?5Reset?5Adapter?5Routine?0@FNODOBFM@ 0000000140015220     arcinit.obj
+ 0001:00014250       ??_C@_0DM@BLBAPGMJ@?$CK?$CK?$CK?$CK?5ResetAdapter?5?9?5SendSynchFib@FNODOBFM@ 0000000140015250     arcinit.obj
+ 0001:00014290       ??_C@_0EC@CPDLAFLK@?$CK?5ResetAdapter?5?9?5AdapterIsAlive?5@FNODOBFM@ 0000000140015290     arcinit.obj
+ 0001:000142e0       ??_C@_0CG@BBBMKNGF@Outstanding?5IO?5in?5ResetAdapter?5i@FNODOBFM@ 00000001400152e0     arcinit.obj
+ 0001:00014310       ??_C@_0DE@NBJDNHPF@Calling?5CompleteBufferedRequest?5@FNODOBFM@ 0000000140015310     arcinit.obj
+ 0001:00014350       ??_C@_0HD@ICMAGBPN@Calling?5DequeueRawIoReadWriteReq@FNODOBFM@ 0000000140015350     arcinit.obj
+ 0001:000143d0       ??_C@_0DM@HLOGJCDJ@Calling?5CompleteAllSortingQueue?5@FNODOBFM@ 00000001400153d0     arcinit.obj
+ 0001:00014410       ??_C@_0CD@FANGNOJF@leaving?5ResetAdapter?0?5rtnval?5?$DN?5?$CF@FNODOBFM@ 0000000140015410     arcinit.obj
+ 0001:00014440       ??_C@_0DB@DPGILIHI@?$CK?5leaving?5Reset?5Adapter?5Routine?5@FNODOBFM@ 0000000140015440     arcinit.obj
+ 0001:00014480       ??_C@_0DB@KLKDBGPC@?$CK?5current?5ElapsedTime?5is?5?$CFx?4?5Dri@FNODOBFM@ 0000000140015480     arcinit.obj
+ 0001:000144c0       ??_C@_0L@ENAJINDB@Management?$AA@FNODOBFM@ 00000001400154c0     cmddelivery.obj
+ 0001:000144d0       ??_C@_0BB@JIADCMFJ@Array?5?5?5?5?5?5?5?5?5?5?5?$AA@FNODOBFM@ 00000001400154d0     cmddelivery.obj
+ 0001:000144f0       ??_C@_08BFDLJAAH@ADAPTEC?5?$AA@FNODOBFM@ 00000001400154f0     cmddelivery.obj
+ 0001:00014500       ??_C@_0BB@HJODFKJH@ARRAY?5?5?5?5?5?5?5?5?5?5?5?$AA@FNODOBFM@ 0000000140015500     cmddelivery.obj
+ 0001:00014520       ??_C@_0BJ@NDPKABON@entering?5AdapterControl?6?$AA@FNODOBFM@ 0000000140015520     cmdproc.obj
+ 0001:00014540       ??_C@_0CF@FDIANAIH@?$CK?5?9?5AdapterControl?3?5ScsiStopAdap@FNODOBFM@ 0000000140015540     cmdproc.obj
+ 0001:00014570       ??_C@_0EC@BHBKOIEM@?$CK?5?9?5AdapterControl?3?5ScsiStopAdap@FNODOBFM@ 0000000140015570     cmdproc.obj
+ 0001:000145c0       ??_C@_0DK@JIECJOFO@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00000001400155c0     cmdproc.obj
+ 0001:00014600       ??_C@_0HA@BIJAMPMG@?$CK?5?9?5AdapterControl?3?5ScsiSetBootC@FNODOBFM@ 0000000140015600     cmdproc.obj
+ 0001:00014670       ??_C@_0DL@CMAPNHGC@?$CK?5?9?5AdapterControl?3?5ScsiSetBootC@FNODOBFM@ 0000000140015670     cmdproc.obj
+ 0001:000146b0       ??_C@_0HE@CIFLMEO@?$CK?5?9?5AdapterControl?3?5ScsiSetRunni@FNODOBFM@ 00000001400156b0     cmdproc.obj
+ 0001:00014730       ??_C@_0CI@NDPGKLNN@?$CK?5?9?5AdapterControl?3?5ScsiRestartA@FNODOBFM@ 0000000140015730     cmdproc.obj
+ 0001:00014760       ??_C@_0CM@CNGCOMHH@?$CK?5Before?5checking?5Adapter?5Health@FNODOBFM@ 0000000140015760     cmdproc.obj
+ 0001:00014790       ??_C@_0CM@LGOLDMAP@?$CK?5leaving?5AdapterControl?5Routine@FNODOBFM@ 0000000140015790     cmdproc.obj
+ 0001:000147c0       ??_C@_0GP@BJCLBBHJ@?$CK?5CHECK_ADAPTER_HEALTH?5failed?0?5s@FNODOBFM@ 00000001400157c0     cmdproc.obj
+ 0001:00014830       ??_C@_0GI@HKBIHHID@?$CK?5START_ADAPTER?5failed?0?5start?5a?5@FNODOBFM@ 0000000140015830     cmdproc.obj
+ 0001:000148a0       ??_C@_0CO@CEANCDOF@?$CK?5?9?5AdapterControl?3?5Reset?5HostRR@FNODOBFM@ 00000001400158a0     cmdproc.obj
+ 0001:000148d0       ??_C@_0CO@JFFKFNJF@?6?$CK?5?9?5AdapterControl?3?5ScsiQuery?5w@FNODOBFM@ 00000001400158d0     cmdproc.obj
+ 0001:00014900       ??_C@_0DB@OIEGMDBJ@?6?$CK?5?9?5AdapterControl?3?5ScsiQuery?5W@FNODOBFM@ 0000000140015900     cmdproc.obj
+ 0001:00014940       ??_C@_0DC@FOPMLBKH@?6?$CK?5Unsupported?5AdapterControl?5co@FNODOBFM@ 0000000140015940     cmdproc.obj
+ 0001:00014980       ??_C@_0BI@MBKDPNLO@leaving?5AdapterControl?6?$AA@FNODOBFM@ 0000000140015980     cmdproc.obj
+ 0001:000149a0       ??_C@_0O@GDHFPHNH@?$CK?5action?3?5?$CFd?6?$AA@FNODOBFM@ 00000001400159a0     cmdproc.obj
+ 0001:000149b0       ??_C@_0L@PGGNAFAD@?$CK?5sleep?51?6?$AA@FNODOBFM@ 00000001400159b0     cmdproc.obj
+ 0001:000149c0       ??_C@_0CH@BKCIEAIN@?$CK?5coming?5back?5from?5power?5state?5c@FNODOBFM@ 00000001400159c0     cmdproc.obj
+ 0001:000149f0       ??_C@_0BC@HBDLBCBL@?$CK?5going?5to?5S3?1S4?6?$AA@FNODOBFM@ 00000001400159f0     cmdproc.obj
+ 0001:00014a10       ??_C@_0M@DAKLMIGA@?$CK?5shutdown?6?$AA@FNODOBFM@ 0000000140015a10     cmdproc.obj
+ 0001:00014a20       ??_C@_09GFAMPCAC@?$CK?5reboot?6?$AA@FNODOBFM@ 0000000140015a20     cmdproc.obj
+ 0001:00014a30       ??_C@_0CO@NKBJPPMA@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 0000000140015a30     cmdproc.obj
+ 0001:00014a60       ??_C@_0FN@LKLFGDKL@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 0000000140015a60     cmdproc.obj
+ 0001:00014ac0       ??_C@_0FA@MOKLGDID@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 0000000140015ac0     cmdproc.obj
+ 0001:00014b10       ??_C@_0GA@IGOANHED@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 0000000140015b10     cmdproc.obj
+ 0001:00014b70       ??_C@_07MPDDHOMN@CSMIALL?$AA@FNODOBFM@ 0000000140015b70     ioctl.obj
+ 0001:00014b80       ??_C@_07OODOBGKD@CSMIARY?$AA@FNODOBFM@ 0000000140015b80     ioctl.obj
+ 0001:00014b90       ??_C@_07PAKBHMBE@CSMISAS?$AA@FNODOBFM@ 0000000140015b90     ioctl.obj
+ 0001:00014ba0       ??_C@_07BHCKAAPP@CSMIPHY?$AA@FNODOBFM@ 0000000140015ba0     ioctl.obj
+ 0001:00014bb0       ??_C@_0BI@COAKNOP@?$CK?5?9?5IOCTL?5MESSAGE?3?5?$CFs?5?6?$AA@FNODOBFM@ 0000000140015bb0     ioctl.obj
+ 0001:00014bd0       ??_C@_0BP@PHOOCPMJ@?$CK?5?9?5IOCTL?3?5FSAMPCTL_RESET_IOP?6?$AA@FNODOBFM@ 0000000140015bd0     ioctl.obj
+ 0001:00014bf0       ??_C@_0L@EIJBKGJP@arcsas?4sys?$AA@FNODOBFM@ 0000000140015bf0     ioctl.obj
+ 0001:00014c00       ??_C@_0BN@BIKJANKI@Adaptec?5RAID?5Storport?5Driver?$AA@FNODOBFM@ 0000000140015c00     ioctl.obj
+ 0001:00014c20       ??_C@_0FN@JAMFHGEE@Leaving?5QueueSortingQ?5?$CIFALSE?$CJ?3?5o@FNODOBFM@ 0000000140015c20     comm.obj
+ 0001:00014c80       ??_C@_0FN@DPGMDLIO@Leaving?5QueueSortingQ?5?$CIFALSE?$CJ?3?5o@FNODOBFM@ 0000000140015c80     comm.obj
+ 0001:00014ce0       ??_C@_0FJ@BLFEEFNB@?$CD2?0?5returning?5FALSE?4?5S?50x?$CFx?0?5N?50@FNODOBFM@ 0000000140015ce0     comm.obj
+ 0001:00014d40       ??_C@_1BI@BHAHBMFJ@?$AAM?$AAo?$AAf?$AAR?$AAe?$AAs?$AAo?$AAu?$AAr?$AAc?$AAe?$AA?$AA@FNODOBFM@ 0000000140015d40     wmi.obj
+ 0001:00014d60       ??_C@_1BK@EPHGJNJ@?$AAS?$AAc?$AAs?$AAi?$AAM?$AAi?$AAn?$AAi?$AAP?$AAo?$AAr?$AAt?$AA?$AA@FNODOBFM@ 0000000140015d60     scsiwmi:wmilib.obj
+ 0002:00000000       __imp_KeBugCheckEx         0000000140016000     ntoskrnl:ntoskrnl.exe
+ 0002:00000008       \177ntoskrnl_NULL_THUNK_DATA 0000000140016008     ntoskrnl:ntoskrnl.exe
+ 0002:00000010       __imp_StorPortNotification 0000000140016010     storport:storport.sys
+ 0002:00000018       __imp_StorPortStallExecution 0000000140016018     storport:storport.sys
+ 0002:00000020       __imp_StorPortGetDeviceBase 0000000140016020     storport:storport.sys
+ 0002:00000028       __imp_StorPortDebugPrint   0000000140016028     storport:storport.sys
+ 0002:00000030       __imp_StorPortResume       0000000140016030     storport:storport.sys
+ 0002:00000038       __imp_StorPortInitialize   0000000140016038     storport:storport.sys
+ 0002:00000040       __imp_StorPortFreeDeviceBase 0000000140016040     storport:storport.sys
+ 0002:00000048       __imp_StorPortGetBusData   0000000140016048     storport:storport.sys
+ 0002:00000050       __imp_StorPortGetPhysicalAddress 0000000140016050     storport:storport.sys
+ 0002:00000058       __imp_StorPortGetUncachedExtension 0000000140016058     storport:storport.sys
+ 0002:00000060       __imp_StorPortPause        0000000140016060     storport:storport.sys
+ 0002:00000068       __imp_StorPortSetDeviceQueueDepth 0000000140016068     storport:storport.sys
+ 0002:00000070       __imp_StorPortCompleteRequest 0000000140016070     storport:storport.sys
+ 0002:00000078       __imp_StorPortQuerySystemTime 0000000140016078     storport:storport.sys
+ 0002:00000080       __imp_StorPortExtendedFunction 0000000140016080     storport:storport.sys
+ 0002:00000088       __imp_StorPortPauseDevice  0000000140016088     storport:storport.sys
+ 0002:00000090       __imp_StorPortBusy         0000000140016090     storport:storport.sys
+ 0002:00000098       __imp_StorPortGetScatterGatherList 0000000140016098     storport:storport.sys
+ 0002:000000a0       __imp_StorPortResumeDevice 00000001400160a0     storport:storport.sys
+ 0002:000000a8       \177storport_NULL_THUNK_DATA 00000001400160a8     storport:storport.sys
+ 0002:000000f0       RevCompareTable            00000001400160f0     revision.obj
+ 0002:000001f0       RevCompareTableLength      00000001400161f0     revision.obj
+ 0002:000001f8       ??_C@_08HNOCAICB@Adaptec?5?$AA@ 00000001400161f8     arcsas.obj
+ 0002:00000204       ??_C@_04ODJNANJC@9005?$AA@ 0000000140016204     arcsas.obj
+ 0002:0000020c       ??_C@_04EKJHPGNA@0285?$AA@ 000000014001620c     arcsas.obj
+ 0002:00000214       ??_C@_04GBLKKFBD@0286?$AA@ 0000000140016214     arcsas.obj
+ 0002:0000021c       ??_C@_04PPDJIIJN@0288?$AA@ 000000014001621c     arcsas.obj
+ 0002:00000224       ??_C@_04LPGNDNED@028b?$AA@ 0000000140016224     arcsas.obj
+ 0002:0000022c       ??_C@_04KGHGAMAC@028c?$AA@ 000000014001622c     arcsas.obj
+ 0002:00000238       ??_C@_0BB@MMDKHCIH@ARC?9SAS?5?5?5?5?5?5?5?5?5?$AA@ 0000000140016238     arcsas.obj
+ 0002:0000024c       ??_C@_06DFBHEALI@AACAPI?$AA@ 000000014001624c     arcsas.obj
+ 0002:00000260       _load_config_used          0000000140016260     BufferOverflowK:loadcfg.obj
+ 0003:00000000       HotPatchBuffer             0000000140017000     hotpatch.obj
+ 0003:00000100       gDebugFlags                0000000140017100     arcdebug.obj
+ 0003:00000110       gNativeModeAdapters        0000000140017110     arcsas.obj
+ 0003:000003b8       gNumNativeModeAdapters     00000001400173b8     arcsas.obj
+ 0003:000003bc       gARCOEMFlags               00000001400173bc     arcsas.obj
+ 0003:000003c0       gARCProductId              00000001400173c0     arcsas.obj
+ 0003:000003c8       gARCApiId                  00000001400173c8     arcsas.obj
+ 0003:000003d0       gARCSASRxSubsystemInfo     00000001400173d0     arcsas.obj
+ 0003:000006e0       gARCSASRktSubsystemInfo    00000001400176e0     arcsas.obj
+ 0003:00000750       gARCSASArkSubsystemInfo    0000000140017750     arcsas.obj
+ 0003:00000780       gARCSASPMCSubsystemInfo    0000000140017780     arcsas.obj
+ 0003:00000890       gARCVendor                 0000000140017890     arcinit.obj
+ 0003:00000898       gAdapterGuid               0000000140017898     wmi.obj
+ 0003:000008a8       gIoChannelGuid             00000001400178a8     wmi.obj
+ 0003:000008b8       gDiskArrayGuid             00000001400178b8     wmi.obj
+ 0003:000008c8       gPhysicalDiskGuid          00000001400178c8     wmi.obj
+ 0003:000008d8       gAdapterMethodGuid         00000001400178d8     wmi.obj
+ 0003:000008e8       __security_cookie          00000001400178e8     BufferOverflowK:gs_support.obj
+ 0003:000008f0       __security_cookie_complement 00000001400178f0     BufferOverflowK:gs_support.obj
+ 0003:00000908       gAdapterAddCount           0000000140017908     arcinit.obj
+ 0003:00000910       gTraceContext              0000000140017910     arcinit.obj
+ 0003:00000920       gAdapterTable              0000000140017920     <common>
+ 0003:00000b20       gDriverObject              0000000140017b20     <common>
+ 0005:00000008       __security_init_cookie     0000000140019008 f   BufferOverflowK:gs_support.obj
+ 0005:00000070       GsDriverEntry              0000000140019070 f   BufferOverflowK:gs_support.obj
+ 0005:0000009c       __IMPORT_DESCRIPTOR_ntoskrnl 000000014001909c     ntoskrnl:ntoskrnl.exe
+ 0005:000000b0       __IMPORT_DESCRIPTOR_storport 00000001400190b0     storport:storport.sys
+ 0005:000000c4       __NULL_IMPORT_DESCRIPTOR   00000001400190c4     ntoskrnl:ntoskrnl.exe
+
+ entry point at        0005:00000070
+
+ Static symbols
+
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0000:fffe3000       .debug$S                   0000000140000000     storport:storport.sys
+ 0001:00010ba0       $$000000                   0000000140011ba0     BufferOverflowK:amdsecgs.obj
+ 0001:00010c50       $$000000                   0000000140011c50     ntoskrnl:memcpy.obj
+ 0001:00011030       $$000000                   0000000140012030     ntoskrnl:memset.obj
+ 0002:00000320       $unwind$RxCheckSyncCommandComplete 0000000140016320     rxdevice.obj
+ 0002:00000338       $unwind$RxNewCommProcessInterrupt 0000000140016338     rxdevice.obj
+ 0002:0000035c       $unwind$RxInterruptHandler 000000014001635c     rxdevice.obj
+ 0002:00000374       $unwind$NonMSIXInterruptHandler 0000000140016374     rxdevice.obj
+ 0002:0000038c       $unwind$PMCDpcResponseHandler 000000014001638c     rxdevice.obj
+ 0002:000003a4       $unwind$RxPullMessageUnitQueueCompletedFib 00000001400163a4     rxdevice.obj
+ 0002:000003c8       $unwind$RxPushMessageUnitQueueFib 00000001400163c8     rxdevice.obj
+ 0002:000003e0       $unwind$PMCPushMessageUnitQueueFib 00000001400163e0     rxdevice.obj
+ 0002:00000404       $unwind$RxSendSynchCommand 0000000140016404     rxdevice.obj
+ 0002:0000041c       $unwind$RxStartAdapter     000000014001641c     rxdevice.obj
+ 0002:00000438       $unwind$GetDriverParameter 0000000140016438     helpers.obj
+ 0002:00000450       $unwind$MatchRegistryString 0000000140016450     helpers.obj
+ 0002:00000458       $unwind$LongToAscii        0000000140016458     helpers.obj
+ 0002:00000468       $unwind$ArcPrintf          0000000140016468     arcdebug.obj
+ 0002:00000480       $unwind$GetFwDebugBuffer   0000000140016480     arcdebug.obj
+ 0002:00000490       $unwind$RealSprintf        0000000140016490     arcdebug.obj
+ 0002:000004b0       $unwind$GetConsumerProducerCompletedFib 00000001400164b0     timer.obj
+ 0002:000004b0       $unwind$SynchFibCompletionTimer 00000001400164b0     timer.obj
+ 0002:000004c4       $unwind$Reset_IOP_CompletionTimer 00000001400164c4     timer.obj
+ 0002:000004c4       $unwind$MainTimeThread     00000001400164c4     timer.obj
+ 0002:000004d0       $unwind$RequestAif         00000001400164d0     timer.obj
+ 0002:000004e4       $unwind$StopTimer          00000001400164e4     timer.obj
+ 0002:000004f4       $unwind$RequestTimer       00000001400164f4     timer.obj
+ 0002:00000508       $unwind$DriverEntry        0000000140016508     arcinit.obj
+ 0002:0000051c       $unwind$HwInitializeAdapter 000000014001651c     arcinit.obj
+ 0002:00000530       $unwind$FindAdapter        0000000140016530     arcinit.obj
+ 0002:00000554       $unwind$ResetAdapter       0000000140016554     arcinit.obj
+ 0002:00000578       $unwind$AllocateConsumerProducerCommArea 0000000140016578     arcinit.obj
+ 0002:00000590       $unwind$AllocateMessageUnitQueueCommArea 0000000140016590     arcinit.obj
+ 0002:000005a8       $unwind$ConfigureContainers 00000001400165a8     arcinit.obj
+ 0002:000005d0       $unwind$IsAdapterReadyForConfigCommand 00000001400165d0     arcinit.obj
+ 0002:000005e8       $unwind$HandleAdapterConfigIssues 00000001400165e8     arcinit.obj
+ 0002:00000608       $unwind$InitializeConsumerProducerCommRegion 0000000140016608     arcinit.obj
+ 0002:00000618       $unwind$InitializeMessageUnitQueueNewAdapter 0000000140016618     arcinit.obj
+ 0002:00000618       $unwind$RestartAdapterPendingTimer 0000000140016618     arcinit.obj
+ 0002:00000618       $unwind$InitializeConsumerProducerNewAdapter 0000000140016618     arcinit.obj
+ 0002:00000618       $unwind$QueuePrintf        0000000140016618     arcinit.obj
+ 0002:00000618       $unwind$ServiceInternalAifQueue 0000000140016618     arcinit.obj
+ 0002:00000618       $unwind$CheckMSIxPossibility 0000000140016618     arcinit.obj
+ 0002:0000062c       $unwind$MapDeviceBase      000000014001662c     arcinit.obj
+ 0002:00000644       $unwind$MatchPciIds        0000000140016644     arcinit.obj
+ 0002:0000065c       $unwind$ResetAndInitializeAdapter 000000014001665c     arcinit.obj
+ 0002:00000670       $unwind$IOPReset           0000000140016670     arcinit.obj
+ 0002:00000688       $unwind$InitializeAdapterAfterIOPReset 0000000140016688     arcinit.obj
+ 0002:0000069c       $unwind$SetFwTime          000000014001669c     arcinit.obj
+ 0002:000006a8       $unwind$ArcLogEvent        00000001400166a8     arcinit.obj
+ 0002:000006b0       $unwind$PMCInterruptHandler 00000001400166b0     arcinit.obj
+ 0002:000006b0       $unwind$DynamicallyThrottleLunQueueDepth 00000001400166b0     arcinit.obj
+ 0002:000006cc       $unwind$CheckForVersionMisMatch 00000001400166cc     arcinit.obj
+ 0002:000006d8       $unwind$StartIo            00000001400166d8     cmddelivery.obj
+ 0002:000006f8       $unwind$PostProcessScsiCommand 00000001400166f8     cmddelivery.obj
+ 0002:00000710       $unwind$SendFib            0000000140016710     cmddelivery.obj
+ 0002:0000072c       $unwind$HandleMSIXInterrupt 000000014001672c     cmddelivery.obj
+ 0002:0000073c       $unwind$QueueRawIoReadWriteRequest 000000014001673c     cmddelivery.obj
+ 0002:00000758       $unwind$DequeueRawIoReadWriteRequest 0000000140016758     cmddelivery.obj
+ 0002:00000770       $unwind$ProcessContainerInquiry 0000000140016770     cmddelivery.obj
+ 0002:00000790       $unwind$ProcessScsiCommand 0000000140016790     cmddelivery.obj
+ 0002:000007b4       $unwind$SendRawIoFib       00000001400167b4     cmddelivery.obj
+ 0002:000007d0       $unwind$SendSynchFib       00000001400167d0     cmddelivery.obj
+ 0002:000007e4       $unwind$AdapterControl     00000001400167e4     cmdproc.obj
+ 0002:000007f4       $unwind$BuildIo            00000001400167f4     cmdproc.obj
+ 0002:0000080c       $unwind$BuildRawIoFib      000000014001680c     cmdproc.obj
+ 0002:00000824       $unwind$BuildRawIo2ScatterGather 0000000140016824     cmdproc.obj
+ 0002:00000840       $unwind$BuildReadWriteFib  0000000140016840     cmdproc.obj
+ 0002:00000854       $unwind$BuildSrbFib        0000000140016854     cmdproc.obj
+ 0002:00000864       $unwind$InitializeFib      0000000140016864     cmdproc.obj
+ 0002:00000864       $unwind$ProcessAgeOfSortingQueue 0000000140016864     cmdproc.obj
+ 0002:00000864       $unwind$InitializeAdapter  0000000140016864     cmdproc.obj
+ 0002:00000864       $unwind$ConfigureContainersTimer 0000000140016864     cmdproc.obj
+ 0002:00000864       $unwind$__GSHandlerCheckCommon 0000000140016864     cmdproc.obj
+ 0002:00000864       $unwind$RxCheckAdapterHealth 0000000140016864     cmdproc.obj
+ 0002:0000086c       $unwind$ProcessIoctl       000000014001686c     ioctl.obj
+ 0002:00000890       $unwind$BuildRawIoScatterGather 0000000140016890     ioctl.obj
+ 0002:00000890       $unwind$BuildRawScatterGather 0000000140016890     ioctl.obj
+ 0002:00000890       $unwind$ConvertRawIo2ScatterGather 0000000140016890     ioctl.obj
+ 0002:00000890       $unwind$DeQueueSortingQueue 0000000140016890     ioctl.obj
+ 0002:000008ac       $unwind$BuildRawScatterGather64 00000001400168ac     ioctl.obj
+ 0002:000008c8       $unwind$CSMIGetControllerConfig 00000001400168c8     ioctl.obj
+ 0002:000008e4       $unwind$CSMIGetDriverInfo  00000001400168e4     ioctl.obj
+ 0002:000008e4       $unwind$GsDriverEntry      00000001400168e4     ioctl.obj
+ 0002:000008e4       $unwind$GetElapsedSeconds  00000001400168e4     ioctl.obj
+ 0002:000008e4       $unwind$InitializeDPCs     00000001400168e4     ioctl.obj
+ 0002:000008f0       $unwind$CSMIGetRAIDConfig  00000001400168f0     ioctl.obj
+ 0002:00000914       $unwind$CSMIGetPhyInfo     0000000140016914     ioctl.obj
+ 0002:00000914       $unwind$CSMIGetRAIDInfo    0000000140016914     ioctl.obj
+ 0002:00000914       $unwind$CSMIGetSATASignature 0000000140016914     ioctl.obj
+ 0002:00000934       $unwind$CSMIGetSCSIAddress 0000000140016934     ioctl.obj
+ 0002:00000934       $unwind$CSMIGetDeviceAddress 0000000140016934     ioctl.obj
+ 0002:00000954       $unwind$CSMISTPPassThru    0000000140016954     ioctl.obj
+ 0002:0000096c       $unwind$InsertQueueEntry   000000014001696c     comm.obj
+ 0002:0000096c       $unwind$__report_rangecheckfailure 000000014001696c     comm.obj
+ 0002:0000096c       $unwind$HwScsiWmiQueryDataBlock 000000014001696c     comm.obj
+ 0002:0000096c       $unwind$HwScsiWmiFunctionControl 000000014001696c     comm.obj
+ 0002:0000096c       $unwind$AdapterIsAlive     000000014001696c     comm.obj
+ 0002:0000096c       $unwind$__GSHandlerCheck   000000014001696c     comm.obj
+ 0002:00000974       $unwind$ServiceHostResponseNormalQueue 0000000140016974     comm.obj
+ 0002:0000098c       $unwind$FreeConsumerProducerAif 000000014001698c     comm.obj
+ 0002:00000998       $unwind$SynchCommandCompletionTimer 0000000140016998     comm.obj
+ 0002:00000998       $unwind$GetConsumerProducerAif 0000000140016998     comm.obj
+ 0002:000009a8       $unwind$GetQueueEntry      00000001400169a8     comm.obj
+ 0002:000009bc       $unwind$BuildScatterGather 00000001400169bc     comm.obj
+ 0002:000009bc       $unwind$CompleteQueuedRequest 00000001400169bc     comm.obj
+ 0002:000009bc       $unwind$HwScsiWmiExecuteMethod 00000001400169bc     comm.obj
+ 0002:000009bc       $unwind$RxWaitForAdapterToBoot 00000001400169bc     comm.obj
+ 0002:000009bc       $unwind$ProcessAif         00000001400169bc     comm.obj
+ 0002:000009bc       $unwind$SubDeQueueSortingQueue 00000001400169bc     comm.obj
+ 0002:000009bc       $unwind$BuildScatterGather64 00000001400169bc     comm.obj
+ 0002:000009cc       $unwind$SendConsumerProducerFib 00000001400169cc     comm.obj
+ 0002:000009d8       $unwind$CompleteSortingQueueRequest 00000001400169d8     comm.obj
+ 0002:000009d8       $unwind$CompleteAllSortingQueue 00000001400169d8     comm.obj
+ 0002:000009d8       $unwind$CompleteBufferedRequest 00000001400169d8     comm.obj
+ 0002:000009d8       $unwind$DequeueSortingQTimer 00000001400169d8     comm.obj
+ 0002:000009f0       $unwind$QueueSortingQ      00000001400169f0     comm.obj
+ 0002:00000a0c       $unwind$TryDeQueueIoList   0000000140016a0c     comm.obj
+ 0002:00000a28       $unwind$SendMessageUnitQueueFib 0000000140016a28     comm.obj
+ 0002:00000a44       $unwind$ServiceHostCommandNormalQueue 0000000140016a44     comm.obj
+ 0002:00000a58       $unwind$CheckingFWAfterPowerStateChange 0000000140016a58     comm.obj
+ 0002:00000a58       $unwind$DpcDequeueRawIoReadWriteRequest 0000000140016a58     comm.obj
+ 0002:00000a60       $unwind$ProcessNormalFib   0000000140016a60     comm.obj
+ 0002:00000a7c       $unwind$ProcessWmi         0000000140016a7c     wmi.obj
+ 0002:00000a88       $unwind$__report_gsfailure 0000000140016a88     BufferOverflowK:gs_report.obj
+ 0002:00000a88       $unwind$__report_securityfailure 0000000140016a88     BufferOverflowK:gs_report.obj
+ 0002:00000a90       $xdatasym                  0000000140016a90     ntoskrnl:memcpy.obj
+ 0002:00000a98       $xdatasym                  0000000140016a98     ntoskrnl:memset.obj
+ 0002:00000a9c       $unwind$ScsiPortWmiDispatchFunction 0000000140016a9c     scsiwmi:wmilib.obj
+ 0002:00000aa8       $unwind$ScsiWmipProcessRequest 0000000140016aa8     scsiwmi:wmilib.obj
+ 0002:00000ac4       $unwind$ScsiPortWmiPostProcess 0000000140016ac4     scsiwmi:wmilib.obj
+ 0002:00000acc       $unwind$ScsiWmipPostProcess 0000000140016acc     scsiwmi:wmilib.obj
+ 0002:00000ae0       $unwind$ScsiWmipFindGuid   0000000140016ae0     scsiwmi:wmilib.obj
+ 0002:00000ae0       $unwind$GetEntry           0000000140016ae0     scsiwmi:wmilib.obj
+ 0003:00000900       ?TimerAge@?1??Reset_IOP_CompletionTimer@@9@9 0000000140017900     timer.obj
+ 0003:00000904       ?TimerAge@?1??CheckingFWAfterPowerStateChange@@9@9 0000000140017904     timer.obj
+ 0003:0000090c       ?initialized@?1??DriverEntry@@9@9 000000014001790c     arcinit.obj
+ 0004:00000000       $pdata$RxCheckAdapterHealth 0000000140018000     rxdevice.obj
+ 0004:0000000c       $pdata$RxCheckSyncCommandComplete 000000014001800c     rxdevice.obj
+ 0004:00000018       $pdata$RxNewCommProcessInterrupt 0000000140018018     rxdevice.obj
+ 0004:00000024       $pdata$RxInterruptHandler  0000000140018024     rxdevice.obj
+ 0004:00000030       $pdata$NonMSIXInterruptHandler 0000000140018030     rxdevice.obj
+ 0004:0000003c       $pdata$PMCDpcResponseHandler 000000014001803c     rxdevice.obj
+ 0004:00000048       $pdata$PMCInterruptHandler 0000000140018048     rxdevice.obj
+ 0004:00000054       $pdata$RxPullMessageUnitQueueCompletedFib 0000000140018054     rxdevice.obj
+ 0004:00000060       $pdata$RxPushMessageUnitQueueFib 0000000140018060     rxdevice.obj
+ 0004:0000006c       $pdata$PMCPushMessageUnitQueueFib 000000014001806c     rxdevice.obj
+ 0004:00000078       $pdata$RxSendSynchCommand  0000000140018078     rxdevice.obj
+ 0004:00000084       $pdata$RxStartAdapter      0000000140018084     rxdevice.obj
+ 0004:00000090       $pdata$RxWaitForAdapterToBoot 0000000140018090     rxdevice.obj
+ 0004:0000009c       $pdata$GetDriverParameter  000000014001809c     helpers.obj
+ 0004:000000a8       $pdata$MatchRegistryString 00000001400180a8     helpers.obj
+ 0004:000000b4       $pdata$LongToAscii         00000001400180b4     helpers.obj
+ 0004:000000c0       $pdata$ArcPrintf           00000001400180c0     arcdebug.obj
+ 0004:000000cc       $pdata$GetFwDebugBuffer    00000001400180cc     arcdebug.obj
+ 0004:000000d8       $pdata$RealSprintf         00000001400180d8     arcdebug.obj
+ 0004:000000e4       $pdata$MainTimeThread      00000001400180e4     timer.obj
+ 0004:000000f0       $pdata$SynchCommandCompletionTimer 00000001400180f0     timer.obj
+ 0004:000000fc       $pdata$SynchFibCompletionTimer 00000001400180fc     timer.obj
+ 0004:00000108       $pdata$Reset_IOP_CompletionTimer 0000000140018108     timer.obj
+ 0004:00000114       $pdata$RequestAif          0000000140018114     timer.obj
+ 0004:00000120       $pdata$StopTimer           0000000140018120     timer.obj
+ 0004:0000012c       $pdata$RequestTimer        000000014001812c     timer.obj
+ 0004:00000138       $pdata$ConfigureContainersTimer 0000000140018138     timer.obj
+ 0004:00000144       $pdata$RestartAdapterPendingTimer 0000000140018144     timer.obj
+ 0004:00000150       $pdata$DequeueSortingQTimer 0000000140018150     timer.obj
+ 0004:0000015c       $pdata$CheckingFWAfterPowerStateChange 000000014001815c     timer.obj
+ 0004:00000168       $pdata$ProcessAgeOfSortingQueue 0000000140018168     timer.obj
+ 0004:00000174       $pdata$DriverEntry         0000000140018174     arcinit.obj
+ 0004:00000180       $pdata$HwInitializeAdapter 0000000140018180     arcinit.obj
+ 0004:0000018c       $pdata$FindAdapter         000000014001818c     arcinit.obj
+ 0004:00000198       $pdata$ResetAdapter        0000000140018198     arcinit.obj
+ 0004:000001a4       $pdata$InitializeAdapter   00000001400181a4     arcinit.obj
+ 0004:000001b0       $pdata$InitializeDPCs      00000001400181b0     arcinit.obj
+ 0004:000001bc       $pdata$AllocateConsumerProducerCommArea 00000001400181bc     arcinit.obj
+ 0004:000001c8       $pdata$AllocateMessageUnitQueueCommArea 00000001400181c8     arcinit.obj
+ 0004:000001d4       $pdata$ConfigureContainers 00000001400181d4     arcinit.obj
+ 0004:000001e0       $pdata$GetElapsedSeconds   00000001400181e0     arcinit.obj
+ 0004:000001ec       $pdata$IsAdapterReadyForConfigCommand 00000001400181ec     arcinit.obj
+ 0004:000001f8       $pdata$CheckMSIxPossibility 00000001400181f8     arcinit.obj
+ 0004:00000204       $pdata$HandleAdapterConfigIssues 0000000140018204     arcinit.obj
+ 0004:00000210       $pdata$InitializeConsumerProducerCommRegion 0000000140018210     arcinit.obj
+ 0004:0000021c       $pdata$InitializeConsumerProducerNewAdapter 000000014001821c     arcinit.obj
+ 0004:00000228       $pdata$InitializeMessageUnitQueueNewAdapter 0000000140018228     arcinit.obj
+ 0004:00000234       $pdata$MapDeviceBase       0000000140018234     arcinit.obj
+ 0004:00000240       $pdata$MatchPciIds         0000000140018240     arcinit.obj
+ 0004:0000024c       $pdata$ResetAndInitializeAdapter 000000014001824c     arcinit.obj
+ 0004:00000258       $pdata$IOPReset            0000000140018258     arcinit.obj
+ 0004:00000264       $pdata$InitializeAdapterAfterIOPReset 0000000140018264     arcinit.obj
+ 0004:00000270       $pdata$SetFwTime           0000000140018270     arcinit.obj
+ 0004:0000027c       $pdata$ArcLogEvent         000000014001827c     arcinit.obj
+ 0004:00000288       $pdata$DynamicallyThrottleLunQueueDepth 0000000140018288     arcinit.obj
+ 0004:00000294       $pdata$CheckForVersionMisMatch 0000000140018294     arcinit.obj
+ 0004:000002a0       $pdata$StartIo             00000001400182a0     cmddelivery.obj
+ 0004:000002ac       $pdata$PostProcessScsiCommand 00000001400182ac     cmddelivery.obj
+ 0004:000002b8       $pdata$SendFib             00000001400182b8     cmddelivery.obj
+ 0004:000002c4       $pdata$HandleMSIXInterrupt 00000001400182c4     cmddelivery.obj
+ 0004:000002d0       $pdata$QueueRawIoReadWriteRequest 00000001400182d0     cmddelivery.obj
+ 0004:000002dc       $pdata$CompleteQueuedRequest 00000001400182dc     cmddelivery.obj
+ 0004:000002e8       $pdata$DequeueRawIoReadWriteRequest 00000001400182e8     cmddelivery.obj
+ 0004:000002f4       $pdata$ProcessContainerInquiry 00000001400182f4     cmddelivery.obj
+ 0004:00000300       $pdata$ProcessScsiCommand  0000000140018300     cmddelivery.obj
+ 0004:0000030c       $pdata$QueuePrintf         000000014001830c     cmddelivery.obj
+ 0004:00000318       $pdata$SendRawIoFib        0000000140018318     cmddelivery.obj
+ 0004:00000324       $pdata$SendSynchFib        0000000140018324     cmddelivery.obj
+ 0004:00000330       $pdata$AdapterControl      0000000140018330     cmdproc.obj
+ 0004:0000033c       $pdata$BuildIo             000000014001833c     cmdproc.obj
+ 0004:00000348       $pdata$BuildRawIoFib       0000000140018348     cmdproc.obj
+ 0004:00000354       $pdata$BuildRawIoScatterGather 0000000140018354     cmdproc.obj
+ 0004:00000360       $pdata$BuildRawIo2ScatterGather 0000000140018360     cmdproc.obj
+ 0004:0000036c       $pdata$ConvertRawIo2ScatterGather 000000014001836c     cmdproc.obj
+ 0004:00000378       $pdata$BuildReadWriteFib   0000000140018378     cmdproc.obj
+ 0004:00000384       $pdata$BuildScatterGather  0000000140018384     cmdproc.obj
+ 0004:00000390       $pdata$BuildScatterGather64 0000000140018390     cmdproc.obj
+ 0004:0000039c       $pdata$BuildSrbFib         000000014001839c     cmdproc.obj
+ 0004:000003a8       $pdata$InitializeFib       00000001400183a8     cmdproc.obj
+ 0004:000003b4       $pdata$ProcessIoctl        00000001400183b4     ioctl.obj
+ 0004:000003c0       $pdata$BuildRawScatterGather 00000001400183c0     ioctl.obj
+ 0004:000003cc       $pdata$BuildRawScatterGather64 00000001400183cc     ioctl.obj
+ 0004:000003d8       $pdata$CSMIGetControllerConfig 00000001400183d8     ioctl.obj
+ 0004:000003e4       $pdata$CSMIGetDriverInfo   00000001400183e4     ioctl.obj
+ 0004:000003f0       $pdata$CSMIGetRAIDConfig   00000001400183f0     ioctl.obj
+ 0004:000003fc       $pdata$CSMIGetRAIDInfo     00000001400183fc     ioctl.obj
+ 0004:00000408       $pdata$CSMIGetPhyInfo      0000000140018408     ioctl.obj
+ 0004:00000414       $pdata$CSMIGetSATASignature 0000000140018414     ioctl.obj
+ 0004:00000420       $pdata$CSMIGetSCSIAddress  0000000140018420     ioctl.obj
+ 0004:0000042c       $pdata$CSMIGetDeviceAddress 000000014001842c     ioctl.obj
+ 0004:00000438       $pdata$CSMISTPPassThru     0000000140018438     ioctl.obj
+ 0004:00000444       $pdata$AdapterIsAlive      0000000140018444     comm.obj
+ 0004:00000450       $pdata$ServiceHostResponseNormalQueue 0000000140018450     comm.obj
+ 0004:0000045c       $pdata$FreeConsumerProducerAif 000000014001845c     comm.obj
+ 0004:00000468       $pdata$GetConsumerProducerAif 0000000140018468     comm.obj
+ 0004:00000474       $pdata$GetConsumerProducerCompletedFib 0000000140018474     comm.obj
+ 0004:00000480       $pdata$GetEntry            0000000140018480     comm.obj
+ 0004:0000048c       $pdata$GetQueueEntry       000000014001848c     comm.obj
+ 0004:00000498       $pdata$InsertQueueEntry    0000000140018498     comm.obj
+ 0004:000004a4       $pdata$ProcessAif          00000001400184a4     comm.obj
+ 0004:000004b0       $pdata$SendConsumerProducerFib 00000001400184b0     comm.obj
+ 0004:000004bc       $pdata$SubDeQueueSortingQueue 00000001400184bc     comm.obj
+ 0004:000004c8       $pdata$DeQueueSortingQueue 00000001400184c8     comm.obj
+ 0004:000004d4       $pdata$CompleteAllSortingQueue 00000001400184d4     comm.obj
+ 0004:000004e0       $pdata$CompleteSortingQueueRequest 00000001400184e0     comm.obj
+ 0004:000004ec       $pdata$QueueSortingQ       00000001400184ec     comm.obj
+ 0004:000004f8       $pdata$CompleteBufferedRequest 00000001400184f8     comm.obj
+ 0004:00000504       $pdata$TryDeQueueIoList    0000000140018504     comm.obj
+ 0004:00000510       $pdata$SendMessageUnitQueueFib 0000000140018510     comm.obj
+ 0004:0000051c       $pdata$ServiceHostCommandNormalQueue 000000014001851c     comm.obj
+ 0004:00000528       $pdata$DpcDequeueRawIoReadWriteRequest 0000000140018528     comm.obj
+ 0004:00000534       $pdata$ProcessNormalFib    0000000140018534     comm.obj
+ 0004:00000540       $pdata$ServiceInternalAifQueue 0000000140018540     comm.obj
+ 0004:0000054c       $pdata$ProcessWmi          000000014001854c     wmi.obj
+ 0004:00000558       $pdata$HwScsiWmiExecuteMethod 0000000140018558     wmi.obj
+ 0004:00000564       $pdata$HwScsiWmiFunctionControl 0000000140018564     wmi.obj
+ 0004:00000564       $pdata$HwScsiWmiQueryDataBlock 0000000140018564     wmi.obj
+ 0004:00000570       $pdata$__report_gsfailure  0000000140018570     BufferOverflowK:gs_report.obj
+ 0004:0000057c       $pdata$__report_securityfailure 000000014001857c     BufferOverflowK:gs_report.obj
+ 0004:00000588       $pdata$__report_rangecheckfailure 0000000140018588     BufferOverflowK:gs_report.obj
+ 0004:000005a0       $pdata$__GSHandlerCheckCommon 00000001400185a0     ntoskrnl:gshandler.obj
+ 0004:000005ac       $pdata$__GSHandlerCheck    00000001400185ac     ntoskrnl:gshandler.obj
+ 0004:000005c4       $pdata$ScsiPortWmiDispatchFunction 00000001400185c4     scsiwmi:wmilib.obj
+ 0004:000005d0       $pdata$ScsiWmipProcessRequest 00000001400185d0     scsiwmi:wmilib.obj
+ 0004:000005dc       $pdata$ScsiPortWmiPostProcess 00000001400185dc     scsiwmi:wmilib.obj
+ 0004:000005e8       $pdata$ScsiWmipPostProcess 00000001400185e8     scsiwmi:wmilib.obj
+ 0004:000005f4       $pdata$ScsiWmipFindGuid    00000001400185f4     scsiwmi:wmilib.obj
+ 0004:00000600       $pdata$GsDriverEntry       0000000140018600     BufferOverflowK:gs_support.obj
+ 0005:00000198       .idata$6                   0000000140019198     ntoskrnl:ntoskrnl.exe
+ 0005:00000378       .idata$6                   0000000140019378     storport:storport.sys
+ 0006:000000d0       $R000000                   000000014001a0d0     arcsas.res
+ 0006:00000438       $R000368                   000000014001a438     arcsas.res

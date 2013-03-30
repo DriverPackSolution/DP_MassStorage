@@ -1,0 +1,60 @@
+******************************
+Vista64 Self Signing
+******************************
+
+
+******************************
+[1/4] STAMPINF
+******************************
+Stamping C:\Vista64_Self_Sign\MV64XX\3.1.0.2408\amd64\MV64XX.inf [Version] section with DriverVer=01/10/2010,3.1.0.2408.
+
+******************************
+[2/4] INF2CAT
+******************************
+...................................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\VISTA64_SELF_SIGN\MV64XX\3.1.0.2408\AMD64\mv64xx.cat
+
+******************************
+[3/4] SIGNTOOL CAT
+******************************
+The following certificate was selected:
+    Issued to: Marvell Semiconductor
+    Issued by: VeriSign Class 3 Code Signing 2004 CA
+    Expires:   4/5/2012 3:59:59 PM
+    SHA1 hash: 07195CA68A29AA1E890EE3E99C3E2EA7E7CA49E1
+
+Done Adding Additional Store
+
+Attempting to sign: C:\Vista64_Self_Sign\MV64XX\3.1.0.2408\amd64\mv64xx.cat
+Successfully signed and timestamped: C:\Vista64_Self_Sign\MV64XX\3.1.0.2408\amd64\mv64xx.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+
+******************************
+[4/4] SIGNTOOL SYS
+******************************
+The following certificate was selected:
+    Issued to: Marvell Semiconductor
+    Issued by: VeriSign Class 3 Code Signing 2004 CA
+    Expires:   4/5/2012 3:59:59 PM
+    SHA1 hash: 07195CA68A29AA1E890EE3E99C3E2EA7E7CA49E1
+
+Done Adding Additional Store
+
+Attempting to sign: C:\Vista64_Self_Sign\MV64XX\3.1.0.2408\amd64\mv64xx.sys
+Successfully signed and timestamped: C:\Vista64_Self_Sign\MV64XX\3.1.0.2408\amd64\mv64xx.sys
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0

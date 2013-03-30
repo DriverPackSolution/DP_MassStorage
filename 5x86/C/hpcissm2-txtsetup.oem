@@ -1,0 +1,49 @@
+[Disks]
+d1 = "Smart Array SAS/SATA Windows 2000 and Windows XP 32-bit Driver Diskette",\TXTSETUP.OEM,\
+
+[Defaults]
+SCSI = 3220
+
+[SCSI]
+3220 = "Driver for Smart Array P600 Controller", HpCISSm2
+3230 = "P800, P400, P400i, P700m, E500,", HpCISSm2
+3238 = "E200, E200i, (continues below...)", HpCISSm2
+323A = "P410, P410i, P411, P800, P812, P712m, P711m, and P212", HpCISSm2
+
+[Files.SCSI.3220]
+driver  = d1,HpCISSm2.sys, HpCISSm2
+inf     = d1,HpCISSm2.inf
+catalog = d1,HpCISSm2.cat
+
+[Files.SCSI.3230]
+driver  = d1,HpCISSm2.sys, HpCISSm2
+inf     = d1,HpCISSm2.inf
+catalog = d1,HpCISSm2.cat
+
+[Files.SCSI.3238]
+driver  = d1,HpCISSm2.sys, HpCISSm2
+inf     = d1,HpCISSm2.inf
+catalog = d1,HpCISSm2.cat
+
+[Files.SCSI.323A]
+driver  = d1,HpCISSm2.sys, HpCISSm2
+inf     = d1,HpCISSm2.inf
+catalog = d1,HpCISSm2.cat
+
+[Config.HpCISSm2]
+value = "",tag,REG_DWORD,103
+value = Parameters\PnpInterface,5,REG_DWORD,1
+value = Parameters\Device,NumberOfRequests,REG_DWORD,80
+value = Parameters\Device,DriverParameters,REG_SZ,"CSMI=None;"
+
+[HardwareIds.SCSI.3220]
+id = "PCI\VEN_103C&DEV_3220", "HpCISSm2"
+
+[HardwareIds.SCSI.3230]
+id = "PCI\VEN_103C&DEV_3230", "HpCISSm2"
+
+[HardwareIds.SCSI.3238]
+id = "PCI\VEN_103C&DEV_3238", "HpCISSm2"
+
+[HardwareIds.SCSI.323A]
+id = "PCI\VEN_103C&DEV_323A", "HpCISSm2"

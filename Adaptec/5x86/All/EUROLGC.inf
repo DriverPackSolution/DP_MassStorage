@@ -1,0 +1,70 @@
+;
+; Eurolgc.INF for EuroLogic Processor Device
+; This INF installs a dummy driver for the EuroLogic SAF-TE Processor Device
+;
+; Copyright (c) 2000, Adaptec Inc.
+;
+; If you change this version, make sure you update the DriverVer field
+
+; Version 1.01
+;
+; Edited 09/11/2001
+;
+
+[Version]
+Signature = "$Chicago$"
+Class = System
+ClassGuid = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider = %ADPT%
+CatalogFile = eurolgc.cat
+DriverVer=09/12/2001, 0.1.0.1
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+1 = %FLOPPY1_DESCRIPTION%,dpt_i2o,,
+
+[SourceDisksFiles]
+
+[EuroLogicFiles]
+;
+; Dummy section to satisfy ChkInf tool
+;
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%ADPT% = ADPT
+
+[ADPT]
+%EuroLogic200.DeviceDesc%  = NODRV, SCSI\ProcessorEuroLogcESM_____________0200
+%EuroLogic205.DeviceDesc%  = NODRV, SCSI\ProcessorEuroLogcESM_____________0205
+%EuroLogic206.DeviceDesc%  = NODRV, SCSI\ProcessorEuroLogcESM_____________0206
+
+
+[NODRV]
+;
+; Dummy directive to satisfy ChkInf tool
+;
+CopyFiles = EuroLogicFiles
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[strings]
+
+ADPT = "ADPT"
+EuroLogic200.DeviceDesc = "EuroLogic 200 SAF-TE Processor Device"
+EuroLogic205.DeviceDesc = "EuroLogic 205 SAF-TE Processor Device"
+EuroLogic206.DeviceDesc = "EuroLogic 206 SAF-TE Processor Device"
+FLOPPY1_DESCRIPTION = "Adaptec I2O RAID Adapter Driver Disk for Windows 2000"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

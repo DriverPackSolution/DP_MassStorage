@@ -1,0 +1,91 @@
+; Copyright (c) 2009-2011 Intel Corporation
+; **********************************************************************************************
+; **********************************************************************************************
+; **    Filename:  iaStorNull.inf
+; **    Revision:  DRIVER_INFO
+; **    Abstract:  Windows* Null INF File for SCU Intel(R) Rapid Storage Technology Enterprise Driver
+; **               Installs: Nothing
+; **********************************************************************************************
+;
+[Version] 
+Signature = "$Windows NT$" 
+Class=SCSIAdapter 
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318} 
+Provider=%INTEL% 
+CatalogFile=iaStorNull.cat
+DriverVer=10/27/2011,10.5.2.1010
+
+[PackageInfo]
+Name=SCU_NULL
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[Manufacturer] 
+%INTEL% = INTEL, NTx86
+;******************************************************************************
+;*
+;* NULL Driver section
+;*
+;* This section specifies INF file entries to install 
+;* a null driver for the SCU contoller(s)
+;*
+;******************************************************************************
+;
+ ;******************************************************************************
+;*
+;* 32-BIT X86 ARCHITECTURE
+;*
+;* This section specifies the 32-bit architecture specific INF file entries
+;* required to install a driver as a 32-bit compatible driver.
+;*
+;******************************************************************************
+ 
+[INTEL.NTx86] 
+
+;;; SCU 0 Device IDs
+%Intel_SAS_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D60
+%Intel_SAS_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D61
+%Intel_SAS_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D64
+%Intel_SAS_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D65
+%Intel_SAS_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D68
+%Intel_SAS_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D69
+%Intel_SATA_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D6A
+%Intel_SATA_NULL.Desc% = NO_DRV,PCI\VEN_8086&DEV_1D6B
+
+;******************************************************************************
+;*
+;* NULL Driver section
+;*
+;* This section specifies INF file entries to install 
+;* a null driver for the SCU contoller(s)
+;*
+;******************************************************************************
+
+[NO_DRV]
+Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+;******************************************************************************
+;*
+;* INF FILE STRINGS (VARIABLES)
+;*
+;* This section specifies variables that can be reused elsewhere in this
+;* INF file.
+;*
+;******************************************************************************
+[Strings] 
+;;;  *******Localizable Strings******* 
+
+diskId1                = "iaStorA Installation Disk"
+Intel_SAS_NULL.Desc    = "Intel(R) C600 Series Chipset SAS RAID Controller"
+Intel_SATA_NULL.Desc   = "Intel(R) C600 Series Chipset SAS RAID (SATA mode)"
+INTEL = "Intel Corporation"

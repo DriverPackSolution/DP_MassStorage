@@ -1,0 +1,101 @@
+;-------------------------------------------------------------------------
+;TRM390W.INF  --
+; Copyright (c) 1998-99
+;-------------------------------------------------------------------------
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%TekramName%
+;;LayoutFile=layout.inf
+
+; Class Install
+[ClassInstall32.NT]
+Addreg=SCSIReg
+
+;
+; diskid = description[,[tagfile][,<unused>,subdir]]
+;
+[SourceDisksNames]
+1 = ,,,
+
+[SourceDisksFiles]
+trm390w.sys = 1
+
+[SCSIReg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.Dll,ScsiClassInstaller"
+HKR,,Icon,,"-10"
+HKR,,LegacyInfOption,,"SCSI"
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+
+[Manufacturer]
+%TEKRAM%=TEKRAM
+
+;******************************
+;Tekram Manufacturer device list
+[TEKRAM]
+%DC310U.DeviceDesc%=trm390w_Inst,PCI\VEN_1000&DEV_0001
+%DC310U.DeviceDesc%=trm390w_Inst,PCI\VEN_1000&DEV_0006
+%DC390UFW.DeviceDesc%=trm390w_Inst,PCI\VEN_1000&DEV_0003
+%DC390UFW.DeviceDesc%=trm390w_Inst,PCI\VEN_1000&DEV_000F
+%DC390U2W.DeviceDesc%=trm390w_Inst,PCI\VEN_1000&DEV_000C
+
+[trm390w_Inst]
+CopyFiles = @trm390w.sys
+
+[trm390w_Inst.Services]
+AddService = trm390w, %SPSVCINST_ASSOCSERVICE%, trm390w_Service_Inst, Miniport_EventLog_Inst
+
+[trm390w_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\trm390w.sys
+LoadOrderGroup = SCSI Miniport
+AddReg	       = pnpsafe_pci_addreg
+
+
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+TekramName = "Tekram"
+SCSIClassName="SCSI and RAID controllers"
+
+TEKRAM = "Tekram"
+DC310U.DeviceDesc="Tekram DC-310/310U PCI SCSI Adapter"
+DC390UFW.DeviceDesc="Tekram DC-390U/F/W PCI SCSI Adapter"
+DC390U2W.DeviceDesc="Tekram DC-390U2B/U2W PCI SCSI Adapter"
+FLOPPY_DESCRIPTION="Tekram DC-390 U/W/F/U2 PCI SCSI Drivers Disk"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_DISABLE        = 4
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ	       = 0x00020000
+REG_DWORD	       = 0x00010001
+

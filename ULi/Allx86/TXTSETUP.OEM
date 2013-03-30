@@ -1,0 +1,91 @@
+#
+# TXTSETUP.OEM for M5228 ATA/RAID and M5281/M5283 SATA/RAID Controller 
+#
+
+[Disks]
+d1 = "ALi ATA SATA RAID Controller Driver Diskette", \Disk1, \
+d2 = "ALi ATA SATA RAID Controller Driver Diskette", \Disk1, \win_nt
+d3 = "ALi ATA SATA RAID Controller Driver Diskette", \Disk1, \win_2000
+d4 = "ALi ATA SATA RAID Controller Driver Diskette", \Disk1, \win_xp
+d5 = "ALi ATA SATA RAID Controller Driver Diskette", \Disk1, \WINXPA64
+
+[Defaults]
+scsi = m5281XP
+
+[scsi]
+m5281XP = "ALi SATA RAID Controller (Windows XP/Server 2003)", m5281
+m5228XP = "ALi ATA RAID Controller (Windows XP/Server 2003)", m5228
+m52812K = "ALi SATA RAID Controller (Win2000)", m5281
+m52282K = "ALi ATA RAID Controller (Win2000)", m5228
+m5281NT = "ALi SATA RAID Controller (WinNT 4.0)", m5281_NT
+m5228NT = "ALi ATA RAID Controller (WinNT 4.0)", m5228_NT
+m5281XPA64 = "ALi SATA RAID Controller (Windows XP/Server 2003 x64)", m5281
+m5228XPA64 = "ALi ATA RAID Controller (Windows XP/Server 2003 x64)", m5228
+
+[Files.scsi.m5228NT]
+driver = d2, m5228.sys, m5228_NT
+inf    = d2, m5228.inf, m5228_NT
+
+[Files.scsi.m5281NT]
+driver = d2, m5281.sys, m5281_NT
+inf    = d2, m5281.inf, m5281_NT
+
+[Config.scsi.m5228NT]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[Config.scsi.m5281NT]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[Files.scsi.m52282K]
+driver = d3, m5228.sys, m5228
+inf    = d3, m5228.inf, m5228
+
+[Files.scsi.m52812K]
+driver = d3, m5281.sys, m5281
+inf    = d3, m5281.inf, m5281
+
+[HardwareIds.scsi.m52282K]
+id = "PCI\VEN_10b9&DEV_5228","m5228"
+
+[HardwareIds.scsi.m52812K]
+id = "PCI\VEN_10b9&DEV_5281","m5281"
+
+[Files.scsi.m5228XP]
+driver = d4, m5228.sys, m5228
+inf    = d4, m5228.inf, m5228
+
+[Files.scsi.m5281XP]
+driver = d4, m5281.sys, m5281
+inf    = d4, m5281.inf, m5281
+
+[HardwareIds.scsi.m5228XP]
+id = "PCI\VEN_10B9&DEV_5228","m5228"
+
+[HardwareIds.scsi.m5281XP]
+id = "PCI\VEN_10B9&DEV_5281","m5281"
+
+
+[Files.scsi.m5228XPA64]
+driver = d5, m5228.sys, m5228
+inf    = d5, m5228.inf, m5228
+
+[Files.scsi.m5281XPA64]
+driver = d5, m5281.sys, m5281
+inf    = d5, m5281.inf, m5281
+
+[HardwareIds.scsi.m5228XPA64]
+id = "PCI\VEN_10B9&DEV_5228","m5228"
+
+[HardwareIds.scsi.m5281XPA64]
+id = "PCI\VEN_10B9&DEV_5281","m5281"
+
+[Config.m5281]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[Config.m5228]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+

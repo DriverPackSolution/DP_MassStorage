@@ -1,0 +1,220 @@
+;
+; SAS2XP86.INF - version XP.1 (Windows XP)
+;
+; This is the INF file for Windows XP for the SAS2XP86 SAS Gen2 driver
+;
+; ********************************************************************
+;                                                                    *
+;   Copyright 2008 LSI Corporation, Inc. All rights reserved.        *
+;                                                                    *
+;   This file is property of LSI Corporation, Inc. and is licensed   *
+;   for use as is.  The receipt of or possession of this file does   *
+;   convey any rights to modify its contents, in whole, or in part,  *
+;   without the specific written consent of LSI Corporation.         *
+;                                                                    *
+; ********************************************************************
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=04/04/2012,2.00.57.00
+CatalogFile.ntx86=sas2xp86.cat
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+; LSI_EXE_CopyFiles = 11 ; %SystemDrive%\windows\system32
+; LSI_CFGDEF_CopyFiles = 24, ProgramData\LSI\Wdcfg
+
+[SourceDisksFiles.x86]
+sas2xp86.sys = 1
+lsinodrv.inf = 1
+; wdcfg.exe = 1
+; DriverConfigParam.def = 1
+
+[SourceDisksNames]
+1 = %DiskDesc%,,
+
+[Manufacturer]
+%LSI%=LSI
+%DELL%=DELL
+%INTEL%=INTEL
+
+
+[LSI]
+%DevDesc1% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0064
+%DevDesc2% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0065
+%DevDesc3% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0070
+%DevDesc4% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0072
+%DevDesc5% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0074
+%DevDesc6% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0076
+%DevDesc7% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0077
+%DevDesc8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0080
+%DevDesc8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0081
+%DevDesc8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0082
+%DevDesc8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0083
+%DevDesc8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0084
+%DevDesc8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0085
+%DevDesc9% = SAS2XP86_Inst, PCI\VEN_1000&DEV_006E
+%DevDesc9% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0086
+%DevDesc9% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087
+%DevDescH1% = SAS2XP86_HP_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_3371103C
+
+[DELL]
+%DevDescD1% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F1C1028
+%DevDescD2% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F1D1028
+%DevDescD3% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F1E1028
+%DevDescD4% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F1F1028
+%DevDescD5% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F201028
+%DevDescD6% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F211028
+%DevDescD7% = SAS2XP86_Dell_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_1F221028
+
+[INTEL]
+%DevDescI1% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_350E8086
+%DevDescI2% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_350F8086
+%DevDescI3% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087&SUBSYS_30008086
+%DevDescI4% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0072&SUBSYS_37008086
+%DevDescI5% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087&SUBSYS_35168086
+%DevDescI6% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087&SUBSYS_35178086
+%DevDescI7% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087&SUBSYS_35188086
+%DevDescI8% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087&SUBSYS_35198086 
+%DevDescI9% = SAS2XP86_Inst, PCI\VEN_1000&DEV_0087&SUBSYS_30608086
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SAS2XP86_Inst]
+CopyFiles = SAS2XP86_CopyFiles
+; CopyFiles = LSI_EXE_CopyFiles
+; CopyFiles = LSI_CFGDEF_CopyFiles
+AddReg = SAS2XP86_AddReg
+AddReg = LSI_WDCFG_AddReg
+CopyINF = lsinodrv.inf
+
+[SAS2XP86_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+
+[SAS2XP86_Inst.Services]
+AddService = SAS2XP86, %SPSVCINST_ASSOCSERVICE%, SAS2XP86_Service_Inst, Miniport_EventLog_Inst
+
+[SAS2XP86_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,DriverParameter,0x00000002,"EnablePseudoDevice=1;"
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,MaximumSGList,0x00010001,0xFF
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,NumberOfRequests,0x00010001,0xFF
+
+[SAS2XP86_HP_Inst]
+CopyFiles = SAS2XP86_CopyFiles
+AddReg = SAS2XP86_HP_AddReg
+
+[SAS2XP86_HP_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+
+[SAS2XP86_HP_Inst.Services]
+AddService = SAS2XP86, %SPSVCINST_ASSOCSERVICE%, SAS2XP86_Service_Inst, Miniport_EventLog_Inst
+
+[SAS2XP86_HP_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,DriverParameter,0x00000002,"EnablePseudoDevice=1;"
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,MaximumSGList,0x00010001,0xFF
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,NumberOfRequests,0x00010001,0xFF
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x0000003C
+
+[SAS2XP86_Dell_Inst]
+CopyFiles = SAS2XP86_CopyFiles
+AddReg = SAS2XP86_Dell_AddReg
+
+[SAS2XP86_Dell_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+
+[SAS2XP86_Dell_Inst.Services]
+AddService = SAS2XP86, %SPSVCINST_ASSOCSERVICE%, SAS2XP86_Service_Inst, Miniport_EventLog_Inst
+
+[SAS2XP86_Dell_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\sas2xp86\Parameters\Device,DriverParameter,0x00000002,"EnablePseudoDevice=1;"
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x00000041
+
+[LSI_WDCFG_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Control\Wdcfg,TargetDriver,0x00000000,"SAS2XP86"
+
+[SAS2XP86_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\sas2xp86.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = bus_type_scsi
+
+[SAS2XP86_CopyFiles]
+sas2xp86.sys,,,1
+
+; [LSI_EXE_CopyFiles]
+; wdcfg.exe,,,2
+
+; [LSI_CFGDEF_CopyFiles]
+; DriverConfigParam.def,,,2
+
+[Shutdown_addreg]
+HKR,"ScsiPort","NeedsSystemShutdownNotification",0x00010001,1
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[bus_type_scsi]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+LSI = "LSI Corporation"
+DELL = "Dell Inc."
+INTEL = "Intel Corporation"
+DiskDesc = "LSI PCI Fusion-MPT SAS2 Driver Install Disk (ScsiPort)"
+DevDesc1 = "LSI Adapter, SAS2 2116 Meteor ROC(E)"
+DevDesc2 = "LSI Adapter, SAS2 2116 Meteor ROC"
+DevDesc3 = "LSI Adapter, SAS2 2004 Spitfire"
+DevDesc4 = "LSI Adapter, SAS2 2008 Falcon"
+DevDesc5 = "LSI Adapter, SAS2 2108 Liberator"
+DevDesc6 = "LSI Adapter, SAS2 2108 Liberator ROC(E)"
+DevDesc7 = "LSI Adapter, SAS2 2108 Liberator ROC"
+DevDesc8 = "LSI Adapter, SAS2 2208 Thunderbolt ROC -ScsiPort"
+DevDesc9 = "LSI Adapter, SAS2 2308 Mustang -ScsiPort"
+DevDescH1 = "HP SC08e 6Gb SAS HBA"
+DevDescD1 = "Dell 6Gbps SAS HBA"
+DevDescD2 = "Dell PERC H200 Adapter"
+DevDescD3 = "Dell PERC H200 Integrated"
+DevDescD4 = "Dell PERC H200 Modular"
+DevDescD5 = "Dell PERC H200 Embedded"
+DevDescD6 = "Dell PERC H200"
+DevDescD7 = "Dell Internal Tape Adapter"
+DevDescI1 = "Intel Integrated RAID Module RMS2LL080"
+DevDescI2 = "Intel Integrated RAID Module RMS2LL040"
+DevDescI3 = "Intel(R) RAID Controller RS25GB008"
+DevDescI4 = "Intel(R) SSD 910 Series"
+DevDescI5 = "Intel(R) Integrated RAID Module RMS25JB080"
+DevDescI6 = "Intel(R) Integrated RAID Module RMS25JB040"
+DevDescI7 = "Intel(R) Integrated RAID Module RMS25KB080"
+DevDescI8 = "Intel(R) Integrated RAID Module RMS25KB040" 
+DevDescI9 = "Intel(R) RAID Controller RS25FB044"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

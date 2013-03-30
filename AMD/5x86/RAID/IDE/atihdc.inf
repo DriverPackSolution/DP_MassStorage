@@ -1,0 +1,125 @@
+;
+; ATI Techonologies, Inc. Copyright(c) 1999-2003
+;
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%ATI%
+LayoutFile=layout.inf
+CatalogFile=atihdc.cat
+DriverVer=04/15/2004,5.0.0.2
+
+;Class Install
+[ClassInstall32.NT]
+AddReg=HDC_Class
+
+[HDC_Class]
+HKR,,,,%HDCClassName%
+HKR,,Icon,,"-9"
+HKR,,Installer32,,"SysSetup.Dll,HdcClassInstaller"
+HKR,,TroubleShooter-0,,"hcp://help/tshoot/tsdrive.htm"
+HKR,,DeviceType,0x10001,4                       ; FILE_DEVICE_CONTROLLER
+HKR,,DeviceCharacteristics,0x10001,0x100        ; Use same security checks on relative opens
+
+[storprop_copyfiles]
+storprop.dll
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+storprop_copyfiles = 11
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%ATI%=ATI_HDC
+
+
+[ATI_HDC]
+%ATI.DeviceDesc%=pciide_Inst, PCI\VEN_1002&DEV_4369       
+%ATI.DeviceDesc%=pciide_Inst, PCI\VEN_1002&DEV_436E       
+
+
+
+;****************************************************
+; Generic PCI IDE Controller (UNKNOWN_PCI_IDE)
+[pciide_Inst]
+CopyFiles = @pciide.sys
+CopyFiles = @pciidex.sys
+CopyFiles = @atapi.sys
+AddReg = atiide_AddReg
+
+[pciide_Inst.Services]
+AddService = pciide, %SPSVCINST_ASSOCSERVICE%, pciide_Service_Inst
+
+[pciide_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\pciide.sys
+LoadOrderGroup = System Bus Extender
+
+[pciide_Inst.PosDup]           
+*PNP0600
+
+
+[atiide_AddReg]
+HKR,, TransferModeTiming, %REG_MULTI_SZ%, \
+                "18", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "0", \
+                "15"
+
+
+
+
+
+[SyncAccess.RegHW]
+HKR,,SyncAccess,%REG_DWORD%,0x00000001
+
+[SourceDisksNames.x86]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles]
+; Files for disk ATI Technologies Inc. Installation Disk (IDE)
+
+[Strings]
+
+HDCClassName            = "IDE ATA/ATAPI controllers"
+MS                      = "Microsoft"
+MS-Drivers              = "(Standard IDE ATA/ATAPI controllers)"
+*PNP0600.PriDeviceDesc  = "Primary IDE Channel"
+*PNP0600.SecDeviceDesc  = "Secondary IDE Channel"
+PCI\CC_0101.DeviceDesc  = "Standard Dual Channel PCI IDE Controller ATI"
+
+ATI.DeviceDesc="ATI IDE Controller"
+ATI = "ATI Technologies Inc"
+DiskId1 = "ATI Technologies Inc. Installation Disk (IDE)"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_MULTI_SZ           = 0x00010000
+

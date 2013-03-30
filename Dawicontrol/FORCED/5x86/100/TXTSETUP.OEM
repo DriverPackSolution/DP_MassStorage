@@ -1,0 +1,73 @@
+#
+# TXTSETUP.OEM for HPT3xx UDMA/ATA100 RAID Controller
+#
+
+[Disks]
+d1 = "HPT3xx ATA RAID Controller Driver Diskette", \Disk1, \
+d2 = "HPT3xx ATA RAID Controller Driver Diskette", \Disk1, \win_nt
+d3 = "HPT3xx ATA RAID Controller Driver Diskette", \Disk1, \win_2000
+d4 = "HPT3xx ATA RAID Controller Driver Diskette", \Disk1, \win_xp
+
+[Defaults]
+scsi = hpt3xx2K
+
+[scsi]
+hpt3xx2K = "HighPoint HPT3xx ATA RAID Controller (Win2000)", hpt3xx
+hpt3xxXP = "HighPoint HPT3xx ATA RAID Controller (WinXP/2003)", hpt3xx
+hpt3xxNT =  "HPT372A/372N ATA RAID Controller (WinNT 4.0)", hpt3xx
+hpt3xx4NT = "HPT370/370A/372 ATA RAID Controller (WinNT 4.0)", hpt3xx
+hpt3xx6NT = "HPT302/302N ATA RAID Controller (WinNT 4.0)", hpt3xx
+
+[Files.scsi.hpt3xxNT]
+driver = d2, hpt3xx.sys, hpt3xx
+inf    = d2, hpt3xx.inf, hpt3xx
+
+[Config.scsi.hpt3xxNT]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[Files.scsi.hpt3xx4NT]
+driver = d2, hpt3xx.sys, hpt3xx
+inf    = d2, hpt3xx4.inf, hpt3xx
+
+[Config.scsi.hpt3xx4NT]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[Files.scsi.hpt3xx6NT]
+driver = d2, hpt3xx.sys, hpt3xx
+inf    = d2, hpt3xx6.inf, hpt3xx
+
+[Config.scsi.hpt3xx6NT]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[Files.scsi.hpt3xx2K]
+driver = d3, hpt3xx.sys, hpt3xx
+driver = d3, hptpro.sys, hpt3xx
+inf    = d3, hpt3xx.inf, hpt3xx
+catalog= d3, hpt3xx.cat
+
+[Config.scsi.hpt3xx2K]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[HardwareIds.scsi.hpt3xx2K]
+id = "PCI\VEN_1103&DEV_0005","hpt3xx"
+id = "PCI\VEN_1103&DEV_0004","hpt3xx"
+
+[Files.scsi.hpt3xxXP]
+driver = d4, hpt3xx.sys, hpt3xx
+driver = d4, hptpro.sys, hpt3xx
+inf    = d4, hpt3xx.inf, hpt3xx
+catalog= d4, hpt3xx.cat
+
+[Config.scsi.hpt3xxXP]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1
+
+[HardwareIds.scsi.hpt3xxXP]
+id = "PCI\VEN_1103&DEV_0005","hpt3xx"
+id = "PCI\VEN_1103&DEV_0004","hpt3xx"
+id = "PCI\VEN_1103&DEV_0006","hpt3xx"
+

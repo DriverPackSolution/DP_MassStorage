@@ -1,0 +1,43 @@
+; Copyright (c) 2010 Asmedia Technology 
+;#############################################################################
+;#
+;#    Filename:  TXTSETUP.OEM
+;#
+;#############################################################################
+[Disks]
+disk1 = "Asmedia 106x SATA Controller", asahxp64.sys, \
+
+[Defaults]
+scsi = asAHCI_64bit
+
+;#############################################################################
+[scsi]
+; asahxp64.inf
+asAHCI_64bit        = "Asmedia 106x SATA Controller 64bit"
+
+;#############################################################################
+;------------asahxp64.inf---------------------------
+; asahxp64.inf
+[Files.scsi.asAHCI_64bit]
+driver = disk1, asahxp64.sys, asahxp64
+inf = disk1, asahxp64.inf
+dll = disk1, ahcipp64.dll
+catalog = disk1, asahxp64.cat
+
+;#############################################################################
+[Config.asahxp64]
+value = parameters\PnpInterface,5,REG_DWORD,1
+value = "", ErrorControl, REG_DWORD, 1
+value = "", Group, REG_SZ, "SCSI Miniport"
+value = "", Start, REG_DWORD, 0
+value = "", Type, REG_DWORD, 1
+;#############################################################################
+; asahxp64.inf
+[HardwareIds.scsi.asAHCI_64bit]
+id = "PCI\VEN_1B21&DEV_0601","asahxp64"
+id = "PCI\VEN_1B21&DEV_0602","asahxp64"
+id = "PCI\VEN_1B21&DEV_0611","asahxp64"
+id = "PCI\VEN_1B21&DEV_0612","asahxp64"
+
+
+

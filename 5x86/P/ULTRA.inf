@@ -1,0 +1,138 @@
+; ULTRA.INF
+; Copyright 2002 Promise Technology, Inc.
+;
+[Version]
+CatalogFile=ultra.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=05/16/2003, 2.0.0.43
+;
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+MoveMiniPort.ntx86 = 12;
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[SourceDisksNames.x86]
+1=%DISKNAME1%
+
+[SourceDisksFiles.x86]
+ultra.sys=1,,
+;ultra.inf=1,,
+
+[SourceDisksFiles]
+Ultra.sys = 1
+
+[Manufacturer]
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_4D69.DeviceDesc%=ultra133TX2,PCI\VEN_105A&DEV_4D69
+%PCI\VEN_105A&DEV_4D68.DeviceDesc%=ultra100TX2,PCI\VEN_105A&DEV_4D68
+%PCI\VEN_105A&DEV_4D30&SUBSYS_4D33105A.DeviceDesc%=ultra100PCI,PCI\VEN_105A&DEV_4D30&SUBSYS_4D33105A
+%PCI\VEN_105A&DEV_0D30&SUBSYS_4D33105A.DeviceDesc%=ultra100PCI_2,PCI\VEN_105A&DEV_0D30&SUBSYS_4D33105A
+%PCI\VEN_105A&DEV_4D38&SUBSYS_4D33105A.DeviceDesc%=ultra66PCI ,PCI\VEN_105A&DEV_4D38&SUBSYS_4D33105A
+%PCI\VEN_105A&DEV_4D33.DeviceDesc%                =ultra33PCI ,PCI\VEN_105A&DEV_4D33
+
+;************** U133 **************
+[ultra133TX2.Uninstall.ntx86]
+DelReg=RegUninstall.del
+DelFiles=MoveMiniPort.ntx86
+
+[ultra133TX2.ntx86]
+CopyFiles = MoveMiniPort.ntx86 
+
+[ultra133TX2.ntx86.Services]
+AddService = Ultra, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+;************** U100 **************
+[ultra100TX2.Uninstall.ntx86]
+DelReg=RegUninstall.del
+DelFiles=MoveMiniPort.ntx86
+
+[ultra100TX2.ntx86]
+CopyFiles = MoveMiniPort.ntx86 
+
+[ultra100TX2.ntx86.Services]
+AddService = Ultra, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+[ultra100PCI.Uninstall.ntx86]
+DelReg=RegUninstall.del
+DelFiles=MoveMiniPort.ntx86
+
+[ultra100PCI.ntx86]
+CopyFiles = MoveMiniPort.ntx86 
+
+[ultra100PCI.ntx86.Services]
+AddService = Ultra, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+[ultra100PCI_2.Uninstall.ntx86]
+DelReg=RegUninstall.del
+DelFiles=MoveMiniPort.ntx86
+
+[ultra100PCI_2.ntx86]
+CopyFiles = MoveMiniPort.ntx86 
+
+[ultra100PCI_2.ntx86.Services]
+AddService = Ultra, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+[ultra66PCI.Uninstall.ntx86]
+DelReg=RegUninstall.del
+DelFiles=MoveMiniPort.ntx86
+
+[ultra66PCI.ntx86]
+CopyFiles = MoveMiniPort.ntx86 
+
+[ultra66PCI.ntx86.Services]
+AddService = Ultra, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+[ultra33PCI.Uninstall.ntx86]
+DelReg=RegUninstall.del
+DelFiles=MoveMiniPort.ntx86
+
+[ultra33PCI.ntx86]
+CopyFiles = MoveMiniPort.ntx86 
+
+[ultra33PCI.ntx86.Services]
+AddService = Ultra, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+
+[ultraPCI_Service_Inst]
+ServiceType = 1 
+StartType = 0
+ErrorControl = 1 
+ServiceBinary = %12%\ultra.sys 
+LoadOrderGroup = "SCSI Miniport"
+AddReg = pnpsafe_pci_addreg
+
+[MoveMiniPort.ntx86] 
+Ultra.sys
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[RegUninstall.del]
+HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Ultra
+
+[strings]
+Promise="Promise Technology"
+PCI\VEN_105A&DEV_4D69.DeviceDesc="WinXP Promise Ultra133 TX2 (tm) IDE Controller"
+PCI\VEN_105A&DEV_4D68.DeviceDesc="WinXP Promise Ultra100 TX2 (tm) IDE Controller"
+PCI\VEN_105A&DEV_4D30&SUBSYS_4D33105A.DeviceDesc="WinXP Promise Ultra100 (tm) IDE Controller"
+PCI\VEN_105A&DEV_0D30&SUBSYS_4D33105A.DeviceDesc="WinXP Promise Ultra100 (tm) IDE Controller (PDC20265)"
+PCI\VEN_105A&DEV_4D38&SUBSYS_4D33105A.DeviceDesc="WinXP Promise Ultra66 (tm) IDE Controller"
+PCI\VEN_105A&DEV_4D33.DeviceDesc=        	 "WinXP Promise Ultra33 (tm) IDE Controller"
+
+DISKNAME1="Promise Ultra Series Driver Diskette"
+
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001

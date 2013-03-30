@@ -1,0 +1,179 @@
+
+;  Copyright (C) 1998-2007 Promise Technology,Inc
+
+[Version]
+Signature="$Chicago$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+CatalogFile=ulsata2.cat
+DriverVer=05/16/2007, 1.00.0.39
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[SourceDisksFiles]
+ulsata2.sys = 1
+;bb-run.sys = 1
+dontgo.sys = 1
+ulutil2.dll = 1
+
+[DestinationDirs]
+DefaultDestDir	= 12
+CacheDll = 11;
+
+;[DriverFiles_9X]
+
+[DriverFiles_NT_2K]
+ulsata2.sys,,,0x20
+
+[DriverFiles_XP]
+ulsata2.sys,,,0x20
+
+[FilterDriverFiles]
+;bb-run.sys,,,0x20
+dontgo.sys,,,0x20
+
+[CacheDll]
+ulutil2.dll,,,0x20
+
+[Manufacturer]
+%Promise%=Promise,NTx86.5.1
+
+[Promise]
+%SATAII150_579.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3574
+%SATAII150_575.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D75
+%SATAII150_518.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D18
+%SATA300_779.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3577&SUBSYS_3D77105A
+%SATA300_775.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D73
+%SATA300_718.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D17
+%Promise_Sata_ControllerDesc%=NODRV,SCSI\ProcessorPromise_SATA_Console____
+
+[Promise.NTx86.5.1]
+%SATAII150_579.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3574
+%SATAII150_575.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D75
+%SATAII150_518.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D18
+%SATA300_779.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3577&SUBSYS_3D77105A
+%SATA300_775.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D73
+%SATA300_718.DeviceDesc%=ultra575PCI,PCI\VEN_105A&DEV_3D17
+%Promise_Sata_ControllerDesc%=NODRV,SCSI\ProcessorPromise_SATA_Console____
+ 
+[NODRV]
+AddReg=NODRV_AddReg
+;
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+;; Win9x install sections
+;;
+;[ultra575PCI]
+
+;; Windows NT4.0 and Windows 2000 install sections
+;;
+[ultra575PCI.NTx86]
+Copyfiles=DriverFiles_NT_2K, FilterDriverFiles, CacheDll
+AddReg   = DontGo.AddReg 
+
+[ultra575PCI.NTx86.Services]
+AddService = ulsata2, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+;AddService = bb-run,,FilterService_Install
+AddService = dontgo,,DontGo.Service.Install
+
+;; Windows XP install sections
+;;
+[ultra575PCI_XP]
+Copyfiles=DriverFiles_XP, FilterDriverFiles, CacheDll
+AddReg   = DontGo.AddReg 
+
+[ultra575PCI_XP.Services]
+AddService = ulsata2, 2, ultraPCI_Service_Inst, Miniport_EventLog_Inst
+;AddService = bb-run,,FilterService_Install
+AddService = dontgo,,DontGo.Service.Install
+
+[ultraPCI_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ulsata2.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg         = pnpsafe_pci_addreg, ulsata2_cache_addreg, ulsata2_capabilities_addreg
+
+[FilterService_Install]
+DisplayName	= Promise driver accelerator
+ServiceType	= 1
+StartType	= 0
+ErrorControl	= 0
+ServiceBinary	= %12%\bb-run.sys
+LoadOrderGroup  = "Filter"
+
+[DontGo.Service.Install]
+DisplayName    = %DontGo_Service_Desc%
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DontGo.sys
+LoadOrderGroup = "PnP Filter"
+
+; supporting P&P on the PCI(5) bus.
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x00000080
+
+;*************************************************************
+[ulsata2_cache_addreg]
+;HKR, "Parameters\Cache", "DefSize", 0x00010001, 0x00900000
+;HKR, "Parameters\Cache", "Flag",, "TRUE"
+;HKR, "Parameters\Cache", "CACHEON", 0x00010001, 0x00000001
+;HKR, "Parameters\Cache", "DrvSetting", 0x00010001, 0x00000000
+HKR, "Parameters\Cache", "LongBurstDisable", 0x00010001, 0x00000001
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Run","PtiuPbmd",,"Rundll32.exe ulutil2.dll,SetWriteBack"
+HKLM,"SYSTEM\CurrentControlSet\Services\Disk","TimeOutValue", 0x00010001, 0x0000003c
+
+;*************************************************************
+[ulsata2_capabilities_addreg]
+HKR, "Parameters\Capabilities", "TAG_CMD", 0x00010001, 0x00000000
+
+[DontGo.AddReg]
+HKLM, System\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00010008, DontGo
+
+[DontGo.DelReg]
+HKLM, System\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00018002, DontGo
+
+[NODRV_AddReg]
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\ulsata2.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+;[IOS]
+;HKR,,DevLoader,,*IOS
+;HKR,,DontLoadIfConflict,,"Y"
+
+;[WIN98.REG]
+;HKR,,PortDriver,,98DriverName.mpd
+
+[strings]
+Promise="Promise Technology"
+SATAII150_575.DeviceDesc="Windows Promise SATAII150 TX2plus (tm) IDE Controller"
+SATAII150_518.DeviceDesc="Windows Promise SATAII150 TX4 (tm) IDE Controller"
+SATAII150_579.DeviceDesc="Windows Promise SATAII150 579 (tm) IDE Controller"
+SATA300_775.DeviceDesc="Windows Promise SATA300 TX2plus (tm) IDE Controller"
+SATA300_718.DeviceDesc="Windows Promise SATA300 TX4 (tm) IDE Controller"
+SATA300_779.DeviceDesc="Windows Promise SATA300 779 (tm) IDE Controller"
+DISKNAME1="Promise SATAII150 TX Series Driver Diskette"
+DISKNAME2="Windows system"
+Promise_Sata_ControllerDesc= "Promise SATA Console SCSI Processor"
+DontGo_Service_Desc = "Promise Removable Disk Control Driver"
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+SPSVCINST_ASSOCSERVICE = 0x00000002

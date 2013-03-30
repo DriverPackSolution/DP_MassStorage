@@ -1,0 +1,44 @@
+; This file installs the SiI 3112 non-RAID seial ATA driver as part
+; of text mode setup on Windows NT, Windows 2000, and Windows XP.
+
+
+[Disks]
+disk1 = "Adaptec Serial ATA 1205SA Driver Installation Disk",\si3112.sys,\
+
+
+[Defaults]
+SCSI = Si3112
+
+
+[SCSI]                  ; HwComponent section
+Si3112 = "Adaptec Serial ATA 1205SA Host Controller"
+
+
+[Files.SCSI.Si3112]
+driver = disk1,si3112.sys, Si3112
+inf = disk1,ASH1205.inf
+dll = disk1,SilSupp.cpl
+;;catalog = disk1, Si3112.cat
+
+
+[HardwareIds.SCSI.Si3112]
+id = "PCI\VEN_1095&DEV_3112&SUBSYS_31121095", "Si3112"
+id = "PCI\VEN_1095&DEV_3112&SUBSYS_34238086", "Si3112"
+id = "PCI\VEN_1095&DEV_3512&SUBSYS_35121095", "Si3112"
+id = "PCI\VEN_1095&DEV_3512&SUBSYS_34238086", "Si3112"
+id = "PCI\VEN_1095&DEV_3512&SUBSYS_02509005", "Si3112"
+
+[Config.Si3112]
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"
+value = ProblemDevices, "ST320012AS", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST330013AS", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST340017AS", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST360015AS", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST380023AS", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST3120023AS", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST340014ASL", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST360014ASL", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST380011ASL", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST3120022ASL", REG_SZ, "Mod15Write"
+value = ProblemDevices, "ST3160021ASL", REG_SZ, "Mod15Write"

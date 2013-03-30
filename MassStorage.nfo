@@ -1,0 +1,112 @@
+13.03.4
+-------
+* Обновлены драйверы Intel(R) AHCI Rapid Storage Technology 11.7.3.1001
+
+
+13.03.3
+-------
+* Обновлены драйверы VIA RAID Controller 6.0.7600.6250
+* Обновлены драйверы VIA Serial ATA Controller 6.0.6000.252
+* Обновлены драйверы VIA StorX Storage IDE Controller 5.1.7600.1301
+* Изменена структура маркеров для драйверов VIA
+
+
+13.03.2
+-------
+* Полностью перебраны и обновлены драйверы Adaptec, ARECA, Dawicontrol, HighPoint, LSI
+* Обновлены драйверы Intel(R) 7 Series Chipset Family SATA AHCI Controller 12.0.0.1082 WHQL
+
+
+13.03.1
+-------
++ Добавлены драйверы Intel(R) Rapid Start Technology Drive 2.1.0.1002
+
+
+13.02.4
+-------
++ Добавлены драйверы FiraDisk Virtual Disk Enumerator 0.0.1.30
++ Добавлены драйверы Adaptec Embedded Serial ATA HostRAID 7.00.00.045
+* Обновлены драйверы Intel(R) AHCI Rapid Storage Technology 11.7.1.1001
+* Обновлены драйверы Intel(R) 7 Series Chipset Family SATA AHCI Controller 12.0.0.1082
+* Обновлены драйверы AMD AHCI Compatible RAID Controller 3.3.1540.33 XP
+* Обновлены драйверы AMD PCI IDE Controller 5.2.2.0179
+* Обновлены драйверы AMD SATA Controller 1.3.001.0068
+
+
+13.02.2
+-------
+* Обновлены драйверы ASMEDIA AHCI SATA Controller 1.3.9
+
+
+13.01.5
+-------
++ Добавлены твиканные драйверы для устройств Intel
++ Добавлены твиканные драйверы для устройств nVidia
+* Обновлены драйверы ASMEDIA AHCI SATA Controller 1.3.8
+* Обновлены драйверы Silicon Image Serial ATA Raid 1.5.19.0
+* Обновлены драйверы Marvell 64xx/63xx SAS Controller 3.1.0.2408
+* Обновлены драйверы Intel(R) C600 Series Chipset SAS RAID Controller 3.6.0.1090
+* Обновлены драйверы Intel(R) C220 Series Chipset SATA AHCI Controller 3.6.0.1086
+
+
+13.01.4
+-------
++ Добавлены драйверы nVIDIA nForce Serial ATA Controller 11.1.51.3
++ Добавлены драйверы Tekram DC-395U/UW/F, DC-315/U, DC-305I/E SCSI Host Adapters 3.0.3
+
+
+13.01.3
+-------
+* Обновлены и добавлены драйверы для AEC PCI Adapters
+* Обновлены драйверы AMD 13.1
+
+
+13.01.2
+-------
+* Обновлены драйверы LSI SAS Expander 0.0.4.1 и LSI Fusion-MPT 2.00.58
+
+
+13.01.1
+-------
++ Добавлены драйверы Intel(R) AHCI Storport Miniport 1.0.0.0
++ Добавлены драйверы ACARD  AEC-6293 2-CH SATA & 1-CH IDE Adapter 1.0.1.5
++ Добавлены драйверы ACARD AEC-67162 PCI Ultra3 LVD/SE Controller 2.0.30.0
+
+
+13.00.2
+-------
+* Обновлены драйверы NVIDIA nForce IDE + RAID
+
+
+13.00.1
+-------
++ Добавлены драйверы Symstor Mass Storage Device 1.0.0.0
++ Добавлены драйверы Intel(R) Rapid Storage Technology 10.5.2.1010
+* Обновлены драйверы NVIDIA nForce Serial ATA Controller 5.10.2600.0699
+* Обновлены драйверы LSI MegaRAID IDE Family 4.1.0511.2004
+* Обновлены драйверы LSI MegaRAID Family 4.4.0630.2006
+
+
+13.00.0
+-------
+* Каталогизация драйверов по вендорам и удаление дубликатов
++ Добавлены драйверы OCZ RevoDrive
+* Обновлены драйверы VMware VMCI Bus Device и VMware SCSI Controller
+* Обновлены драйверы AMD SATA Controller (IDE Mode)
+
+
+12.12.4
+-------
++ Добавлен драйвер AHCI Intel(R) Rapid Storage Technology 10.5.2.1010 для Windows XP
+* Обновлены драйверы Marvell 1.2.0.1027
+
+
+12.12.3
+-------
++ Добавлен маркер FORCED для драйверов Intel дабы отсечь установку драйвера x86 на систему x64 и наоборот
+
+
+12.12.2
+-------
+* Обновлены драйверы LSI ESRT2 Intel(R) C600 v15.00.0811.2012
+* Обновлены драйверы AHCI Intel(R) Rapid Storage Technology PCH9 v11.7.0.1013

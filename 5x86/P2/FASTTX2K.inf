@@ -1,0 +1,100 @@
+; FASTTX2K.INF
+; Copyright 2002 Promise Technology, Inc.
+
+[Version]
+CatalogFile=Fasttx2k.cat
+Signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=08/06/2003, 1.00.0.37
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+MoveMiniPort.NT = 12;
+CacheDll.NT = 11;
+
+[ControlFlags]
+
+[Manufacturer]
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_105A&DEV_6629.DeviceDesc% = FasttrakPCI_TX4000, PCI\VEN_105A&DEV_6629
+%PCI\VEN_105A&DEV_3371.DeviceDesc% = FasttrakPCI_TX4000, PCI\VEN_105A&DEV_3371
+%PCI\VEN_105A&DEV_3319.DeviceDesc% = FasttrakPCI_TX4000, PCI\VEN_105A&DEV_3319
+%Promise_Raid_ControllerDesc%=NODRV,SCSI\ProcessorPromise_RAID_Console____
+
+[NODRV]
+AddReg=NODRV_AddReg
+;
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[FasttrakPCI_TX4000.NT]
+CopyFiles=MoveMiniPort.NT,CacheDll.NT
+
+[FasttrakPCI_TX4000.NT.Services]
+AddService = fasttx2k, 2, FasttrakPCI_Service_Inst, Miniport_EventLog_Inst
+
+[FasttrakPCI_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\fasttx2k.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg         = pnpsafe_pci_addreg,ftsata_cache_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[ftsata_cache_addreg]
+HKR, "Parameters\Cache", "DefSize", 0x00010001, 0x00900000
+HKR, "Parameters\Cache", "Flag",0x00010001, 0x00000001
+HKR, "Parameters\Cache", "WriteMode",0x00010001, 0x00000001
+HKR, "Parameters\Cache", "ThreadNum",0x00010001, 0x00000010
+HKR, "Parameters\Cache", "HotSpareDisable",0x00010001, 0x00000000
+HKR, "Parameters\Cache", "CheckboxEnable",0x00010001, 0x00000001
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Run","Ptipbmf",,"rundll32.exe ptipbmf.dll,SetWriteCacheMode"
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[MoveMiniPort.NT]
+Fasttx2k.sys
+
+[CacheDll.NT]
+ptipbmf.dll
+
+[SourceDisksFiles]
+Fasttx2k.sys = 1
+ptipbmf.dll = 1
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[NODRV_AddReg]
+
+[strings]
+Promise="Promise Technology"
+PCI\VEN_105A&DEV_6629.DeviceDesc="WinXP Promise FastTrak TX4000 (tm) Controller"
+PCI\VEN_105A&DEV_3371.DeviceDesc="WinXP Promise FastTrak S150 TX2plus (tm) Controller"
+PCI\VEN_105A&DEV_3319.DeviceDesc="WinXP Promise FastTrak S150 TX4 (tm) Controller"
+
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="Promise FastTrak TX4000/S150 TX Series Driver Diskette"
+DISKNAME2="Windows system"
+
+Promise_Raid_ControllerDesc= "WinXP Promise RAID Console SCSI Processor Device" 
+SPSVCINST_ASSOCSERVICE = 0x00000002

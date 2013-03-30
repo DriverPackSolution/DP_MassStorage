@@ -1,0 +1,227 @@
+======================================================================
+                                                                    
+  	Adaptec ASC-1405/1045 SAS/SATA Controller
+  	          Driver README.TXT      
+          ( for Windows Operating Systems)                    
+                                                                 
+         Release Date August 07, 2009                              	     
+                         
+======================================================================
+
+CONTENTS
+
+   1. Overview
+   2. Supported Hardware 
+   3. Windows Operating Systems Support
+   4. Registry Parameters/Command Line Options
+
+
+1. OVERVIEW
+
+   This file contains information about the Adaptec SAS/SATA
+   1405, 1045 Controller for Windows Operating Systems.
+   
+2. SUPPORTED HARDWARE
+
+   The following hardware is supported by this driver:
+
+   Hardware                             	Description
+   -------------------------------------------------------------------
+   Adaptec ASC-1405 SAS/SATA Controller  Single Channel PCIe Controller
+   
+   Adaptec ASC-1045 SAS/SATA Controller  Single Channel PCIe Controller
+ 
+ 
+ 
+3. WINDOWS OPERATING SYSTEMS SUPPORT
+
+      - 32-BIT WINDOWS OPERATING SYSTEMS SUPPORT
+
+            - Microsoft Windows Server 2003 (Standard, Enterprise,& Web Editions) Service Pack 2 
+            - Microsoft Windows XP Professional Service Pack 3
+            - Microsoft Windows Vista Service Pack 2 
+            - Microsoft Windows Server 2008 Service Pack 2
+
+ 
+       - 64-BIT WINDOWS OPERATING SYSTEMS SUPPORT
+
+            - Microsoft Windows Server 2003 (Standard, Enterprise Editions) Service Pack 2
+            - Microsoft Windows XP Professional Service Pack 2
+            - Microsoft Windows Vista  Service Pack 2
+            - Microsoft Windows Server 2008 Service Pack 2   
+
+
+4. REGISTRY PARAMETERS
+ 	Note: In any of the Driver or SAS Registry parameters, the values entered
+	other than the specified value will be overrided with the default value.
+
+   4.1 Driver Specific Registry Parameters
+
+       WARNING: Altering or adding these driver parameters
+       incorrectly can render your system inoperable.
+       Use them with caution.
+
+        Follow the instructions below to enter the registry values
+        that affect the configuration information for Adaptec SAS
+        Card drivers. All SAS Cards supported by the installed
+        driver are affected by the values you enter here.
+
+        Each driver has its own "key" reference. In this example,
+        the adpinv key is used. To enter 
+        driver-specific parameters, follow these steps: 
+
+        1) Select Run from the Start button.
+        2) Type "regedt32" and press Enter.
+        3) Open the registry list to the following location: 
+
+           HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\
+           adpinv\Parameters\Device\
+   
+           If the \Parameters\Device\ keys already exist, skip to
+           step 6 below to begin entering parameters. If the keys
+           do not yet exist, you will need to create them by 
+           continuing with step 4.
+        4) Click on the adpinv key. Select the Add Key from the
+           Edit menu; Type "Parameters" in the Key Name edit box.
+           Leave the Class edit box blank.
+        5) Click on the Parameters key. Select the Add Key from the
+           Edit menu; Type "Device" in the Key Name edit box. Leave
+           the Class edit box blank. To specify a certain host 
+           adapter, append Device with the number of the host 
+           adapter. For example, type "Device0" for the first host
+           adapter, "Device1" for the second, etc. If you omit the
+           host adapter number, the configuration information
+           applies to all supported host adapters.
+        6) Click on the Device key. Select Add Value from the Edit
+           menu; type "DriverParameters" in the Value Name edit 
+           box. Enter the Data Type and press Enter. A String 
+           Editor text box appears. Enter valid parameters in the
+           text box. When entering multiple parameters, each
+           parameter must be separated by a space. To enter 
+           additional values, repeat step 6. 
+   
+     Note: Changes made with the Registry Editor do not take effect
+           until you shut down and then restart your system.
+
+   ----------------------------------------------------------------
+            Option: /MAXTAGS=[value]
+        Definition: Specifies a tagged command queue depth per
+                    target.
+         Data Type: REG_SZ
+   Possible Values: 1-255
+     Default Value: 32
+   ----------------------------------------------------------------
+            Option: /MAXIMUMSGLIST=[value]
+        Definition: Sets the maximum transfer size for an 
+                    individual command. The formula is:
+                    TRANSFER SIZE = PAGE_SIZE * (number of 
+                    elements -1)
+         Data Type: REG_SZ
+   Possible Values: 33-255
+     Default Value: 33
+   ----------------------------------------------------------------
+            Option: /EventMessageFile=[value]
+        Definition: Sets the path of the Adaptec driver. This
+                    setting enable the EventViewer to read the
+                    symbols from the Adaptec driver in the
+                    specified path.
+         Data Type: REG_EXPAND_SZ
+   Possible Values: 2-255
+     Default Value: %%SystemRoot%%\System32\drivers\adpinv.sys
+   ----------------------------------------------------------------
+            Option: /TypesSupported=[value]
+        Definition: Sets the event logging level.
+         Data Type: REG_SZ
+   Possible Values: 1-7
+     Default Value: 7
+   ---------------------------------------------------------------- 
+
+   4.2. Windows SAS Driver Parameters
+
+       WARNING: Altering or adding these driver parameters
+       incorrectly can render your system inoperable.
+       Use them with caution.
+
+        Follow the instructions below to enter the registry values
+        that affect how the Windows SAS manager interprets the
+        generic configuration information of SAS device drivers. 
+        All SAS Cards supported by the installed driver are 
+        affected by the values you enter here.
+
+        Follow the instructions below to enter the registry values
+        that affect the configuration information for Adaptec SAS
+        Card drivers. All SAS Cards supported by the installed
+        driver are affected by the values you enter here.
+
+        Each driver has its own "key" reference. In this example,
+        the adpinv key is used. To enter Windows
+        parameters, follow these steps: 
+
+        1) Select Run from the start button.
+        2) Type "regedt32" and press Enter.
+        3) Open the registry list to the following location: 
+
+           HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\
+           adpinv\Parameters\Device\
+   
+           If the \Parameters\Device\ keys already exist, skip to
+           step 6 below to begin entering parameters. If the keys
+           do not yet exist, you will need to create them by 
+           continuing with step 4.
+        4) Click on the adpinv key. Select the Add Key from the
+           Edit menu; Type "Parameters" in the Key Name edit box.
+           Leave the Class edit box blank.
+        5) Click on the Parameters key. Select the Add Key from the
+           Edit menu; Type "Device" in the Key Name edit box. Leave
+           the Class edit box blank. To specify a certain host 
+           adapter, append Device with the number of the host 
+           adapter. For example, type "Device0" for the first host
+           adapter, "Device1" for the second, etc. If you omit the
+           host adapter number, the configuration information
+           applies to all supported host adapters.
+        6) Click on the Device key. Select Add Value from the Edit
+           menu. In the Value Name edit box, enter one of the valid
+           parameter values. Make sure to enter the appropriate
+           Data Type for the value. To enter additional values, 
+           repeat step 6. 
+   
+     Note: Changes made with the Registry Editor do not take effect
+           until you shut down and then restart your system.
+	
+
+   ----------------------------------------------------------------
+            Option: MAXLUNS
+        Definition: Specifies the number of devices that will be
+                    scanned during device discovery. 
+         Data Type: REG_DWORD
+   Possible Values: 1-255
+     Default Value: 128
+   ----------------------------------------------------------------
+   
+-------------------------------------------------------------------	
+
+
+COPYRIGHT
+
+   (c) 2009 Adaptec, Inc. All Rights Reserved. 
+
+   This software contains the valuable trade secrets of Adaptec or its
+   licensors. The software is protected under international copyright
+   laws and treaties. This software may only be used in accordance with 
+   the terms of its accompanying license agreement.
+
+   No part of this publication may be reproduced, stored in a retrieval
+   system, or transmitted in any form or by any means, electronic,
+   mechanical, photocopying, recording or otherwise, without prior
+   written consent of Adaptec, Inc., 691 South Milpitas Blvd.,
+   Milpitas, CA 95035.
+
+DISCLAIMER
+    
+    THIS DOCUMENT IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+    IBM DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED,
+    INCLUDING WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF FITNESS
+    FOR A PARTICULAR PURPOSE AND MERCHANTABILITY WITH RESPECT TO THE
+    INFORMATION IN THIS DOCUMENT.  BY FURNISHING THIS DOCUMENT, ADAPTEC
+    GRANTS NO LICENSES TO ANY PATENTS OR COPYRIGHTS.
+

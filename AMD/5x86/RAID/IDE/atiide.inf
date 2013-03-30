@@ -1,0 +1,98 @@
+; Copyright (c) 2000-2004 ATI Technologies Inc
+;
+; INF File for ATI IDE Bus Master Controller
+;
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%ATI%
+CatalogFile = atiide.cat
+
+DriverVer=05/23/2004,1.00.0000.3
+
+[SourceDisksNames.x86]
+1 = %DiskId%,,,""
+2 = %DiskId%,,,""
+
+[SourceDisksFiles]
+atiide.sys  = 1
+atiide2k.sys = 2
+
+
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1002&DEV_4349
+
+[Manufacturer]
+%ATI%=ATI_HDC,NTx86.5.1
+
+;**********************... W2K .....*************************
+
+
+[ATI_HDC]
+%PCI\VEN_1002&DEV_4349.DeviceDesc% = atiide_Inst2k, PCI\VEN_1002&DEV_4349
+
+
+;**********
+; ATI Dual Channel Bus Master PCI IDE Controller 
+[atiide_Inst2k]
+CopyFiles = @atiide2k.sys
+
+[atiide_Inst2k.Services]
+AddService = atiide2k, %SPSVCINST_ASSOCSERVICE%, atiide_Service_Inst2k
+
+[atiide_Service_Inst2k]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\atiide2k.sys
+LoadOrderGroup = System Bus Extender
+;******************************************************
+
+;*********************....  XP ....*************************
+
+[ATI_HDC.NTx86.5.1]
+%PCI\VEN_1002&DEV_4349.DeviceDesc% = atiide_Instxp, PCI\VEN_1002&DEV_4349
+
+
+;********
+; ATI Dual Channel Bus Master PCI IDE Controller 
+[atiide_Instxp]
+CopyFiles = @atiide.sys
+
+[atiide_Instxp.Services]
+AddService = atiide, %SPSVCINST_ASSOCSERVICE%, atiide_Service_Inst
+
+[atiide_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\atiide.sys
+LoadOrderGroup = System Bus Extender
+;******************************************************
+
+
+
+[ControlFlags]
+CopyFilesOnly=PCI\VEN_1002&DEV_4349				
+
+[Strings]
+MS                       = "Microsoft"
+ATI                      = "ATI Technologies Inc"
+PCI\VEN_1002&DEV_4349.DeviceDesc="ATI PCI IDE Bus Master Controller"
+DiskId       = "ATI Technologies Inc. Installation DISK (IDE)"
+
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+
+

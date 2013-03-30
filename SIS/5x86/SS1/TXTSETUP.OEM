@@ -1,0 +1,55 @@
+[Disks]
+d1 = "SiS Raid/IDE Driver Diskette", \SISRAID, \
+d2 = "SiS Raid/IDE Driver Diskette", \SISRAID, \RAID\SRV2003
+d3 = "SiS Raid/IDE Driver Diskette", \SISRAID, \RAID\WIN2000
+d4 = "SiS Raid/IDE Driver Diskette", \SISRAID, \RAID\WINXP
+d5 = "SiS Raid/IDE Driver Diskette", \SISRAID, \RAID\WS03XP64
+
+[Defaults]
+scsi = SISRAID_XP
+
+[scsi]
+SISRAID_2003 = "Srv2003 32bit SiS Raid/IDE Controller"
+SISRAID_XP = "WinXP 32bit SiS Raid/IDE Controller"
+SISRAID_2000 = "Win2000 32bit SiS Raid/IDE Controller"
+SISRAID_64 = "Windows 64bit SiS Raid/IDE Controller"
+
+[Files.scsi.SISRAID_2003]
+driver = d2, SiSRaid.sys, SiSRaid
+dll    = d2, Property.dll
+inf    = d2, SiSRaid.inf
+catalog= d2, sisraid.cat
+
+[HardwareIds.scsi.SISRAID_2003]
+id="PCI\VEN_1039&DEV_0180", "SiSRaid"
+
+[Files.scsi.SISRAID_XP]
+driver = d4, SiSRaid.sys, SiSRaid
+dll    = d4, Property.dll
+inf    = d4, SiSRaid.inf
+catalog= d4, sisraid.cat
+
+[HardwareIds.scsi.SISRAID_XP]
+id="PCI\VEN_1039&DEV_0180", "SiSRaid"
+
+[Files.scsi.SISRAID_2000]
+driver = d3, SiSRaid.sys, SiSRaid
+dll    = d3, Property.dll
+inf    = d3, SiSRaid.inf
+catalog= d3, sisraid.cat
+
+
+[HardwareIds.scsi.SISRAID_2000]
+id="PCI\VEN_1039&DEV_0180", "SiSRaid"
+
+[Files.scsi.SISRAID_64]
+driver = d5, SiSRaid.sys, SiSRaid
+;dll    = d5, Property.dll
+inf    = d5, SiSRaid.inf
+catalog= d5, sisraid.cat
+
+[HardwareIds.scsi.SISRAID_64]
+id="PCI\VEN_1039&DEV_0180", "SiSRaid"
+
+[Config.SiSRaid]
+value = parameters\PnpInterface,"5",REG_DWORD,1

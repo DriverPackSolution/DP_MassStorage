@@ -1,0 +1,107 @@
+;                       mvSata.inf
+; Copyright 2006,MARVELL SEMICONDUCTOR ISRAEL, LTD.
+; Copyright 2010,Sunrich Technology (H.K.) Ltd.
+ 
+ 
+ 
+[Version] 
+Signature = "$Windows NT$" 
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318} 
+Provider=%Marvell%
+CatalogFile.ntx86=mvsata.cat 
+DriverVer= 08/27/2010,1.0.2010.827
+
+[DestinationDirs] 
+DefaultDestDir = 12 ; DIRID_DRIVERS 
+mvSata.Files.x86_10 = 10
+mvSata.Files.x86_11 = 11 
+mvSata.Files.x86_12 = 12 
+
+[SourceDisksNames.x86]
+0=%Desc_x860%
+
+[SourceDisksFiles.x86]
+mvsata.sys=0,, 
+
+[Manufacturer] 
+%Marvell%=Marvell,NTx86
+
+[Marvell]
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5040&SUBSYS_00000000
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5041&SUBSYS_00000000
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5080&SUBSYS_00000000
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5081&SUBSYS_00000000
+%Gen2PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_6041&SUBSYS_11ab11ab
+%Gen2PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_6081&SUBSYS_11ab11ab
+%Gen2PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_6042&SUBSYS_11ab11ab
+%Gen2PEX.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_7042&SUBSYS_11ab11ab
+
+[Marvell.NTx86]
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5040&SUBSYS_00000000
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5041&SUBSYS_00000000
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5080&SUBSYS_00000000
+%Gen1PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_5081&SUBSYS_00000000
+%Gen2PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_6041&SUBSYS_11ab11ab
+%Gen2PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_6081&SUBSYS_11ab11ab
+%Gen2PCI.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_6042&SUBSYS_11ab11ab
+%Gen2PEX.mvSataDesc%=mvSata_Inst,PCI\VEN_11ab&DEV_7042&SUBSYS_11ab11ab
+
+
+[mvSata_Inst.ntx86] 
+AddReg = mvSata.AddReg.x86 
+CopyFiles = mvSata.Files.x86_10, \
+mvSata.Files.x86_11, \
+mvSata.Files.x86_12, 
+
+
+[mvSata_Inst.ntx86.Services] 
+AddService = %mvSata_Service_Name%,0x00000002,mvSata_Service_Instx86, mvSata_EventLog_Inst 
+
+
+[mvSata_Service_Instx86] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_NORMAL% 
+ServiceBinary = %12%\mvsata.sys 
+LoadOrderGroup = SCSI Miniport
+AddReg = pnpsafe_pci_addreg
+
+
+[mvSata.AddReg.x86] 
+[mvSata.Files.x86_10] 
+[mvSata.Files.x86_11] 
+[mvSata.Files.x86_12] 
+mvsata.sys
+
+[mvSata_EventLog_Inst] 
+AddReg = mvSata_EventLog_Inst.AddReg 
+ 
+[mvSata_EventLog_Inst.AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg] 
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001 
+;HKLM,SYSTEM\CurrentControlSet\Services\MVSATA\Parameters\Device,MaximumSGList,0x00010001,0x41
+;HKLM,SYSTEM\CurrentControlSet\Services\MVSATA\Parameters\Device,NumberOfRequests,0x00010001,0xF1
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+Marvell= "Marvell Semiconductors ltd." 
+Desc_x860= "MRVL" 
+Gen1PCI.mvSataDesc= "Marvell Serial ATA Gen 1 PCI-X Adapter" 
+Gen2PCI.mvSataDesc= "Marvell Serial ATA Gen 2 PCI-X Adapter" 
+Gen2PEX.mvSataDesc= "Marvell Serial ATA Gen 2 PCI Express Adapter" 
+mvSata_Service_Name= "mvSata" 
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_NORMAL = 0x1 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 

@@ -1,0 +1,94 @@
+; Copyright (c) 2003 VIA Technologies, Inc.
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  VIAPIDE.INF
+; **    Revision:  
+; **    Date:      01/23/2003
+; **    Abstract:  Windows* INF File for VIA 4149 
+; ****************************************************************************
+; ****************************************************************************
+
+[Version]
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%VIA%
+CatalogFile=viapdsk.cat
+DriverVer=10/30/2003,5.1.2600.104
+
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+CopyRAIDDir = 12
+
+
+[CopyRAIDDir]
+viapdsk.sys
+
+[SourceDisksNames]
+1 = %DiskName1%,,,
+
+[SourceDisksFiles]
+viapdsk.sys = 1
+
+[Manufacturer]
+%VIA-Drivers%=VIA_RAID
+
+
+[VIA_RAID]
+%4149.DeviceDesc%= VIAPDSK, PCI\VEN_1106&DEV_4149
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Controller
+;;
+[VIAPDSK]
+AddReg = VIAPDSK.addReg 
+CopyFiles= CopyRAIDDir 
+
+[VIAPDSK.Services]
+AddService = viapdsk, 2, VIAPDSK_Service_Inst, VIAPDSK_EventLog_Inst
+
+
+[VIAPDSK_Service_Inst]
+DisplayName    = %4149.DeviceDesc%
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\viapdsk.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = SpecificParam
+
+
+[VIAPDSK_EventLog_Inst]
+AddReg = VIAPDSK_EventLog_AddReg
+
+
+[VIAPDSK_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\viapdsk.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SpecificParam]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+
+[VIAPDSK.addReg]
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; string
+;;
+[strings]
+VIA                 = "VIA Technologies, Inc."
+VIA-Drivers 		= "VIA ATA/ATAPI Host Controller"
+DiskName1           = "VIA VT6420 IDE Driver Diskette"
+4149.DeviceDesc		= "VIA ATA/ATAPI Host Controller"
+4149.PriDeviceDesc	= "Primary Channel"
+REG_EXPAND_SZ       = 0x00020000
+REG_DWORD           = 0x00010001
+
+
+
+

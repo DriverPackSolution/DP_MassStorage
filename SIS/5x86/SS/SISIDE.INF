@@ -1,0 +1,61 @@
+; Copyright (c) 2000-2005 SiS Techologies, Inc.
+
+[version]
+Signature="$WINDOWS NT$"
+
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%SiS%
+CatalogFile=siside.cat
+LayoutFile=mshdc.inf
+DriverVer=09/15/2003,5.1.1039.2041
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1039&DEV_5513
+ExcludeFromSelect = PCI\VEN_1039&DEV_5518
+
+[Manufacturer]
+%SiS%=SiS_HDC
+
+[SiS_HDC]
+%PCI\VEN_1039&DEV_5513.DeviceDesc%=SiSide_Inst, PCI\VEN_1039&DEV_5513       ; SiS
+%PCI\VEN_1039&DEV_5518.DeviceDesc%=SiSide_Inst, PCI\VEN_1039&DEV_5518
+      
+
+[SourceDisksFiles]
+SiSide.sys = 1,,
+
+[SourceDisksNames]
+1=%SiSFilterDisk%,,,
+
+;**********************************************************
+; SiS PCI IDE Controller (DUAL_GOOD_IDE)
+[SiSide_Inst]
+CopyFiles = @siside.sys
+
+[SiSide_Inst.Services]
+AddService = SiSide, %SPSVCINST_ASSOCSERVICE%, SiSide_Service_Inst
+
+[SiSide_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\siside.sys
+LoadOrderGroup = System Bus Extender
+
+[Strings]
+SiS                     = "Silicon Integrated Systems Corp."
+PCI\VEN_1039&DEV_5513.DeviceDesc="SiS 5513 IDE UDMA Controller"
+PCI\VEN_1039&DEV_5518.DeviceDesc="SiS 5518 IDE UDMA Controller"
+
+SiSFilterDisk           = "disk1"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1

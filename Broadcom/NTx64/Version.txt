@@ -1,0 +1,9 @@
+Title      : Chip Set:Broadcom HT1000/HT1100 Chipset SATA Controller QDMA Driver
+Version    : A00
+OEM Name   : Broadcom
+OEM Ver    : 1.1.8070.1
+Computers  : PE2970; 
+PowerEdge - 2970, T605, 
+Oses       : Windows Server 2008 R2 Datacenter, Windows Server 2008 R2 Enterprise, Windows Server 2008 R2 Foundation, Windows Server 2008 R2 StandardWindows Server 2008 R2 Web
+Languages  : English
+Created    : Wed Sep 9 10:43:49 CDT 2009

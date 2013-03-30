@@ -1,0 +1,196 @@
+;
+; Adaptec ultra scsi Host Adapter Drivers
+;
+; Installation File For Microsoft Windows
+;
+; Version 1.0
+;
+; Copyright (c) Adaptec Incorporated
+;
+; Edited 02/02/2010
+;
+
+
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%ADP%
+CatalogFile.ntx86="aic78xx.cat"
+DriverVer=02/02/2010,6.0.5457.0
+
+
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,,,
+
+[SourceDisksFiles]
+aic78xx.sys= 1,,,,,,,,
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%ADP%=ADAPTEC,NTx86
+
+
+[ADAPTEC.NTx86]
+;3869
+%PCI\VEN_9004&DEV_3860&SUBSYS_38699004.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_3860&SUBSYS_38699004
+;7550 Series Explicit
+%PCI\VEN_9004&DEV_5075.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5075
+%PCI\VEN_9004&DEV_5575.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5575
+;7550 Other
+%PCI\VEN_9004&DEV_5X75.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5175
+%PCI\VEN_9004&DEV_5X75.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5275
+%PCI\VEN_9004&DEV_5X75.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5375
+%PCI\VEN_9004&DEV_5X75.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5475
+%PCI\VEN_9004&DEV_5X75.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5675
+%PCI\VEN_9004&DEV_5X75.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5775
+;7850 Series Explicit
+%PCI\VEN_9004&DEV_5X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5078
+%PCI\VEN_9004&DEV_5078&SUBSYS_78509004.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5078&SUBSYS_78509004
+;7850 Other
+%PCI\VEN_9004&DEV_5X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5178
+%PCI\VEN_9004&DEV_5X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5278
+%PCI\VEN_9004&DEV_5X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5378
+%PCI\VEN_9004&DEV_5X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5478
+%PCI\VEN_9004&DEV_5x78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5578
+%PCI\VEN_9004&DEV_5x78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5678
+%PCI\VEN_9004&DEV_5X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_5778
+;7560 Series Explicitly Supported
+%PCI\VEN_9004&DEV_6075.DeviceDesc%  = aic78xx_CB,    PCI\VEN_9004&DEV_6075
+%PCI\VEN_9004&DEV_6075.DeviceDesc%  = aic78xx_CB,    PCI\VEN_9004&DEV_6075&SUBSYS_75609004
+;7860 Series Explicitly Supported
+%PCI\VEN_9004&DEV_6178.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6178
+%PCI\VEN_9004&DEV_6178&SUBSYS_78619004.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6178&SUBSYS_78619004
+;7860 Other
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7860
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6078
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6278
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6378
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6478
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6578
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6678
+%PCI\VEN_9004&DEV_6X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_6778
+;7870 Series Explicit
+%PCI\VEN_9004&DEV_7X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7078
+%PCI\VEN_9004&DEV_7178.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7178
+%PCI\VEN_9004&DEV_7278.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7278
+%PCI\VEN_9004&DEV_7478.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7478
+%PCI\VEN_9004&DEV_7578.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7578
+;7870 Other
+%PCI\VEN_9004&DEV_7X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7678
+%PCI\VEN_9004&DEV_7X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7778
+;7880 Series Explicit
+%PCI\VEN_9004&DEV_8X78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8078
+%PCI\VEN_9004&DEV_8178.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8178
+%PCI\VEN_9004&DEV_8178&SUBSYS_78819004.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8178&SUBSYS_78819004
+%PCI\VEN_9004&DEV_8278.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8278
+%PCI\VEN_9004&DEV_8478.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8478
+%PCI\VEN_9004&DEV_8578.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8578
+%PCI\VEN_9004&DEV_8678.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8678
+%PCI\VEN_9004&DEV_8778&SUBSYS_78879004.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8778&SUBSYS_78879004
+%PCI\VEN_9004&DEV_8878&SUBSYS_78889004.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_8878&SUBSYS_78889004
+%PCI\VEN_9004&DEV_3B78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_3B78
+%PCI\VEN_9004&DEV_EC78.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_EC78
+;7895 Series Explicit
+%PCI\VEN_9004&DEV_7895.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7895
+%PCI\VEN_9004&DEV_7895&SUBSYS_78919004.DeviceDesc% = aic78xx_Inst,  PCI\VEN_9004&DEV_7895&SUBSYS_78919004
+%PCI\VEN_9004&DEV_7895&SUBSYS_78929004.DeviceDesc% = aic78xx_Inst,  PCI\VEN_9004&DEV_7895&SUBSYS_78929004
+%PCI\VEN_9004&DEV_7895&SUBSYS_78949004.DeviceDesc% = aic78xx_Inst,  PCI\VEN_9004&DEV_7895&SUBSYS_78949004
+;7895 Other
+%PCI\VEN_9004&DEV_789X.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7891
+%PCI\VEN_9004&DEV_789X.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7892
+%PCI\VEN_9004&DEV_789X.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7896
+%PCI\VEN_9004&DEV_789X.DeviceDesc%  = aic78xx_Inst,  PCI\VEN_9004&DEV_7897
+
+
+[aic78xx_Inst]
+CopyFiles=@AIC78XX.SYS
+
+[aic78xx_Inst.Services]
+AddService = aic78xx, 0x2, aic78xx_Service_Inst, Miniport_EventLog_Inst
+
+[aic78xx_CB]
+CopyFiles = @aic78xx.sys
+AddReg    = cardbus_interface_type
+
+[aic78xx_CB.Services]
+AddService = AIC78XX, 0x2, aic78xx_Service_Inst, Miniport_EventLog_Inst
+
+[aic78xx_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\aic78xx.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = bus_type_scsi
+
+;*************************************************************
+;These addreg sections should be used for non-SCSI miniports
+;to indicate what STORAGE_BUS_TYPE they actually do support.
+
+[bus_type_scsi]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+
+;*************************************************************
+;These addreg sections should be used when installing services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+; localizable
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Ultra SCSI Family Manager set for windows 32-bit"
+PCI\VEN_9004&DEV_5075.DeviceDesc="Adaptec AIC-7550 PCI SCSI Controller"
+PCI\VEN_9004&DEV_5575.DeviceDesc="Adaptec AVA-2930 PCI SCSI Controller"
+PCI\VEN_9004&DEV_5X75.DeviceDesc="Adaptec AIC-7550 PCI SCSI Controller"
+PCI\VEN_9004&DEV_5X78.DeviceDesc="Adaptec AIC-785x PCI SCSI Controller"
+PCI\VEN_9004&DEV_5078&SUBSYS_78509004.DeviceDesc ="Adaptec AHA-2910C/2915C/2920C/2930C PCI SCSI Controller"
+PCI\VEN_9004&DEV_6075.DeviceDesc="Adaptec APA-1480 CardBus SCSI Controller"
+PCI\VEN_9004&DEV_6178&SUBSYS_78619004.DeviceDesc="Adaptec AHA-2940AU PCI SCSI Controller"
+PCI\VEN_9004&DEV_6178.DeviceDesc="Adaptec AHA-2940AU PCI SCSI Controller"
+PCI\VEN_9004&DEV_6X78.DeviceDesc="Adaptec AIC-786X PCI SCSI Controller"
+PCI\VEN_9004&DEV_7X78.DeviceDesc="Adaptec AIC-7870 PCI SCSI Controller"
+PCI\VEN_9004&DEV_7178.DeviceDesc="Adaptec AHA-2940/2940W PCI SCSI Controller"
+PCI\VEN_9004&DEV_7278.DeviceDesc="SCSI Channel on Adaptec AHA-3940/3940W PCI SCSI Controller"
+PCI\VEN_9004&DEV_7478.DeviceDesc="Adaptec AHA-2944/2944W PCI SCSI Controller"
+PCI\VEN_9004&DEV_7578.DeviceDesc="SCSI Channel on Adaptec AHA-3944W PCI SCSI Controller"
+PCI\VEN_9004&DEV_8178.DeviceDesc="Adaptec AHA-2940U/2940UW/2940D PCI SCSI Controller"
+PCI\VEN_9004&DEV_8178&SUBSYS_78819004.DeviceDesc = "Adaptec AHA-2940UW PCI SCSI Controller"
+PCI\VEN_9004&DEV_8278.DeviceDesc="SCSI Channel on Adaptec AHA-3940U/3940UW/3940UWD/ PCI SCSI Controller"
+PCI\VEN_9004&DEV_8478.DeviceDesc="Adaptec AHA-2944UW PCI SCSI Controller"
+PCI\VEN_9004&DEV_8578.DeviceDesc="Adaptec AHA-3944UWD PCI SCSI Controller"
+PCI\VEN_9004&DEV_8678.DeviceDesc="Adaptec AHA-4944UW PCI SCSI Controller"
+PCI\VEN_9004&DEV_8778&SUBSYS_78879004.DeviceDesc = "Adaptec AHA-2940UW Pro PCI SCSI Controller"
+PCI\VEN_9004&DEV_8878&SUBSYS_78889004.DeviceDesc = "Adaptec AHA-2930UW PCI SCSI Controller"
+PCI\VEN_9004&DEV_3860&SUBSYS_38699004.DeviceDesc = "Adaptec AHA-2930U PCI SCSI Controller"
+PCI\VEN_9004&DEV_3B78.DeviceDesc="Adaptec AHA-4944UW PCI SCSI Controller"
+PCI\VEN_9004&DEV_EC78.DeviceDesc="Adaptec AHA-4944UW PCI SCSI Controller"
+PCI\VEN_9004&DEV_8X78.DeviceDesc="Adaptec AIC-7880 PCI SCSI Controller"
+PCI\VEN_9004&DEV_7895.DeviceDesc="Adaptec AIC-7895 PCI SCSI Controller"
+PCI\VEN_9004&DEV_7895&SUBSYS_78919004.DeviceDesc = "Adaptec AHA-2940U/UW Dual PCI SCSI Controller"
+PCI\VEN_9004&DEV_7895&SUBSYS_78929004.DeviceDesc = "Adaptec AHA-3940AU/AUW/AUWD/UWD PCI SCSI Controller"
+PCI\VEN_9004&DEV_7895&SUBSYS_78949004.DeviceDesc = "Adaptec AHA-3944AUWD PCI SCSI Controller"
+PCI\VEN_9004&DEV_789X.DeviceDesc="Adaptec AIC-789x PCI SCSI Controller"
+
+

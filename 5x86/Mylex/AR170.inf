@@ -1,0 +1,94 @@
+; ar170.inf - Windows XP installation file for the
+;             Mylex AcceleRAID 170 Disk Array
+;             Controller device.
+;
+; Version   - 1.1
+; Date      - 09/11/2001
+;
+; Copyright (c) 2001, Mylex Corporation
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%MYLEX%
+CatalogFile=ar170.cat
+DriverVer=10/25/2001, 6.03.10.0
+
+[SourceDisksNames]
+1 = %Disk1.Desc%,,,\
+
+[SourceDisksFiles]
+dac2w2k.sys = 1,,
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%MYLEX% = MYLEX.Mfg
+
+[MYLEX.Mfg]
+%MYLEX.DeviceDesc% = MYLEX, PCI\VEN_1069&DEV_0050&SUBSYS_00521069
+
+[MYLEX]
+AddReg = MYLEX.AddReg
+CopyFiles = MYLEX.Miniport
+DriverVer=10/25/2001, 6.03.10.0
+
+[MYLEX.AddReg]
+
+[MYLEX.Miniport]
+%MYLEX.DriverName%
+
+[MYLEX.Services]
+AddService = %MYLEX.ServiceDesc%, 0x00000002, MYLEX_Service_Inst, MYLEX_EventLog_Inst
+
+[MYLEX_Service_Inst]
+ServiceType    = 0x1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 0x0                  ; SERVICE_BOOT_START
+ErrorControl   = 0x1                  ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = SCSI Miniport
+ServiceBinary  = %12%\%MYLEX.DriverName%
+AddReg         = MYLEX_Miniport_AddReg
+AddReg         = pnpsafe_pci_addreg
+
+[MYLEX_EventLog_Inst]
+AddReg = MYLEX_EventLog_Inst.AddReg
+
+[MYLEX_EventLog_Inst.AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[MYLEX_Miniport_AddReg]
+HKR, "Parameters\Device0", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device1", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device2", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device3", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device4", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device5", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device6", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device7", "MaximumSGList", 0x00010001, 0x00000080
+HKR, "Parameters\Device0", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device1", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device2", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device3", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device4", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device5", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device6", "NumberOfRequests", 0x00010001, 0x00000100
+HKR, "Parameters\Device7", "NumberOfRequests", 0x00010001, 0x00000100
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Strings]
+
+;  *******Localizable Strings*******
+MYLEX = "Mylex"
+Disk1.Desc = "Mylex Software Kit 4.03 (Windows XP)"
+
+MYLEX.DeviceDesc = "Mylex AcceleRAID 170 Disk Array Controller"
+MYLEX.DriverName = "dac2w2k.sys"
+MYLEX.ServiceDesc = "dac2w2k"

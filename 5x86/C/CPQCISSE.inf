@@ -1,0 +1,102 @@
+;Copyright (c) 2007-2008 Hewlett-Packard Development Company, L.P. ALL RIGHTS RESERVED.
+;HP Confidential.
+
+[version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGUID={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%HP%
+CatalogFile.ntx86=Cpqcisse.cat
+DriverVer=01/22/2008,6.4.0.32
+
+[SourceDisksNames.x86]
+1=%DISK%,Cpqcisse.sys,,
+
+[SourceDisksFiles.x86]
+Cpqcisse.sys=1,,
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[Manufacturer]
+%HP%=HP_HDC, ntx86.5.2
+
+[HP_HDC] ;Default
+%SCSI\OtherCOMPAQ__SCSI_COMMUNICATECISS.DeviceDesc%=CPQCISSE_Inst,SCSI\OtherCOMPAQ__SCSI_COMMUNICATECISS
+
+[HP_HDC.ntx86.5.2] ;Server2003 32-bit
+%SCSI\OtherCOMPAQ__SCSI_COMMUNICATECISS.DeviceDesc%=CPQCISSE_Inst,SCSI\OtherCOMPAQ__SCSI_COMMUNICATECISS
+
+[CPQCISSE_Inst.ntx86]
+CopyFiles = @CPQCISSE.sys
+
+[CPQCISSE_Inst.ntx86.Services]
+AddService = CPQCISSE, %SPSVCINST_ASSOCSERVICE%, CPQCISSE_Service_Inst, CPQCISSE_EventLog_Inst
+
+[CPQCISSE_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\CPQCISSE.sys
+LoadOrderGroup = SCSI Class
+AddReg         = CPQCISSE_Service_AddReg
+AddReg         = SetOSVersionTo_5.2_AddReg
+
+
+[CPQCISSE_Service_Inst_LH]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\CPQCISSE.sys
+LoadOrderGroup = SCSI Class
+AddReg         = CPQCISSE_Service_AddReg
+AddReg         = SetOSVersionTo_6.0_AddReg
+
+
+[CPQCISSE_EventLog_Inst]
+AddReg = CPQCISSE_EventLog_AddReg
+
+[CPQCISSE_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\drivers\cpqcisse.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[CPQCISSE_Service_AddReg]
+HKR, ,                          "Tag",             %REG_DWORD%,  200
+HKR, "Parameters   ", "PollingInterval",           %REG_DWORD%,  30
+HKR, "Parameters   ", "MaxNumberLogEntries",       %REG_DWORD%,  32
+HKR, "Parameters   ", "NtEventLoggingEnabled",     %REG_DWORD%,  1
+HKR, "Parameters   ", "IML_LoggingEnabled",        %REG_DWORD%,  1
+
+[SetOSVersionTo_5.2_AddReg]
+HKR, "Parameters\Device", "OSVersion", %REG_SZ%, "5.2"
+
+[SetOSVersionTo_6.0_AddReg]
+HKR, "Parameters\Device", "OSVersion", %REG_SZ%, "6.0"
+
+[Strings]
+HP = "Hewlett-Packard Company"
+DISK = "Smart Array 5x and 6x Notification Driver diskette"
+SCSI\OtherCOMPAQ__SCSI_COMMUNICATECISS.DeviceDesc = "Smart Array 5x and 6x Notification Driver"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_SZ                 = 0x00000000
+REG_DWORD              = 0x00010001
+;**Japanese**********************************
+[Strings.0411]
+HP = "Hewlett-Packard Company"
+DISK = "Smart Array 5x および 6x 通知ドライバ ディスケット"
+SCSI\OtherCOMPAQ__SCSI_COMMUNICATECISS.DeviceDesc = "Smart Array 5x および 6x 通知ドライバ"
+
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_SZ                 = 0x00000000
+REG_DWORD              = 0x00010001

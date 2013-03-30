@@ -1,0 +1,192 @@
+*****************************************************************************
+;*
+;*  Copyright (c) 2006 Emulex Corporation
+;*
+;*
+;* All rights reserved.  This computer program and related documentation is protected by copyright
+;* and distributed under licenses restricting its use, copying, distribution, and decompilation.  
+;* This computer program and its documentation are CONFIDENTIAL and a TRADE SECRET of EMULEX 
+;* CORPORATION.  The receipt or possession of this program or its documentation does not convey
+;* rights to reproduce or disclose its contents, or to manufacture, use, or sell anything that 
+;* it may describe, in whole or in part, without the specific written consent of  EMULEX CORPORATION.  
+;* Any reproduction of this program without the express written consent of EMULEX CORPORATION is a 
+;* violation of the copyrights laws and may subject you to criminal prosecution.
+;*
+;*
+;*       elxstor.inf - This file is used by Setup to install the Emulex STORPORT 
+;*                Miniport driver elxstor.sys 
+;*
+;*                (for Emulex LightPulse Fibre Channel Host Bus Adapters)
+;*
+;*******************************************************************************
+
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%EMULEX%
+Catalogfile=elxstor.cat
+DriverVer=03/09/2006,5.1.20.3
+
+[DestinationDirs]
+elxstor_CopyFiles     = 12 
+elxadjct_CopyFiles    = 12 
+CoInstaller.CopyFiles = 11
+
+
+[Manufacturer]
+%EMULEX%=EMULEX
+
+;**********************************
+; Emulex Manufacturer device list
+;**********************************
+[EMULEX]
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F700&SUBSYS_F70010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F800&SUBSYS_F80010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F900&SUBSYS_F90010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F980&SUBSYS_F98010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FA00&SUBSYS_FA0010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FB00&SUBSYS_FB0010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F085&SUBSYS_F08510DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F095&SUBSYS_F09510DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F098&SUBSYS_F09810DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0A5&SUBSYS_F0A510DF
+%elxadjct.DeviceDesc% = elxadjct_101,  PCI\VEN_10DF&DEV_F0A1&SUBSYS_F0A110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FD00&SUBSYS_FD0010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0D5&SUBSYS_F0D510DF
+%elxadjct.DeviceDesc% = elxadjct_101,  PCI\VEN_10DF&DEV_F0D1&SUBSYS_F0D110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FE00&SUBSYS_FE0010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0E5&SUBSYS_F0E510DF
+%elxadjct.DeviceDesc% = elxadjct_101,  PCI\VEN_10DF&DEV_F0E1&SUBSYS_F0E110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FC00&SUBSYS_FC0010DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_A019&SUBSYS_A01910DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_A01D&SUBSYS_A01D10DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_A011&SUBSYS_A01110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_A015&SUBSYS_A01510DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F700&SUBSYS_F7000E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F800&SUBSYS_F8000E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F900&SUBSYS_F9000E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F980&SUBSYS_F9800E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FA00&SUBSYS_FA000E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F095&SUBSYS_F0950E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F098&SUBSYS_F0980E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0A5&SUBSYS_F0A50E11
+%elxadjct.DeviceDesc% = elxadjct_101,  PCI\VEN_10DF&DEV_F0A1&SUBSYS_F0A10E11
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0A5&SUBSYS_1702103C
+
+; New IDs
+
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FC10&SUBSYS_FC1110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FC10&SUBSYS_FC1210DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2210DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FE00&SUBSYS_1708103C
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FD00&SUBSYS_FD2210DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2210DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2310DF
+
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2A10DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0F5&SUBSYS_F0F510DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0F6&SUBSYS_F0F610DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_F0F7&SUBSYS_F0F710DF
+
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FD11&SUBSYS_FD1110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FD12&SUBSYS_FD1210DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FE11&SUBSYS_FE1110DF
+%elxadjct.DeviceDesc% = elxadjct_Inst, PCI\VEN_10DF&DEV_FE12&SUBSYS_FE1210DF
+
+;
+; The Install Section
+;
+
+[elxadjct_Inst]
+CopyFiles = elxstor_CopyFiles
+
+[elxadjct_Inst.HW]
+Include = machine.inf
+Needs   = PciIoSpaceNotRequired
+DelReg  = elxadjct_DelReg
+
+[elxadjct_101]
+CopyFiles = elxstor_CopyFiles
+
+;
+; diskid = description,tagfile,unused,subdir
+;
+[SourceDisksNames]
+1 = %elxadjct.DeviceDesc%,lpscsi,,
+
+;
+; filename_on_source = diskid,subdir,size
+;
+[SourceDisksFiles]
+elxstor.sys  = 1
+elxstor.dll  = 1
+
+[elxstor_CopyFiles]
+elxstor.sys
+
+[elxadjct_DelReg]
+HKR,,"UpperFilters",0x00018002,"elxadjct"
+
+[elxadjct_Inst.Services]
+AddService = elxstor, %SPSVCINST_ASSOCSERVICE%, elxstor_Service_Inst, Miniport_EventLog_Inst
+
+[elxadjct_101.Services]
+AddService = elxstor, %SPSVCINST_ASSOCSERVICE%, elxstor_Service_Inst, Miniport_EventLog_Inst
+
+[elxstor_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\elxstor.sys
+LoadOrderGroup = SCSI Miniport
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+;*******************************************************************************
+;
+; Co-Installer Section
+;
+;*******************************************************************************
+
+[elxadjct_Inst.CoInstallers]   
+CopyFiles = CoInstaller.CopyFiles
+AddReg = CoInstaller.AddReg
+
+[elxadjct_101.CoInstallers]   
+CopyFiles = CoInstaller.CopyFiles
+AddReg = CoInstaller.AddReg, CoInstaller.AddReg101
+
+[CoInstaller.AddReg]
+HKR,,CoInstallers32,0x00010000,"elxstor.dll,elxstor";
+
+[CoInstaller.AddReg101]
+HKLM,SYSTEM\CurrentControlSet\Services\elxstor\Parameters\Device,"LP101",0x00010001,0x1
+
+[CoInstaller.CopyFiles]
+;0x00000020 - do not copy if target is newer
+;0x00000040 - leave target alone if version is same as source
+elxstor.dll,,,0x00000060
+
+[Strings]
+Msft   = "Microsoft"
+EMULEX = "Emulex"
+elxadjct.DeviceDesc = "Emulex LightPulse HBA - Storport Miniport Driver"
+
+;*********************************************
+; Macro substitutions (non-localizable)
+;*********************************************
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_SZ                 = 0x00000000

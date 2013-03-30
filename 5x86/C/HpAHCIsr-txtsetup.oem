@@ -1,0 +1,42 @@
+[Disks]
+d1 = "HP Smart Array B110i SATA RAID Controller Driver Diskette",\TXTSETUP.OEM,\
+
+
+[Defaults]
+SCSI = s2
+
+
+[SCSI]
+s2 = "Server 2003 Driver for HP Smart Array B110i SATA RAID Controller"
+warning = "   (Note: Virtual Install Disk must be disabled in"
+warning2 = "   RBSU(F9 during boot) to use this floppy!!!)"
+
+
+[Files.scsi.s2]
+driver  = d1,HpAHCIsr.sys, HpAHCIsr
+inf     = d1,HpAHCIsr.inf
+catalog = d1,HpAHCIsr.cat
+
+
+[Config.HpAHCIsr]
+value = "",tag,REG_DWORD,103
+value = Parameters\PnpInterface,5,REG_DWORD,1
+value = Parameters\Device,DriverParameter,REG_SZ,"CSMI=None;"
+
+
+# Supported Controllers
+#   ICH10R
+#   PCH
+#   SP5100
+#   C204
+
+
+
+[HardwareIds.scsi.s2]
+id = "PCI\VEN_8086&DEV_3a25&SUBSYS_3118103C", "HpAHCIsr"
+id = "PCI\VEN_8086&DEV_3b25&SUBSYS_3118103C", "HpAHCIsr"
+id = "PCI\VEN_1002&DEV_4391&SUBSYS_1778103C", "HpAHCIsr"
+id = "PCI\VEN_8086&DEV_1c04&SUBSYS_3118103C", "HpAHCIsr"
+ 
+ 
+

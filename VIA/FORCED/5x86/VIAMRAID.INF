@@ -1,0 +1,87 @@
+; VIAMRAID.INF for winxp
+; All rights reserved by  VIA Technologies, Inc. 2003
+
+[Version]
+CatalogFile=viamraid.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%VIA%
+DriverVer=11/26/2010, 5.1.7600.601
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+CopyRAID.NT = 12;
+
+[ControlFlags]
+
+[Manufacturer]
+%VIA%=VIA
+
+[VIA]
+%PCI\VEN_1106&DEV_3349.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_3349&CC_0104
+%PCI\VEN_1106&DEV_6287.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_6287&CC_0106
+%PCI\VEN_1106&DEV_0591.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_0591&CC_0104
+%PCI\VEN_1106&DEV_3249.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_3249&CC_0104
+%PCI\VEN_1106&DEV_3149.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_3149&CC_0104
+%PCI\VEN_1106&DEV_3164.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_3164&CC_0104
+%PCI\VEN_1106&DEV_0581.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_0581&CC_0104
+%PCI\VEN_1106&DEV_7372.DeviceDesc% = viamraid , PCI\VEN_1106&DEV_7372&CC_0104
+
+[VIAMRAID.NT]
+CopyFiles=CopyRAID.NT
+Reboot
+
+[VIAMRAID.NT.Services]
+AddService = viamraid, 2, viamraid_Service_Inst, Miniport_EventLog_Inst
+
+
+[VIAMRAID_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\viamraid.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnp_pci_addreg
+
+[pnp_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "CreateInitiatorLU", 0x00010001, 0x00000001
+HKR, "Parameters", "BusType", 0x00010001, 0x00000008
+HKR,, "Feature", %REG_DWORD%, 0
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[CopyRAID.NT]
+viamraid.sys
+
+
+[SourceDisksFiles]
+viamraid.inf = 1
+viamraid.sys = 1
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[strings]
+VIA="VIA Technologies, Inc."
+PCI\VEN_1106&DEV_3349.DeviceDesc="VIA RAID Controller - 3349"
+PCI\VEN_1106&DEV_6287.DeviceDesc="VIA AHCI Controller - 6287"
+PCI\VEN_1106&DEV_0591.DeviceDesc="VIA RAID Controller - 0591"
+PCI\VEN_1106&DEV_3249.DeviceDesc="VIA RAID Controller - 3249"
+PCI\VEN_1106&DEV_3149.DeviceDesc="VIA RAID Controller - 3149"
+PCI\VEN_1106&DEV_3164.DeviceDesc="VIA RAID Controller - 3164"
+PCI\VEN_1106&DEV_0581.DeviceDesc="VIA MSP RAID Controller - 0581"
+PCI\VEN_1106&DEV_7372.DeviceDesc="VIA RAID Controller - 7372"
+
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="VIA RAID Driver Diskette"
+DISKNAME2="Windows system"

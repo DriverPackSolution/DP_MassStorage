@@ -1,0 +1,96 @@
+;-------------------------------------------------------------------------
+;TRM3X5.INF  -- This file contains description for Tekram DC-395U/UW/F,
+;		DC-315/U or DC-305I/E SCSI Host adapters supported in
+;		Windows XP
+; Copyright (c) 1998-2001
+;-------------------------------------------------------------------------
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%TekramName%
+DriverVer=10/18/2001,3.0.3
+CatalogFile=trm3x5.cat
+
+; Class Install
+[ClassInstall32.NT]
+Addreg=SCSIReg
+
+;
+; diskid = description[,[tagfile][,<unused>,subdir]]
+;
+[SourceDisksNames]
+1 = %Floppy_Desc%,,,
+
+[SourceDisksFiles]
+trm3x5.sys = 1
+;trm3x5.cat = 1
+
+[SCSIReg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.Dll,ScsiClassInstaller"
+HKR,,Icon,,"-10"
+HKR,,LegacyInfOption,,"SCSI"
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+
+[Manufacturer]
+%TEKRAM%=TEKRAM
+
+;******************************
+;Tekram Manufacturer device list
+[TEKRAM]
+%trm3x5.DeviceDesc% = trm3x5_Inst, PCI\VEN_1DE1&DEV_0391
+
+[trm3x5_Inst]
+CopyFiles = @trm3x5.sys
+
+[trm3x5_Inst.Services]
+AddService = trm3x5, %SPSVCINST_ASSOCSERVICE%, trm3x5_Service_Inst, Miniport_EventLog_Inst
+
+[trm3x5_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\trm3x5.sys
+LoadOrderGroup = SCSI Miniport
+AddReg	       = pnpsafe_pci_addreg
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+TekramName = "Tekram"
+SCSIClassName="SCSI and RAID controllers"
+
+TEKRAM = "Tekram"
+trm3x5.DeviceDesc = "Tekram DC-395U/UW/F, DC-315/U or DC-305I/E PCI Ultra SCSI Host Adapter V3.0.3"
+FLOPPY_DESCRIPTION="Tekram DC-395U/UW/F, DC-315/U or DC-305I/E Drivers Disk"
+Floppy_Desc = "Tekram DC-395U/UW/F, DC-315/U or DC-305I/E PCI SCSI Driver"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ	       = 0x00020000
+REG_DWORD	       = 0x00010001

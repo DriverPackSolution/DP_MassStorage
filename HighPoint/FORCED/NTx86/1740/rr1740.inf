@@ -1,0 +1,87 @@
+; 
+; rr1740.INF
+; 
+; INF file of RR1740 controller for Windows 2003
+; Copyright (c) HighPoint Technologies, Inc. All rights reserved
+;
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%HIGHPOINT%
+CatalogFile= rr1740.CAT
+DriverVer=06/01/2006, 1.0
+
+[DestinationDirs]
+DefaultDestDir  = 12 ; DIRID_DRIVERS
+
+[Manufacturer]
+%HIGHPOINT%=HighPoint
+
+[HighPoint]
+%rr1740.DeviceDesc%=rr1740PCI,PCI\VEN_1103&DEV_1740
+
+[NODRV]
+AddReg=NODRV_AddReg
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[rr1740PCI.NT]
+CopyFiles=@rr1740.sys
+;CopyFiles=@hptpro.sys
+Reboot
+
+[rr1740PCI.NT.Services]
+AddService = rr1740, %SPSVCINST_ASSOCSERVICE%, rr1740PCI_Service_Inst, Miniport_EventLog_Inst
+;AddService = hptpro,,Hptpro_Service_Inst
+
+[rr1740PCI_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\rr1740.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[Hptpro_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+;ServiceBinary  = %12%\hptpro.sys
+LoadOrderGroup = Filter
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %InstallDisk%,,,,
+
+[SourceDisksFiles]
+;;rr1740.inf = 1,,
+rr1740.sys = 1,,
+
+
+[NODRV_AddReg]
+;Dummy AddReg section 
+
+[strings]
+HighPoint="HighPoint"
+rr1740.DeviceDesc="RocketRAID 1740 SATA Controller"
+InstallDisk = "RocketRAID 1740 SATA Controller Driver Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

@@ -1,0 +1,120 @@
+; ³   Copyright (C) 2002 ALi Coporation.  All Rights Reserved.
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%ALI%
+LayoutFile=layout.inf
+DriverVer = 03/06/2003, 1.5.1.0
+CatalogFile = aliide.cat
+
+[SourceDisksNames]
+1 = "Install Disk 1"
+
+[SourceDisksFiles]
+aliide.sys =1;
+
+;Class Install
+[ClassInstall32.NT]
+AddReg=HDC_Class
+
+[HDC_Class]
+HKR,,,,%HDCClassName%
+HKR,,Icon,,"-9"
+HKR,,Installer32,,"SysSetup.Dll,HdcClassInstaller"
+HKR,,TroubleShooter-0,,"tshoot.chm,hdw_drives.htm"
+HKR,,DeviceType,0x10001,4                       ; FILE_DEVICE_CONTROLLER
+HKR,,DeviceCharacteristics,0x10001,0x100        ; Use same security checks on relative opens
+
+[storprop_copyfiles]
+storprop.dll
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+storprop_copyfiles = 11
+
+[ControlFlags]
+ExcludeFromSelect=Primary_IDE_Channel
+ExcludeFromSelect=Secondary_IDE_Channel
+ExcludeFromSelect = PCI\VEN_10B9&DEV_5215
+ExcludeFromSelect = PCI\VEN_10B9&DEV_5219
+ExcludeFromSelect = PCI\VEN_10B9&DEV_5229
+
+[Manufacturer]
+%ALI%=ALI_HDC
+
+[ALI_HDC]
+%PCI\VEN_10B9&DEV_5229.DeviceDesc%=aliide_Inst, PCI\VEN_10B9&DEV_5229 
+         ;ALi 
+
+
+
+;****************************************************
+; Generic PCI IDE Controller (UNKNOWN_PCI_IDE)
+[aliide_Inst]
+CopyFiles = @aliide.sys
+CopyFiles = @pciidex.sys
+CopyFiles = @atapi.sys
+
+
+[aliide_Inst.Services]
+AddService = aliide, %SPSVCINST_ASSOCSERVICE%, aliide_Service_Inst
+
+[aliide_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\aliide.sys
+LoadOrderGroup = System Bus Extender
+
+[aliide_Inst.PosDup]            ;; BUGBUG: What does this do?
+*PNP0600
+
+;****************************************************
+; PCI IDE Controller without ATAPI DMA support
+[pciide_noAtapiDma_Inst]
+CopyFiles = @aliide.sys
+CopyFiles = @pciidex.sys
+CopyFiles = @atapi.sys
+AddReg=NoDmaForAtapiDevice_AddReg
+
+[pciide_noAtapiDma_Inst.Services]
+AddService = aliide, %SPSVCINST_ASSOCSERVICE%, aliide_Service_Inst
+
+[pciide_noAtapiDma_Inst.PosDup]         ;; BUGBUG: What does this do?
+*PNP0600
+
+
+;********************************************************
+; Extra Registry Entries
+
+[NoDmaForAtapiDevice_AddReg]
+HKR,,DeviceControlFlags,%REG_DWORD%,0x00000001          ; PCIIDEX_DCF_NO_ATAPI_DMA
+
+[SyncAccess.RegHW]
+HKR,,SyncAccess,%REG_DWORD%,0x00000001
+
+
+[ControlFlags]
+CopyFilesOnly=PCI\VEN_10B9&DEV_5215,PCI\VEN_10B9&DEV_5219,PCI\VEN_10B9&DEV_5229
+
+
+[Strings]
+HDCClassName            = "IDE ATA/ATAPI controllers"
+ALI="ALi Coporation"
+PCI\VEN_10B9&DEV_5215.DeviceDesc="ALi PCI IDE Controller"
+PCI\VEN_10B9&DEV_5219.DeviceDesc="ALi M5219 PCI Bus Master IDE Controller"
+PCI\VEN_10B9&DEV_5229.DeviceDesc="ALi M5229 PCI Bus Master IDE Controller"
+ALIManPara ="SYSTEM\CurrentControlSet\Services\atapi"          
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_MULTI_SZ           = 0x00010000
+

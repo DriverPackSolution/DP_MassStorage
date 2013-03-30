@@ -1,0 +1,54 @@
+; Copyright (c) 2003-2011 Intel Corporation
+;#############################################################################
+;#
+;#    Filename:  TXTSETUP.OEM
+;#
+;#############################################################################
+[Disks]
+disk1 = "Intel(R) Rapid Storage Technology Driver", iaStor.sys, \
+#
+[Defaults]
+scsi = iaStor_PBG
+#
+;#############################################################################
+[scsi]
+#
+; iaAHCI.inf
+iaStor_AC600 = "Intel(R) C600 Series Chipset SATA AHCI Controller"
+#
+; iaStor.inf
+iaStor_PBG = "Intel(R) C600 Series Chipset SATA RAID Controller"
+#
+;#############################################################################
+#
+; iaAHCI.inf
+[Files.scsi.iaStor_AC600]
+driver = disk1, iaStor.sys, iaStor
+inf    = disk1, iaAHCI.inf
+catalog = disk1, iaAHCI.cat
+#
+; iaStor.inf
+#
+[Files.scsi.iaStor_PBG]
+driver = disk1, iaStor.sys, iaStor
+inf = disk1, iaStor.inf
+catalog = disk1, iaStor.cat
+#
+;#############################################################################
+[Config.iaStor]
+value = "", tag, REG_DWORD, 1b
+value = "", ErrorControl, REG_DWORD, 1
+value = "", Group, REG_SZ, "SCSI Miniport"
+value = "", Start, REG_DWORD, 0
+value = "", Type, REG_DWORD, 1
+#
+;#############################################################################
+#
+; iaAHCI.inf
+[HardwareIds.scsi.iaStor_AC600]
+id = "PCI\VEN_8086&DEV_1D02", "iaStor"
+#
+; iaStor.inf
+#
+[HardwareIds.scsi.iaStor_PBG]
+id = "PCI\VEN_8086&DEV_2826&CC_0104", "iaStor"

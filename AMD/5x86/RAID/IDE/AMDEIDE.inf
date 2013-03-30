@@ -1,0 +1,297 @@
+; AMDEIDE.INF 
+; Copyright 2005, AMD Corporation
+; Version 8.2.8.0
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%AMD%
+CatalogFile = amdeide.cat
+DriverVer=01/18/2005,8.2.8.0
+
+
+[SourceDisksNames]
+1 = %Disk1Desc%
+
+[SourceDisksFiles]
+AmdEide.sys  = 1
+AmdBusDr.sys = 1
+AmdIdeCo.dll = 1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+CopyAmdCoInstaller = 11 ; \System32
+
+[ControlFlags]
+ExcludeFromSelect=*PNP0600.PriDeviceDesc
+ExcludeFromSelect=*PNP0600.SecDeviceDesc
+
+[Manufacturer]
+%AMD%=AMD_HDC
+
+[AMD_HDC]
+%PCI\VEN_1022&DEV_7409.DeviceDesc%=amdbusdr_Inst, PCI\VEN_1022&DEV_7409                 ; AMD
+%PCI\VEN_1022&DEV_7411.DeviceDesc%=amdbusdr_Inst, PCI\VEN_1022&DEV_7411                 ; AMD
+%PCI\VEN_1022&DEV_7441.DeviceDesc%=amdbusdr_Inst, PCI\VEN_1022&DEV_7441                 ; AMD
+%PCI\VEN_1022&DEV_7469.DeviceDesc%=amdbusdr_Inst, PCI\VEN_1022&DEV_7469                 ; AMD
+%*PNP0600.PriDeviceDesc% = Amd_Inst_primary, AMD_Primary_IDE_Channel              ; Primary Channel
+%*PNP0600.SecDeviceDesc% = Amd_Inst_secondary, AMD_Secondary_IDE_Channel          ; Secondary Channel
+
+;
+; Bus Driver
+;
+
+[amdbusdr_Inst]
+CopyFiles = CopyAmdFiles
+
+[amdbusdr_Inst.Services]
+AddService = amdbusdr, 0x00000002, amdbusdr_Service_Inst
+
+[amdbusdr_Service_Inst]
+ServiceType    = 1	;%SERVICE_KERNEL_DRIVER%
+StartType      = 0	;%SERVICE_BOOT_START%
+ErrorControl   = 1	;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\amdbusdr.sys
+LoadOrderGroup = System Bus Extender
+AddReg         = amdbusdr_parameters_AddReg
+
+[amdbusdr_parameters_AddReg]
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,OutputDevice,0x00010001,0x10
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,PostCard,0x00010001,0x80
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,SeverityLevel,0x00010001,0x3
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,NumSupported,0x00010001,0x5
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Vendor0,0x00010001,0x1022
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Device0,0x00010001,0x7401
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Vendor1,0x00010001,0x1022
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Device1,0x00010001,0x7409
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Vendor2,0x00010001,0x1022
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Device2,0x00010001,0x7411
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Vendor3,0x00010001,0x1022
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Device3,0x00010001,0x7441
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Vendor4,0x00010001,0x1022
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\AMD,Device4,0x00010001,0x7469
+HKLM,System\CurrentControlSet\Services\amdeide\Parameters\Device,ScsiDebug,0x00010001,0x3
+
+;
+; CoInstaller
+;
+
+[amdbusdr_Inst.CoInstallers]
+AddReg=AmdCoInstaller_AddReg
+CopyFiles=CopyAmdCoInstaller
+
+[AmdCoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"AmdIdeCo.dll,AmdIdeCoInstaller"
+
+[CopyAmdFiles]
+AmdBusDr.sys
+AmdEide.sys
+
+[CopyAmdCoInstaller]
+AmdIdeCo.dll
+
+;
+; Primary/Secondary Controllers
+;
+
+[Amd_Inst_primary]
+AddReg         = Amd_Primary_AddReg
+
+[Amd_Inst_secondary]
+AddReg         = Amd_Secondary_AddReg
+
+[Amd_Primary_AddReg]
+HKR,,EnumPropPages32,0x00000000,"AmdIdeCo.dll,IdePrimaryPortPropPageProvider"
+
+[Amd_Secondary_AddReg]
+HKR,,EnumPropPages32,0x00000000,"AmdIdeCo.dll,IdeSecondaryPortPropPageProvider"
+
+
+[Amd_Inst_primary.Services]
+AddService = AmdEide, 0x00000002, amdeide_Service_Inst, Amd_EventLog_Inst
+
+[Amd_Inst_secondary.Services]
+AddService = AmdEide, 0x00000002, amdeide_Service_Inst, Amd_EventLog_Inst
+
+[amdeide_Service_Inst]
+DisplayName    = %*PNP0600.DeviceDesc%
+ServiceType    = 1	;%SERVICE_KERNEL_DRIVER%
+StartType      = 0	;%SERVICE_BOOT_START%
+ErrorControl   = 1	;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\AmdEide.sys
+LoadOrderGroup = SCSI Miniport     
+AddReg         = AmdEide_parameters_AddReg
+
+[AmdEide_parameters_AddReg]
+HKR, "Parameters\PnpInterface", "1", 0x00010001, 0x00000001
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Amd_EventLog_Inst]
+AddReg = Amd_EventLog_AddReg
+
+[Amd_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\amdeide.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;English
+;
+[Strings]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI Bus Master IDE Controller V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI Bus Master IDE Controller V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI Bus Master IDE Controller V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI Bus Master IDE Controller V8.2.8"
+*PNP0600.PriDeviceDesc  = "Primary AMD IDE Channel"
+*PNP0600.SecDeviceDesc  = "Secondary AMD IDE Channel"
+*PNP0600.DeviceDesc =     "AMD EIDE Driver"
+Disk1Desc 		= "Installation Disk for AMD-8111 IDE Controller"
+
+;Dutch
+;
+[Strings.0013]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI Bus Master IDE Controller V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI Bus Master IDE Controller V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI Bus Master IDE Controller V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI Bus Master IDE Controller V8.2.8"
+*PNP0600.PriDeviceDesc  = "Primair AMD IDE kanaal"
+*PNP0600.SecDeviceDesc  = "Secundair AMD IDE kanaal"
+*PNP0600.DeviceDesc =     "AMD EIDE stuurprogramma"
+Disk1Desc 		= "Installatiediskette voor AMD-8111 IDE-controller"
+
+;Finnish
+;
+[Strings.000b]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI Bus Master IDE-ohjain V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI Bus Master IDE-ohjain V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI Bus Master IDE-ohjain V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI Bus Master IDE-ohjain V8.2.8"
+*PNP0600.PriDeviceDesc  = "Ensisijainen AMD IDE -kanava"
+*PNP0600.SecDeviceDesc  = "Toissijainen AMD IDE -kanava"
+*PNP0600.DeviceDesc =     "AMD EIDE -ohjain"
+Disk1Desc 		= "AMD-8111 朓DE-ohjaimen asennuslevy"
+
+;French
+;
+[Strings.000c]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-756 V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-766 V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-768 V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-8111 V8.2.8"
+*PNP0600.PriDeviceDesc  = "Canal IDE AMD principal"
+*PNP0600.SecDeviceDesc  = "Canal IDE AMD secondaire"
+*PNP0600.DeviceDesc =     "Pilote EIDE AMD"
+Disk1Desc 		= "Disque d抜nstallation du contr鬺eur IDE AMD-8111"
+
+;French Canadian
+;
+[Strings.0c0c]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-756 V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-766 V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-768 V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="Contr鬺eur IDE ma麘re du bus PCI AMD-8111 V8.2.8"
+*PNP0600.PriDeviceDesc  = "Canal IDE principal"
+*PNP0600.SecDeviceDesc  = "Canal IDE secondaire"
+*PNP0600.DeviceDesc =     "Pilote EIDE AMD"
+Disk1Desc 		= "Disque d抜nstallation du contr鬺eur IDE AMD-8111"
+
+;German
+;
+[Strings.0007]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756: PCI-Bus-Master-IDE-Controller-V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766: PCI-Bus-Master-IDE-Controller-V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768: PCI-Bus-Master-IDE-Controller-V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111: PCI-Bus-Master-IDE-Controller-V8.2.8"
+*PNP0600.PriDeviceDesc  = "Prim鋜er AMD-IDE-Kanal"
+*PNP0600.SecDeviceDesc  = "Sekund鋜er AMD-IDE-Kanal"
+*PNP0600.DeviceDesc =     "AMD-EIDE-Treiber"
+Disk1Desc 		= "Installationsdatentr鋑er f丒 den IDE-Controller des AMD-8111"
+
+;Italian
+;
+[Strings.0010]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="Controller IDE PCI Bus Master AMD-756 V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="Controller IDE PCI Bus Master AMD-766 V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="Controller IDE PCI Bus Master AMD-768 V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="Controller IDE PCI Bus Master AMD-8111 V8.2.8"
+*PNP0600.PriDeviceDesc  = "Canale IDE primario AMD"
+*PNP0600.SecDeviceDesc  = "Canale IDE secondario AMD"
+*PNP0600.DeviceDesc =     "Driver EIDE AMD"
+Disk1Desc 		= "Disco di installazione del Controller IDE AMD-8111"
+
+;Norwegian
+;
+[Strings.0014]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI-buss hoved-IDE-kontroller V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI-buss hoved-IDE-kontroller V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI-buss hoved-IDE-kontroller V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI-buss hoved-IDE-kontroller V8.2.8"
+*PNP0600.PriDeviceDesc  = "Prim鎟 AMD IDE-kanal"
+*PNP0600.SecDeviceDesc  = "Sekund鎟 AMD IDE-kanal"
+*PNP0600.DeviceDesc =     "AMD EIDE-driver"
+Disk1Desc 		= "Installasjonsdisk for AMD-8111 IDE-kontroller"
+
+;Spanish
+;
+[Strings.000a]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="Controlador IDE de bus maestro AMD-756 PCI V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="Controlador IDE de bus maestro AMD-766 PCI V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="Controlador IDE de bus maestro AMD-768 PCI V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="Controlador IDE de bus maestro AMD-8111 PCI V8.2.8"
+*PNP0600.PriDeviceDesc  = "Canal principal IDE AMD"
+*PNP0600.SecDeviceDesc  = "Canal secundario IDE AMD"
+*PNP0600.DeviceDesc =     "Controlador EIDE AMD"
+Disk1Desc 		= "Disco de instalaci髇 para el Controlador IDE AMD-8111"
+
+;Swedish
+;
+[Strings.001d]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI-buss, Master IDE-styrenhet V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI-buss, Master IDE-styrenhet V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI-buss, Master IDE-styrenhet V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI-buss, Master IDE-styrenhet V8.2.8"
+*PNP0600.PriDeviceDesc  = "Prim鋜 AMD IDE-kanal"
+*PNP0600.SecDeviceDesc  = "Sekund鋜 AMD IDE-kanal"
+*PNP0600.DeviceDesc =     "AMD EIDE-drivrutin"
+Disk1Desc 		= "Installationsskiva f鰎 AMD-8111 IDE-styrenhet"
+
+;Chinese
+;
+[Strings.0004]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI 总线IDE 主控制苼EV8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI 总线IDE 主控制苼EV8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI 总线IDE 主控制苼EV8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI 总线IDE 主控制苼EV8.2.8"
+*PNP0600.PriDeviceDesc  = "AMD IDE 主控信道"
+*PNP0600.SecDeviceDesc  = "AMD IDE 辅助信道"
+*PNP0600.DeviceDesc =     "AMD EIDE 驱动程衼E"
+Disk1Desc 		= "AMD-8111 IDE 控制器安装磁盘"
+
+;Japanese
+;
+[Strings.0011]
+AMD="Advanced Micro Devices"
+PCI\VEN_1022&DEV_7409.DeviceDesc="AMD-756 PCI 僶僗 儅僗僞IDE 僐儞僩儘乕儔 V8.2.8"
+PCI\VEN_1022&DEV_7411.DeviceDesc="AMD-766 PCI 僶僗 儅僗僞IDE 僐儞僩儘乕儔 V8.2.8"
+PCI\VEN_1022&DEV_7441.DeviceDesc="AMD-768 PCI 僶僗 儅僗僞IDE 僐儞僩儘乕儔 V8.2.8"
+PCI\VEN_1022&DEV_7469.DeviceDesc="AMD-8111 PCI 僶僗 儅僗僞IDE 僐儞僩儘乕儔 V8.2.8"
+*PNP0600.PriDeviceDesc  = "僾儔僀儅儕 AMD IDE 僠儍僱儖"
+*PNP0600.SecDeviceDesc  = "僙僇儞僟儕 AMD IDE 僠儍僱儖"
+*PNP0600.DeviceDesc =     "AMD EIDE 僪儔僀僶"
+Disk1Desc 		= "AMD-8111 IDE 僐儞僩儘乕儔梡僀儞僗僩乕儖 僨傿僗僋"
+
+
+

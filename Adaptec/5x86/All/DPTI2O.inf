@@ -1,0 +1,154 @@
+;
+; Adaptec I2O RAID Host Adapter Drivers for Windows 2000 & XP 32bit
+;
+; Installation File For Microsoft Windows 2000 & XP 32bit
+;
+; Version 1.01M-32bit
+;
+; Edited 07/18/02
+;
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%ADPT%
+CatalogFile=dpti2o.cat
+;
+;If you update this version, make sure you also update 
+;the DriverVer field in the dpti2o_Install.NT section
+;
+DriverVer=05/02/2002, 5.3.1.3
+
+[ControlFlags]
+ExcludeFromSelect = *
+;
+; diskid = description[,[tagfile][,<unused>,subdir]]
+;
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,dpt_i2o,
+
+;
+; filename_on_source = diskid[,[subdir][,size]]
+;
+[SourceDisksFiles]
+dpti2o.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12  
+
+[Manufacturer]
+%ADPT%=ADPT
+
+[ADPT]
+%PM1554U2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0011044
+%PM1654U2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0021044
+%PM1564U3-1.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0031044
+%PM1564U3-2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0041044
+%PM1554U2_NO_ACPI.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0051044
+%PM2554U2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C00A1044
+%PM2654U2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C00B1044
+%PM2664U3-1.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C00C1044
+%PM2664U3-2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C00D1044
+%PM2554U2_NO_ACPI.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C00E1044
+%PM2654U2_NO_ACPI.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C00F1044
+%PM3754U2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0141044
+%PM3755U2B.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0151044
+%PM3755F.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0161044
+%PM3757U2_1.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C01E1044
+%PM3757U2_2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C01F1044
+%PM2865U3-1.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0281044
+%PM2865U3-2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0291044
+%2100S-1.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C03C1044
+%3000S-1.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0461044
+%3000S-2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0471044
+%3010S-2.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0641044
+%3010S-4.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0651044
+%2400UDMA.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C05A1044
+%2005S.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A511&SUBSYS_C0321044
+%2000S.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A511&SUBSYS_C0331044
+%2110S.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C0661044
+%2405SA.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A501&SUBSYS_C05F1044
+%2015S.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A511&SUBSYS_C0341044
+%2010S.DeviceDesc% = dpti2o_Install, PCI\VEN_1044&DEV_A511&SUBSYS_C0351044
+
+
+[dpti2o_Install.NT]
+CopyFiles = @dpti2o.sys
+;
+;If you update this version, make sure you also update 
+;the DriverVer field in the version section
+;
+DriverVer=05/02/2002, 5.3.1.3
+
+[dpti2o_Install.NT.Services]
+AddService = dpti2o, %SPSVCINST_ASSOCSERVICE%, dpti2o_Service_Install, EventLog_Install
+
+[dpti2o_Service_Install]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\dpti2o.sys
+LoadOrderGroup = SCSI Miniport
+AddReg 	       = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR,Parameters\Device,"NumberOfRequests",0x00010001,0x40
+HKR,Parameters\PnpInterface,"5",0x00010001,0x00000001
+
+[EventLog_Install]
+AddReg = EventLog_Add_Register
+
+[EventLog_Add_Register]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[dpti2o_Install.NT.HW]
+DelReg = LegacyScsiportValues
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+[Strings]
+ADPT = "Adaptec I2O RAID Adapters for Windows 2000 & XP 32bit"
+FLOPPY_DESCRIPTION = "Adaptec I2O RAID Adapter Driver Disk for Windows 2000 & XP 32bit"
+
+PM1554U2.DeviceDesc = "PM1554U2 Ultra2 Single Channel"
+PM1654U2.DeviceDesc = "PM1654U2 Ultra2 Single Channel"
+PM1564U3-1.DeviceDesc = "PM1564U3 Ultra3 Single Channel"
+PM1564U3-2.DeviceDesc = "PM1564U3 Ultra3 Dual Channel"
+PM1554U2_NO_ACPI.DeviceDesc = "PM1554U2 Ultra2 Single Channel (NON ACPI)"
+PM2554U2.DeviceDesc = "PM2554U2 Ultra2 Single Channel"
+PM2654U2.DeviceDesc = "PM2654U2 Ultra2 Single Channel"
+PM2664U3-1.DeviceDesc = "PM2664U3 Ultra3 Single Channel"
+PM2664U3-2.DeviceDesc = "PM2664U3 Ultra3 Dual Channel"
+PM2554U2_NO_ACPI.DeviceDesc = "PM2554U2 Ultra2 Single Channel (NON ACPI)"
+PM2654U2_NO_ACPI.DeviceDesc = "PM2654U2 Ultra2 Single Channel (NON ACPI)"
+PM3754U2.DeviceDesc = "PM3754U2 Ultra2 Single Channel (NON ACPI)"
+PM3755U2B.DeviceDesc = "PM3755U2B Ultra2 Single Channel (NON ACPI)"
+PM3755F.DeviceDesc = "PM3755F Fibre Channel (NON ACPI)"
+PM3757U2_1.DeviceDesc = "PM3757U2 Ultra2 Single Channel"
+PM3757U2_2.DeviceDesc = "PM3757U2 Ultra2 Dual Channel"
+PM2865U3-1.DeviceDesc = "PM2865U3 Ultra3 Single Channel"
+PM2865U3-2.DeviceDesc = "PM2865U3 Ultra3 Dual Channel"
+2100S-1.DeviceDesc = "Adaptec 2100S Ultra3 Single Channel"
+3000S-1.DeviceDesc = "Adaptec 3000S Ultra3 Single Channel"
+3000S-2.DeviceDesc = "Adaptec 3000S Ultra3 Dual Channel"
+3010S-2.DeviceDesc = "Adaptec 3010S Ultra3 Dual Channel"
+3010S-4.DeviceDesc = "Adaptec 3010S Ultra3 Four Channel"
+2400UDMA.DeviceDesc = "Adaptec 2400A UDMA Four Channel"
+2005S.DeviceDesc = "Adaptec 2005S Ultra3"
+2000S.DeviceDesc = "Adaptec 2000S Ultra3"
+2110S.DeviceDesc = "Adaptec 2110S Ultra3"
+2405SA.DeviceDesc = "Adaptec 2405SA SATA Four Channel"
+2015S.DeviceDesc = "Adaptec 2015S Ultra320"
+2010S.DeviceDesc = "Adaptec 2010S Ultra320"
+
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

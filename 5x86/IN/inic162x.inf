@@ -1,0 +1,105 @@
+; initio.inf
+;
+; Installation inf for the Initio SATA Host Adapter.
+;
+; (c) Copyright 2004 Initio 
+;
+[Version]
+Signature="$Windows NT$"
+Provider=%Initio%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+;;CatalogFile=oemscsi.cat 
+DriverVer=07/08/2005, 5.05.05.0708
+
+;
+; Disk installation information.
+;
+[SourceDisksNames]
+1 = %Initio.Disk%,,,""
+
+;
+; Location of files on installation disk.
+;
+[SourceDisksFiles]
+inic162x.sys = 1
+
+;
+; Specifies the target's location
+;
+[DestinationDirs]
+DefaultDestDir  = 12
+
+;
+; Driver information
+;
+[Manufacturer]
+%INITIO% = INITIO
+
+;
+; MOdels section
+'
+[INITIO]
+%Initio.Device1622% = INITIO_Inst, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Initio.Device1623% = INITIO_Inst, PCI\VEN_1101&DEV_1622&SUBSYS_16231101&REV_02
+%Initio.Interface%  = INITIO_Null, SCSI\INITIO__RAID_INTERFACE__1
+
+;
+; General installation section
+;
+[INITIO_Inst]
+CopyFiles=@inic162x.sys
+
+;
+; Service Installation
+;
+[INITIO_Inst.Services]
+AddService = inic1622, 2, INITIO_Service_Inst, INITIO_EventLog_Inst
+
+[INITIO_Null]
+
+[INITIO_Null.Services]
+AddService = ,2
+
+;
+;Services install section
+;
+[INITIO_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 0                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  
+LoadOrderGroup = SCSI Miniport
+ServiceBinary  = %12%\inic162x.sys
+AddReg         = pnpsafe_pci_addreg
+
+;
+; Installs event logging information
+;
+[INITIO_EventLog_Inst]
+AddReg = INITIO_EventLog_AddReg
+
+;
+; Installs registry info for the event log. 
+;
+[INITIO_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\inic162x.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Reg key to be added to service for PNP PCI adapters
+;
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;
+; String information
+;
+[Strings]
+;
+; Localizable Strings
+;
+Initio.Interface  = "Initio Raid Interface"
+Initio.Device1623 = "Initio INIC162X S-ATA Raid Controller"
+Initio.Device1622 = "Initio INIC162X S-ATA Raid Controller"
+Initio.Disk	  = "Initio Install Disk"	
+Initio 	          = "Initio"

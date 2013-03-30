@@ -1,0 +1,81 @@
+[Version]
+Signature="$Chicago$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%PROMISE%
+DriverVer=11/26/2002,1.10.0.41
+
+[SourceDisksNames]
+1 = "Promise SuperTrak Driver Diskette",,,
+
+[SourceDisksFiles]
+sptrak.sys = 1
+sptrak.inf = 1
+
+[ClassInstall32.NT]
+AddReg=SCSIReg
+
+[SCSIReg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.dll,SCSIClassInstaller"
+HKR,,Icon,,"-10"
+HRK,,LegacyInfOption,,"SCSI"
+
+[DestinationDirs]
+DefaultDestDir = 12 ; Drivers directory
+MoveSptrak.NT = 12
+MoveSpultra.NT = 12
+
+[ControlFlags]
+
+[Manufacturer] 
+%Promise%=Promise
+
+[Promise]
+%PCI\VEN_8086&DEV_1962.DeviceDesc%=sptrakPCISX6,PCI\VEN_8086&DEV_1962
+
+[sptrakPCI]
+
+[sptrakPCISX6.NT]
+CopyFiles=MoveSptrak.NT
+Reboot
+
+[MoveSptrak.NT]
+sptrak.sys
+
+[sptrakPCISX6.NT.Services]
+AddService=sptrak,2,sptrakPCI_Service_Inst,Miniport_EventLog_Inst
+
+[sptrakPCI_Service_Inst]
+ServiceType  = 1 ; SERVICE_KERNEL_DRIVER
+StartType    = 0 ; SERVICE_BOOT_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\sptrak.sys
+LoadOrderGroup = SCSI Miniport
+AddReg = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[pnpsafe_isa_addreg]
+HKR, "Parameters\PnpInterface", "1", 0x00010001, 0x00000001
+
+[pnpsafe_eisa_addreg]
+HKR, "Parameters\PnpInterface", "2", 0x00010001, 0x00000001
+
+[pnpsafe_mca_addreg]
+HKR, "Parameters\PnpInterface", "3", 0x00010001, 0x00000001
+
+[cardbus_interface_type]
+HKR, "ScsiPort", "LegacyInterfaceType", 0x00010001, 0x00000005
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+Promise="Promise Technology, Inc."
+PCI\VEN_8086&DEV_1962.DeviceDesc="WinXP Promise SuperTrak SX6000 (tm) IDE RAID Controller"

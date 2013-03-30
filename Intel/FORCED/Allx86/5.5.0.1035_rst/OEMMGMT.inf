@@ -1,0 +1,64 @@
+; oemmgmt.inf
+;
+; Installation file for the IOCTL Processor devices
+; Copyright (c) 1999 - 2002, Intel Corp.
+;
+;
+
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%MGMT%
+DriverVer=06/27/2003, 1.0.2
+CatalogFile=mgmt.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+1 = %FLOPPY1_DESCRIPTION%,raidsrc.tag,,
+
+[SourceDisksFiles]
+
+[MgtFiles]
+;
+; Dummy section to satisfy ChkInf tool
+;
+
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+[Manufacturer]
+%MGMT% = MGMT
+
+[MGMT]
+%SCSI\ProcessorIOCTL_-_Device__________.DeviceDesc% = NODRV, SCSI\ProcessorIOCTL_-_Device__________
+%SCSI\ProcessorIntel___CLUSTER_TGT2.00_.DeviceDesc% = NODRV, SCSI\ProcessorIntel___CLUSTER_TGT2.00_
+
+[NODRV]
+;
+; Dummy directive to satisfy ChkInf tool
+;
+CopyFiles = MgtFiles
+
+
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[strings]
+MGMT = "Intel Corporation"
+SCSI\ProcessorIOCTL_-_Device__________.DeviceDesc = "Controller Management Device"
+SCSI\ProcessorIntel___CLUSTER_TGT2.00_.DeviceDesc = "Cluster Controller Management Device"
+FLOPPY1_DESCRIPTION = "Controller Management Device"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002

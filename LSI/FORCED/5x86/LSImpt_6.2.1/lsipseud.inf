@@ -1,0 +1,48 @@
+; Copyright (c) 1993-1997, Microsoft Corporation
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=07/27/2006,6.2.1
+CatalogFile.ntx86=mpixp32.cat
+
+[SourceDisksFiles]
+
+[SourceDisksNames]
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%LSI%=LSI
+%IBM%=IBM
+
+[LSI]
+%Pseudo.DeviceDesc% = NODRV, SCSI\BridgeLSI_____PSEUDO_DEVICE___
+%SASx28.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICSASX28_A.0______
+%SASx36.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICSASX36_A.0______
+%SASswitch.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICx36_LYNX3090____
+
+[IBM]
+%SAS_SES.DeviceDesc% = NODRV, SCSI\EnclosureIBM_____SAS_SES-2_DEVICE01.0
+
+[NODRV]
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%
+
+[Strings]
+LSI = "LSI Corporation"
+IBM = "IBM Corporation"
+Pseudo.DeviceDesc = "LSI Pseudo Device"
+SASx28.DeviceDesc = "LSI SAS x28 Expander"
+SASx36.DeviceDesc = "LSI SAS x36 Expander"
+SASswitch.DeviceDesc = "LSI LYNX 3090 SAS Switch"
+SAS_SES.DeviceDesc = "IBM SAS SES Device"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

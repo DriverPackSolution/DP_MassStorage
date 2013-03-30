@@ -1,0 +1,338 @@
+***********************************
+*                                 *
+* MegaRAID IDE Driver Diskette    *
+*                                 *
+***********************************
+
+
+====================
+Contents on the disk
+====================
+README   TXT            This readme file
+MEGAIDE                 Microsoft Windows miniport disk label file 
+TXTSETUP OEM            Microsoft Windows miniport text mode setup file
+
+Serv2003       <DIR>
+  MEGAIDE  SYS          Microsoft Windows Server 2003 miniport driver
+  MEGAIDE  INF          Microsoft Windows Server 2003 setup file
+
+WIN2K       <DIR>
+  MEGAIDE  SYS          Microsoft Windows2000 miniport driver
+  MEGAIDE  INF          Microsoft Windows miniport setup file
+
+WINNT       <DIR>
+  MEGAIDE  SYS          Microsoft Windows NT 4.0 miniport driver
+  MEGAIDE  INF          Microsoft Windows miniport setup file
+
+WINXP
+  MEGAIDE  SYS          Microsoft Windows XP miniport driver
+  MEGAIDE  INF          Microsoft Windows miniport setup file
+
+================
+Software Version
+================
+Microsoft WindowsNT miniport driver     4.1.0709.2003
+Microsoft Windows 2000 miniport driver  4.1.0709.2003
+Microsoft Server 2003 miniport driver   4.1.0709.2003
+Microsoft Windows XP miniport driver    4.1.0709.2003
+
+==========
+What's New
+==========
+Driver Version 4.1.0709.2003
+- DMA Bus Master Data Integrity -- LSI found a rare operating condition with the MegaRAID IDE 100 and MegaRAID 
+  ATA 133 controllers where an interrupt to the IDE device stops a write data operation before it is complete 
+  and potentially discards the data rather than writing it to system memory.  This issue was fixed by modifying
+  the driver to ignore a scenario where an interrupt on the bus master status register and the DMA-Active 
+  bit is also set, and postpones interrupt handling. This sequence continues until the data transfers are 
+  cleared. This prevents the abort of the DMA, thus maintaining data integrity.
+
+Driver Version 4.1.0626.2003
+- Stripe size reported to application is fixed.
+- The Write verify command was not getting completed in Reset bus if the Drive power is pulled.
+- Inode Fix is incorporated for all the controllers.
+
+Driver version 4.1.0426.2003
+- Fastidefirecommand Modified for better performance.
+- Base Class and Sub Class Code check added in driver.
+
+
+Driver version 4.1.0412.2003
+- The Reset bus seen on RAID 10 configuration is fixed.
+- Low performance seen on the Disk Transfer Rate test is fixed.
+
+
+Driver version 4.1.0313.2003
+- The system Hang on drive power pulling is fixed.
+
+Driver version 4.1.0312.2003
+- The system crash on drive power pulling in case of raid 0 is fixed.
+- The reset bus reported by the testing team is resolved in this driver.
+- The data integrity test failing on dit32 is fixed.
+- Inf checker failing for .Net 2003 is fixed and verified. 
+
+Driver version 4.1.0307.2003
+- The Driver now updates the Timestamp Following the protocol provided by the BIOS 
+  Team.
+
+Driver version 4.0.0303.2003
+- IOCTL IOC_GET_CONTROLLER_INFO modified to provide subsystem device id 
+  and vendor id information.
+
+Driver version 4.0.0225.2003
+- This Driver has a additional interface for providing the Aspi PASSTHRU IOCTLs.
+
+Driver version 4.0.0129.2003
+- The inconsistencies were not reported by the driver for IRCD2x.This Driver reports the inconsistencies to Spy.
+- The Hotspare drive was indicated as a part of array for IRCD2x.
+
+Driver version 4.0.0115.2003
+- The Driver version in the .INF file is corrected.
+- The Driver now updates the time stamp when updating the IRCD.
+- Fixes for CSB6. 
+- Check added for not to post commands to the removed drive.
+- Time stamp update for Ircd 2x.
+
+Ver 4.0.2002.0916-Sept 16,2002 
+
+· Drive insertion and Removal Fine Tuned and Reset bus on Drive insertion eradicated.
+
+· When the Logical Drive is deleted the Drive’s Hold Queue is scanned and all the 
+  commands for that logical drive will be cleared.
+
+· Nodev.Inf File changed to address the Driver upgrade issue.
+
+· Load Balancing algorithm modified for better performance.
+
+· When the Drive was made Hotspare sometime the system was crashing.
+  The problem is taken care in this release.
+
+· Updating IRCD modified to go through the new path.
+
+· Failing of the Raid 0 Drive was previously rejected by the driver. 
+  The driver now handles this call.
+
+
+Ver 4.0.2002.0809-Aug 09,2002 
+ * Gate Keeper Opertation update when the Physical Drive status is changed.
+ * Deleting the Logical drive when IOs are going on was resulting in Reset BUS. 
+   The Dirve was not handling properly the commands in the Queue for that Logical Drive.
+
+
+Ver 4.0.2002.0805-Aug 05,2002 
+ * Physical Drive Status is filled when the New IRCD is obtained.
+ * Status Incompatibility for OFFLINE Status between Driver and Application is removed.
+
+
+Ver 4.0.2002.0801-Aug 01,2002 
+ * Error in handling Spurious Interrupts is fixed.
+ * The Transfer mode for the drive was not getting programmed with a value set in enquiry. This is taken care in this release.
+ * This Driver initiates a bus rescan when a logical drive is inserted or deleted.
+ * This Driver initiates a bus rescan when a logical drive is inserted or deleted.
+ * This Driver Notifies the Application about the Drive whose power is pulled.
+ * TextSetup.Oem Modified to give the Option for Windows .NET and Windows XP.
+
+
+Ver 4.0.2002.0717-july 17,2002 
+  * Requested Subsystem Device ID and Vendor ID supported.
+
+Ver 4.0.2002.0701-july 01,2002 
+  * Diagnostics IOCTLS implemented.
+  * physical Drive insertion and Removal IOCTLS implemented.
+  * Make Drive online now checks for the Deleted drives before making them online.
+  * Auto Resume feature of Rebuilding and consistency is now limited only to power 
+    failure cases.
+
+Ver 4.0.2002.0618-June 18,2002 
+  * Logical Drive insertion and Deletion is Tested and fixed.
+  * Installation of OS on any Logical Drive is Implemented.
+  * Class Code Check for loading the  Driver is implemented.
+
+Ver 4.0.2002.0531-May 31,2002 
+  * Driver was not handling IO's in proper fasion and Internal Queue corruption
+    was happening for IO's when check consisteny was going on.This Que corruption 
+    was leading to System crash. This driver has the fix for this problem. 
+  * Installation strings are changed. 
+
+Ver 4.0.2002.0528-May 28,2002 
+  * Driver was not able to Update the IRCD after rebuild.This driver takes care of 
+	this issue and Updates the IRCD successfully.
+
+Ver 4.0.2002.0522-May 22,2002 
+  * Windows NT Installation problem is Fixed.
+  * Dummy Device Is modified so that Windows will not see any RAID dummy device.
+  * Additional check for Gate commands While merging the commands is put in.
+  * Both the IRCD buffer are synchronized for the IOCTL Path.
+  * Strings are modified in TextSetup.oem.
+   
+
+Ver 4.0.2002.0516-May 16,2002 
+  * The driver was not filling up the stripe size properly and this caused problems in 
+    Raid 0.
+
+Ver 4.0.2002.0515-May 15,2002 
+  * Additional Validations for the parameters are added for stability of the driver.
+  * The driver was not filling up the Checksum for the IRCD and IRCD header in the IOCTL path.
+    The Driver now takes care of it.
+
+Ver 4.0.2002.0514-May 14,2002 
+
+  * The IOCTLS Read Write IRCD and Read Write Enquiry were not handled properly and 
+    were leading to problems with Drive Rebuilding. The variables used in these IOCTLS 
+    are now handled properly.
+
+  * The Driver was not filling up the Array information properly in the case of Multiple 
+    arrays and hence the Driver was behaving Strange with Two Arrays. Now the proper values are filled up 
+    in Driver data Structures and Driver works fine with multiple Arrays. 
+
+Ver 4.0.2002.0509-May 09,2002 
+  * The Driver was Crashing after the first phase of windows 2000 installation.
+
+Ver 4.0.2002.0503-May 03,2002 
+  * The Message string has been changed in textsetup.oem file. 
+  * The driver was not updating the IRCD Checksum and hence had some 
+    compatibility problems with bios released on 24th April. 
+    Driver now updates the Checksum correctly.
+  * Drive Insertion and removal is implemented for Yellow stone.
+  * CRC Error handling is implemented for Yellow Stone.
+
+Ver 4.0.2002.0426-April 26,2002 
+  * The Driver was not loading with latest Bios Released on 4/24/2002.
+    The Problem is fixed.
+
+Ver 4.0.2002.0425-April 25,2002 
+  * IOCTL Implementation Enhanced.
+  * Some Ioctl implementation bugs were fixed.	
+
+Ver 4.0.2002.0321-March 28,2002
+  * The New IRCD (v3.x) as documented in Rev1.03 is supported by this driver. 
+    The old IRCD (v2.x) is also supported for compatibility reasons. 
+  * The new ioctls documented in the IDE Driver Interface Rev2.7 are supported with some restrictions.
+  * 48-bit addressing support was fully implemented.
+  * Rebuilding is done on a Physical Drive basis.
+  * Check Consistency is done on a Logical Drive basis, so multiple Check Consistency per array are feasible.
+  * Auto resume of rebuilding is supported by the driver, ie., a rebuild which has been aborted by the user can be restarted.
+  * The following ioctls have been added :
+  * IOCTL Get Version
+  * IOCTL Physical Drive Info
+  * IOCTL Logical Drive Info
+  * IOCTL Raid Status Info_EX
+  * IOCTL SetDrive Status
+  * IOCTL Send Activity_EX
+  * IOCTL Get Activity_EX
+  * GET / SET EnquiryData
+  * GET / SET IRCD Data ( With some restriction)
+
+ 
+Ver 3.0.2002.0321-March 21,2002
+  * The Event count was not reduced even when we were discarding the Oldest event from 
+   the log and now is taken care in the code.
+ 
+
+Ver 3.0.2002.0320-March 20,2002
+
+  * Queue manupulating fix is made to the buffer holding the events	
+
+Ver 3.0.2002.0319-March 19,2002
+  *When the write error the the reason for command now logs as OTHER Error 
+   rather than medium error. Though the last release 3.0.2002.0318 also address this 
+   issue due to some inconsistencies in the driver the issue was not resolved. 
+
+Ver 3.0.2002.0318-March 18,2002
+  * When the write error the reason for command now logs as OTHER Error 
+    rather than medium error.
+
+
+Ver 3.0.2002.0317-March 17,2002
+  * The Driver Now removes the hotSpare drives from the Logical Drives and hence fills the 
+	information corretly to the Spy.
+ 
+Ver 3.0.2002.0315-March 15,2002
+  * The Driver differentiates medium errors from other errors and Logs the messeges accordingly.
+ 
+
+Ver 3.0.2002.0313-March 13,2002
+  * Fixed the problem of Write Errors were being posted as Medium Errors to Logs.
+  * Instead of posting Sector of the actual error we were posting the offset where error occured.
+  
+
+Ver 3.0.2002.0312-March 12,2002
+  * Smart status and Command type for read error.
+  * Adding new drive only to spare pool.
+  * Blue panic when boot from degraded array.
+  * Additional Sub system Device Id and subsystem Vendor ID added for Toshiba
+ver 3.0.2002.0308 -March 08, 2002
+  * Fixed the problem for drive disappearing on write error.
+  * NVRAM Events fixed.
+
+ver 3.0.2002.0305 -March 05, 2002
+  * Boot up Problem fixed.
+  * Fix for Making the Drive hotspare.
+  * Fixed the bug for Write Errors.
+  
+ver 3.0.2002.0301 -March 01, 2002
+  * Rebuild initiation error is fixed.
+  * Structures Packed identically in Application and driver.	 
+
+ver 3.0.2002.0226 -Feb 26, 2002
+  * I/O Error Recover is implemented.
+  * Rebuilding Error Recovery is implemented.
+  * Error Injection and Validation is implemented.
+
+ver 3.0.2002.0219 -Feb 19, 2002
+  * This Driver implements the new Error handling Algorithms.
+
+ver 3.0.2002.0214 -Feb 14, 2002
+  * ServerWorks Support is added and tested for WindowsNT 4.0 and Windows2000.
+ver 3.0.2002.0205 -Feb 05, 2002
+  * Driver Crash when the spy was started under windows 2000.
+  * Added Support for Serverworks Board.	
+ver 3.0.2002.0125 -Jan 25, 2002
+  * Driver Crash During Bootup when SPY installed as service is fixed.
+  * Problem of not firing commands to the slave Drive is fixed.	
+ver 3.0.2002.0114 -Jan 14, 2002
+  * Some problems in Starting the rebuilds are fixed.
+ver 3.0.2002.0108 -Jan 08, 2002
+  * Some problems in Drive insertion and removals fixed.
+  * Now supports higher capacity drives
+  * 680 chip support added
+  * Some problems with NVRAM events fixed.
+  * Error handling enhanced.
+
+ver 3.0.2001.1218 - Dec 18, 2001
+  * Problem of drive removal after inserting causing system freeze fixed
+  * Driver application interface changed for NVRAM events.
+  * provided new IOCTL interface to the application
+
+ver 3.0.2001.1130 - Nov 30, 2001
+  * Drive insertion problems fixed
+  * Now the error path will use the Drive's block reassignment feature
+  * Provided extra function for the application
+  * Drive removal notification will now work for spare drives and failed drives also
+
+ver 3.0.2001.1121 - Nov 21, 2001
+  * Blue Screen Fix while inserting the Drive is incorporated.
+  * Error Log IOCTL implementation is done.
+  * Timeout Problem is fixed.
+  * SMART Implementation is done.
+  * PASSTHRU implementation is done.
+ver 3.0.2001.1120 - Nov 20, 2001
+  * Error Log is implemented
+  * PassThru and Smart implementation done
+  * Problem with NVRam events posting is fixed
+  * IRCD updation problem fixed.
+ver 3.0.2001.1115 - Nov 15, 2001
+  * Windows NT Installation Bug fixed.
+  * Flag updation corrected.  
+ver 3.0.2001.1105 - Nov 05, 2001
+  * Fixed the Consistancy check Issues.
+  * Fixed Rebuild Issues.
+  * Fixed Verify command issues.
+ver 3.0.2001.1026 - Oct 26, 2001
+  * Fixed all IRCD updation problems.
+ver 3.0.2001.1024 - Oct 24, 2001
+  * Disabled LSI backplane support, since it is malfunctioning in NT.
+  * Ported previously 2k driver for NT.
+ver 3.0.2001.1019 - Oct 19, 2001
+  * Initial Binary for 3.0.
+

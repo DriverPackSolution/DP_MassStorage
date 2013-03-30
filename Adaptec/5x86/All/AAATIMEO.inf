@@ -1,0 +1,175 @@
+;----------------------------------------------------------------
+;
+; AAATIMEO.INF -- This is a preliminary INF that installs support
+;                 for the Adaptec PCI RAID devices under 
+;                 Windows2000
+;
+; Copyright (c) 1999 Adaptec Incorporated
+;
+;----------------------------------------------------------------
+
+;----------------------------------------------------------------
+;
+; [Version]
+;
+; Class and ClassGUID are defined in devguid.h
+;
+;----------------------------------------------------------------
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_PROVIDER%
+CatalogFile=cda1000.cat   ; For Windows 2000 Digital Signature
+
+;----------------------------------------------------------------
+;
+; [SourceDisksNames]
+;
+; diskid = description[,[tagfile][,<unused>,subdir]]
+;
+;----------------------------------------------------------------
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,,,
+
+;----------------------------------------------------------------
+;
+; [SourceDisksFiles.x86]
+;
+; filename_on_source = diskid[,[subdir][,size]]
+;
+;----------------------------------------------------------------
+[SourceDisksFiles]
+cda1000.sys= 1,\,,,
+aaatimeo.sys= 1,\,,,
+
+;----------------------------------------------------------------
+;
+; [Manufactuerer]
+;
+; manufacturer-name 
+; %strkey%=models-section-name
+; [%strkey%=models-section-name] ...
+;
+;----------------------------------------------------------------
+  
+
+; Table of Contents
+[Manufacturer]
+%ADP%= ADAPTEC
+
+;----------------------------------------------------------------
+;
+; [ControlFlags]
+;
+;----------------------------------------------------------------
+[ControlFlags]
+ExcludeFromSelect=PCI\VEN_9004&DEV_7815
+;CopyFilesOnly=
+
+;----------------------------------------------------------------
+;
+; Models
+;
+; device-description=install-section-name,hw-id[,compatible-id...]
+;
+; "*" indicates that device is supported by more than one
+;     enumerator.
+;
+;----------------------------------------------------------------
+[ADAPTEC]
+;%*cda1000.DeviceDesc%= cda1000
+;%*aaatimeo.DeviceDesc%= aaatimeo
+%PCI\VEN_9004&DEV_7815.DeviceDesc%= CDA1000,PCI\VEN_9004&DEV_7815
+%PCI\VEN_9004&DEV_7378.DeviceDesc%= CDA1000,PCI\VEN_9004&DEV_7378
+%PCI\VEN_9004&DEV_8378.DeviceDesc%= CDA1000,PCI\VEN_9004&DEV_8378
+%PCI\VEN_9004&DEV_7893.DeviceDesc%= CDA1000,PCI\VEN_9004&DEV_7893
+%PCI\VEN_9004&DEV_7895.DeviceDesc%= CDA1000,PCI\VEN_9004&DEV_7895
+%PCI\VEN_9005&DEV_0013.DeviceDesc%= CDA1000,PCI\VEN_9005&DEV_0013
+%PCI\VEN_9005&DEV_0053.DeviceDesc%= CDA1000,PCI\VEN_9005&DEV_0053
+%PCI\VEN_9005&DEV_00c3.DeviceDesc%= CDA1000,PCI\VEN_9005&DEV_00c3
+
+;----------------------------------------------------------------
+;
+; Install
+;
+;----------------------------------------------------------------
+[cda1000.NT]
+CopyFiles=@cda1000.sys, @aaatimeo.sys 
+
+;[aaatimeo.NT]
+;CopyFiles=@aaatimeo.sys
+
+;----------------------------------------------------------------
+;
+; Services
+;
+; Flag = 0x1 (SPSVCINST_TAGTOFRONT)
+;        Make sure that device loads at
+;        the front of its group
+;
+;----------------------------------------------------------------
+[cda1000.NT.Services]
+AddService = cda1000, 0x2, cda1000_Service_Inst, Miniport_EventLog_Inst,,
+
+;[aaatimeo.NT.Services]
+AddService = aaatimeo, 0x2, aaatimeo_Service_Inst, Miniport_EventLog_Inst,,
+
+[cda1000_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\cda1000.sys
+LoadOrderGroup = SCSI Miniport
+
+[aaatimeo_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\aaatimeo.sys
+LoadOrderGroup = SCSI Miniport
+
+;----------------------------------------------------------------
+;
+; Event Log Install
+;
+;The NT EventLog entries are the same for all SCSI miniports.
+;
+;----------------------------------------------------------------
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+;----------------------------------------------------------------
+;
+; [DestinationDirs]
+;
+; file-list-section=dirid[,subdir]] ... 
+;
+;----------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir = 12             ; DIRID_DRIVERS (this is IOSubsys on
+                                ; Win95, and System32\Drivers on NT,Windows2000)
+
+;----------------------------------------------------------------
+;
+; [Strings]
+;
+;----------------------------------------------------------------
+[Strings]
+INF_PROVIDER="Adaptec"
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Array1000U160 Family Manager Set v4.30.15 for Windows2000 "
+*cda1000.DeviceDesc = "Adaptec Array1000U160 PCI RAID Controller for Windows2000 "
+;*aaatimeo.DeviceDesc = "Adaptec Array1000 PCI RAID Controller(Windows2000) (Timeout)"
+PCI\VEN_9004&DEV_7815.DeviceDesc="Adaptec Memory Controller / XOR Engine" 
+PCI\VEN_9004&DEV_7378.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 
+PCI\VEN_9004&DEV_8378.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 
+PCI\VEN_9004&DEV_7893.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 
+PCI\VEN_9004&DEV_7895.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 
+PCI\VEN_9005&DEV_0013.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 
+PCI\VEN_9005&DEV_0053.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 
+PCI\VEN_9005&DEV_00c3.DeviceDesc="Adaptec Array1000U160 PCI RAID Controller for Windows2000" 

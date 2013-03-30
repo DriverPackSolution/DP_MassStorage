@@ -1,0 +1,128 @@
+; Copyright (c) 1993-2000 Microsoft Corporation
+
+[version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%COMPAQ%
+DriverVer=11/12/2002,5.24.00.0
+CatalogFile=cpq32fs2.cat
+
+[SourceDisksNames]
+1 = "Compaq SCSI Controller Drivers for Windows 2000 diskette",cpq32fs2.sys,,
+
+[SourceDisksFiles]
+cpq32fs2.sys = 1,,
+
+[DestinationDirs]
+DefaultDestDir = 12
+CPQ32FS2_CopyFiles_Driver = 12 ; DIRID_DRIVERS
+
+[Manufacturer]
+%COMPAQ%=COMPAQ_HDC
+
+[COMPAQ_HDC]
+%PCI\VEN_1000&DEV_0003.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_0003
+%PCI\VEN_1000&DEV_000f.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_000f
+%PCI\VEN_1000&DEV_000b.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_000b
+%PCI\VEN_1000&DEV_000c.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_000c
+%PCI\VEN_1000&DEV_0001.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_0001
+%PCI\VEN_1000&DEV_000a.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_000a
+%PCI\VEN_1000&DEV_0012.DeviceDesc%=pciScsi825_Inst, PCI\VEN_1000&DEV_0012
+%NCRC710.DeviceDesc%=EisaScsi_Inst, NCRC710_SCSI
+%CPQFWS2E.DeviceDesc%=EisaScsi_Inst, CPQFWS2E_SCSI
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1000&DEV_0003
+ExcludeFromSelect = PCI\VEN_1000&DEV_000F
+ExcludeFromSelect = PCI\VEN_1000&DEV_000B
+ExcludeFromSelect = PCI\VEN_1000&DEV_000C
+ExcludeFromSelect = PCI\VEN_1000&DEV_0001
+ExcludeFromSelect = PCI\VEN_1000&DEV_000A
+ExcludeFromSelect = PCI\VEN_1000&DEV_0012
+
+;****************************************************
+; PCI C825 SCSI Host Adapter
+[pciScsi825_Inst]
+CopyFiles = CPQ32FS2_CopyFiles_Driver
+
+[pciScsi825_Inst.Services]
+AddService = Cpq32fs2, %SPSVCINST_ASSOCSERVICE%, pciScsi825_Service_Inst, Miniport_EventLog_Inst
+
+[pciScsi825_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\Cpq32fs2.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+;****************************************************
+; EISA SCSI Host Adapter
+[EisaScsi_Inst]
+CopyFiles = CPQ32FS2_CopyFiles_Driver
+
+[EisaScsi_Inst.Services]
+AddService = Cpq32fs2, %SPSVCINST_ASSOCSERVICE%, EisaScsi_Service_Inst, Miniport_EventLog_Inst
+
+[EisaScsi_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\Cpq32fs2.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_eisa_addreg
+AddReg         = pnpsafe_pci_addreg
+AddReg         = eisa_disable_services
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+
+;*************************************************************
+;These addreg sections should be used when installing services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR,,"Tag", %REG_DWORD%, 0x1a
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\PnpInterface", "2", 0x00010001, 0x00000001
+HKLM, "SYSTEM\CurrentControlSet\services\cpq32fs2\Parameters\Device","MaximumSGList",0x10001,255
+
+[pnpsafe_eisa_addreg]
+HKR, "Parameters","LegacyAdapterDetection", %REG_DWORD%, 0x00000001
+
+[eisa_disable_services]
+HKLM, "SYSTEM\CurrentControlSet\Services\cpqfws2e", "Start", 0x00010001, 0x4
+HKLM, "SYSTEM\CurrentControlSet\Services\Ncrc710", "Start", 0x00010001, 0x4
+
+[CPQ32FS2_CopyFiles_Driver]
+CPQ32FS2.SYS
+
+[Strings]
+COMPAQ                           = "Compaq"
+PCI\VEN_1000&DEV_0001.DeviceDesc = "Compaq 32-Bit Fast SCSI Controller /P"
+PCI\VEN_1000&DEV_0003.DeviceDesc = "Compaq 32-Bit Fast-Wide SCSI Controller /P"
+PCI\VEN_1000&DEV_000f.DeviceDesc = "Compaq 32-Bit Ultra SCSI Controller /P"
+PCI\VEN_1000&DEV_000b.DeviceDesc = "Compaq 64-Bit Ultra2 SCSI Controller /P"
+PCI\VEN_1000&DEV_000c.DeviceDesc = "Compaq 32-Bit Ultra2 SCSI Controller /P"
+PCI\VEN_1000&DEV_000a.DeviceDesc = "Compaq Integrated Dual Channel Wide Ultra2 SCSI Controller"
+PCI\VEN_1000&DEV_0012.DeviceDesc = "Compaq Integrated Wide Ultra2 SCSI Adapter"
+NCRC710.DeviceDesc               = "Compaq 32-Bit Fast SCSI-2/E Controller"
+CPQFWS2E.DeviceDesc              = "Compaq 32-Bit Fast Wide SCSI Controller /E"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

@@ -1,0 +1,235 @@
+; oemsetup.inf
+;
+; Installation file for the RAIDSRC.SYS Miniport driver
+; Copyright (c) 1999 - 2003, Intel Corp.
+;
+[Version]
+Signature="$Chicago$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%INT%
+CatalogFile.ntx86=src_x86.cat
+; CatalogFile.ntia64=src_ia64.cat
+DriverVer=06/23/2003, 5.3.0.13
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+;
+; Driver information
+;
+[Manufacturer]
+%INT%=SRC
+
+[SRC]
+%*PCI\VEN_1119&DEV_0000.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0000
+%*PCI\VEN_1119&DEV_0001.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0001
+%*PCI\VEN_1119&DEV_0002.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0002
+%*PCI\VEN_1119&DEV_0003.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0003
+%*PCI\VEN_1119&DEV_0004.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0004
+%*PCI\VEN_1119&DEV_0005.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0005
+%*PCI\VEN_1119&DEV_0006.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0006
+%*PCI\VEN_1119&DEV_0007.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0007
+%*PCI\VEN_1119&DEV_0008.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0008
+%*PCI\VEN_1119&DEV_0009.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0009
+%*PCI\VEN_1119&DEV_000A.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_000A
+%*PCI\VEN_1119&DEV_000B.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_000B
+%*PCI\VEN_1119&DEV_000C.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_000C
+%*PCI\VEN_1119&DEV_000D.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_000D
+%*PCI\VEN_1119&DEV_0100.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0100
+%*PCI\VEN_1119&DEV_0101.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0101
+%*PCI\VEN_1119&DEV_0102.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0102
+%*PCI\VEN_1119&DEV_0103.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0103
+%*PCI\VEN_1119&DEV_0104.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0104
+%*PCI\VEN_1119&DEV_0105.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0105
+%*PCI\VEN_1119&DEV_0110.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0110
+%*PCI\VEN_1119&DEV_0111.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0111
+%*PCI\VEN_1119&DEV_0112.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0112
+%*PCI\VEN_1119&DEV_0113.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0113
+%*PCI\VEN_1119&DEV_0114.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0114
+%*PCI\VEN_1119&DEV_0115.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0115
+%*PCI\VEN_1119&DEV_0118.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0118
+%*PCI\VEN_1119&DEV_0119.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0119
+%*PCI\VEN_1119&DEV_011A.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_011A
+%*PCI\VEN_1119&DEV_011B.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_011B
+%*PCI\VEN_1119&DEV_0136.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0136
+%*PCI\VEN_1119&DEV_0137.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0137
+%*PCI\VEN_1119&DEV_0138.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0138
+%*PCI\VEN_1119&DEV_0139.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0139
+%*PCI\VEN_1119&DEV_013A.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_013A
+%*PCI\VEN_1119&DEV_013B.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_013B
+%*PCI\VEN_1119&DEV_013C.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_013C
+%*PCI\VEN_1119&DEV_013D.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_013D
+%*PCI\VEN_1119&DEV_013E.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_013E
+%*PCI\VEN_1119&DEV_013F.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_013F
+%*PCI\VEN_1119&DEV_0166.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0166
+%*PCI\VEN_1119&DEV_0167.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0167
+%*PCI\VEN_1119&DEV_0168.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0168
+%*PCI\VEN_1119&DEV_0169.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0169
+%*PCI\VEN_1119&DEV_016A.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_016A
+%*PCI\VEN_1119&DEV_016B.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_016B
+%*PCI\VEN_1119&DEV_016C.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_016C
+%*PCI\VEN_1119&DEV_016D.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_016D
+%*PCI\VEN_1119&DEV_016E.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_016E
+%*PCI\VEN_1119&DEV_016F.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_016F
+%*PCI\VEN_1119&DEV_01D6.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01D6
+%*PCI\VEN_1119&DEV_01D7.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01D7
+%*PCI\VEN_1119&DEV_01F6.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01F6
+%*PCI\VEN_1119&DEV_01F7.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01F7
+%*PCI\VEN_1119&DEV_01FC.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01FC
+%*PCI\VEN_1119&DEV_01FD.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01FD
+%*PCI\VEN_1119&DEV_01FE.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01FE
+%*PCI\VEN_1119&DEV_01FF.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_01FF
+%*PCI\VEN_1119&DEV_0210.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0210
+%*PCI\VEN_1119&DEV_0211.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0211
+%*PCI\VEN_1119&DEV_0260.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0260
+%*PCI\VEN_1119&DEV_0261.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0261
+%*PCI\VEN_1119&DEV_02F6.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_02F6
+%*PCI\VEN_1119&DEV_0300.DeviceDesc%=src_pci,PCI\VEN_1119&DEV_0300
+%*PCI\VEN_8086&DEV_0600.DeviceDesc%=src_pci,PCI\VEN_8086&DEV_0600
+%*PCI\VEN_8086&DEV_0601.DeviceDesc%=src_pci,PCI\VEN_8086&DEV_0601
+
+;
+; General installation section
+;
+[src_pci.ntx86]
+CopyFiles=@raidsrc.sys
+DelReg=src_pci.del_gdtx_reg
+DelFiles=src_pci.del_gdtx
+
+
+;[src_pci.ntia64]
+;CopyFiles=@raidsrc.sys
+;DelReg=src_pci.del_gdtx_reg
+;DelFiles=src_pci.del_gdtx
+
+;
+; File sections
+;
+; 1. ntx86
+;
+[src_pci.ntx86.Services]
+AddService = raidsrc, 0x00000002, src_pci.svc_inst, src_pci.svc_log
+
+;
+; 2. ntia64
+;
+;[src_pci.ntia64.Services]
+;AddService = raidsrc, 0x00000002, src_pci.svc_inst, src_pci.svc_log
+
+;
+; Remove gdtx entries
+;
+[src_pci.del_gdtx_reg]
+HKLM,"System\CurrentControlSet\Services\gdtx"
+
+[src_pci.del_gdtx]
+gdtx.sys
+
+;
+; Service
+;
+[src_pci.svc_inst]
+ServiceType = 1         ;SERVICE_KERNEL_DRIVER
+StartType = 0           ;SERVICE_BOOT_START
+ErrorControl = 1        ;SERVICE_ERROR_NORMAL
+LoadOrderGroup = SCSI Miniport
+ServiceBinary = %12%\raidsrc.sys
+AddReg = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR,"Parameters\PnpInterface","5",0x00010001,0x00000001
+HKR,"Parameters\Device","NumberOfRequests",0x00010001,0x000000A0
+HKLM,"System\CurrentControlSet\Services\Disk","TimeOutValue",0x00010001,0x0000003c
+HKLM,"System\CurrentControlSet\Control\Session Manager\Memory Management","SystemPages",0x00010001,0xffffffff
+
+[src_pci.svc_log]
+AddReg = src_pci.svc_log_add
+
+[src_pci.svc_log_add]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\raidsrc.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Source file information
+;
+[SourceDisksNames]
+1 = %DiskID%,raidsrc.tag
+; 2 = %DiskID%,raidsrc.tag,,\WinNT
+
+[SourceDisksFiles.x86]
+raidsrc.sys = 1
+
+;[SourceDisksFiles.ia64]
+;raidsrc.sys = 2,ia64
+
+[Strings]
+INT="Intel Corporation"
+DiskID="RAID Controller"
+*PCI\VEN_1119&DEV_0000.DeviceDesc="GDT6000/6020/6050 Disk Array Controller"
+*PCI\VEN_1119&DEV_0001.DeviceDesc="GDT6000B/6010 Disk Array Controller"
+*PCI\VEN_1119&DEV_0002.DeviceDesc="GDT6110/6510 Disk Array Controller"
+*PCI\VEN_1119&DEV_0003.DeviceDesc="GDT6120/6520 Disk Array Controller"
+*PCI\VEN_1119&DEV_0004.DeviceDesc="GDT6530 Disk Array Controller"
+*PCI\VEN_1119&DEV_0005.DeviceDesc="GDT6550 Disk Array Controller"
+*PCI\VEN_1119&DEV_0006.DeviceDesc="GDT6117/6517 Disk Array Controller"
+*PCI\VEN_1119&DEV_0007.DeviceDesc="GDT6127/6527 Disk Array Controller"
+*PCI\VEN_1119&DEV_0008.DeviceDesc="GDT6537 Disk Array Controller"
+*PCI\VEN_1119&DEV_0009.DeviceDesc="GDT6557 Disk Array Controller"
+*PCI\VEN_1119&DEV_000A.DeviceDesc="GDT6115/6515 Disk Array Controller"
+*PCI\VEN_1119&DEV_000B.DeviceDesc="GDT6125/6525 Disk Array Controller"
+*PCI\VEN_1119&DEV_000C.DeviceDesc="GDT6535 Disk Array Controller"
+*PCI\VEN_1119&DEV_000D.DeviceDesc="GDT6555 Disk Array Controller"
+*PCI\VEN_1119&DEV_0100.DeviceDesc="GDT6x17RP Disk Array Controller"
+*PCI\VEN_1119&DEV_0101.DeviceDesc="GDT6x27RP Disk Array Controller"
+*PCI\VEN_1119&DEV_0102.DeviceDesc="GDT6x37RP Disk Array Controller"
+*PCI\VEN_1119&DEV_0103.DeviceDesc="GDT6x57RP Disk Array Controller"
+*PCI\VEN_1119&DEV_0104.DeviceDesc="GDT6x11RP Disk Array Controller"
+*PCI\VEN_1119&DEV_0105.DeviceDesc="GDT6x21RP Disk Array Controller"
+*PCI\VEN_1119&DEV_0110.DeviceDesc="GDT6x17RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0111.DeviceDesc="GDT6x27RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0112.DeviceDesc="GDT6x37RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0113.DeviceDesc="GDT6x57RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0114.DeviceDesc="GDT6x11RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0115.DeviceDesc="GDT6x21RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0118.DeviceDesc="GDT6x18RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0119.DeviceDesc="GDT6x28RD Disk Array Controller"
+*PCI\VEN_1119&DEV_011A.DeviceDesc="GDT6x38RD Disk Array Controller"
+*PCI\VEN_1119&DEV_011B.DeviceDesc="GDT6x58RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0136.DeviceDesc="GDT6x13RS Disk Array Controller"
+*PCI\VEN_1119&DEV_0137.DeviceDesc="GDT6x23RS Disk Array Controller"
+*PCI\VEN_1119&DEV_0138.DeviceDesc="GDT6x18RS Disk Array Controller"
+*PCI\VEN_1119&DEV_0139.DeviceDesc="GDT6x28RS Disk Array Controller"
+*PCI\VEN_1119&DEV_013A.DeviceDesc="GDT6x38RS Disk Array Controller"
+*PCI\VEN_1119&DEV_013B.DeviceDesc="GDT6x58RS Disk Array Controller"
+*PCI\VEN_1119&DEV_013C.DeviceDesc="GDT6x33RS Disk Array Controller"
+*PCI\VEN_1119&DEV_013D.DeviceDesc="GDT6x43RS Disk Array Controller"
+*PCI\VEN_1119&DEV_013E.DeviceDesc="GDT6x53RS Disk Array Controller"
+*PCI\VEN_1119&DEV_013F.DeviceDesc="GDT6x63RS Disk Array Controller"
+*PCI\VEN_1119&DEV_0166.DeviceDesc="GDT7x13RN Disk Array Controller"
+*PCI\VEN_1119&DEV_0167.DeviceDesc="GDT7x23RN Disk Array Controller"
+*PCI\VEN_1119&DEV_0168.DeviceDesc="GDT7x18RN Disk Array Controller"
+*PCI\VEN_1119&DEV_0169.DeviceDesc="GDT7x28RN Disk Array Controller"
+*PCI\VEN_1119&DEV_016A.DeviceDesc="GDT7x38RN Disk Array Controller"
+*PCI\VEN_1119&DEV_016B.DeviceDesc="GDT7x58RN Disk Array Controller"
+*PCI\VEN_1119&DEV_016C.DeviceDesc="GDT7x33RN Disk Array Controller"
+*PCI\VEN_1119&DEV_016D.DeviceDesc="GDT7x43RN Disk Array Controller"
+*PCI\VEN_1119&DEV_016E.DeviceDesc="GDT7x53RN Disk Array Controller"
+*PCI\VEN_1119&DEV_016F.DeviceDesc="GDT7x63RN Disk Array Controller"
+*PCI\VEN_1119&DEV_01D6.DeviceDesc="GDT4x13RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01D7.DeviceDesc="GDT4x23RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01F6.DeviceDesc="GDT8x13RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01F7.DeviceDesc="GDT8x23RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01FC.DeviceDesc="GDT8x33RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01FD.DeviceDesc="GDT8x43RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01FE.DeviceDesc="GDT8x53RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_01FF.DeviceDesc="GDT8x63RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_0210.DeviceDesc="GDT6x19RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0211.DeviceDesc="GDT6x29RD Disk Array Controller"
+*PCI\VEN_1119&DEV_0260.DeviceDesc="GDT7x19RN Disk Array Controller"
+*PCI\VEN_1119&DEV_0261.DeviceDesc="GDT7x29RN Disk Array Controller"
+*PCI\VEN_1119&DEV_02F6.DeviceDesc="GDT8x22RZ Disk Array Controller"
+*PCI\VEN_1119&DEV_0300.DeviceDesc="ICP vortex GDT RAID Controller"
+*PCI\VEN_8086&DEV_0600.DeviceDesc="RAID Controller"
+*PCI\VEN_8086&DEV_0601.DeviceDesc="RAID Controller"
+

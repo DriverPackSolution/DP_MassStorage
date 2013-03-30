@@ -1,0 +1,112 @@
+; Copyright (C) 2002  NVIDIA Corpoation
+; Unauthorized copying or use without explicit permission of NVIDIA
+; is prohibited
+;
+[Version] 
+Signature = "$Windows NT$" 
+Class=HDC
+ClassGUID={4d36e96a-e325-11ce-bfc1-08002be10318} 
+Provider=%NVIDIA% 
+CatalogFile=nvata4IN.cat
+DriverVer=08/12/2005,5.10.2600.0622
+
+[DestinationDirs] 
+Crush11.Files.x86_12 = 12 
+Crush11.CoInstFiles = 11
+
+[SourceDisksNames.x86]
+0=%Desc_x860%
+
+[SourceDisksFiles.x86]
+nvata4IN.sys=0
+idecoi4IN.dll=0
+nvcoi4IN.dll=0
+
+[Manufacturer] 
+%NVIDIA%=NVIDIA
+
+[NVIDIA]
+%MCP51S%=Crush11_Inst,PCI\VEN_10DE&DEV_0267&CC_0101
+%MCP51S%=Crush11_Inst,PCI\VEN_10DE&DEV_0266&CC_0101
+;In the future we might not need one of the SATA MCP55 DEVIDS
+
+[Crush11_Inst.ntx86] 
+CopyFiles = Crush11.Files.x86_12
+
+[Crush11_Inst.ntx86.HW] 
+AddReg=Crush11_Inst.ntx86.AddReg.HW
+
+[Crush11_Inst.ntx86.AddReg.HW]
+; allow access from system and administrator only
+HKR,,"Security",,"D:P(A;;GA;;;SY)(A;;GA;;;BA)"
+
+[Crush11_Inst.ntx86.CoInstallers]
+CopyFiles = Crush11.CoInstFiles
+AddReg = Crush11_Inst.CoInst_AddReg
+
+[Crush11_Inst.CoInst_AddReg]
+HKR,,CoInstallers32,0x00010000,		\
+	"idecoi4IN.dll, NvIdeCoInstaller", \
+	"NVCOI4IN.DLL,NVCoInstaller"
+
+HKR, Uninstall, Script,0,"nvide4IN.nvu"
+HKR, Uninstall, Name,0,"NVIDIA IDE Driver"
+HKR, Uninstall, INFSrcDir, 0, %01% 
+HKR, Uninstall, Uninstaller,0,"nvuide4IN.exe"
+
+[Crush11_Inst.ntx86.Services] 
+AddService = nvata4in,0x00000002,Crush11_Service_Instx86,Crush11_EventLog_Instx86
+
+[Crush11_Service_Instx86] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_CRITICAL% 
+ServiceBinary = %12%\nvata4IN.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg = Crush11_DisableFltCache_AddReg
+
+[Crush11_EventLog_Instx86]
+AddReg = Crush11_EventLog_AddReg
+
+[Crush11_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\nvata4IN.sys"
+HKR,,TypesSupported,0x00010001,7 
+
+[Crush11_DisableFltCache_AddReg]
+HKR,,DisableFilterCache,0x00010001,1
+
+[Crush11.Files.x86_12] 
+nvata4IN.sys
+
+[Crush11.CoInstFiles]
+idecoi4IN.dll
+NVCOI4IN.DLL
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+NVIDIA= "NVIDIA Corporation" 
+Desc_x860= "SRCDATA" 
+MCP04SSS="NVIDIA nForce4 Intel® Edition Serial ATA Controller"
+MCP04SSP="NVIDIA nForce4 Intel® Edition Parallel ATA Controller"
+CK804SSS="NVIDIA nForce4 Serial ATA Controller"
+CK804SSP="NVIDIA nForce4 Parallel ATA Controller"
+MCP51S="NVIDIA MCP51 Serial ATA Controller"
+MCP55S="NVIDIA MCP55 Serial ATA Controller"
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 

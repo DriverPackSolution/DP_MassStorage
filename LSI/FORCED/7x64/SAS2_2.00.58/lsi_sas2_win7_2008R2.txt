@@ -1,0 +1,323 @@
+***************************************************************************** 
+                           LSI_SAS2_WIN7_2008R2.TXT  
+***************************************************************************** 
+
+Installation Guide for the LSI Fusion-MPT (TM) Drivers: 
+LSI_SAS2.SYS (StorPort) V2.00.57
+                                                 
+This file describes the features and use of the LSI Fusion-MPT SAS (Serial
+Attached SCSI) Gen 2 device drivers for the Windows 7 and Server 2008 R2
+operating system environment. It is divided into the following sections:   
+
+Introduction for Windows 7 / Server 2008 R2 
+     Features
+     LSI Devices Supported
+     Description
+
+Installing the Driver(s)
+     New System Installation
+          DVD-ROM Installation
+     Existing System Installation 
+     Performance Tuning for Windows Server 2008 
+          Miniport Driver Configuration Options and WDCFG Utility
+     WinPE Installation
+     Troubleshooting 
+
+
+.........................................................................
+1.0 Introduction for Windows 7 / Server 2008 R2  
+
+Windows 7 is the client release of the operating system.  Windows Server
+2008 R2 is the server version of this release.  In all of the information
+below, this release will be referred to as Windows 7, but that will also
+include the Server 2008 R2 releases as well.
+
+Windows 7 is an operating system designed to run on Intel architecture (x86,
+32-bit), Itanium Processor Family (IA64), and Extended-64 (x64, AMD64/EM64T)
+processors using current technology. It provides a graphical user interface
+environment incorporating many high-level features. Note that Windows 7 is
+supported only on 32-bit and x64 processors, and Server 2008 R2 is supported
+only on x64 and IA64 processors. Refer to the Microsoft Windows 7 / Server
+2008 R2 documentation for details.
+
+An I/O manager handles I/O requests in Windows 7. To address a peripheral, the
+I/O manager goes through the appropriate drivers. Windows 7 provides class
+drivers for hard disk, optical, CD-ROM, printer, and scanner peripherals. Other
+class drivers, provided by peripheral manufacturers, may be added to support
+new devices. Tape device support is built into the operating system itself and
+does not require a class driver. 
+
+Microsoft provides the port driver and LSI Corporation provides the miniport
+drivers, which is called LSI_SAS2.SYS.  This driver completes the path to the
+LSI controller or processor with an optional SAS BIOS.
+
+This miniport driver uses the Microsoft StorPort port driver (rather than
+the Microsoft ScsiPort driver in earlier versions of Windows).  The StorPort
+driver has architectural enhancements that provide performance improvements on
+large server systems with many storage adapters.  This miniport driver is
+designed to take advantage of these enhancements for improved performance.
+
+.........................................................................
+1.1 Features 
+
+The LSI_SAS2.SYS miniport driver supports these features:
+
+o  Supports End-to-End Data Protection (EEDP)
+o  Supports 1.5Gb, 3Gb, and 6Gb SAS expanders/devices and SATA devices
+o  Supports PCI-Express bus protocols
+o  Supports MSI/MSI-X
+o  Supports LSI MPT common software interface 
+o  Supports multiple host adapters 
+o  Supports multiple Logical Unit Numbers (LUNs) 
+o  Supports Scatter-Gather 
+o  Supports SCSI pass-through functionality 
+o  Supports disk array configurations with no LUN 0 
+o  Supports disk array configurations with non-contiguous LUNs 
+o  Supports Storport Interrupt Redirection performance enhancements 
+o  Auto request sense 
+o  Maximum block size support: 1 Mbyte (32-bit), 2 Mbyte (64-bit)
+.........................................................................
+1.2 LSI Devices Supported 
+
+The miniport driver names are listed below, along with their supported
+devices and associated host adapters:
+
+LSI_SAS2.SYS - "LSI Fusion-MPT SAS2 Miniport Driver"
+o  LSISAS2004
+o  LSISAS2008
+o  LSISAS2108
+o  LSISAS2116
+o  LSISAS2208
+o  LSISAS2308
+
+.........................................................................
+1.3 Description
+
+The LSI_SAS2.SYS driver meets the Microsoft specification for miniport drivers.
+These drivers allow connection of SAS devices including disk drives,
+CD/DVD-ROMs, and tape drives for PCI-Express based machines. To support a
+different SAS device type, the Windows 7 architecture requires that a class
+driver for that type of device be present (usually supplied by Microsoft, or
+possibly by the peripheral manufacturer). No changes to the LSI drivers are
+required. The driver supports only Windows 7 / Server 2008 R2 and all
+subsequent Service Packs. 
+
+A Windows application passes SCSI commands directly to the SAS Protocol devices
+by using the SCSI pass-through facility. This facility allows applications to
+directly control and access devices by filling in a data structure and calling
+into the port or class driver. Refer to the Microsoft Windows 7 documentation
+for more details.
+
+............................................................................
+2.0 Installing the LSI_SAS2.SYS Driver
+
+
+This procedure installs the LSI_SAS2.SYS driver onto a new or existing Windows
+7 system. Depending upon the media used to distribute LSI drivers (web or
+CD-ROM) and the type of adapter, you will create a driver install package on
+some type of accessible media.  This can be a diskette, CD or DVD, or USB flash
+drive.  The driver install package can also be placed on a hard disk for driver
+upgrades only.
+
+Copy the files listed in this section to a folder on the desired media as shown
+below. You will use this driver package during the installation process.
+
+        lsi_sas2.inf
+        lsi_sas2.sys
+        lsinodrv.inf
+        wdcfg.exe
+        DriverConfigParam.def
+        svlhx86.cat (for x86) or
+        svlhia64.cat (for IA64) or
+        svlhx64.cat (for x64)
+        
+Note: Windows drivers must be either Release signed (by LSI) or WHQL logo
+      signed (by Microsoft Windows Hardware Quality Labs) to be installed on
+      Windows 7 / Server 2008 R2.  Any modifications to any of the above files
+      will invalidate the digital signature of the package and the OS will
+      not install the driver.
+
+............................................................................
+2.1 New System Installation 
+
+This procedure installs the LSI_SAS2.SYS driver onto a Windows 7 system. Use
+this procedure when installing Windows 7 onto an unused drive. Windows 7
+automatically adds the driver to the registry and copies the driver to the
+driver storage area.
+
+Note: Windows 7 contains a bundled LSI_SAS2 driver. This drivers will support a
+      fresh installation of Windows 7. If a newer driver is to be installed,
+      the fresh installation can be done with the bundled driver and the driver
+      can be upgraded after installation has completed as described in Section
+      2.2.  Or, the newer driver can be used for fresh installation as
+      described in the following section.
+
+............................................................................
+2.1.1 DVD-ROM Installation
+
+1. Start the Windows 7 installation by booting from the Windows 7 DVD-ROM:
+
+   The system BIOS must support booting from a DVD-ROM. BIOS settings may need
+   to be changed to allow DVD-ROM booting.
+   
+2. Proceed with the installation of Windows 7. When the screen displays
+   "Where do you want to install Windows?", click on the Load Driver icon.
+   
+3. Be sure the media with the LSI_SAS2 driver install package for the system
+   processor architecture is inserted in the system.  Click the Browse button,
+   browse to the location of the driver package, then click OK.
+   
+   Note: Current Windows 7 drivers can be downloaded from the LSI Corporation
+         web site at:
+             http://www.lsi.com/cm/DownloadSearch.do
+         After you are connected to this web site, select the product
+         category, family, and the appropriate product.  Select the desired
+         Windows 7 driver to begin the download.
+   
+4. The LSI adapter driver name will be displayed, click Next.
+
+   Note: When using a Release Signed driver, a Windows Secutiry dialog box may
+         appear, indicating that the publisher of this software is LSI
+         Corporation. Click the Install button to continue installation of the
+         driver.
+            
+         A second Windows Security dialog box may appear, indicating that a
+         LSI system device is being installed.  This is to install
+         drivers for LSI storage enclosure processors.  Click the Install
+         button to continue installation of the driver.
+   
+5. Follow the Microsoft Windows 7 installation procedure at this point.
+
+............................................................................
+2.2 Existing System Installation
+
+This procedure installs or upgrades the LSI_SAS2.SYS driver onto an existing
+Windows 7 system.
+
+NOTE: When a LSI SAS Gen2 adapter is added to an existing system installation,
+      the new adapter is automatically detected at the next reboot. When the
+      Update Driver Software Wizard appears at boot, continue at step 8 below.
+
+1. Boot Windows 7 and logon as a user that has Administrator privileges.
+
+2. Click on the Start button, then right-click on the Computer entry in
+   the menu.
+
+3. Click on the Properties selection.
+
+4. In the Tasks column on the left side of the Screen, click Device Manager.
+
+   Note: A User Account Control dialog box may be displayed, asking for
+         permission to continue.  Click Continue.
+         
+5. Click the "+" to the left of the Storage Controllers line.  Find the adapter
+   desired for the driver upgrade and double-click the entry.  Click on the
+   Driver tab.
+
+6. Information on the currently installed driver is displayed, and additional
+   driver details can be viewed by clicking the "Driver Details" button.
+
+7. Click on the "Update Driver" button to update the existing driver.  The
+   Update Driver Software wizard begins.
+   
+8. Click on the "Browse my computer for driver software" selection.
+
+9. Click on the "Let me pick..." selection at the bottom of the window.
+
+10. Click on the "Have Disk" button and type the path to the driver, or click
+    on the Browse button. Select the location for the driver package which
+    matches the processor architecture of the system (x86, IA64, or x64). After
+    the path to the driver has been established, click the OK button.
+
+11. Select the driver from the list and click on the Next button.
+
+    Note: When using a Release Signed driver, a Windows Secutiry dialog box may
+          appear, indicating that the publisher of this software is LSI
+          Corporation. Click the Install button to continue installation of the
+          driver.
+            
+          A second Windows Security dialog box may appear, indicating that a
+          LSI system device is being installed.  This is to install drivers for
+          LSI storage enclosure processors.  Click the Install button to
+          continue installation of the driver.
+          
+          
+12. The system will load the driver from the Windows 7 driver package media.
+    A message box may display indicating that the target (existing) driver is
+    newer than the source (upgrade) driver.
+
+14. Click No to cancel the driver upgrade at this point.
+
+      or
+
+    Click Yes to continue the installation.
+
+    The system copies the driver to the system disk. For any adapter other
+    than the boot adapter, the updated driver will become active immediately.
+    For the boot adapter, a message bdisplays indicating that you must reboot
+    your system for the new driver to take effect.
+
+15. Click on the Close button to complete the driver upgrade.
+
+............................................................................
+2.3 Performance Tuning for Windows 7
+
+Windows 7 has registry entries that can be used to tune the performance of SCSI
+I/O for certain configurations. The registry settings of NumberOfRequests and
+MaximumSGList are not used by StorPort and will have no effect on the
+LSI_SAS2.SYS driver.
+
+............................................................................
+2.3.1 Miniport Driver Configuration Options
+
+The LSI_SAS2.SYS driver is configured by default to provide optimum
+performance in most standard systems.
+
+However, it is possible to fine-tune certain driver parameters using a utility
+provided on the OS installation disk, the Windows Driver Configuration Utility
+(WDCFG).
+
+The WDCFG utility is fully installed automatically as part of the driver
+installation.
+
+To use the utility, first launch a Command Prompt window.  In the Command Prompt 
+window, enter the "wdcfg -?" command to display full usage information.  The 
+usage information explains how to query and set parameters, and how to use the
+utility to display a list of driver configuration parameters which can be
+controlled using the utility (including full explanations of each).
+
+Note that parameter changes are only activated within the driver following a
+driver initialization.  This may be done by restarting the machine, or by using
+Device Manager to disable and re-enable the driver (Take care not to do this
+to a driver servicing the boot volume).
+
+............................................................................
+2.4 WinPE Installation
+
+WinPE is provided to system OEM's to create a Pre-install Environment image.
+To use the LSI_SAS2.SYS driver with the Windows 7 based WinPE, perform the
+steps listed below.
+
+1. Create an lsi_sas2 folder in the winpe_image directory under i386\system32.
+   For example: mkdir winpe_image\i386\system32\lsi_sas2
+ 
+2. Copy the lsi_sas2 driver package to the winpe_image\i386\system32\lsi_sas2
+   folder.
+
+3. Edit the winpe_image\i386\System32\Winpeoem.sif to remove the semicolons
+   from the [OemDriverParams] section and add the name of the lsi_sas2
+   directory to the OemDriverDirs entry. For example:
+
+   [OemDriverParams]
+   OemDriverRoot = ""
+   OemDriverDirs = lsi_sas2
+ 
+4. You can then use oscdimg to create a bootable .iso image, or follow the
+   WinPE User's Guide to create a bootable USB flash device.
+
+............................................................................
+3.0 Troubleshooting 
+
+The LSI_SAS2.SYS driver will log error messages to the system error log. For
+these errors, the system errorlog EventID will be 11, and the specific error
+code values will be displayed at offset 0x10. Data should be displayed in words.

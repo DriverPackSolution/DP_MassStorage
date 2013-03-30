@@ -1,0 +1,719 @@
+ adpinv
+
+ Timestamp is 4a76a2f8 (Mon Aug 03 14:12:32 2009)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0001e488H .text                   CODE
+ 0001:0001e488 000000a1H .text$s                 CODE
+ 0002:00000000 00000060H .idata$5                DATA
+ 0002:00000060 0000001cH .rdata                  DATA
+ 0002:0000007c 00000050H .rdata$debug            DATA
+ 0003:00000000 000006b0H .data                   DATA
+ 0003:000006c0 00000260H .bss                    DATA
+ 0004:00000000 00000028H .idata$2                CODE
+ 0004:00000028 00000014H .idata$3                CODE
+ 0004:0000003c 00000060H .idata$4                CODE
+ 0004:0000009c 00000242H .idata$6                CODE
+ 0005:00000000 000000a0H .rsrc$01                DATA
+ 0005:000000a0 00000b90H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0001:00000006       _WriteEvent@12             00010486 f   win_utils.obj
+ 0001:000000b6       _setRegistryPath@4         00010536 f   regreader.obj
+ 0001:000000e0       _isHibernationString@4     00010560 f   regreader.obj
+ 0001:0000015a       _RtlUnicodeStringCbCatN@12 000105da f i regreader.obj
+ 0001:00000246       _readRegConfiguration@8    000106c6 f   regreader.obj
+ 0001:00000434       _HwFindAdapter@24          000108b4 f   ntinit.obj
+ 0001:000008fc       _HwIoIsr@4                 00010d7c f   ntinit.obj
+ 0001:0000090c       _HwResetBus@8              00010d8c f   ntinit.obj
+ 0001:00000938       _InitializeLuExtension@16  00010db8 f i ntinit.obj
+ 0001:000009d8       _QueueIOD@8                00010e58 f i ntinit.obj
+ 0001:00000a24       _DeQueueIOD@8              00010ea4 f i ntinit.obj
+ 0001:00000ae6       _OsmGetIoTimeoutTicks@12   00010f66 f i ntinit.obj
+ 0001:00000bea       _OsmCompleteSrb@28         0001106a f i ntinit.obj
+ 0001:00000d40       _AdjustTimeout@12          000111c0 f   ntinit.obj
+ 0001:00000e34       _CheckForRequestSense@8    000112b4 f   ntinit.obj
+ 0001:00000ecc       _SetIODFlagAsAborted@20    0001134c f i ntinit.obj
+ 0001:00000f42       _PostOsmResetTMF@4         000113c2 f   ntinit.obj
+ 0001:0000107c       _PostOsmTMF@4              000114fc f   ntinit.obj
+ 0001:00001156       _OsmTMFEvents@16           000115d6 f   ntinit.obj
+ 0001:0000130c       _OsmTimer@4                0001178c f   ntinit.obj
+ 0001:0000156a       _HwInitialize@4            000119ea f   ntinit.obj
+ 0001:0000165e       _OsmSetCustomIOStatus@8    00011ade f i ntinit.obj
+ 0001:00001780       _HwAdapterControl@12       00011c00 f   ntinit.obj
+ 0001:00001834       _PostIOD@4                 00011cb4 f   ntinit.obj
+ 0001:00001c12       _HwStartIo@8               00012092 f   ntinit.obj
+ 0001:000021d8       _DriverEntry@8             00012658 f   ntinit.obj
+ 0001:00002314       _XMemZero@8                00012794 f   osif.obj
+ 0001:0000235c       _XMemCpy@12                000127dc f   osif.obj
+ 0001:000023a2       _XOSMDelay@8               00012822 f   osif.obj
+ 0001:000023a2       _XMicrosecondDelay@8       00012822 f   osif.obj
+ 0001:000023ec       _XNotify@16                0001286c f   osif.obj
+ 0001:00002520       _XOSMReadPCIConfigurationDword@8 000129a0 f   osif.obj
+ 0001:0000253e       _XOSMReadPCIConfigurationWord@8 000129be f   osif.obj
+ 0001:00002594       _XOSMReadPCIConfigurationByte@8 00012a14 f   osif.obj
+ 0001:000025ea       _XOSMWritePCIConfigurationDword@12 00012a6a f   osif.obj
+ 0001:0000261a       _XOSMWritePCIConfigurationWord@12 00012a9a f   osif.obj
+ 0001:0000264a       _XOSMWritePCIConfigurationByte@12 00012aca f   osif.obj
+ 0001:0000267a       _XGetDriverState@4         00012afa f   osif.obj
+ 0001:00002692       _XLogEvent@8               00012b12 f   osif.obj
+ 0001:000026b6       _XAlignedMemAllocPastOH@16 00012b36 f   osif.obj
+ 0001:000026fc       _ReturnMaxMemAlloc@0       00012b7c f   osif.obj
+ 0001:00002708       _XMemoryReductionRequired@4 00012b88 f   osif.obj
+ 0001:00002720       _Timer_AddRequest@20       00012ba0 f   osif.obj
+ 0001:0000272a       _PollForInterrupt@4        00012baa f   osif.obj
+ 0001:00002750       _XOSMWriteEventLog@8       00012bd0 f   osif.obj
+ 0001:00002772       _XReturnPhysAddr@12        00012bf2 f   osif.obj
+ 0001:000027c2       _XReturnPhysAddr_PAE@12    00012c42 f   osif.obj
+ 0001:0000283a       _OSMMapIOHandle@28         00012cba f   osmif.obj
+ 0001:000028b6       _OSMReleaseIOHandle@8      00012d36 f   osmif.obj
+ 0001:000028ce       _OSMAdjustBusAddress@8     00012d4e f   osmif.obj
+ 0001:000028e4       _OSMReadUExact8@8          00012d64 f   osmif.obj
+ 0001:00002910       _OSMReadUExact16@8         00012d90 f   osmif.obj
+ 0001:0000293c       _OSMReadUExact32@8         00012dbc f   osmif.obj
+ 0001:00002968       _OSMReadStringUExact8@20   00012de8 f   osmif.obj
+ 0001:000029bc       _OSMReadStringUExact16@20  00012e3c f   osmif.obj
+ 0001:00002a16       _OSMReadStringUExact32@20  00012e96 f   osmif.obj
+ 0001:00002a6c       _OSMWriteUExact8@12        00012eec f   osmif.obj
+ 0001:00002a9e       _OSMWriteUExact16@12       00012f1e f   osmif.obj
+ 0001:00002ad2       _OSMWriteUExact32@12       00012f52 f   osmif.obj
+ 0001:00002b04       _OSMWriteStringUExact8@20  00012f84 f   osmif.obj
+ 0001:00002b60       _OSMWriteStringUExact16@20 00012fe0 f   osmif.obj
+ 0001:00002bbc       _OSMWriteStringUExact32@20 0001303c f   osmif.obj
+ 0001:00002c18       _OSMReadPCIConfigurationDword@8 00013098 f   osmif.obj
+ 0001:00002c28       _OSMReadPCIConfigurationWord@8 000130a8 f   osmif.obj
+ 0001:00002c38       _OSMReadPCIConfigurationByte@8 000130b8 f   osmif.obj
+ 0001:00002c48       _OSMWritePCIConfigurationDword@12 000130c8 f   osmif.obj
+ 0001:00002c58       _OSMWritePCIConfigurationWord@12 000130d8 f   osmif.obj
+ 0001:00002c68       _OSMWritePCIConfigurationByte@12 000130e8 f   osmif.obj
+ 0001:00002c78       _OSMWriteEventLog@8        000130f8 f   osmif.obj
+ 0001:00002c88       _FillOutOSMPointers@8      00013108 f   osmif.obj
+ 0001:00002d78       _SetPostFunc@8             000131f8 f   resource.obj
+ 0001:00002da2       _RetryIODDispatch@4        00013222 f   resource.obj
+ 0001:00002dd8       _CreateDMASenseBuffers@4   00013258 f   resource.obj
+ 0001:00002e40       _AssignDMASenseBuffer@8    000132c0 f   resource.obj
+ 0001:00002e98       _FreeDMASenseBuffer@8      00013318 f   resource.obj
+ 0001:00002eec       _AllocStruc@12             0001336c f   resource.obj
+ 0001:00002fa4       _InitIOB@8                 00013424 f   resource.obj
+ 0001:00002ff0       _InitSpecialIOB@12         00013470 f   resource.obj
+ 0001:00003130       _AllocIODs@8               000135b0 f   resource.obj
+ 0001:000031c6       _InitIOD@8                 00013646 f   resource.obj
+ 0001:0000324c       _FreeIOD@8                 000136cc f   resource.obj
+ 0001:0000326e       _GetFreePhysDevice@4       000136ee f   resource.obj
+ 0001:000032b6       _GetFreeTSCB@8             00013736 f   resource.obj
+ 0001:0000330e       _FreePhysDevice@8          0001378e f   resource.obj
+ 0001:0000332a       _FreeTSCB@12               000137aa f   resource.obj
+ 0001:00003352       _AllocSpecialIODs@8        000137d2 f   resource.obj
+ 0001:000033c2       _FreeSpecialIOD@8          00013842 f   resource.obj
+ 0001:000033ec       _AllocPhysDevice@4         0001386c f   resource.obj
+ 0001:00003428       _Res_InitIOD@12            000138a8 f   resource.obj
+ 0001:000034ba       _CreateIOBReserves@4       0001393a f   resource.obj
+ 0001:00003516       _CreateSpecialIODs@4       00013996 f   resource.obj
+ 0001:000035ba       _Res_InitAndRebuildIODLink@16 00013a3a f   resource.obj
+ 0001:000035f6       _CreateIODs@4              00013a76 f   resource.obj
+ 0001:00003646       _PhysPolledIo@8            00013ac6 f   physif.obj
+ 0001:000037f4       _PostPhysQueueQuiesce@4    00013c74 f   physif.obj
+ 0001:000038bc       _PostStopPhysQueueEnablePhy@4 00013d3c f   physif.obj
+ 0001:000038ec       _PostPhysQueueEnablePhy@4  00013d6c f   physif.obj
+ 0001:00003ae8       _PhysGetDevicePortTSH@8    00013f68 f   physif.obj
+ 0001:00003ff6       _PhysGetLuTSH@12           00014476 f   physif.obj
+ 0001:000041e6       _CdaCreatePD@8             00014666 f   physif.obj
+ 0001:000042e4       _PhysAddSasDevice@4        00014764 f   physif.obj
+ 0001:0000457a       _PhysRemoveSasDevice@8     000149fa f   physif.obj
+ 0001:00004680       _FreeAllPD@4               00014b00 f   physif.obj
+ 0001:000046f6       _CdaFreeSDPD@8             00014b76 f   physif.obj
+ 0001:00004748       _SizeIOBMemNeed@8          00014bc8 f   physif.obj
+ 0001:000047ac       _IssueTestDevicePresentSequence@4 00014c2c f   physif.obj
+ 0001:00004846       _PostDevicePortInitialization@4 00014cc6 f   physif.obj
+ 0001:0000497e       _PerformDevicePortInitialization@4 00014dfe f   physif.obj
+ 0001:00004ae2       _PostPacForAdapter@4       00014f62 f   physif.obj
+ 0001:00004bdc       _CheckForNewDevicePorts@8  0001505c f   physif.obj
+ 0001:00004c1c       _QueueResetAdapter@8       0001509c f   physif.obj
+ 0001:00004c50       _DiscoverNewPorts@4        000150d0 f   physif.obj
+ 0001:00004d46       _PostCdaPerformLuRecovery@4 000151c6 f   physif.obj
+ 0001:00004ea2       _AbortTaskForProbeLuComplete@4 00015322 f   physif.obj
+ 0001:00004ecc       _ConvertAddressToBytes@12  0001534c f   physif.obj
+ 0001:00004f00       _SaveCrashdumpPtrs@8       00015380 f   physif.obj
+ 0001:00004fa8       _CheckPendingPhysDeviceRemval@8 00015428 f   physif.obj
+ 0001:00005086       _PostEnableFailedPhyDone@4 00015506 f   physif.obj
+ 0001:00005104       _CheckFailedPhyBitMask@4   00015584 f   physif.obj
+ 0001:0000522c       _PostResetPortDone@4       000156ac f   physif.obj
+ 0001:000052fa       _DoResetPort@8             0001577a f   physif.obj
+ 0001:00005392       _CdaDeviceLuValidation@8   00015812 f   physif.obj
+ 0001:00005502       _PauseTasks@4              00015982 f   physif.obj
+ 0001:000055ec       _RestoreCrashDumpPointers@4 00015a6c f   physif.obj
+ 0001:0000565a       _GetAndSetCHIMConfiguration@8 00015ada f   physif.obj
+ 0001:00005714       _AllocateCHIMMemory@4      00015b94 f   physif.obj
+ 0001:00005808       _PhysQueueQuiesce@4        00015c88 f   physif.obj
+ 0001:000058a2       _PhysQueueEnablePhy@4      00015d22 f   physif.obj
+ 0001:00005976       _CdaRemoveExistingDevice@8 00015df6 f   physif.obj
+ 0001:0000599c       _PhysStartAdapter@4        00015e1c f   physif.obj
+ 0001:00005bf4       _InitializeSasChim@4       00016074 f   physif.obj
+ 0001:00005df8       _ProcessNewTargets@4       00016278 f   physif.obj
+ 0001:00005f72       _PostTestDevicePresent_InitializationTime@4 000163f2 f   physif.obj
+ 0001:00005ffc       _PostProbeLuForSasDevice@4 0001647c f   physif.obj
+ 0001:000061ae       _SendPACForAdapter@4       0001662e f   physif.obj
+ 0001:000062a6       _HandleIobEvents@4         00016726 f   physif.obj
+ 0001:000063c6       _CdaStopAdapter@4          00016846 f   physif.obj
+ 0001:00006496       _CdaRestartAdapter@4       00016916 f   physif.obj
+ 0001:000064ec       _HandleLocalLuEvents@4     0001696c f   physif.obj
+ 0001:0000655e       _UpdateArraySysDeviceComplete@4 000169de f   physif.obj
+ 0001:00006594       _CdaCheckNewlyArrivedDevice@8 00016a14 f   physif.obj
+ 0001:000065aa       _CdaNotify@12              00016a2a f   physif.obj
+ 0001:000065dc       _PerformLuDiscovery@4      00016a5c f   physif.obj
+ 0001:00006752       _OSMIobEvent               00016bd2 f   physif.obj
+ 0001:00006780       _OSMLocalLuEvent@8         00016c00 f   physif.obj
+ 0001:000067a6       _CdaLuValidationToPort@4   00016c26 f   physif.obj
+ 0001:000067f4       _ValidateTargetsForPort@4  00016c74 f   physif.obj
+ 0001:00006a4c       _ValidatePort@4            00016ecc f   physif.obj
+ 0001:00006b40       _HandleAdapterEvents@4     00016fc0 f   physif.obj
+ 0001:00006f86       _HandleLuEvents@4          00017406 f   physif.obj
+ 0001:00007188       _PostCdaAbortTaskSet@4     00017608 f   physif.obj
+ 0001:000072ec       _PostPacForPort@4          0001776c f   physif.obj
+ 0001:0000741c       _OSMAdapterEvent           0001789c f   physif.obj
+ 0001:000074e8       _OSMLuEvent                00017968 f   physif.obj
+ 0001:0000752c       _SendPACForPort@4          000179ac f   physif.obj
+ 0001:0000760e       _HandlePortEvents@4        00017a8e f   physif.obj
+ 0001:000077e4       _OSMPortEvent              00017c64 f   physif.obj
+ 0001:0000786c       _CdaDeviceLuValidationComplete@4 00017cec f   physif.obj
+ 0001:00007a9a       _ConstructAbortedStatus@4  00017f1a f   core.obj
+ 0001:00007ace       _DoCdaStartScan@4          00017f4e f   core.obj
+ 0001:00007af0       _CdaStartScan@4            00017f70 f   core.obj
+ 0001:00007b30       _XMemClearDeviceTableEntry@4 00017fb0 f   core.obj
+ 0001:00007b86       _AddIODToIOQueue@4         00018006 f   core.obj
+ 0001:00007bce       _RemoveIODFromIOQueue@4    0001804e f   core.obj
+ 0001:00007c10       _ResetHardwareComplete@4   00018090 f   core.obj
+ 0001:00007c50       _ResetAdapterComplete@4    000180d0 f   core.obj
+ 0001:00007cce       _XMemCmp@12                0001814e f   core.obj
+ 0001:00007d02       _PlaceIODWaiting@8         00018182 f   core.obj
+ 0001:00007d38       _ReleaseAdapterBuffer@4    000181b8 f   core.obj
+ 0001:00007d5c       _LockAdapterBuffer@8       000181dc f   core.obj
+ 0001:00007dc0       _AdapterResetPending@4     00018240 f   core.obj
+ 0001:00007ddc       _PortFreeze@4              0001825c f i core.obj
+ 0001:00007e00       _SetupPollIOD@8            00018280 f   core.obj
+ 0001:0000805a       _ResetLogicalUnitComplete@4 000184da f   core.obj
+ 0001:000080fc       _GetDeviceQueueDepth@8     0001857c f   core.obj
+ 0001:00008148       _GetDeviceType@4           000185c8 f   core.obj
+ 0001:0000815c       _IoIsr@4                   000185dc f   core.obj
+ 0001:000081c6       _PostXCfgDiscoveryOnlyIF@4 00018646 f   core.obj
+ 0001:00008230       _PhysDeviceMemoryAllocation@4 000186b0 f   core.obj
+ 0001:00008298       _ComputeTotalMemRequired@4 00018718 f   core.obj
+ 0001:00008332       _GetCHIMMemoryRequirement@4 000187b2 f   core.obj
+ 0001:00008474       _RestartPendingIOs@4       000188f4 f   core.obj
+ 0001:000084f4       _PostPendingIODs@12        00018974 f   core.obj
+ 0001:0000867e       _SetupRequestSenseIODForATAPI@4 00018afe f   core.obj
+ 0001:0000870e       _PostATAPICommand@4        00018b8e f   core.obj
+ 0001:0000880e       _ShutDown@4                00018c8e f   core.obj
+ 0001:00008828       _SpecialMemoryAllocation@4 00018ca8 f   core.obj
+ 0001:0000895e       _PollInformationalExceptionsComplete@4 00018dde f   core.obj
+ 0001:000089f2       _FlushIOsOnPD@4            00018e72 f   core.obj
+ 0001:00008a50       _ExecuteOSCommand@4        00018ed0 f   core.obj
+ 0001:00008ab4       _XCfgDiscoveryOnlyIF@8     00018f34 f   core.obj
+ 0001:00008ae0       _SysInit@4                 00018f60 f   core.obj
+ 0001:00008b74       _PollInformationalExceptions@4 00018ff4 f   core.obj
+ 0001:00008c46       _ResetAdapter@4            000190c6 f   core.obj
+ 0001:00008d8c       _ResetHardware@4           0001920c f   core.obj
+ 0001:00008e22       _ResetLogicalUnit@12       000192a2 f   core.obj
+ 0001:00008f0c       _ResetDevicePort@8         0001938c f   core.obj
+ 0001:0000903a       _ResetDevicePortComplete@4 000194ba f   core.obj
+ 0001:00009218       _CdaTimer@4                00019698 f   core.obj
+ 0001:000092a4       _CdaTMFRequest@12          00019724 f   core.obj
+ 0001:00009418       _TestDevicePresent@8       00019898 f   core.obj
+ 0001:00009440       _TMFRequestComplete@4      000198c0 f   core.obj
+ 0001:00009440       _QueryCommandComplete@4    000198c0 f   himif.obj
+ 0001:00009464       _SetIODTimeout@8           000198e4 f   himif.obj
+ 0001:00009498       _SendToHIM@4               00019918 f   himif.obj
+ 0001:0000954a       _IOPull@4                  000199ca f   himif.obj
+ 0001:000095b8       _DispatchToHIM@4           00019a38 f   himif.obj
+ 0001:00009644       _RetryCommand@4            00019ac4 f   himif.obj
+ 0001:000096d6       _QueryIOD@4                00019b56 f   himif.obj
+ 0001:00009770       _ReceiveFromHIM@4          00019bf0 f   himif.obj
+ 0001:00009936       _XlateIODToIOB@4           00019db6 f   himif.obj
+ 0001:00009a8a       _PostXCfgAdapterIF@4       00019f0a f   himif.obj
+ 0001:00009c82       _XCfgAdapterIF@8           0001a102 f   himif.obj
+ 0001:00009d32       _AssignDeviceElementNumberToMatchingDevice@16 0001a1b2 f   ses2dev.obj
+ 0001:00009dee       _FindRelativePositionOfSES2Devices@4 0001a26e f   ses2dev.obj
+ 0001:00009f0e       _CdaAssignPTMapForDirectAttachedDevice@8 0001a38e f   ses2dev.obj
+ 0001:0000a00a       _CdaAssignPTMapAndNotifyOSM@4 0001a48a f   ses2dev.obj
+ 0001:0000a0e2       _PostSES2DeviceElementStatusPage@4 0001a562 f   ses2dev.obj
+ 0001:0000a354       _IssueSES2DeviceElementStatusPage@4 0001a7d4 f   ses2dev.obj
+ 0001:0000a424       _PostSES2ConfigurationDiagPage@4 0001a8a4 f   ses2dev.obj
+ 0001:0000a4be       _IssueSES2ConfigurationDiagPage@4 0001a93e f   ses2dev.obj
+ 0001:0000a560       _DoEnumerateSES2EnclosureDevices@4 0001a9e0 f   ses2dev.obj
+ 0001:0000a748       _PostSES2ElementDescriptorPage@4 0001abc8 f   ses2dev.obj
+ 0001:0000a89a       _EnumerateSES2EnclosureDevices@4 0001ad1a f   ses2dev.obj
+ 0001:0000a8f2       _CoreTimer_CheckIODTimeout@4 0001ad72 f   recover.obj
+ 0001:0000ab50       _AbortCommandComplete@4    0001afd0 f   recover.obj
+ 0001:0000abde       _ChannelReset@8            0001b05e f   recover.obj
+ 0001:0000ad9e       _CheckForDeviceRemoval@4   0001b21e f   recover.obj
+ 0001:0000ae46       _PostAbortProbeLuOrDevicePortInitComplete@4 0001b2c6 f   recover.obj
+ 0001:0000ae46       _PostAbortForPACAtAdapterLevel@4 0001b2c6 f   recover.obj
+ 0001:0000ae70       _PostAbortForPACAtPortLevel@4 0001b2f0 f   recover.obj
+ 0001:0000aea8       _PostResetDevicePortProbeLuOrDevicePortInitComplete@4 0001b328 f   recover.obj
+ 0001:0000af12       _ResetSASHardwareComplete@4 0001b392 f   recover.obj
+ 0001:0000af64       _TimerResetDevicePort@4    0001b3e4 f   recover.obj
+ 0001:0000afa4       _TimerValidateDevicePort@4 0001b424 f   recover.obj
+ 0001:0000b046       _checkDeviceStatus@4       0001b4c6 f   recover.obj
+ 0001:0000b07a       _AbortIOD@8                0001b4fa f   recover.obj
+ 0001:0000b124       _CheckPACForAdapter@4      0001b5a4 f   recover.obj
+ 0001:0000b212       _CheckPACForPort@4         0001b692 f   recover.obj
+ 0001:0000b4fc       _ResetSASHardware@4        0001b97c f   recover.obj
+ 0001:0000b5b4       _TimerCheckPendingRequest@4 0001ba34 f   recover.obj
+ 0001:0000b610       _SCSI_MakeModePageCaching@12 0001ba90 f   ata2scsi.obj
+ 0001:0000b678       _SCSI_MakeSMARTReturnStatusCommand@8 0001baf8 f   ata2scsi.obj
+ 0001:0000b704       _SCSI_MakeCacheCommand@16  0001bb84 f   ata2scsi.obj
+ 0001:0000b7ae       _SCSI_MakeSynchronizeCacheCommmand@8 0001bc2e f   ata2scsi.obj
+ 0001:0000b7f6       _mv_disable_hba@8          0001bc76 f   core_adpt.obj
+ 0001:0000b85a       _mv_reset_phy@12           0001bcda f   core_adpt.obj
+ 0001:0000b97c       _mv_enable_xmt@8           0001bdfc f   core_adpt.obj
+ 0001:0000b9ca       _mv_disable_xmt@8          0001be4a f   core_adpt.obj
+ 0001:0000ba1a       _mv_disable_register_set@12 0001be9a f   core_adpt.obj
+ 0001:0000ba78       _mv_set_SASAddr@8          0001bef8 f   core_adpt.obj
+ 0001:0000bbd4       _Core_MapHDId@16           0001c054 f   core_api.obj
+ 0001:0000bc60       _Core_GetHDInformation@12  0001c0e0 f   core_api.obj
+ 0001:0000bed2       _Core_GetHDInformation_Ext@12 0001c352 f   core_api.obj
+ 0001:0000c13c       _Core_GetExpInformationCallback@8 0001c5bc f   core_api.obj
+ 0001:0000c24c       _Core_GetExpInformationHardware@24 0001c6cc f   core_api.obj
+ 0001:0000c31a       _Core_GetExpInformation@16 0001c79a f   core_api.obj
+ 0001:0000c454       _Core_GetHDConfiguration@16 0001c8d4 f   core_api.obj
+ 0001:0000c4a4       _core_pd_request_get_HD_status@8 0001c924 f   core_api.obj
+ 0001:0000c532       _core_pd_request_set_HD_config@8 0001c9b2 f   core_api.obj
+ 0001:0000c778       _core_pd_request_BSL_dump@8 0001cbf8 f   core_api.obj
+ 0001:0000c790       _Core_pd_command@8         0001cc10 f   core_api.obj
+ 0001:0000c7c6       _Core_pass_thru_fill_taskfile@8 0001cc46 f   core_api.obj
+ 0001:0000c7d0       _Core_GetHDInfo@12         0001cc50 f   core_api.obj
+ 0001:0000c860       _Core_GetHDInfo_Ext@12     0001cce0 f   core_api.obj
+ 0001:0000c8f0       _Core_GetExpInfo@16        0001cd70 f   core_api.obj
+ 0001:0000c9aa       _Core_GetHDConfig@12       0001ce2a f   core_api.obj
+ 0001:0000ca3e       _core_pd_request_get_HD_info@8 0001cebe f   core_api.obj
+ 0001:0000ca8a       _core_pd_request_get_HD_info_ext@8 0001cf0a f   core_api.obj
+ 0001:0000cad6       _core_pd_request_get_expander_info@8 0001cf56 f   core_api.obj
+ 0001:0000cb50       _core_pd_request_get_HD_config@8 0001cfd0 f   core_api.obj
+ 0001:0000d69c       _HandleInstantRequest@8    0001db1c f   core_exp.obj
+ 0001:0000d850       _SATA_PrepareCommandHeader@16 0001dcd0 f   core_exp.obj
+ 0001:0000d936       _SATA_PrepareCommandTable@16 0001ddb6 f   core_exp.obj
+ 0001:0000d974       _WriteDELV_Q_Entry@8       0001ddf4 f   core_exp.obj
+ 0001:0000d9c0       _PrepareDeliveryQueueEntry@16 0001de40 f   core_exp.obj
+ 0001:0000da32       _VerifyCommandBeforeSending@12 0001deb2 f   core_exp.obj
+ 0001:0000de24       _WaitForInterrupt@4        0001e2a4 f   core_exp.obj
+ 0001:0000de66       _Core_ResetCmdSlot@8       0001e2e6 f   core_exp.obj
+ 0001:0000df66       _CORE_IssueSMPRequest@20   0001e3e6 f   core_exp.obj
+ 0001:0000e01a       _SAS_ErrorHandling@8       0001e49a f   core_exp.obj
+ 0001:0000e23e       _stopErrorLED@8            0001e6be f   core_exp.obj
+ 0001:0000e28c       _SAS_HandleBRDCST@8        0001e70c f   core_exp.obj
+ 0001:0000e30a       _SAS_HandleCompletedCommand@16 0001e78a f   core_exp.obj
+ 0001:0000ebfa       _SATA_HandleDeviceUnplug@8 0001f07a f   core_exp.obj
+ 0001:0000ed62       _mv_core_register_module@0 0001f1e2 f   core_exp.obj
+ 0001:0000ed6e       _Port_HandleUnplug@8       0001f1ee f   core_exp.obj
+ 0001:0000f100       _SATA_HandleDevicePlugin@8 0001f580 f   core_exp.obj
+ 0001:0000f23c       _Port_Handleplugin@8       0001f6bc f   core_exp.obj
+ 0001:0000f592       _ServiceInterrupt@4        0001fa12 f   core_exp.obj
+ 0001:0000f66c       _HandleCommandQueue@4      0001faec f   core_exp.obj
+ 0001:0000faf2       _Core_InterruptServiceRoutine@4 0001ff72 f   core_exp.obj
+ 0001:0000fb3e       _PrepareAndSendCommand@8   0001ffbe f   core_exp.obj
+ 0001:00010c9a       _Core_InternalSendRequest@8 0002111a f   core_exp.obj
+ 0001:00010d24       _SATA_ErrorHandling@8      000211a4 f   core_exp.obj
+ 0001:00010ec0       _Core_ReqTimeout@8         00021340 f   core_exp.obj
+ 0001:000111ce       _SATA_PortHandleInterrupt@16 0002164e f   core_exp.obj
+ 0001:00011676       _Core_ModuleEnableDisablePHY@12 00021af6 f   core_extern.obj
+ 0001:000116a2       _Core_FlashRead@16         00021b22 f   core_extern.obj
+ 0001:000116ea       _Core_FlashWrite@16        00021b6a f   core_extern.obj
+ 0001:00011732       _Core_FlashSectErase@8     00021bb2 f   core_extern.obj
+ 0001:000117be       _Core_GetSupportedCounts@48 00021c3e f   core_helper.obj
+ 0001:00011864       _Port_IsRequestRunning@8   00021ce4 f   core_helper.obj
+ 0001:0001190e       _GetNCQTag@4               00021d8e f   core_helper.obj
+ 0001:000119a0       _Core_FillSenseData@12     00021e20 f   core_helper.obj
+ 0001:000119d6       _MV_DumpRegister@4         00021e56 f   core_helper.obj
+ 0001:00011ade       _FindRunningReqByTag@8     00021f5e f   core_helper.obj
+ 0001:00011b34       ___add_timer@8             00021fb4 f   core_helper.obj
+ 0001:00011b34       ___renew_timer@8           00021fb4 f   core_helper.obj
+ 0001:00011b34       _MV_DumpRequest@8          00021fb4 f   com_util.obj
+ 0001:00011b34       _Timer_CancelRequest@8     00021fb4 f   osif.obj
+ 0001:00011b34       _HBARequestCallback@8      00021fb4 f   mvchim_utils.obj
+ 0001:00011b34       _MvDisableIRQ@8            00021fb4 f   mvchim_init.obj
+ 0001:00011b3c       _OSMWatchdog@12            00021fbc f   osmif.obj
+ 0001:00011b3c       ___cancel_timer@12         00021fbc f   core_helper.obj
+ 0001:00011b3c       _OSMSynchronizeRange@12    00021fbc f   osmif.obj
+ 0001:00011b44       _FreeExpanderToPool@8      00021fc4 f   core_helper.obj
+ 0001:00011b7a       _FreePortToPool@8          00021ffa f   core_helper.obj
+ 0001:00011bba       _PreEmptyDevice@4          0002203a f   core_helper.obj
+ 0001:00011bf2       _GetDeviceFromPool@4       00022072 f   core_helper.obj
+ 0001:00011d04       _GetExpanderFromPool@4     00022184 f   core_helper.obj
+ 0001:00011df6       _GetPortFromPool@4         00022276 f   core_helper.obj
+ 0001:00011ea8       _GetCoreContextFromPool@4  00022328 f   core_helper.obj
+ 0001:00011ed2       _FreeCoreContextToPool@8   00022352 f   core_helper.obj
+ 0001:00011f00       _GetSATAScratchFromPool@4  00022380 f   core_helper.obj
+ 0001:00011f26       _FreeSATAScratchToPool@8   000223a6 f   core_helper.obj
+ 0001:00011f54       _GetSMPScratchFromPool@4   000223d4 f   core_helper.obj
+ 0001:00011f7a       _FreeSMPScratchToPool@8    000223fa f   core_helper.obj
+ 0001:00011fa0       _GetSGBufferFromPool@4     00022420 f   core_helper.obj
+ 0001:00011fca       _FreeSGBufferToPool@8      0002244a f   core_helper.obj
+ 0001:00011ff8       _Device_MakeRequestSenseRequest@16 00022478 f   core_helper.obj
+ 0001:00012082       _SMPRespLength@4           00022502 f   core_helper.obj
+ 0001:000120f2       _FreeRegisterSet@8         00022572 f   core_helper.obj
+ 0001:00012132       _AssignRegisterSet@8       000225b2 f   core_helper.obj
+ 0001:000121dc       _Port_Monitor@4            0002265c f   core_helper.obj
+ 0001:00012272       _CoreSaveOriginalCDB@8     000226f2 f   core_helper.obj
+ 0001:000122a2       _CoreRestoreOriginalCDB@8  00022722 f   core_helper.obj
+ 0001:000122ce       _mvScsiInquiry@8           0002274e f   core_helper.obj
+ 0001:00012686       _mvScsiReadCapacity@8      00022b06 f   core_helper.obj
+ 0001:00012712       _Core_get_mode_page_caching@8 00022b92 f   core_helper.obj
+ 0001:0001276a       _mvScsiModeSense@8         00022bea f   core_helper.obj
+ 0001:000129cc       _mvScsiModeSelect@8        00022e4c f   core_helper.obj
+ 0001:00012a2e       _mvScsiReportLun@8         00022eae f   core_helper.obj
+ 0001:00012ac6       _CheckForDriveFailures@8   00022f46 f   core_helper.obj
+ 0001:00012ba8       _GetOneCommandSlot@8       00023028 f   core_helper.obj
+ 0001:00012bee       _SATSenseData@16           0002306e f   core_helper.obj
+ 0001:00012d26       _SATSenseData1@16          000231a6 f   core_helper.obj
+ 0001:00012e14       _FreeDeviceToPool@8        00023294 f   core_helper.obj
+ 0001:00012e82       _GetInternalReqFromPool@4  00023302 f   core_helper.obj
+ 0001:00012eb4       _FreeInternalReqToPool@8   00023334 f   core_helper.obj
+ 0001:00012ee8       _Expander_SMPReq_Callback@8 00023368 f   core_helper.obj
+ 0001:00012fae       _Expander_SMPRequest_PhyControl@20 0002342e f   core_helper.obj
+ 0001:00013060       _Expander_SMPRequest_ReportPHYSATA@16 000234e0 f   core_helper.obj
+ 0001:000132b0       _Device_MakeRequestTaskRequest@12 00023730 f   core_helper.obj
+ 0001:000133d0       _Device_MakeReadCapacityTaskRequest@4 00023850 f   core_helper.obj
+ 0001:0001347a       _Device_MakeReadCapacity16TaskRequest@4 000238fa f   core_helper.obj
+ 0001:00013524       _Device_MakeInquiryTaskRequest@4 000239a4 f   core_helper.obj
+ 0001:000135ca       _Device_MakeReportLunsTaskRequest@8 00023a4a f   core_helper.obj
+ 0001:00013698       _Device_MakeTLREnablement@4 00023b18 f   core_helper.obj
+ 0001:000136ee       _Device_MakeModeSenseRequest@4 00023b6e f   core_helper.obj
+ 0001:000137b6       _Device_MakeModeSelectRequest@4 00023c36 f   core_helper.obj
+ 0001:00013822       _CompleteRequest@12        00023ca2 f   core_helper.obj
+ 0001:00013c1e       _CompleteRequestAndSlot@12 0002409e f   core_helper.obj
+ 0001:00013cfa       _RuntimeIssueSoftResetCallback@8 0002417a f   core_helper.obj
+ 0001:00013dd2       _RuntimeIssueSoftReset@12  00024252 f   core_helper.obj
+ 0001:00013efa       _RuntimeIssueReadLogExt@8  0002437a f   core_helper.obj
+ 0001:00013f9c       _Device_MakeStartStopUnitRequest@8 0002441c f   core_helper.obj
+ 0001:00013ffe       _Port_AbortRequests@12     0002447e f   core_helper.obj
+ 0001:000142aa       _Device_ATAVoilateRequest@8 0002472a f   core_helper.obj
+ 0001:0001435e       _HandleDeviceReset@8       000247de f   core_helper.obj
+ 0001:000143e6       _HandlePortReset@8         00024866 f   core_helper.obj
+ 0001:000144de       _RemoveDevice@12           0002495e f   core_helper.obj
+ 0001:0001457e       _Read_I2C_Register@8       000249fe f   core_i2c.obj
+ 0001:000145b6       _Write_I2C_Register@12     00024a36 f   core_i2c.obj
+ 0001:000145fe       _I2C_InterruptServiceRoutine@4 00024a7e f   core_i2c.obj
+ 0001:00014888       _I2C_SendI2cFrame@8        00024d08 f   core_i2c.obj
+ 0001:000148c8       _I2C_SataChecksum@12       00024d48 f   core_i2c.obj
+ 0001:000148f2       _rev@4                     00024d72 f   core_i2c.obj
+ 0001:0001492c       _charToHex@8               00024dac f   core_i2c.obj
+ 0001:0001497e       _concat@8                  00024dfe f   core_i2c.obj
+ 0001:000149b2       _I2C_MakeSerialNumber@12   00024e32 f   core_i2c.obj
+ 0001:00014a2e       _I2C_InquiryCmd@8          00024eae f   core_i2c.obj
+ 0001:00014c24       _I2C_IdentifyCallback@8    000250a4 f   core_i2c.obj
+ 0001:00014cb0       _PollI2CInterrupt@4        00025130 f   core_i2c.obj
+ 0001:00014d24       _I2C_CycleAddress@8        000251a4 f   core_i2c.obj
+ 0001:00014d60       _I2C_PrepareAndSendCommand@8 000251e0 f   core_i2c.obj
+ 0001:00014ed6       _I2C_MakeIdentifyRequest@4 00025356 f   core_i2c.obj
+ 0001:00015006       _CheckI2CDevice@4          00025486 f   core_i2c.obj
+ 0001:00015118       _I2C_ModuleInitialize@4    00025598 f   core_i2c.obj
+ 0001:0001518e       _DISC_GetResource@12       0002560e f   core_ibcd.obj
+ 0001:000151b0       _DISC_SetResource@8        00025630 f   core_ibcd.obj
+ 0001:00015236       _FindTgtNo@8               000256b6 f   core_ibcd.obj
+ 0001:00015430       _Issue_ReportGeneral@12    000258b0 f   core_ibcd.obj
+ 0001:0001548a       _Issue_ReportManufacturerInformation@12 0002590a f   core_ibcd.obj
+ 0001:000154e4       _Issue_Discover@16         00025964 f   core_ibcd.obj
+ 0001:0001558e       _Issue_ConfigRouteInfo@24  00025a0e f   core_ibcd.obj
+ 0001:00015640       _CalculateRouteIndex@12    00025ac0 f   core_ibcd.obj
+ 0001:0001566a       _FindFreeSMPContext@4      00025aea f   core_ibcd.obj
+ 0001:0001569a       _FreeSMPContext@12         00025b1a f   core_ibcd.obj
+ 0001:000156e2       _DiscoverySM@24            00025b62 f   core_ibcd.obj
+ 0001:0001621c       _DISC_CheckDiscoverState@16 0002669c f   core_ibcd.obj
+ 0001:0001627a       _DISC_DoDiscover@20        000266fa f   core_ibcd.obj
+ 0001:00016452       _DISC_CancelDiscover@8     000268d2 f   core_ibcd.obj
+ 0001:000164f6       _DISC_GetTgtDevMap@20      00026976 f   core_ibcd.obj
+ 0001:00016638       _Core_SESExpanderRemove@4  00026ab8 f   core_init.obj
+ 0001:00016748       _SATA_PortDeviceDetected@4 00026bc8 f   core_init.obj
+ 0001:000167d6       _SATA_PortDeviceReady@8    00026c56 f   core_init.obj
+ 0001:0001694c       _SATA_PortDetect@8         00026dcc f   core_init.obj
+ 0001:000169ea       _Port_FindTgtNo@8          00026e6a f   core_init.obj
+ 0001:00016a4c       _CheckDeviceChange@12      00026ecc f   core_init.obj
+ 0001:00016baa       _GetMinNegotiatedLinkRate@4 0002702a f   core_init.obj
+ 0001:00016c10       _GetMaxNegotiatedLinkRate@4 00027090 f   core_init.obj
+ 0001:00016c76       _SwapDeviceID@12           000270f6 f   core_init.obj
+ 0001:00016cdc       _SwapExpID@12              0002715c f   core_init.obj
+ 0001:00016d3a       _SwapPortID@12             000271ba f   core_init.obj
+ 0001:00016d88       _GetFirstPhy@8             00027208 f   core_init.obj
+ 0001:00016dc2       _IDSorting@4               00027242 f   core_init.obj
+ 0001:0001724a       _UpdateWidePortPhyMap@4    000276ca f   core_init.obj
+ 0001:00017438       _DetectPortType@8          000278b8 f   core_init.obj
+ 0001:000174a0       _UpdatePhyInfo@8           00027920 f   core_init.obj
+ 0001:00017c22       _SetDeviceID@4             000280a2 f   core_init.obj
+ 0001:00017c72       _CreateDevicesForLus@12    000280f2 f   core_init.obj
+ 0001:00017d7e       _SAS_Report_LUNs_Data_Changed@8 000281fe f   core_init.obj
+ 0001:00017ffa       _SAS_InternalReqCallback@8 0002847a f   core_init.obj
+ 0001:000187d0       _Port_SoftResetCallback@8  00028c50 f   core_init.obj
+ 0001:00018898       _Device_IssueSoftReset@16  00028d18 f   core_init.obj
+ 0001:000189d8       _Device_ParseIdentifyData@8 00028e58 f   core_init.obj
+ 0001:00018d5a       _GetInvernessType@4        000291da f   core_init.obj
+ 0001:00018dac       _getSEPDevice@4            0002922c f   core_init.obj
+ 0001:00018dea       _isPermanentFailure@12     0002926a f   core_init.obj
+ 0001:00018ed4       _polling_CallBack@8        00029354 f   core_init.obj
+ 0001:00018f30       _prepareAndSendTestUnitReadyRequest@8 000293b0 f   core_init.obj
+ 0001:00018fd6       _getSlotFromMemberPhyMap@4 00029456 f   core_init.obj
+ 0001:00019004       _ReportLUNsDataChange@4    00029484 f   core_init.obj
+ 0001:00019068       _activityBlinker@16        000294e8 f   core_init.obj
+ 0001:00019104       _SATA_PortReset@8          00029584 f   core_init.obj
+ 0001:000191d6       _UpdateTargetDevices@16    00029656 f   core_init.obj
+ 0001:000193d6       _CheckTargetChange@8       00029856 f   core_init.obj
+ 0001:00019610       _UpdateTgtDevMap@8         00029a90 f   core_init.obj
+ 0001:00019948       _DiscoveryCallBack@8       00029dc8 f   core_init.obj
+ 0001:000199f6       _SAS_PortReset@8           00029e76 f   core_init.obj
+ 0001:00019c40       _I2C_ModuleCheck@4         0002a0c0 f   core_init.obj
+ 0001:00019c8e       _mvChannelStateMachine@8   0002a10e f   core_init.obj
+ 0001:00019f34       _SATA_DeviceStateMachine0@8 0002a3b4 f   core_init.obj
+ 0001:0001a14e       _SATA_DeviceStateMachine@8 0002a5ce f   core_init.obj
+ 0001:0001a1a8       _mvAdapterStateMachine@8   0002a628 f   core_init.obj
+ 0001:0001a48c       _SESCmd_CallBack@8         0002a90c f   core_init.obj
+ 0001:0001a520       _sendRcvDiagRequest@20     0002a9a0 f   core_init.obj
+ 0001:0001a5a4       _pollDiagnostics@4         0002aa24 f   core_init.obj
+ 0001:0001a6cc       _STP_DeviceReset@12        0002ab4c f   core_init.obj
+ 0001:0001a73c       _AssignDeviceElementNumber@12 0002abbc f   core_ses.obj
+ 0001:0001a830       _AssignDeviceOverallElementNumber@16 0002acb0 f   core_ses.obj
+ 0001:0001a8ac       _PostMakeSesConfigurationRequest@8 0002ad2c f   core_ses.obj
+ 0001:0001a94e       _FindAsciiNumber@8         0002adce f   core_ses.obj
+ 0001:0001a996       _AssignElementSlotNumber@12 0002ae16 f   core_ses.obj
+ 0001:0001aa06       _PostMakeSesElementDescriptorRequest@8 0002ae86 f   core_ses.obj
+ 0001:0001aab4       _PostMakeSesEnclosureStatusRequest@8 0002af34 f   core_ses.obj
+ 0001:0001ab00       _Device_MakeSesRcvDiagRequest@8 0002af80 f   core_ses.obj
+ 0001:0001abda       _PostMakeSesElementStatusRequest@8 0002b05a f   core_ses.obj
+ 0001:0001acbc       _SES_InternalReqCallback@8 0002b13c f   core_ses.obj
+ 0001:0001ad44       _SGPIO_ReadRegister@8      0002b1c4 f   core_sgpio.obj
+ 0001:0001ad60       _SGPIO_WriteRegister@12    0002b1e0 f   core_sgpio.obj
+ 0001:0001ad7e       _SGPIO_Initialize@4        0002b1fe f   core_sgpio.obj
+ 0001:0001ae12       _SGPIOLedStatus@12         0002b292 f   core_sgpio.obj
+ 0001:0001aeb0       _SPI_Cmd@4                 0002b330 f   core_spi.obj
+ 0001:0001aed4       _OdinSPI_WaitDataReady@8   0002b354 f   core_spi.obj
+ 0001:0001af1e       _OdinSPI_BuildCmd@20       0002b39e f   core_spi.obj
+ 0001:0001af64       _OdinSPI_IssueCmd@8        0002b3e4 f   core_spi.obj
+ 0001:0001afaa       _OdinSPI_RDSR@8            0002b42a f   core_spi.obj
+ 0001:0001b00c       _OdinSPI_PollSR@16         0002b48c f   core_spi.obj
+ 0001:0001b056       _OdinSPI_WREN@4            0002b4d6 f   core_spi.obj
+ 0001:0001b0a6       _OdinSPI_SectErase@8       0002b526 f   core_spi.obj
+ 0001:0001b10c       _OdinSPI_Write@12          0002b58c f   core_spi.obj
+ 0001:0001b184       _OdinSPI_WriteBuf@16       0002b604 f   core_spi.obj
+ 0001:0001b1ca       _OdinSPI_Read@16           0002b64a f   core_spi.obj
+ 0001:0001b24e       _OdinSPI_ReadBuf@16        0002b6ce f   core_spi.obj
+ 0001:0001b312       _OdinSPI_AtmelIdentify@4   0002b792 f   core_spi.obj
+ 0001:0001b384       _OdinSPI_MxicIdentify@4    0002b804 f   core_spi.obj
+ 0001:0001b3fc       _OdinSPI_Init@4            0002b87c f   core_spi.obj
+ 0001:0001b442       _SCSI_To_FIS@16            0002b8c2 f   scsi2sata.obj
+ 0001:0001b512       _Category_CDB_Type@8       0002b992 f   scsi2sata.obj
+ 0001:0001b684       _SCSI_ATA_CheckCondition@12 0002bb04 f   scsi2sata.obj
+ 0001:0001b6b2       _SCSI_ATA_FillLBACdb10@8   0002bb32 f   scsi2sata.obj
+ 0001:0001b6de       _SCSI_ATA_FillLBACdb16@8   0002bb5e f   scsi2sata.obj
+ 0001:0001b716       _SCSI_ATA_FillCtrlModePage@8 0002bb96 f   scsi2sata.obj
+ 0001:0001b74e       _SCSI_ATA_FillRWErrorRecoveryModePage@4 0002bbce f   scsi2sata.obj
+ 0001:0001b76a       _SCSI_ATA_FillCachingModePage@8 0002bbea f   scsi2sata.obj
+ 0001:0001b79a       _SCSI_ATA_FillInfoExcepCtrlModePage@12 0002bc1a f   scsi2sata.obj
+ 0001:0001b7cc       _SCSI_ATA_EnableDisableFeature@12 0002bc4c f   scsi2sata.obj
+ 0001:0001b83a       _SCSI_ATA_FormatUnitTranslation@12 0002bcba f   scsi2sata.obj
+ 0001:0001b854       _SCSI_ATA_InquiryTranslationCallback@8 0002bcd4 f   scsi2sata.obj
+ 0001:0001baf2       _SCSI_ATA_InquiryTranslation@8 0002bf72 f   scsi2sata.obj
+ 0001:0001bb62       _SCSI_ATA_LogSenseTranslation@12 0002bfe2 f   scsi2sata.obj
+ 0001:0001bbd6       _SCSI_ATA_ModeSenseTranslation@12 0002c056 f   scsi2sata.obj
+ 0001:0001bc8e       _SCSI_ATA_ModeSelectTranslation@12 0002c10e f   scsi2sata.obj
+ 0001:0001bd3c       _SCSI_ATA_ReadWriteTranslation@12 0002c1bc f   scsi2sata.obj
+ 0001:0001be12       _SCSI_ATA_ReadCapacityTranslationCallback@8 0002c292 f   scsi2sata.obj
+ 0001:0001be78       _SCSI_ATA_ReadCapacityTranslation@8 0002c2f8 f   scsi2sata.obj
+ 0001:0001beba       _SCSI_ATA_VerifyTranslation@8 0002c33a f   scsi2sata.obj
+ 0001:0001bf32       _SCSI_ATA_SyncCacheTranslation@12 0002c3b2 f   scsi2sata.obj
+ 0001:0001bf88       _SCSI_ATA_SendDiagTranslation@8 0002c408 f   scsi2sata.obj
+ 0001:0001bfbe       _SCSI_ATA_TestUnitReadyTranslationCallback@8 0002c43e f   scsi2sata.obj
+ 0001:0001bfee       _SCSI_ATA_TestUnitReadyTranslation@12 0002c46e f   scsi2sata.obj
+ 0001:0001c02c       _SCSI_ATA_RequestSenseTranslation@12 0002c4ac f   scsi2sata.obj
+ 0001:0001c072       _ATA_CDB2TaskFile@16       0002c4f2 f   scsi2sata.obj
+ 0001:0001c38c       _ATAPI_CDB2TaskFile@12     0002c80c f   scsi2sata.obj
+ 0001:0001c498       _MV_SetSenseData@16        0002c918 f   com_scsi.obj
+ 0001:0001c4d4       _Tag_Init@8                0002c954 f   com_tag.obj
+ 0001:0001c50e       _Tag_GetOne@4              0002c98e f   com_tag.obj
+ 0001:0001c530       _Tag_ReleaseOne@8          0002c9b0 f   com_tag.obj
+ 0001:0001c556       _Tag_IsEmpty@4             0002c9d6 f   com_tag.obj
+ 0001:0001c570       _U64_ADD_U32@12            0002c9f0 f   com_u64.obj
+ 0001:0001c58a       _U64_SUBTRACT_U32@12       0002ca0a f   com_u64.obj
+ 0001:0001c5a4       _U64_COMPARE_U32@12        0002ca24 f   com_u64.obj
+ 0001:0001c5d4       _MV_ZeroMvRequest@4        0002ca54 f   com_util.obj
+ 0001:0001c62c       _MV_Equals@12              0002caac f   com_util.obj
+ 0001:0001c65e       _SGTable_Init@8            0002cade f   com_util.obj
+ 0001:0001c67e       _SGTable_Append@16         0002cafe f   com_util.obj
+ 0001:0001c6b8       _MV_DecodeReadWriteCDB@12  0002cb38 f   com_util.obj
+ 0001:0001c82a       _MV_CRC@8                  0002ccaa f   com_util.obj
+ 0001:0001c87e       _MvGetFunctionPointers@8   0002ccfe f   mvchim_init.obj
+ 0001:0001c8a0       _Get_domain_port_from_tscb@4 0002cd20 f   mvchim_init.obj
+ 0001:0001c8d0       _Mv_GetChimMemoryTable@4   0002cd50 f   mvchim_init.obj
+ 0001:0001c960       _MvGetConfiguration@12     0002cde0 f   mvchim_init.obj
+ 0001:0001c984       _MvSetConfiguration@12     0002ce04 f   mvchim_init.obj
+ 0001:0001c98e       _MvSizeAdapterTSCB@8       0002ce0e f   mvchim_init.obj
+ 0001:0001c99c       _MvCreateAdapterTSCB@16    0002ce1c f   mvchim_init.obj
+ 0001:0001ca12       _MvSetupAdapterTSCB@12     0002ce92 f   mvchim_init.obj
+ 0001:0001ca3a       _MvCheckMemoryNeeded@40    0002ceba f   mvchim_init.obj
+ 0001:0001cabe       _MvVerifyAdapter@4         0002cf3e f   mvchim_init.obj
+ 0001:0001cafe       _get_module_resource@8     0002cf7e f   mvchim_init.obj
+ 0001:0001cb7e       _HBA_GetResource@16        0002cffe f   mvchim_init.obj
+ 0001:0001cbc0       _mv_module_initialize@4    0002d040 f   mvchim_init.obj
+ 0001:0001cc54       _MVInitializePhyTSCB@8     0002d0d4 f   mvchim_init.obj
+ 0001:0001ccb2       _MvGetPhyTSH@12            0002d132 f   mvchim_init.obj
+ 0001:0001cce8       _MvFrontEndISR@4           0002d168 f   mvchim_init.obj
+ 0001:0001cd10       _MvEnableIRQ@4             0002d190 f   mvchim_init.obj
+ 0001:0001cd10       _MvBackEndISR@4            0002d190 f   mvchim_init.obj
+ 0001:0001cd18       _MvGetPortTSH@8            0002d198 f   mvchim_init.obj
+ 0001:0001cd5a       _MvSizeDevicePortTSCB@4    0002d1da f   mvchim_init.obj
+ 0001:0001ce12       _update_tscbs_frm_core@8   0002d292 f   mvchim_init.obj
+ 0001:0001cea2       _MvCheckDevPortTSCBNeeded@8 0002d322 f   mvchim_init.obj
+ 0001:0001cf20       _MvCreateDevicePortTSCB@16 0002d3a0 f   mvchim_init.obj
+ 0001:0001cfe0       _MvValidateDevicePortTSH@4 0002d460 f   mvchim_init.obj
+ 0001:0001d0ac       _MvValidatePortTSH@4       0002d52c f   mvchim_init.obj
+ 0001:0001d0d8       _MvClearDevicePortTSH@4    0002d558 f   mvchim_init.obj
+ 0001:0001d100       _MvClearPortTSH@4          0002d580 f   mvchim_init.obj
+ 0001:0001d128       _MvSizeLuTSCB@4            0002d5a8 f   mvchim_init.obj
+ 0001:0001d134       _MvCreateLuTSCB@16         0002d5b4 f   mvchim_init.obj
+ 0001:0001d15e       _MvCheckIOBMemoryNeeded@36 0002d5de f   mvchim_init.obj
+ 0001:0001d168       _MvCheckDeviceStatus@4     0002d5e8 f   mvchim_init.obj
+ 0001:0001d19a       _MvCheckReportLUNSDataChange@4 0002d61a f   mvchim_init.obj
+ 0001:0001d1cc       _MvSetMemoryPointer@16     0002d64c f   mvchim_init.obj
+ 0001:0001d350       _mv_init@4                 0002d7d0 f   mvchim_init.obj
+ 0001:0001d3d0       _MvQueueIOB@4              0002d850 f   mvchim_init.obj
+ 0001:0001d826       _MvCreateInitializationTSCB@8 0002dca6 f   mvchim_init.obj
+ 0001:0001d892       _copy_frm_iob_sg@16        0002dd12 f   mvchim_utils.obj
+ 0001:0001d8ec       _WriteEventLog@8           0002dd6c f   mvchim_utils.obj
+ 0001:0001d910       _HBA_Notification@12       0002dd90 f   mvchim_utils.obj
+ 0001:0001da22       _HBA_ModuleStarted@4       0002dea2 f   mvchim_utils.obj
+ 0001:0001da40       _MvWriteNVSegment@20       0002dec0 f   mvchim_utils.obj
+ 0001:0001da7a       _MvReadNVSegment@24        0002defa f   mvchim_utils.obj
+ 0001:0001daba       _MvReadRAMSegment@20       0002df3a f   mvchim_utils.obj
+ 0001:0001daf4       _MvWriteRAMSegment@20      0002df74 f   mvchim_utils.obj
+ 0001:0001db2e       _MvSectEraseRAMSegment@8   0002dfae f   mvchim_utils.obj
+ 0001:0001db58       _MvProfileAdapter@12       0002dfd8 f   mvchim_utils.obj
+ 0001:0001db80       _MvAdjustAdapterProfile@16 0002e000 f   mvchim_utils.obj
+ 0001:0001db9e       _MvProfilePort@12          0002e01e f   mvchim_utils.obj
+ 0001:0001dbc0       _MvProfileDevicePort@12    0002e040 f   mvchim_utils.obj
+ 0001:0001dd06       _MvProfilePhy@12           0002e186 f   mvchim_utils.obj
+ 0001:0001dd24       _MvProfileLu@12            0002e1a4 f   mvchim_utils.obj
+ 0001:0001dd4e       _MvAdjustDevicePortProfile@16 0002e1ce f   mvchim_utils.obj
+ 0001:0001dd4e       _MvAdjustPhyProfile@16     0002e1ce f   mvchim_utils.obj
+ 0001:0001dd4e       _MvAdjustLuProfile@16      0002e1ce f   mvchim_utils.obj
+ 0001:0001dd4e       _MvAdjustPortProfile@16    0002e1ce f   mvchim_utils.obj
+ 0001:0001dd58       _MvPollIRQ@4               0002e1d8 f   mvchim_utils.obj
+ 0001:0001dd58       _MvDeleteAdapterTSCB@4     0002e1d8 f   mvchim_init.obj
+ 0001:0001dd58       _MvClearLuTSH@4            0002e1d8 f   mvchim_utils.obj
+ 0001:0001dd62       _MvInitialize@4            0002e1e2 f   mvchim_utils.obj
+ 0001:0001ddea       _MVchim_get_iohandle@8     0002e26a f   mvchim_utils.obj
+ 0001:0001de22       _MVOSMReadUExact32@12      0002e2a2 f   mvchim_utils.obj
+ 0001:0001de56       _MVOSMWriteUExact32@16     0002e2d6 f   mvchim_utils.obj
+ 0001:0001de88       _MVOSMReadPCIConfigurationDword@8 0002e308 f   mvchim_utils.obj
+ 0001:0001deb2       _MVOSMWritePCIConfigurationDword@12 0002e332 f   mvchim_utils.obj
+ 0001:0001dede       _getPool@4                 0002e35e f   mvchim_utils.obj
+ 0001:0001defe       _res_free_req_to_pool@8    0002e37e f   res_mgmt.obj
+ 0001:0001df2a       _res_get_req_from_pool@4   0002e3aa f   res_mgmt.obj
+ 0001:0001df6e       _AllocateCachedMemoryPool@4 0002e3ee f   mem_utils.obj
+ 0001:0001df90       __aullshr                  0002e410 f   int64:ullshr.obj
+ 0001:0001dfc0       __allmul                   0002e440 f   int64:llmul.obj
+ 0001:0001e000       __aullrem                  0002e480 f   int64:ullrem.obj
+ 0001:0001e080       __aulldiv                  0002e500 f   int64:ulldiv.obj
+ 0001:0001e0f0       _memcpy                    0002e570 f   libcntpr:memcpy.obj
+ 0001:0001e430       _memset                    0002e8b0 f   libcntpr:memset.obj
+ 0001:0001e488       ??_C@_07HPMHGBON@ntldr?$DN1?$AA@FNODOBFM@ 0002e908     regreader.obj
+ 0001:0001e490       ??_C@_06KGPGLGBE@dump?$DN1?$AA@FNODOBFM@ 0002e910     regreader.obj
+ 0001:0001e498       ??_C@_1BA@CMKGIANO@?$AAM?$AAa?$AAx?$AAL?$AAu?$AAn?$AAs?$AA?$AA@FNODOBFM@ 0002e918     regreader.obj
+ 0001:0001e4a8       ??_C@_1BA@MHCBCPNL@?$AAM?$AAa?$AAx?$AAT?$AAa?$AAg?$AAs?$AA?$AA@FNODOBFM@ 0002e928     regreader.obj
+ 0001:0001e4b8       ??_C@_1BM@JEGNIDLI@?$AAM?$AAa?$AAx?$AAi?$AAm?$AAu?$AAm?$AAS?$AAG?$AAL?$AAi?$AAs?$AAt?$AA?$AA@FNODOBFM@ 0002e938     regreader.obj
+ 0001:0001e4d4       ??_C@_1CG@GDNLFIP@?$AA?2?$AAP?$AAa?$AAr?$AAa?$AAm?$AAe?$AAt?$AAe?$AAr?$AAs?$AA?2?$AAD?$AAe?$AAv?$AAi?$AAc?$AAe?$AA?$AA@FNODOBFM@ 0002e954     regreader.obj
+ 0001:0001e4fa       ??_C@_0M@DCLFAKAJ@HBA?5?5?5?5?5?5?5?5?$AA@FNODOBFM@ 0002e97a     ntinit.obj
+ 0001:0001e506       ??_C@_07OBLNEOFN@ADAPTEC?5@FNODOBFM@ 0002e986     ntinit.obj
+ 0001:0001e510       ??_C@_06EDFEKNLJ@MVSATA?$AA@FNODOBFM@ 0002e990     core_helper.obj
+ 0001:0001e518       ??_C@_0BB@JCEFLFJE@0123456789abcdef?$AA@FNODOBFM@ 0002e998     core_i2c.obj
+ 0002:00000000       __imp__RtlInitUnicodeString@8 0002ea00     wdm:NTOSKRNL.EXE
+ 0002:00000004       __imp__ExAllocatePoolWithTag@12 0002ea04     wdm:NTOSKRNL.EXE
+ 0002:00000008       __imp__IoAllocateErrorLogEntry@8 0002ea08     wdm:NTOSKRNL.EXE
+ 0002:0000000c       __imp__IoWriteErrorLogEntry@4 0002ea0c     wdm:NTOSKRNL.EXE
+ 0002:00000010       __imp__RtlQueryRegistryValues@20 0002ea10     wdm:NTOSKRNL.EXE
+ 0002:00000014       \177NTOSKRNL_NULL_THUNK_DATA 0002ea14     wdm:NTOSKRNL.EXE
+ 0002:00000018       __imp__ScsiPortSetBusDataByOffset@28 0002ea18     scsiport:SCSIPORT.SYS
+ 0002:0000001c       __imp__ScsiPortReadPortUchar@4 0002ea1c     scsiport:SCSIPORT.SYS
+ 0002:00000020       __imp__ScsiPortReadPortUshort@4 0002ea20     scsiport:SCSIPORT.SYS
+ 0002:00000024       __imp__ScsiPortStallExecution@4 0002ea24     scsiport:SCSIPORT.SYS
+ 0002:00000028       __imp__ScsiPortWritePortUchar@8 0002ea28     scsiport:SCSIPORT.SYS
+ 0002:0000002c       __imp__ScsiPortWritePortUshort@8 0002ea2c     scsiport:SCSIPORT.SYS
+ 0002:00000030       __imp__ScsiPortWritePortUlong@8 0002ea30     scsiport:SCSIPORT.SYS
+ 0002:00000034       __imp__ScsiPortInitialize@16 0002ea34     scsiport:SCSIPORT.SYS
+ 0002:00000038       __imp__ScsiPortGetPhysicalAddress@16 0002ea38     scsiport:SCSIPORT.SYS
+ 0002:0000003c       __imp__ScsiPortGetSrb@20   0002ea3c     scsiport:SCSIPORT.SYS
+ 0002:00000040       __imp__ScsiPortGetLogicalUnit@16 0002ea40     scsiport:SCSIPORT.SYS
+ 0002:00000044       __imp__ScsiPortNotification 0002ea44     scsiport:SCSIPORT.SYS
+ 0002:00000048       __imp__ScsiPortGetBusData@24 0002ea48     scsiport:SCSIPORT.SYS
+ 0002:0000004c       __imp__ScsiPortGetDeviceBase@28 0002ea4c     scsiport:SCSIPORT.SYS
+ 0002:00000050       __imp__ScsiPortGetUncachedExtension@12 0002ea50     scsiport:SCSIPORT.SYS
+ 0002:00000054       __imp__ScsiPortReadPortUlong@4 0002ea54     scsiport:SCSIPORT.SYS
+ 0002:00000058       __imp__ScsiPortLogError@28 0002ea58     scsiport:SCSIPORT.SYS
+ 0002:0000005c       \177SCSIPORT_NULL_THUNK_DATA 0002ea5c     scsiport:SCSIPORT.SYS
+ 0003:00000000       _ChipsSupported            0002eb00     ntinit.obj
+ 0003:00000010       _core_pd_cmd_handler       0002eb10     core_api.obj
+ 0003:00000038       ___core_mod_ops            0002eb38     core_exp.obj
+ 0003:000000e8       _I2C_INQUIRY_DEVICE_DATA   0002ebe8     core_i2c.obj
+ 0003:0000010c       _I2C_INQUIRY_VPD_PAGE0_DATA 0002ec0c     core_i2c.obj
+ 0003:00000114       _I2C_INQUIRY_VPD_PAGE80_DATA 0002ec14     core_i2c.obj
+ 0003:00000118       _I2C_INQUIRY_VPD_PAGE83_DATA 0002ec18     core_i2c.obj
+ 0003:00000134       _ATMEL_SPI_CMD             0002ec34     core_spi.obj
+ 0003:00000144       _MXIC_SPI_CMD              0002ec44     core_spi.obj
+ 0003:00000558       _MvFuncPtrs                0002f058     mvchim_init.obj
+ 0003:00000630       _MVConfiguration           0002f130     mvchim_init.obj
+ 0003:000006c0       _Global_Eip_Bit            0002f1c0     ses2dev.obj
+ 0003:000006c1       _Enclosure_Flag            0002f1c1     ses2dev.obj
+ 0003:000006ce       _Discovery_state           0002f1ce     core_ibcd.obj
+ 0003:000006f0       _modePageBuf               0002f1f0     scsi2sata.obj
+ 0003:00000710       _temp                      0002f210     <common>
+ 0003:00000714       _driverObjectRef           0002f214     <common>
+ 0003:00000718       _stopadapter_called        0002f218     <common>
+ 0003:00000720       _regPath                   0002f220     <common>
+ 0003:0000091e       _max_io                    0002f41e     <common>
+ 0004:00000000       __IMPORT_DESCRIPTOR_SCSIPORT 0002f480     scsiport:SCSIPORT.SYS
+ 0004:00000014       __IMPORT_DESCRIPTOR_NTOSKRNL 0002f494     wdm:NTOSKRNL.EXE
+ 0004:00000028       __NULL_IMPORT_DESCRIPTOR   0002f4a8     scsiport:NTOSKRNL.EXE
+
+ entry point at        0001:000021d8
+
+ Static symbols
+
+ 0001:0000005e       _RtlUnicodeStringValidateWorker@12 000104de f   regreader.obj
+ 0001:0000bba2       _mv_swap_bytes@8           0001c022 f   core_api.obj
+ 0001:0000cb9e       ___post_complete_req@8     0001d01e f   core_exp.obj
+ 0001:0000cb9e       ___post_complete_req@8     0001d01e f   core_exp.obj
+ 0001:0000cbfa       ___core_ops_get_res_desc@8 0001d07a f   core_exp.obj
+ 0001:0000cd92       ___core_ops_init@12        0001d212 f   core_exp.obj
+ 0001:0000d5ea       ___core_ops_start@4        0001da6a f   core_exp.obj
+ 0001:0000d60a       ___core_ops_stop@4         0001da8a f   core_exp.obj
+ 0001:0000d650       ___is_scsi_cmd_simulated@4 0001dad0 f   core_exp.obj
+ 0001:0000ded0       _IBCD_SMPReq_Callback@8    0001e350 f   core_exp.obj
+ 0001:0000ecbc       ___core_ops_monitor@4      0001f13c f   core_exp.obj
+ 0001:0000ed1c       ___core_ops_reset@4        0001f19c f   core_exp.obj
+ 0001:0000f374       _Port_HandlePortInterrupt@8 0001f7f4 f   core_exp.obj
+ 0001:0000f5fe       ___handle_attention@4      0001fa7e f   core_exp.obj
+ 0001:00010a92       ___handle_waiting_list@4   00020f12 f   core_exp.obj
+ 0001:00010d14       ___core_ops_send_request@8 00021194 f   core_exp.obj
+ 0001:00011772       _List_GetFirst@4           00021bf2 f   core_helper.obj
+ 0001:00011772       _List_GetFirst@4           00021bf2 f   core_helper.obj
+ 0001:00011772       _List_GetFirst@4           00021bf2 f   core_helper.obj
+ 0001:00011794       ___next_active_dev_id@8    00021c14 f   core_helper.obj
+ 0001:0001285c       _modeSelect@8              00022cdc f   core_helper.obj
+ 0001:000130ea       _Core_TaskReqCallback@8    0002356a f   core_helper.obj
+ 0001:000131f4       _Core_ATASetFeatureReqCallback@8 00023674 f   core_helper.obj
+ 0001:00013e42       _RuntimeIssueReqCallback@8 000242c2 f   core_helper.obj
+ 0001:00014f94       _I2C_DeviceStateMachine@8  00025414 f   core_i2c.obj
+ 0001:00015288       _SMP_Callback@16           00025708 f   core_ibcd.obj
+ 0001:000165da       _mv_is_sig_fis_received@12 00026a5a f   core_init.obj
+ 0001:000165da       _mv_is_sig_fis_received@12 00026a5a f   core_init.obj
+ 0001:00017008       _SAS_DeviceStateMachine@8  00027488 f   core_init.obj
+ 0001:0001718a       _ResetController@4         0002760a f   core_init.obj
+ 0001:0001774a       _InitChip@4                00027bca f   core_init.obj
+ 0001:00018920       _Device_IssueIdentify@8    00028da0 f   core_init.obj
+ 0001:00018c36       _Device_IssueSetUDMAMode@8 000290b6 f   core_init.obj
+ 0001:00018c92       _Device_IssueSetPIOMode@8  00029112 f   core_init.obj
+ 0001:00018cee       _Device_EnableWriteCache@8 0002916e f   core_init.obj
+ 0001:0001a1f8       _SATA_InternalReqCallback@8 0002a678 f   core_init.obj
+ 0001:0001a40e       _Device_EnableReadAhead@8  0002a88e f   core_init.obj
+ 0001:0001cd68       _MvQueueIOB_Callback@8     0002d1e8 f   mvchim_init.obj

@@ -1,0 +1,314 @@
+***************************************************************************** 
+                               SAS2XP86.TXT  
+***************************************************************************** 
+
+This document comprises the Installation Guide for the LSI Fusion-MPT (TM)
+SAS2XP86.SYS (ScsiPort) Host Device Driver.
+                                                 
+This file describes the features and use of the LSI Fusion-MPT SAS (Serial
+Attached SCSI) device driver for the Windows XP x86 (32 bit) operating
+system environment. It is divided into the following sections:
+
+Introduction for Windows XP x86
+     Features
+     LSI Devices Supported
+     Description
+
+Installing the Driver(s)
+     New System Installation
+          CD/DVD-ROM Installation
+     Existing System Installation 
+     Performance Tuning for Windows XP x86
+          Miniport Driver Configuration Options and WDCFG Utility
+     Troubleshooting 
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NOTE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  The SAS2XP86 host device driver ONLY supports the Windows x86 (32-bit)
+                          operating system.
+
+  If you are installing a driver on any version of the Windows operating
+   systen other than Windows XP x86 (32-bit), then you need to obtain a
+                      different driver from LSI.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NOTE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+.........................................................................
+1.0 Introduction for Windows XP x86
+
+
+Windows XP x86 is an operating system designed to run on Intel x86 32-bit
+compatible processors using current technology. It provides a graphical
+user interface environment incorporating many high-level features. Refer
+to the Microsoft Windows XP x86 documentation for details.
+
+An I/O manager handles I/O requests in Windows XP x86. To address a
+peripheral, the I/O manager goes through the appropriate drivers. Windows
+XP x86 provides class drivers for hard disk, optical, CD-ROM, printer,
+and scanner peripherals. Other class drivers, provided by peripheral
+manufacturers, may be added to support new devices. Tape device support
+is built into the operating system itself and does not require a class
+driver. 
+
+Microsoft provides the port driver and LSI Corporation provides the
+miniport driver, which is called SAS2XP86.SYS.  This driver completes the
+path to the LSI controller or processor with an optional SAS BIOS.
+
+This miniport driver uses the Microsoft ScsiPort port driver (rather than
+the Microsoft StorPort driver in newer versions of Windows).  A StoprPort
+driver has architectural enhancements that provide performance improvements
+on large server systems with many storage adapters.  This miniport driver
+(SAS2XP86.SYS) is NOT designed to take advantage of these enhancements for
+improved performance.  This driver (SAS2XP86.SYS) is provided for SAS
+Generation 2 backward compatability on Windows XP x86 systems.  If improved
+performance is desired, upgrade to the LSI SAS Gen 2 StorPort driver,
+LSI_SAS2.SYS which supports Windows versions other than Windows XP x86.
+
+.........................................................................
+1.1 Features 
+
+The SAS2XP86.SYS miniport driver supports these features:
+
+o  Supports End-to-End Data Protection (EEDP)
+o  Supports 1.5Gb, 3Gb and 6Gb SAS expanders/devices and SATA devices
+o  Supports PCI-Express bus protocols
+o  Supports LSI Fusion-MPT common software interface 
+o  Supports multiple host adapters 
+o  Supports multiple Logical Unit Numbers (LUNs) 
+o  Supports Scatter-Gather 
+o  Supports SCSI pass-through functionality 
+o  Supports disk array configurations with no LUN 0 
+o  Supports disk array configurations with non-contiguous LUNs 
+o  Auto request sense 
+o  Maximum block size support: 1 Mbyte (32-bit), 2 Mbyte (64-bit)
+.........................................................................
+1.2 LSI Devices Supported 
+
+o  LSISAS2004
+o  LSISAS2008
+o  LSISAS2108
+o  LSISAS2116
+
+.........................................................................
+1.3 Description
+
+The SAS2XP86.SYS driver meets the Microsoft specification for miniport
+drivers.  This driver allows connection of SAS devices including disk drives,
+CD/DVD-ROMs, and tape drives for PCI-Express based machines. To support a
+different SAS device type, the Windows XP x86 architecture requires that a
+class driver for that type of device be present (usually supplied by
+Microsoft, or possibly by the peripheral manufacturer). No changes to the LSI
+drivers are required. The driver supports only Windows XP x86 and all
+subsequent Service Packs. 
+
+A Windows application passes SCSI commands directly to the SAS Protocol devices
+by using the SCSI pass-through facility. This facility allows applications to
+directly control and access devices by filling in a data structure and calling
+into the port or class driver. Refer to the Microsoft Windows XP x86
+documentation for more details.
+
+............................................................................
+2.0 Installing the SAS2XP86.SYS Driver
+
+
+This procedure installs the SAS2XP86.SYS driver onto a new or existing Windows
+XP x86 system. Depending upon the media used to distribute LSI drivers (web or
+CD/DVD-ROM) and the type of adapter, you will create a driver diskette.
+
+Copy the files listed in this section to the root directory of a clean
+diskette as shown below.  Label this diskette "Windows XP x86 Driver
+Diskette". You will use this diskette during the installation process.
+
+        txtsetup.oem
+        sas2xp86.tag
+        sas2xp86.inf
+        sas2xp86.sys
+        lsinodrv.inf
+        
+For a driver upgrade the driver files can also be copied onto a hard drive,
+CD or DVD, or a USB flash drive.
+        
+............................................................................
+2.1 New System Installation 
+
+This procedure installs the SAS2XP86.SYS driver onto a Windows XP x86
+system. Use this procedure when installing Windows XP x86 onto an
+unused drive. Windows XP x86 automatically adds the driver to the
+registry and copies the driver to the appropriate directory.
+
+The method for installing Windows XP x86 on a new system involves using
+a CD/DVD-ROM. Installation using boot floppy diskettes is not supported by
+Windows XP x86.
+
+............................................................................
+2.1.1 CD/DVD-ROM Installation
+
+1. Start the Windows XP x86 installation by booting from the Windows
+   XP x86 CD/DVD-ROM:
+
+   The system BIOS must support booting from a CD/DVD-ROM. BIOS settings may
+   need to be changed to allow CD/DVD-ROM booting.
+
+2. Press the F6 key to install the SAS2XP86.SYS driver when the screen displays
+   "Windows Setup".
+
+   This must be done or else the new driver will not be recognized.
+
+   Note: Be sure to press the F6 key as any driver loaded later in the
+         installation process is not recognized by Windows XP x86 Setup.
+         If F6 is not pressed, all devices controlled by the drivers are
+         not available during Windows XP x86 setup.
+
+3. Choose S to specify an additional device when the screen displays "Setup
+   could not determine the type of one or more mass storage devices...". 
+
+   NOTE: If this screen is not displayed as the first user input, then 
+         pressing the F6 key was not seen by the setup program. Reboot the 
+         system and try again.
+
+   The system prompts for the manufacturer-supplied hardware support disk.
+
+4. Insert the appropriate driver diskette containing the Windows XP x86
+   driver required to support your LSI adapter(s) and press Enter.
+    
+   Note: Current Windows XP x86 drivers can be downloaded from the
+         LSI Corporation web site at:
+             http://www.lsi.com/downloads/selectDownload.do
+         After you are connected to this web site, select the product
+         category, family, and the appropriate product.  Select the Driver
+         checkbox and click Go.  Click on the desired Windows XP x86 driver
+         to begin the download.
+
+5. The screen will display the driver to be installed:
+
+       "LSI Fusion-MPT SAS2 Driver (XP x86)"
+       
+   Press Enter to proceed.
+
+   Return to the Windows XP x86 Setup screen.
+
+6. Press Enter to proceed.
+
+   The message about setup loading files appears.
+
+7. Follow the Microsoft Windows XP x86 installation procedure at this point.
+
+............................................................................
+2.2 Existing System Installation
+
+This procedure installs or upgrades the SAS2XP86.SYS drivers onto an existing
+Windows XP x86 system.
+
+NOTE: When a LSI SAS Gen2 adapter is added to an existing system installation,
+      the new adapter is automatically detected at the next reboot. When the
+      Device Driver Wizard appears at boot, click on the Next button and
+      continue at step 8 below.
+
+1. Boot Windows XP x86 and logon as a user that has Administrator
+   privileges.
+
+2. Click on the Start button, then right-click on the My Computer entry in
+   the menu.
+
+3. Click on the Properties selection.
+
+4. Click on the Hardware tab, and then the Device Manager button.
+
+5. Click the "+" to the left of the SCSI and RAID controllers line.  Find the
+   adapter desired for the driver upgrade and double-click the entry.  Click
+   on the Driver tab.
+
+6. Information on the currently installed driver is displayed, and additional
+   driver details can be viewed by clicking the "Driver Details" button.
+
+7. Click on the "Update Driver" button to update the existing driver.  The
+   Hardware Update Wizard begins.
+   
+8. Click on the "Install from a list or specific location..." button to select
+   it, then click on the Next button.
+
+9. Click on the "Don't search, I will choose the driver to install." button
+   to select it, then click on the Next button.
+
+10. Click on the "Have Disk" button and type the path to the driver, or click
+    on the Browse button.  Click the OK button.
+
+11. Select the driver from the list and click on the Next button.
+
+12. Click on the Next button again to start the driver update.
+
+    In some cases, a message will display saying that this driver has not
+    passed logo testing. This message informs you that a nonsigned driver is
+    being installed.
+
+    Note: Drivers are digitally signed by the Microsoft Windows Hardware
+          Quality Lab (WHQL) on completion of logo testing.  Due to the time
+          lag between the general customer release by LSI of Windows drivers
+          and the completion of WHQL logo testing, some drivers distributed
+          with adapters or downloaded from the www.lsi.com web site may not be
+          digitally signed.
+
+13. Click STOP Installation to cancel the installation if a nonsigned driver
+    is not desired.
+
+      or
+
+    Click Continue Anyway to continue the installation.
+
+    The system will load the driver from the Windows XP x86 driver
+    diskette. A message box may display indicating that the target (existing)
+    driver is newer than the source (upgrade) driver.
+
+14. Click No to cancel the driver upgrade at this point.
+
+      or
+
+    Click Yes to continue the installation.
+
+    The system copies the driver to the system disk. For any adapter other
+    than the boot adapter, the updated driver will become active immediately.
+    For the boot adapter, a message box displays indicating that you must
+    reboot your system for the new driver to take effect.
+
+15. Click on the Finish button to complete the driver upgrade.
+
+............................................................................
+2.3 Performance Tuning for Windows XP x86
+Windows XP x86 has registry entries that can be used to tune the
+performance of SCSI I/O for certain configurations. Please refer to Microsoft
+documentation for specifics.
+
+............................................................................
+2.3.1 Miniport Driver Configuration Options
+
+The SAS2XP86.SYS driver is configured by default to provide optimum
+performance in most standard systems.  
+
+However, it is possible to fine-tune certain driver parameters using a utility
+provided on the OS installation disk, the Windows Driver Configuration Utility
+(WDCFG).
+
+The utility comprises 2 files which must be installed manually under Windows
+XP.  The WDCFG.EXE file should be manually copied to the \windows\system32
+directory on the system volume.  The DriverConfigParam.def should be manually
+copied to the \ProgramData\LSI\Wdcfg directory on the system volume.  Note
+that this directory path must be manually created under Windows XP, and that
+it contains no space characters.
+
+TO use the utility, first launch a Command Prompt window.  In the Command Prompt 
+window, enter the "wdcfg -?" command to display full usage information.  The 
+usage information explains how to query and set parameters, and how to use the
+utility to display a list of driver configuration parameters which can be
+controlled using the utility (including full explanations of each).
+
+Note that parameter changes are only activated within the driver following a
+driver initialization.  This may be done by restarting the machine, or by using
+Device Manager to disable and re-enable the driver (Take care not to do this
+to a driver servicing the boot volume).
+
+............................................................................
+3.0 Troubleshooting 
+
+The SAS2XP86.SYS driver will log error messages to the system error log. For
+these errors, the system errorlog EventID will be 11, and the specific error
+code values will be displayed at offset 0x10. Data should be displayed in words.

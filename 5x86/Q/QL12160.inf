@@ -1,0 +1,82 @@
+; OEMSETUP.INF - This file is used by Setup to install QLA12160 W2K driver
+; Copyright 1994-2002 QLogic Corporation
+
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%QLOGIC%
+CatalogFile=ql12160.cat
+DriverVer = 03/01/2002,7.21.1.1
+
+[SourceDisksNames]
+1=%Floppy_Desc%,,,
+
+[SourceDisksFiles]
+ql12160.sys=1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[Manufacturer]
+%QLOGIC%=QLOGIC
+
+;*******************************
+;QLogic Manufacturer device list
+[QLOGIC]
+%ql12160.DeviceDesc% = ql12160_Inst,PCI\VEN_1077&DEV_1216&SUBSYS_00071077,PCI\VEN_1077&DEV_1016&SUBSYS_00081077,PCI\VEN_1077&DEV_1216&SUBSYS_00078086,PCI\VEN_1077&DEV_1216&SUBSYS_001215D4
+
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1077&DEV_1216&SUBSYS_00071077,PCI\VEN_1077&DEV_1016&SUBSYS_00081077,PCI\VEN_1077&DEV_1216&SUBSYS_00078086,PCI\VEN_1077&DEV_1216&SUBSYS_001215D4
+
+
+[ql12160_Inst]
+CopyFiles =@ql12160.sys
+AddReg = ql12160_Registry_Update
+Reboot
+
+
+[ql12160_Registry_Update]
+HKLM,SYSTEM\CurrentControlSet\Services\ql12160\Parameters\Device,MaximumSGList,0x00010001,0x41
+
+[ql12160_Inst.Services]
+AddService = ql12160, %SPSVCINST_ASSOCSERVICE%, ql12160_Service_Inst, Miniport_EventLog_Inst
+
+[ql12160_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ql12160.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%%SystemRoot%%"\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+QLOGIC = "QLogic"
+ql12160.DeviceDesc = "QLogic QLA12160, 64 bit PCI DUAL 160M SCSI HBA"
+Floppy_Desc = "QLogic Software Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+
+
+
+
+

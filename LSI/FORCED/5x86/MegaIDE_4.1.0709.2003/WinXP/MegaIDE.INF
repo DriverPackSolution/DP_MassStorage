@@ -1,0 +1,90 @@
+; MegaIDE.Inf -- This file contains descriptions of the MegaRAID IDE Family
+;
+; Copyright (c) 1999 ...2000, LSI Logic Corporation.,
+[Version]
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+CatalogFile=MegaXP.cat
+DriverVer=07/09/2003,4.1.0709.2003
+
+[Manufacturer]
+%LSI%=LSI
+
+[LSI]
+%PCI\VEN_1095&DEV_0649&SUBSYS_0649101E.DeviceDesc%=MegaIDE,PCI\VEN_1095&DEV_0649&SUBSYS_0649101E
+%PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11.DeviceDesc%=MegaIDE,PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11
+%PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11.DeviceDesc%=MegaIDE,PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11
+%PCI\VEN_1095&DEV_0649&SUBSYS_FE001179.DeviceDesc%=MegaIDE,PCI\VEN_1095&DEV_0649&SUBSYS_FE001179
+%PCI\VEN_1095&DEV_0680&SUBSYS_05241000.DeviceDesc%=MegaIDE,PCI\VEN_1095&DEV_0680&SUBSYS_05241000
+%PCI\VEN_1095&DEV_3112&SUBSYS_05341000.DeviceDesc%=MegaIDE,PCI\VEN_1095&DEV_3112&SUBSYS_05341000
+%PCI\VEN_1166&DEV_0213&SUBSYS_02131000.DeviceDesc%=MegaIDE,PCI\VEN_1166&DEV_0213&SUBSYS_02131000
+
+[MegaIDE.NT]
+CopyFiles=MoveMiniPort.NT
+AddReg=MegaIDE.reg.NT
+Reboot
+
+[MegaIDE.reg.NT]
+HKLM,System\CurrentControlSet\Services\Disk,"TimeOutValue", 0x00010001, 0x3c
+
+[MegaIDE.NT.Services]
+AddService = MegaIDE, 2, MegaIDE_Service_Inst, Miniport_EventLog_Inst
+
+[MegaIDE_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\MegaIDE.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, , "Tag", 0x00010001, 0x00000001
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%SystemRoot%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[DestinationDirs]
+DefaultDestDir=12;
+MoveMiniPort.NT = 12;
+
+[SourceDisksFiles]
+MegaIDE.sys = 1
+
+[MoveMiniPort.NT]
+MegaIDE.sys
+
+[SourceDisksNames]
+1 = %LSI_DRIVER_DISKETTE%,,,,
+
+[strings]
+LSI="LSI Logic Corporation."
+
+PCI\VEN_1095&DEV_0649&SUBSYS_0649101E.DeviceDesc="LSI MegaRAID IDE 100/MAGNIA Z3x0 Controller"
+PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11.DeviceDesc="Integrated Ultra ATA-100 Dual Channel Controller"
+PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11.DeviceDesc="Integrated Ultra ATA-100 IDE RAID Controller"
+PCI\VEN_1095&DEV_0649&SUBSYS_FE001179.DeviceDesc="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z500"
+PCI\VEN_1095&DEV_0680&SUBSYS_05241000.DeviceDesc="LSI MegaRAID IDE 133 Controller"
+PCI\VEN_1095&DEV_3112&SUBSYS_05341000.DeviceDesc="LSI MegaRAID Serial ATA Controller"
+PCI\VEN_1166&DEV_0213&SUBSYS_02131000.DeviceDesc="LSI Logic CSB-6 IDE 100 RAID Controller"
+LSI_DRIVER_DISKETTE="LSI MegaRAID IDE Driver Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+

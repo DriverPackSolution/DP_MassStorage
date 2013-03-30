@@ -1,0 +1,106 @@
+; AEC68x5.INF for Windows 2000/XP/2003
+;
+; Copyright (c) 2002, ACARD Technology Corp.
+; For motherboard built-in only
+;
+[version]
+CatalogFile=AEC68x5.cat
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Acd%
+;CatalogFile= aec68X5.CAT
+DriverVer=04/09/2004, 1.0.5.5
+
+; Class Install
+[ClassInstall32.NT]
+Addreg=SCSIReg
+
+[SCSIReg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.Dll,ScsiClassInstaller"
+HKR,,Icon,,"-10"
+HKR,,LegacyInfOption,,"SCSI"
+
+[Manufacturer]
+%AEC%=ACARD
+
+[ACARD]
+%AEC68x5.DeviceDesc%  = aec68x5_Inst,  PCI\VEN_1191&DEV_000A
+%AEC68x5.Processor%= NO_DRV,ACARD___RAID_PROCESSOR__1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+
+[SourceDisksFiles]
+AEC68x5.sys=1
+
+
+[SourceDisksNames]
+1=%DisksNames%,,,,
+
+
+
+
+[NO_DRV]
+;Include=machine.inf
+Needs=NO_DRV
+
+[NO_DRV.Services]
+Addservice= , %SPSVCINST_ASSOCSERVICE%  ;Null Service
+
+
+[aec68x5_Inst]
+CopyFiles = CopySYS
+;Reboot
+
+[CopySYS]
+AEC68x5.sys
+
+[aec68x5_Inst.Services]
+AddService = aec68x5, %SPSVCINST_ASSOCSERVICE%, aec68x5_Service_Inst, Miniport_EventLog_Inst
+
+[aec68x5_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\aec68x5.sys
+LoadOrderGroup = SCSI Miniport
+AddReg	       = pnpsafe_pci_addreg
+
+;*************************************************************
+;These addreg sections should be used when installins services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+Acd = "ACARD"
+SCSIClassName="SCSI and RAID controllers"
+AEC = "Acard"
+aec68x5.DeviceDesc  = "ACARD AEC-6885/6895/6896 PCI 4 Channel RAID Controller"
+AEC68X5.Processor   = "ACARD RAID PROCESSOR"
+DisksNames = "ACARD AEC-6885/6895/6896 PCI 4 Channel RAID Driver Installation Diskette"
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ	       = 0x00020000
+REG_DWORD	       = 0x00010001
+
+

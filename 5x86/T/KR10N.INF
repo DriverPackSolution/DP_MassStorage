@@ -1,0 +1,108 @@
+;
+; Copyright (C) 2004-2007 TOSHIBA CORPORATION. All Rights Reserved.
+;
+; TOSHIBA RAID Driver
+;
+
+[Version] 
+Signature = "$Windows NT$" 
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318} 
+Provider=%TOSHIBA% 
+CatalogFile=KR10N.cat
+DriverVer = 02/20/2007, 1.10.0016
+
+[DestinationDirs] 
+KR10NW2k.Files.x86_12 = 12
+KR10NWXP.Files.x86_12 = 12
+OLDW2k.Files.x86_12 = 12
+
+[SourceDisksNames.x86]
+0=%Desc_x860%,KR10N,,\
+
+[SourceDisksFiles.x86]
+KR10N.sys=0,,
+KR10N2K.sys=0,,
+
+[Manufacturer] 
+%TOSHIBA%=TOSHIBA, NT.5.1
+
+[TOSHIBA]; This section will only be installed by Windows 2000
+%KR10NDesc%=KR10N_InstW2k,PCI\VEN_8086&DEV_2653&SUBSYS_0F101179
+%KR10NDesc%=KR10N_InstW2k,PCI\VEN_8086&DEV_27C5&SUBSYS_0F101179
+
+[TOSHIBA.NT.5.1]; This section will only be installed by Windows XP
+%KR10NDesc%=KR10N_InstXP,PCI\VEN_8086&DEV_2653&SUBSYS_0F101179
+%KR10NDesc%=KR10N_InstXP,PCI\VEN_8086&DEV_27C5&SUBSYS_0F101179
+
+; for Windows 2000
+[KR10N_InstW2k.ntx86] 
+CopyFiles = KR10NW2k.Files.x86_12
+AddReg = KR10N.reg.x86_12 
+DelFiles = OLDW2k.Files.x86_12
+
+[KR10N_InstW2k.ntx86.Services] 
+AddService = KR10N,0x00000002,KR10N_Service_Instx86, KR10N_EventLog_Inst 
+DelService = KR10N2K, 0x00000004
+
+[KR10NW2k.Files.x86_12]
+KR10N.sys, KR10N2K.sys
+
+[OLDW2k.Files.x86_12]
+KR10N2K.sys
+
+; for Windows XP Pro
+[KR10N_InstXP.ntx86] 
+CopyFiles = KR10NWXP.Files.x86_12
+AddReg = KR10N.reg.x86_12 
+
+[KR10N_InstXP.ntx86.Services] 
+AddService = KR10N, 0x00000002, KR10N_Service_Instx86, KR10N_EventLog_Inst
+
+[KR10NWXP.Files.x86_12]
+KR10N.sys
+
+; Common settings for Windows 2000 and Windows XP
+[KR10N_Service_Instx86] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_CRITICAL% 
+ServiceBinary = %12%\KR10N.sys 
+LoadOrderGroup = "SCSI Miniport"
+AddReg = pnpsafe_pci_addreg
+
+[KR10N_EventLog_Inst] 
+AddReg = KR10N_EventLog_Inst.AddReg 
+ 
+[KR10N_EventLog_Inst.AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[KR10N.reg.x86_12]
+HKLM, SYSTEM\CurrentControlSet\Services\Disk, "TimeOutValue", 0x00010001, 0x00000028
+
+[pnpsafe_pci_addreg] 
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001 
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+TOSHIBA= "TOSHIBA CORPORATION" 
+Desc_x860= "TOSHIBA RAID Driver Disk" 
+KR10NDesc= "TOSHIBA RAID" 
+
+;  *******Non Localizable Strings******* 
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 

@@ -1,0 +1,98 @@
+;
+; MODIFIED by Bashrat the Sneaky
+;
+; ------------------------------
+;
+; aec6290.INF  
+;        This inf file is for AEC6290 PCI Serial ATA Controller
+;        in Windows NT,2000
+;
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}	;SCSI CLASS
+Provider=%ProviderName%
+LayoutFile=layout.inf
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+;
+; Exclude the following devices from Select Device list.
+; These represent 'combination' driver nodes, for which there are separate items to be
+; presented to the user.  These combination nodes are only used when figuring out what
+; driver node to associate with a pre-existing service.
+;
+ExcludeFromSelect = SPARROW_SCSI, ARROW_SCSI, BUSLOGIC_SCSI, DPTSCSI_SCSI, FD16_700_SCSI, ATAPI_SCSI
+ExcludeFromSelect = DAC960NT_SCSI, SYMC810_SCSI, NCR53C9X_SCSI, NCRC710_SCSI, FD8XX_SCSI, MITSUMI_SCSI
+
+;
+; Exclude the following devices from the platforms where they are not available.
+;
+ExcludeFromSelect.NTPPC = CPQARRAY_SCSI, DELLDSA_SCSI, *ADP1740, *ADP7770, *ADP7771, *ADP2840, AMI0NT_SCSI, mca_7f4c, mca_7f4d, mca_7f4f, MF\EISA_ZDS2000_DEV2, OLISCSI_SCSI, mca_004e, mca_01ba, *pnpa003, *ctl2001, *pnpA02B, *USC0140, *USC0141
+ExcludeFromSelect.NTPPC = mca_01bb, *CPQ4410, *CPQ4411, mca_8eff, *PNPA022, *WDC2001, *FDC0950, *pnpa030, *pnpa031, *pnpa032, *USC0142, *USC0143, *USC0240, FLASHPNT_SCSI, CPQFWS2E_SCSI
+ExcludeFromSelect.NTAlpha = mca_7f4c, mca_7f4d, mca_7f4f, MF\EISA_ZDS2000_DEV2, OLISCSI_SCSI, mca_004e, mca_01ba, mca_01bb, *CPQ4410, *CPQ4411, mca_8eff, *PNPA022, *WDC2001, *FDC0950, *pnpa030, *pnpa031, *pnpa032, *pnpa003, *ctl2001, *pnpA02B
+ExcludeFromSelect.NTAlpha = *USC0140, *USC0141, *USC0142, *USC0143, *USC0240, FLASHPNT_SCSI, CPQFWS2E_SCSI
+ExcludeFromSelect.NTMIPS = MF\EISA_ZDS2000_DEV2, *CPQ4410, *CPQ4411, mca_8eff, *PNPA022, *WDC2001, *FDC0950, *pnpa030, *pnpa031, *pnpa032, *pnpa003, *ctl2001, *pnpA02B, *USC0140, *USC0141, *USC0142, *USC0143, *USC0240, FLASHPNT_SCSI, CPQFWS2E_SCSI
+
+;
+; Exclude the generic (non-PCI) IDE description from all platforms.  We can't do this globally (i.e.,
+; "ExcludeFromSelect" with no suffix) because then we'll think it was hidden because we wanted that to
+; be the migration name.
+;
+ExcludeFromSelect.NTPPC = *PNP0600
+ExcludeFromSelect.NTAlpha = *PNP0600
+ExcludeFromSelect.NTMIPS = *PNP0600
+ExcludeFromSelect.NTx86 = *PNP0600
+
+[Manufacturer]
+%MfgName%=ACARD
+
+
+;****************************************************
+; Manufacturer device list
+[ACARD]
+%aec6290.DeviceDesc% = aec6290_Inst, PCI\VEN_1191&DEV_0009;&SUBSYS_00091191
+
+[SourceDisksFiles]
+
+[aec6290_Inst]
+CopyFiles = @aec6280.sys
+Reboot
+
+[aec6290_Inst.Services]
+AddService = aec6290, %SPSVCINST_ASSOCSERVICE%, aec6290_Service_Inst, Miniport_EventLog_Inst
+
+[aec6290_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\aec6280.sys                                       ;\SC247XU.sys
+LoadOrderGroup = SCSI Miniport
+
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001 ; PCI Bus
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+ProviderName = "ACARD"
+MfgName = "ACARD"
+aec6290.DeviceDesc = "ACARD AEC6290 Serial ATA Controller"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

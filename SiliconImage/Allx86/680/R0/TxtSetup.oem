@@ -1,0 +1,43 @@
+; This file installs the SiI 680 non-RAID ATA driver as part of
+; text mode setup on Windows NT, Windows 2000, Windows XP,
+; Windows Server 2003, and Windows Vista.
+;
+; Copyright (C) 2002-2009 by Silicon Image, Inc.
+; All rights reserved
+
+[Disks]
+disk1 = "Silicon Image ATA/133 Driver Installation Disk",\pnp680.sys,\
+
+
+[Defaults]
+SCSI = PnP680
+
+
+[SCSI]                  ; HwComponent section
+PnP680 = "Silicon Image SiI 0680 ATA/133 Controller"
+
+
+[Files.SCSI.PnP680]
+driver = disk1,pnp680.sys, PnP680
+inf = disk1,SI680.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, PnP680.cat
+
+
+[HardwareIds.SCSI.PnP680]
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_06801095", "PnP680"
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_01411028", "PnP680"
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_901B104D", "PnP680"
+
+
+
+; NOTE:	In order to install Windows 2000 onto a drive that is attached
+;	to this controller you must delete the line that reads:
+;
+;	value = Parameters\PnpInterface, "5", REG_DWORD, 1
+;
+;	from the [Config.PnP680] section below.
+
+[Config.PnP680]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""

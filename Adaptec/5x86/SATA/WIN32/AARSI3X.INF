@@ -1,0 +1,87 @@
+
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_PROVIDER%
+CatalogFile="aarsi3x.cat"
+DriverVer=11/11/2004,7.00.00.045
+
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,,,\
+
+
+[SourceDisksFiles]
+aarsi3x.sys= 1,,
+
+;[ControlFlags]  stevec removed
+;ExcludeFromSelect=
+
+
+[Manufacturer]
+%ADP%= ADAPTEC
+
+
+[ADAPTEC]
+;
+; All Serial ATA HostRAID device IDs 
+;
+%PCI\VEN_1095&DEV_0240.DeviceDesc% = HostRAID_Inst,PCI\VEN_1095&DEV_0240
+%PCI\VEN_1095&DEV_3512.DeviceDesc% = HostRAID_Inst,PCI\VEN_1095&DEV_3512
+
+
+[HostRAID_Inst.nt]
+CopyFiles=@aarsi3x.sys
+
+[HostRAID_Inst.nt.HW]
+DelReg = LegacyScsiportValues
+
+
+[HostRAID_Inst.nt.Services]
+AddService = aarsi3x, 0x00000002, HostRAID_Service_Inst, Miniport_EventLog_Inst
+
+
+[HostRAID_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\aarsi3x.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = TimeOutValue_addreg
+
+
+[pnpsafe_pci_addreg]
+HKR,"Parameters\PnpInterface","5",0x00010001,0x00000001
+
+[TimeOutValue_addreg]
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x0000003C
+
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[DestinationDirs]
+DefaultDestDir = 12            
+                                
+
+[Strings]
+INF_PROVIDER="Adaptec"
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Embedded Serial ATA HostRAID Driver For Windows 2000/XP/2003"
+
+
+PCI\VEN_1095&DEV_0240.DeviceDesc = "Adaptec Embedded Serial ATA HostRAID"
+PCI\VEN_1095&DEV_3512.DeviceDesc = "Adaptec Embedded Serial ATA HostRAID"
+

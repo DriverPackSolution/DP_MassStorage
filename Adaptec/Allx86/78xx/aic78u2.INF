@@ -1,0 +1,119 @@
+;
+; Adaptec ultra2 Host Adapter Drivers
+;
+; Installation File For Microsoft Windows
+;
+; Version 1.0
+;
+; Copyright (c) Adaptec Incorporated
+;
+; Edited 02/02/2010
+;
+
+
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%ADP%
+CatalogFile.ntx86="aic78u2.cat"
+DriverVer=02/02/2010,6.0.5457.0
+
+;
+; Source file information
+;
+
+
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,,,
+
+
+[SourceDisksFiles]
+aic78u2.sys= 1,,,,,,,,
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%ADP%=ADAPTEC,NTx86
+
+
+[ADAPTEC.NTx86]
+%PCI\VEN_9005&DEV_0010.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0010
+%PCI\VEN_9005&DEV_001F.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_001F
+%PCI\VEN_9005&DEV_0050.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0050
+%PCI\VEN_9005&DEV_0051.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0051
+%PCI\VEN_9005&DEV_005F.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_005F
+%PCI\VEN_9005&DEV_0011.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0011
+%PCI\VEN_9005&DEV_0010&SUBSYS_21809005.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0010&SUBSYS_21809005
+%PCI\VEN_9005&DEV_0010&SUBSYS_81009005.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0010&SUBSYS_81009005
+%PCI\VEN_9005&DEV_0010&SUBSYS_A1809005.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0010&SUBSYS_A1809005
+%PCI\VEN_9005&DEV_0010&SUBSYS_E1009005.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0010&SUBSYS_E1009005
+%PCI\VEN_9005&DEV_0050&SUBSYS_F5009005.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0050&SUBSYS_F5009005
+%PCI\VEN_9005&DEV_0051&SUBSYS_B5009005.DeviceDesc% = aic78u2_Inst, PCI\VEN_9005&DEV_0051&SUBSYS_B5009005
+
+[aic78u2_Inst]
+CopyFiles=@AIC78U2.SYS
+
+
+[aic78u2_Inst.Services]
+AddService = aic78u2, 0x2, aic78u2_Service_Inst, Miniport_EventLog_Inst
+
+[aic78u2_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\aic78u2.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = bus_type_scsi
+
+;*************************************************************
+;These addreg sections should be used for non-SCSI miniports
+;to indicate what STORAGE_BUS_TYPE they actually do support.
+
+[bus_type_scsi]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+
+;*************************************************************
+;These addreg sections should be used when installing services to indicate
+;which interface types are safe for PNP and which aren't.  INTERFACE_TYPE
+;is defined in NTDDK.H
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+
+;*************************************************************
+;The EventLog entries are the same for all SCSI miniports.
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+; localizable
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Ultra2 SCSI Family Manager set for windows 32-bit"
+PCI\VEN_9005&DEV_0010.DeviceDesc = "Adaptec AHA-2940U2/U2W - Ultra2 SCSI"
+PCI\VEN_9005&DEV_001F.DeviceDesc = "Adaptec AIC-7890/7891 - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0050.DeviceDesc = "Adaptec AHA-3950 - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0051.DeviceDesc = "Adaptec AHA-3950 - Ultra2 SCSI"
+PCI\VEN_9005&DEV_005F.DeviceDesc = "Adaptec AIC-7896/7897 - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0011.DeviceDesc = "Adaptec AHA-2930U2 - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0010&SUBSYS_21809005.DeviceDesc = "Adaptec AHA-2940U2 - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0010&SUBSYS_81009005.DeviceDesc = "Adaptec AHA-2940U2B - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0010&SUBSYS_A1809005.DeviceDesc = "Adaptec AHA-2940U2W - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0010&SUBSYS_E1009005.DeviceDesc = "Adaptec AHA-2950U2B - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0050&SUBSYS_F5009005.DeviceDesc = "Adaptec AHA-3950U2B - Ultra2 SCSI"
+PCI\VEN_9005&DEV_0051&SUBSYS_B5009005.DeviceDesc = "Adaptec AHA-3950U2D - Ultra2 SCSI"
+
+

@@ -1,0 +1,584 @@
+ arcsas
+
+ Timestamp is 50b7f9cb (Thu Nov 29 16:11:55 2012)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000f5f2H .text                   CODE
+ 0001:0000f5f2 00002da6H .text$s                 CODE
+ 0002:00000000 00000094H .idata$5                DATA
+ 0002:000000a0 000001e0H .rdata                  DATA
+ 0002:00000280 0000004cH .rdata$debug            DATA
+ 0003:00000000 0000043cH .data                   DATA
+ 0003:00000440 00000124H .bss                    DATA
+ 0004:00000000 000000f1H INIT                    CODE
+ 0004:000000f4 00000028H .idata$2                CODE
+ 0004:0000011c 00000014H .idata$3                CODE
+ 0004:00000130 00000094H .idata$4                CODE
+ 0004:000001c4 0000033aH .idata$6                CODE
+ 0005:00000000 000000c8H .rsrc$01                DATA
+ 0005:000000d0 00001118H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   00000000     <absolute>
+ 0001:00000006       _RxCheckAdapterHealth@8    00401006 f   rxdevice.obj
+ 0001:00000042       _RxCheckSyncCommandComplete@8 00401042 f   rxdevice.obj
+ 0001:00000134       _RxDpcInterruptHandler@16  00401134 f   rxdevice.obj
+ 0001:0000013c       _RxNewCommProcessInterrupt@8 0040113c f   rxdevice.obj
+ 0001:0000047c       _RxInterruptHandler@4      0040147c f   rxdevice.obj
+ 0001:000005be       _NonMSIXInterruptHandler@8 004015be f   rxdevice.obj
+ 0001:000007c2       _PMCDpcResponseHandler@16  004017c2 f   rxdevice.obj
+ 0001:00000e6e       _PMCInterruptHandler@4     00401e6e f   rxdevice.obj
+ 0001:0000109c       _RxNotifyAdapter@12        0040209c f   rxdevice.obj
+ 0001:000010c6       _RxPullMessageUnitQueueCompletedFib@12 004020c6 f   rxdevice.obj
+ 0001:00001216       _RxPushMessageUnitQueueFib@8 00402216 f   rxdevice.obj
+ 0001:00001304       _PMCPushMessageUnitQueueFib@8 00402304 f   rxdevice.obj
+ 0001:0000172e       _RxSendSynchCommand@48     0040272e f   rxdevice.obj
+ 0001:00001ab2       _RxStartAdapter@8          00402ab2 f   rxdevice.obj
+ 0001:00001e3c       _RxWaitForAdapterToBoot@4  00402e3c f   rxdevice.obj
+ 0001:00001ea4       _RxAccessDeviceRegister@8  00402ea4 f   rxdevice.obj
+ 0001:0000205e       _RxMapMailBoxFirmwareBase@4 0040305e f   rxdevice.obj
+ 0001:00002102       _RxGetOMRx0@4              00403102 f   rxdevice.obj
+ 0001:00002144       _RxGetODR@8                00403144 f   rxdevice.obj
+ 0001:00002198       _RxWriteODR@12             00403198 f   rxdevice.obj
+ 0001:000021ee       _RxWriteIDR@12             004031ee f   rxdevice.obj
+ 0001:0000223c       _RevGetBuildNumber@0       0040323c f   revision.obj
+ 0001:00002248       _RevGetExternalRev@0       00403248 f   revision.obj
+ 0001:00002254       _RevCheckCompatibility@12  00403254 f   revision.obj
+ 0001:000022be       _GetDriverParameter@20     004032be f   helpers.obj
+ 0001:000023bc       _MatchRegistryString@8     004033bc f   helpers.obj
+ 0001:00002456       _ZeroStructure@8           00403456 f   helpers.obj
+ 0001:00002474       _LongToAscii@16            00403474 f   helpers.obj
+ 0001:000024f6       _CompareStrings@12         004034f6 f   helpers.obj
+ 0001:00002548       _C_isspace@4               00403548 f   helpers.obj
+ 0001:0000256c       _C_toupper@4               0040356c f   helpers.obj
+ 0001:0000258a       _ArcPrintf                 0040358a f   arcdebug.obj
+ 0001:0000270c       _GetFwDebugBuffer@8        0040370c f   arcdebug.obj
+ 0001:0000287e       _Strlen@4                  0040387e f   arcdebug.obj
+ 0001:000028f8       _RealSprintf@12            004038f8 f   arcdebug.obj
+ 0001:00002ba8       _MainTimeThread@4          00403ba8 f   timer.obj
+ 0001:00002c9e       _SynchCommandCompletionTimer@4 00403c9e f   timer.obj
+ 0001:00002d32       _SynchFibCompletionTimer@4 00403d32 f   timer.obj
+ 0001:00002e0a       _Reset_IOP_CompletionTimer@4 00403e0a f   timer.obj
+ 0001:00002fc8       _RequestAif@4              00403fc8 f   timer.obj
+ 0001:000030d8       _StopTimer@16              004040d8 f   timer.obj
+ 0001:00003156       _RequestTimer@16           00404156 f   timer.obj
+ 0001:000031ea       _ConfigureContainersTimer@4 004041ea f   timer.obj
+ 0001:00003260       _DebugPrintToUartTimer@4   00404260 f   timer.obj
+ 0001:00003280       _RestartAdapterPendingTimer@4 00404280 f   timer.obj
+ 0001:00003378       _DequeueSortingQTimer@4    00404378 f   timer.obj
+ 0001:00003418       _CheckingFWAfterPowerStateChange@4 00404418 f   timer.obj
+ 0001:00003584       _ProcessAgeOfSortingQueue@8 00404584 f   timer.obj
+ 0001:000035d0       _DriverEntry@8             004045d0 f   arcinit.obj
+ 0001:00003696       _HwInitializeAdapter@4     00404696 f   arcinit.obj
+ 0001:000038cc       _FindAdapter@24            004048cc f   arcinit.obj
+ 0001:00004ae8       _ResetAdapter@8            00405ae8 f   arcinit.obj
+ 0001:0000504c       _InitializeAdapter@4       0040604c f   arcinit.obj
+ 0001:000050ec       _InitializeDPCs@4          004060ec f   arcinit.obj
+ 0001:000051ec       _AllocateConsumerProducerCommArea@20 004061ec f   arcinit.obj
+ 0001:00005486       _AllocateMessageUnitQueueCommArea@8 00406486 f   arcinit.obj
+ 0001:000057a2       _ConfigureContainers@4     004067a2 f   arcinit.obj
+ 0001:00005bec       _GetElapsedSeconds@4       00406bec f   arcinit.obj
+ 0001:00005c6a       _IsAdapterReadyForConfigCommand@4 00406c6a f   arcinit.obj
+ 0001:00005d66       _CheckMSIxPossibility@4    00406d66 f   arcinit.obj
+ 0001:00005fa8       _HandleAdapterConfigIssues@4 00406fa8 f   arcinit.obj
+ 0001:00006132       _InitializeConsumerProducerCommRegion@8 00407132 f   arcinit.obj
+ 0001:00006326       _InitializeConsumerProducerNewAdapter@12 00407326 f   arcinit.obj
+ 0001:000063ce       _InitializeMessageUnitQueueNewAdapter@12 004073ce f   arcinit.obj
+ 0001:00006458       _MapDeviceBase@8           00407458 f   arcinit.obj
+ 0001:000067c4       _MatchPciIds@8             004077c4 f   arcinit.obj
+ 0001:00006926       _ResetAndInitializeAdapter@8 00407926 f   arcinit.obj
+ 0001:00006d2a       _IOPReset@8                00407d2a f   arcinit.obj
+ 0001:00007084       _InitializeAdapterAfterIOPReset@4 00408084 f   arcinit.obj
+ 0001:00007340       _SetFwTime@4               00408340 f   arcinit.obj
+ 0001:000073bc       _ArcLogEvent@16            004083bc f   arcinit.obj
+ 0001:00007426       _DynamicallyThrottleLunQueueDepth@8 00408426 f   arcinit.obj
+ 0001:0000762c       _CheckForVersionMisMatch@4 0040862c f   arcinit.obj
+ 0001:0000772a       _StartIo@8                 0040872a f   cmddelivery.obj
+ 0001:00007e8c       _HandleInterrupt@4         00408e8c f   cmddelivery.obj
+ 0001:00007ea8       _PostProcessScsiCommand@16 00408ea8 f   cmddelivery.obj
+ 0001:00008170       _SendFib@12                00409170 f   cmddelivery.obj
+ 0001:0000836c       _HandleMSIXInterrupt@8     0040936c f   cmddelivery.obj
+ 0001:0000841a       _QueueRawIoReadWriteRequest@8 0040941a f   cmddelivery.obj
+ 0001:00008c4e       _SendFastIoFib@16          00409c4e f   cmddelivery.obj
+ 0001:00008c78       _CompleteQueuedRequest@12  00409c78 f   cmddelivery.obj
+ 0001:00008cf0       _DequeueRawIoReadWriteRequest@12 00409cf0 f   cmddelivery.obj
+ 0001:00008e6c       _ProcessContainerInquiry@16 00409e6c f   cmddelivery.obj
+ 0001:00009226       _ProcessScsiCommand@12     0040a226 f   cmddelivery.obj
+ 0001:00009a32       _QueuePrintf@12            0040aa32 f   cmddelivery.obj
+ 0001:00009adc       _SendRawIoFib@12           0040aadc f   cmddelivery.obj
+ 0001:00009e3e       _SendSynchFib@28           0040ae3e f   cmddelivery.obj
+ 0001:00009ee4       _AdapterControl@12         0040aee4 f   cmdproc.obj
+ 0001:0000a384       _BuildIo@8                 0040b384 f   cmdproc.obj
+ 0001:0000a82c       _BuildRawIoFib@12          0040b82c f   cmdproc.obj
+ 0001:0000aa9e       _BuildRawIoScatterGather@12 0040ba9e f   cmdproc.obj
+ 0001:0000ac0a       _BuildRawIo2ScatterGather@12 0040bc0a f   cmdproc.obj
+ 0001:0000ad82       _ConvertRawIo2ScatterGather@24 0040bd82 f   cmdproc.obj
+ 0001:0000ae84       _BuildReadWriteFib@12      0040be84 f   cmdproc.obj
+ 0001:0000b134       _BuildScatterGather@16     0040c134 f   cmdproc.obj
+ 0001:0000b192       _BuildScatterGather64@16   0040c192 f   cmdproc.obj
+ 0001:0000b1fa       _BuildSrbFib@12            0040c1fa f   cmdproc.obj
+ 0001:0000b3da       _InitializeFib@8           0040c3da f   cmdproc.obj
+ 0001:0000b406       _ProcessIoctl@12           0040c406 f   ioctl.obj
+ 0001:0000c786       _BuildRawScatterGather@20  0040d786 f   ioctl.obj
+ 0001:0000c80c       _BuildRawScatterGather64@20 0040d80c f   ioctl.obj
+ 0001:0000c89e       _CSMIGetControllerConfig@8 0040d89e f   ioctl.obj
+ 0001:0000c9b2       _CSMIGetControllerStatus@8 0040d9b2 f   ioctl.obj
+ 0001:0000ca08       _CSMIGetDriverInfo@8       0040da08 f   ioctl.obj
+ 0001:0000ca8c       _CSMIGetRAIDConfig@8       0040da8c f   ioctl.obj
+ 0001:0000cd22       _CSMIGetRAIDInfo@8         0040dd22 f   ioctl.obj
+ 0001:0000ce4a       _CSMIGetPhyInfo@8          0040de4a f   ioctl.obj
+ 0001:0000cf42       _CSMIGetSATASignature@8    0040df42 f   ioctl.obj
+ 0001:0000d030       _CSMIGetSCSIAddress@8      0040e030 f   ioctl.obj
+ 0001:0000d13e       _CSMIGetDeviceAddress@8    0040e13e f   ioctl.obj
+ 0001:0000d242       _CSMISTPPassThru@8         0040e242 f   ioctl.obj
+ 0001:0000d420       _HandleCSMI@8              0040e420 f   ioctl.obj
+ 0001:0000d4e6       _VerifyCSMIBuffer@12       0040e4e6 f   ioctl.obj
+ 0001:0000d512       _AdapterIsAlive@4          0040e512 f   comm.obj
+ 0001:0000d536       _ServiceHostResponseNormalQueue@4 0040e536 f   comm.obj
+ 0001:0000d8dc       _FreeConsumerEntry@4       0040e8dc f   comm.obj
+ 0001:0000d904       _FreeConsumerProducerAif@8 0040e904 f   comm.obj
+ 0001:0000d990       _GetConsumerEntry@8        0040e990 f   comm.obj
+ 0001:0000d9c8       _GetConsumerProducerAif@8  0040e9c8 f   comm.obj
+ 0001:0000da04       _GetConsumerProducerCompletedFib@12 0040ea04 f   comm.obj
+ 0001:0000da80       _GetEntry@20               0040ea80 f   comm.obj
+ 0001:0000db56       _GetMessageUnitQueueCompletedFib@12 0040eb56 f   comm.obj
+ 0001:0000db78       _GetQueueEntry@16          0040eb78 f   comm.obj
+ 0001:0000dc1a       _InsertQueueEntry@16       0040ec1a f   comm.obj
+ 0001:0000dc8a       _ProcessAif@8              0040ec8a f   comm.obj
+ 0001:0000ddf8       _SendConsumerProducerFib@4 0040edf8 f   comm.obj
+ 0001:0000de3e       _SubDeQueueSortingQueue@8  0040ee3e f   comm.obj
+ 0001:0000df0c       _DeQueueSortingQueue@8     0040ef0c f   comm.obj
+ 0001:0000e078       _CompleteAllSortingQueue@8 0040f078 f   comm.obj
+ 0001:0000e0ea       _CompleteSortingQueueRequest@12 0040f0ea f   comm.obj
+ 0001:0000e14e       _QueueSortingQ@8           0040f14e f   comm.obj
+ 0001:0000e3b6       _CompleteBufferedRequest@12 0040f3b6 f   comm.obj
+ 0001:0000e4b4       _QueueIoAfterVectorsFull@8 0040f4b4 f   comm.obj
+ 0001:0000e4f4       _TryDeQueueIoList@4        0040f4f4 f   comm.obj
+ 0001:0000e5ea       _SendMessageUnitQueueFib@4 0040f5ea f   comm.obj
+ 0001:0000e6f2       _ServiceHostCommandNormalQueue@4 0040f6f2 f   comm.obj
+ 0001:0000e76c       _DpcDequeueRawIoReadWriteRequest@16 0040f76c f   comm.obj
+ 0001:0000e7c8       _ProcessNormalFib@12       0040f7c8 f   comm.obj
+ 0001:0000ec94       _ServiceInternalAifQueue@4 0040fc94 f   comm.obj
+ 0001:0000ed24       _InitializeWmiInterface@4  0040fd24 f   wmi.obj
+ 0001:0000edfc       _ProcessWmi@8              0040fdfc f   wmi.obj
+ 0001:0000ee52       _HwScsiWmiExecuteMethod@32 0040fe52 f   wmi.obj
+ 0001:0000eed6       _HwScsiWmiFunctionControl@20 0040fed6 f   wmi.obj
+ 0001:0000eef2       _HwScsiWmiQueryDataBlock@32 0040fef2 f   wmi.obj
+ 0001:0000ef0e       _HwScsiWmiQueryReginfo@12  0040ff0e f   wmi.obj
+ 0001:0000ef28       _HwScsiWmiSetDataBlock@24  0040ff28 f   wmi.obj
+ 0001:0000ef32       _HwScsiWmiSetDataItem@28   0040ff32 f   wmi.obj
+ 0001:0000ef3c       @__security_check_cookie@4 0040ff3c f   BufferOverflowK:secchk.obj
+ 0001:0000ef52       ___report_gsfailure        0040ff52 f   BufferOverflowK:gs_report.obj
+ 0001:0000ef7e       ___report_securityfailure  0040ff7e f   BufferOverflowK:gs_report.obj
+ 0001:0000efa6       ___report_rangecheckfailure 0040ffa6 f   BufferOverflowK:gs_report.obj
+ 0001:0000efb4       _memset                    0040ffb4 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000efc0       __aulldvrm                 0040ffc0 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000efcc       __alldiv                   0040ffcc f   ntoskrnl:ntoskrnl.exe
+ 0001:0000efd8       __allmul                   0040ffd8 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000efe4       __aulldiv                  0040ffe4 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000eff0       __aullshr                  0040fff0 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000effc       _ScsiPortWmiDispatchFunction@28 0040fffc f   scsiwmi:wmilib.obj
+ 0001:0000f078       _ScsiWmipProcessRequest@36 00410078 f   scsiwmi:wmilib.obj
+ 0001:0000f3e2       _ScsiPortWmiPostProcess@12 004103e2 f   scsiwmi:wmilib.obj
+ 0001:0000f412       _ScsiWmipPostProcess@24    00410412 f   scsiwmi:wmilib.obj
+ 0001:0000f57c       _ScsiWmipFindGuid@20       0041057c f   scsiwmi:wmilib.obj
+ 0001:0000f5cc       _ULongAdd@12               004105cc f i scsiwmi:wmilib.obj
+ 0001:0000f5f2       ??_C@_0BF@JNCAAJNE@pFibContext?$DNNULL?5?$CB?$CB?6?$AA@FNODOBFM@ 004105f2     rxdevice.obj
+ 0001:0000f608       ??_C@_0EG@FJGLAIMH@We?5may?5have?5problem?0?5FW?5is?5idle?0@FNODOBFM@ 00410608     rxdevice.obj
+ 0001:0000f64e       ??_C@_0CJ@EIPFCLHM@pFibContext?$DNNULL?5?$CB?$CBline?5?$CFd?5messa@FNODOBFM@ 0041064e     rxdevice.obj
+ 0001:0000f678       ??_C@_0ED@LPIHDLIB@Handle?5IOCTL?5CMD?5with?5vector?50?4?5@FNODOBFM@ 00410678     rxdevice.obj
+ 0001:0000f6bc       ??_C@_0BH@CEIDANBI@SHOULD?5NOT?5BE?5HERE?5?$CB?$CB?6?$AA@FNODOBFM@ 004106bc     rxdevice.obj
+ 0001:0000f6d4       ??_C@_0CK@MOHMAEBA@pFibContext?$DNNULL?5?$CB?$CB?5line?5?$CFd?5mess@FNODOBFM@ 004106d4     rxdevice.obj
+ 0001:0000f6fe       ??_C@_0BL@OCMKMPMG@PMCPushMessageUnitQueueFib?$AA@FNODOBFM@ 004106fe     rxdevice.obj
+ 0001:0000f71a       ??_C@_0DM@HGFILPIE@SHOULD?5NOT?5BE?5HERE?$CB?5?$CI?$CFs?$CJ?5line?5?$CFd@FNODOBFM@ 0041071a     rxdevice.obj
+ 0001:0000f756       ??_C@_0BE@HCGBMGEE@Vector?5?$CFd?5is?5full?4?6?$AA@FNODOBFM@ 00410756     rxdevice.obj
+ 0001:0000f76a       ??_C@_0BG@FJINCNLP@Change?5to?5vector?5?$CFd?4?6?$AA@FNODOBFM@ 0041076a     rxdevice.obj
+ 0001:0000f780       ??_C@_0DE@BCFPBIPH@assigned?5vector?5?$CD?$CFd?5for?5IOCTL?5CM@FNODOBFM@ 00410780     rxdevice.obj
+ 0001:0000f7b4       ??_C@_0CN@JMIDMPAA@?5RxSendSynchCommand?5Failed?5?$CFd?4?5W@FNODOBFM@ 004107b4     rxdevice.obj
+ 0001:0000f7e2       ??_C@_0DB@JEAHJGPL@?$CK?5pDeviceExtension?9?$DOMaxMSIXVecto@FNODOBFM@ 004107e2     rxdevice.obj
+ 0001:0000f814       ??_C@_0CB@JPABDNKH@?$CK?5Begins?5StatusBatching?0?5Yeaaa?$CB?6@FNODOBFM@ 00410814     rxdevice.obj
+ 0001:0000f836       ??_C@_0CF@BPKEMKA@?$CK?5ACI2?5Command?5Delivery?5is?5enabl@FNODOBFM@ 00410836     rxdevice.obj
+ 0001:0000f85c       ??_C@_06CMBKHLEL@Arcsas?$AA@FNODOBFM@ 0041085c     arcdebug.obj
+ 0001:0000f864       ??_C@_02DKCKIIND@?$CFs?$AA@FNODOBFM@ 00410864     arcdebug.obj
+ 0001:0000f868       ??_C@_0N@PMBAFHAC@7?41?40?430034?$AA?$AA@FNODOBFM@ 00410868     timer.obj
+ 0001:0000f876       ??_C@_0DO@GCDGNMH@?$CK?5FW?5is?5back?5from?5S3?1S4?4?5StorPor@FNODOBFM@ 00410876     timer.obj
+ 0001:0000f8b4       ??_C@_0DO@OBELKDEH@?$CK?5set?5timer?5AGAIN?5to?5check?5the?5F@FNODOBFM@ 004108b4     timer.obj
+ 0001:0000f8f2       ??_C@_0EC@MICIKMJM@?$CK?5set?5timer?5AGAIN?5to?5check?5the?5F@FNODOBFM@ 004108f2     timer.obj
+ 0001:0000f934       ??_C@_0EL@PCHMIFAO@?$CK?5leaving?5Reset_IOP_CompletionTi@FNODOBFM@ 00410934     timer.obj
+ 0001:0000f980       ??_C@_0CD@MKPFBJDC@leaving?5Reset_IOP_CompletionTime@FNODOBFM@ 00410980     timer.obj
+ 0001:0000f9a4       ??_C@_0DH@KAAGAFOD@?$CK?5leaving?5Reset_IOP_CompletionTi@FNODOBFM@ 004109a4     timer.obj
+ 0001:0000f9dc       ??_C@_0DH@DFJOPAAJ@?$CK?5RESET?5IOP?5done?4?5StorPort?5minip@FNODOBFM@ 004109dc     timer.obj
+ 0001:0000fa14       ??_C@_0BJ@HIBCALL@ProcessAgeOfSortingQueue?$AA@FNODOBFM@ 00410a14     timer.obj
+ 0001:0000fa2e       ??_C@_0DA@GEMOEFPE@Dequeue?5Sorting?5Queue?5failed?5in?5@FNODOBFM@ 00410a2e     timer.obj
+ 0001:0000fa5e       ??_C@_0ID@HFHPGANL@Dequeue?5Sorting?5Queue?5failed?5whe@FNODOBFM@ 00410a5e     timer.obj
+ 0001:0000fae2       ??_C@_0CL@MJMGCLDD@entering?5AllocateConsumerProduce@FNODOBFM@ 00410ae2     arcinit.obj
+ 0001:0000fb0e       ??_C@_0DK@IJIOFPFH@leaving?5AllocateConsumerProducer@FNODOBFM@ 00410b0e     arcinit.obj
+ 0001:0000fb48       ??_C@_0CI@FFOEPFMJ@?$CK?5ConsumerProducerCommArea?0?5VAdd@FNODOBFM@ 00410b48     arcinit.obj
+ 0001:0000fb70       ??_C@_0CN@MBHLABKL@?$CK?5Adapter?5got?5an?5invalid?5host?5me@FNODOBFM@ 00410b70     arcinit.obj
+ 0001:0000fb9e       ??_C@_0DJ@JGKEIEFI@leaving?5AllocateConsumerProducer@FNODOBFM@ 00410b9e     arcinit.obj
+ 0001:0000fbd8       ??_C@_0CL@KCDMGIOM@entering?5AllocateMessageUnitQueu@FNODOBFM@ 00410bd8     arcinit.obj
+ 0001:0000fc04       ??_C@_0FP@JFBPKCDF@?$CK?5AllocateMessageUnitQueueCommAr@FNODOBFM@ 00410c04     arcinit.obj
+ 0001:0000fc64       ??_C@_0DM@JMMHKBOC@?$CK?5AllocateMessageUnitQueueCommAr@FNODOBFM@ 00410c64     arcinit.obj
+ 0001:0000fca0       ??_C@_0DK@BKFHOPDI@leaving?5AllocateMessageUnitQueue@FNODOBFM@ 00410ca0     arcinit.obj
+ 0001:0000fcda       ??_C@_0DA@ICFHAOHF@?$CK?5AllocateMessageUnitQueueCommAr@FNODOBFM@ 00410cda     arcinit.obj
+ 0001:0000fd0a       ??_C@_0DJ@EGOLHGNF@leaving?5AllocateMessageUnitQueue@FNODOBFM@ 00410d0a     arcinit.obj
+ 0001:0000fd44       ??_C@_0BO@ONNHJMAM@entering?5ConfigureContainers?6?$AA@FNODOBFM@ 00410d44     arcinit.obj
+ 0001:0000fd62       ??_C@_0EF@ECHMIPBP@?$CK?5Found?5a?5new?5container?5?9?5tid?3?5?$CF@FNODOBFM@ 00410d62     arcinit.obj
+ 0001:0000fda8       ??_C@_0DD@CIBJPHMD@ConfigureContainers?3?5UID?5change?5@FNODOBFM@ 00410da8     arcinit.obj
+ 0001:0000fddc       ??_C@_0CK@OAAKCGLI@leaving?5ConfigureContainers?0?5rtn@FNODOBFM@ 00410ddc     arcinit.obj
+ 0001:0000fe06       ??_C@_0CC@KOGKIGDL@entering?5CheckForVersionMisMatch@FNODOBFM@ 00410e06     arcinit.obj
+ 0001:0000fe28       ??_C@_0CB@BOFDNAKM@This?5is?5a?5code?5stream?5identifier@FNODOBFM@ 00410e28     arcinit.obj
+ 0001:0000fe4a       ??_C@_0DF@MNNMPGOO@?$CK?5Version?5Mismatch?3?5Bios?3?$CFd?0?5Fir@FNODOBFM@ 00410e4a     arcinit.obj
+ 0001:0000fe80       ??_C@_0EC@DEDLMEPI@leving?5CheckForVersionMisMatch?5w@FNODOBFM@ 00410e80     arcinit.obj
+ 0001:0000fec2       ??_C@_0BN@GKEKJNDP@?$CFs?5Driver?5entry?5rtnval?5?$DN?5?$CFx?6?$AA@FNODOBFM@ 00410ec2     arcinit.obj
+ 0001:0000fee0       ??_C@_0DD@FIIKPLIC@?$CFs?3?5Driver?5FindAdapter?5?9?5invalid@FNODOBFM@ 00410ee0     arcinit.obj
+ 0001:0000ff14       ??_C@_0BG@INJAEJHE@entering?5FindAdapter?6?$AA@FNODOBFM@ 00410f14     arcinit.obj
+ 0001:0000ff2a       ??_C@_0FD@NLKPIIHJ@?$CK?5This?5is?5WS03?5R2?0?5Vista?5or?5Long@FNODOBFM@ 00410f2a     arcinit.obj
+ 0001:0000ff7e       ??_C@_0FF@EIPBDAPC@?$CK?$CK?$CK?$CK?$CK?5Size?5of?5PORT_CONFIGURATION@FNODOBFM@ 00410f7e     arcinit.obj
+ 0001:0000ffd4       ??_C@_0EF@MDPAOPOH@?$CK?5HwScsiFindAdapter?3?5DeviceExten@FNODOBFM@ 00410fd4     arcinit.obj
+ 0001:0001001a       ??_C@_0CD@BBBDOKPE@?$CK?5Returned?5PCI?5bus?5data?5length?$DN?$CF@FNODOBFM@ 0041101a     arcinit.obj
+ 0001:0001003e       ??_C@_0DD@OAOECDIB@leaving?5FindAdapter?5?9?5StorPortGe@FNODOBFM@ 0041103e     arcinit.obj
+ 0001:00010072       ??_C@_0DF@ODNFGMFG@?$CK?5leaving?5FindAdapter?5?9?5StorPort@FNODOBFM@ 00411072     arcinit.obj
+ 0001:000100a8       ??_C@_0BN@FJDEMAMC@?$CK?50x40?5PCI?5Bus?5Data?5read?5in?6?$AA@FNODOBFM@ 004110a8     arcinit.obj
+ 0001:000100c6       ??_C@_0BN@INBKDNHG@?$CK?50xFF?5PCI?5Bus?5Data?5read?5in?6?$AA@FNODOBFM@ 004110c6     arcinit.obj
+ 0001:000100e4       ??_C@_0DB@DAIGEFPJ@?$CK?5No?5Support?5on?5Capabilties?5list@FNODOBFM@ 004110e4     arcinit.obj
+ 0001:00010116       ??_C@_0BM@KCLFMKNE@?$CK?5Capability_offset?5?$DN?50x?$CFx?5?$AA@FNODOBFM@ 00411116     arcinit.obj
+ 0001:00010132       ??_C@_0BJ@KNABCMMM@?5?9?9?$DOcapabilty_id?5?$DN?50x?$CFx?6?$AA@FNODOBFM@ 00411132     arcinit.obj
+ 0001:0001014c       ??_C@_0BK@JIIOJNIO@?$CK?5Message_control?5?$DN?50x?$CFx?6?$AA@FNODOBFM@ 0041114c     arcinit.obj
+ 0001:00010166       ??_C@_0BF@HNFCBKLM@?$CK?5HW?5supports?5MSI?9X?6?$AA@FNODOBFM@ 00411166     arcinit.obj
+ 0001:0001017c       ??_C@_0DI@MNEPEDIK@?$CK?5StorPortGetActiveGroupCount?5ha@FNODOBFM@ 0041117c     arcinit.obj
+ 0001:000101b4       ??_C@_0ED@JJDFFHPI@?$CK?5StorPortGetActiveGroupCount?5re@FNODOBFM@ 004111b4     arcinit.obj
+ 0001:000101f8       ??_C@_0DO@FMAFBNDE@?$CK?5StorPortGetCurrentProcessorNum@FNODOBFM@ 004111f8     arcinit.obj
+ 0001:00010236       ??_C@_0FJ@MEGLAFKH@?$CK?5StorPortGetCurrentProcessorNum@FNODOBFM@ 00411236     arcinit.obj
+ 0001:00010290       ??_C@_0FB@CBENABKH@?$CK?5StorPortGetCurrentProcessorNum@FNODOBFM@ 00411290     arcinit.obj
+ 0001:000102e2       ??_C@_04GGLOKIEE@dump?$AA@FNODOBFM@ 004112e2     arcinit.obj
+ 0001:000102e8       ??_C@_05FDLGEGEK@ntldr?$AA@FNODOBFM@ 004112e8     arcinit.obj
+ 0001:000102ee       ??_C@_05PMICOLGA@hiber?$AA@FNODOBFM@ 004112ee     arcinit.obj
+ 0001:000102f4       ??_C@_0CD@JEMNEMMP@?$CK?$CK?$CK?$CK?5dump?5?$HM?5ntldr?5?$HM?5hiber?5is?5TRU@FNODOBFM@ 004112f4     arcinit.obj
+ 0001:00010318       ??_C@_0BK@NELCFLHO@?$CK?5Switching?5to?5INTx?5mode?6?$AA@FNODOBFM@ 00411318     arcinit.obj
+ 0001:00010332       ??_C@_09IPELKJIO@BLEDCheck?$AA@FNODOBFM@ 00411332     arcinit.obj
+ 0001:0001033c       ??_C@_0L@NIPCGJOG@DPCAllowed?$AA@FNODOBFM@ 0041133c     arcinit.obj
+ 0001:00010348       ??_C@_09CHINNNMJ@CSMI?$DNNone?$AA@FNODOBFM@ 00411348     arcinit.obj
+ 0001:00010352       ??_C@_0BA@BKKNJKOP@CSMI?$DNRestricted?$AA@FNODOBFM@ 00411352     arcinit.obj
+ 0001:00010362       ??_C@_09PKBPEONE@CSMI?$DNFull?$AA@FNODOBFM@ 00411362     arcinit.obj
+ 0001:0001036c       ??_C@_0CJ@JHBMKCEI@leaving?5FindAdapter?5?9?5PCI?5Id?5not@FNODOBFM@ 0041136c     arcinit.obj
+ 0001:00010396       ??_C@_0CL@HDBMPJMP@?$CK?5leaving?5FindAdapter?5?9?5PCI?5Id?5n@FNODOBFM@ 00411396     arcinit.obj
+ 0001:000103c2       ??_C@_0CH@LNPKNDMP@Rx?3?5BAR0?5Range?50x?$CFlx?5MappedSize?5@FNODOBFM@ 004113c2     arcinit.obj
+ 0001:000103ea       ??_C@_0DF@OFCBAPFL@leaving?5FindAdapter?5?9?5fail?5mappi@FNODOBFM@ 004113ea     arcinit.obj
+ 0001:00010420       ??_C@_0DH@MNDLADLD@?$CK?5leaving?5FindAdapter?5?9?5fail?5map@FNODOBFM@ 00411420     arcinit.obj
+ 0001:00010458       ??_C@_0DC@NODBFDAD@leaving?5FindAdapter?5?9?5illegal?5FW@FNODOBFM@ 00411458     arcinit.obj
+ 0001:0001048a       ??_C@_0EH@FLDBENFC@?$CK?5leaving?5FindAdapter?5?9?5illegal?5@FNODOBFM@ 0041148a     arcinit.obj
+ 0001:000104d2       ??_C@_0CO@NGAJFGIM@?$CK?5pDeviceExtension?9?$DONewCommInter@FNODOBFM@ 004114d2     arcinit.obj
+ 0001:00010500       ??_C@_0CE@MCFGELJ@?$CK?5pDeviceExtension?9?$DOVendorId?3?50x@FNODOBFM@ 00411500     arcinit.obj
+ 0001:00010524       ??_C@_0CE@PNKCKBKJ@?$CK?5pDeviceExtension?9?$DODeviceId?3?50x@FNODOBFM@ 00411524     arcinit.obj
+ 0001:00010548       ??_C@_0CH@NNKEKBEL@?$CK?5pDeviceExtension?9?$DOSubVendorId?3@FNODOBFM@ 00411548     arcinit.obj
+ 0001:00010570       ??_C@_0CH@BEBMHIHH@?$CK?5pDeviceExtension?9?$DOSubSystemId?3@FNODOBFM@ 00411570     arcinit.obj
+ 0001:00010598       ??_C@_0CI@LFOBEGIG@?$CK?5This?5is?564?9bit?5Vista?5or?5Longho@FNODOBFM@ 00411598     arcinit.obj
+ 0001:000105c0       ??_C@_0DB@NLEKMFMO@?$CK?5This?5is?532?9bit?5WS03?5R2?0?5Vista?5@FNODOBFM@ 004115c0     arcinit.obj
+ 0001:000105f2       ??_C@_0CA@DJAEOOFI@?$CK?5This?5is?564?9bit?5WS03?5SP1?5?4?4?4?5?6?$AA@FNODOBFM@ 004115f2     arcinit.obj
+ 0001:00010612       ??_C@_0CA@IELABMFO@?$CK?5This?5is?532?9bit?5WS03?5SP1?5?4?4?4?5?6?$AA@FNODOBFM@ 00411612     arcinit.obj
+ 0001:00010632       ??_C@_0CA@MNGBKCLD@?$CK?5This?5is?532?9bit?5WS03?5RTM?5?4?4?4?5?6?$AA@FNODOBFM@ 00411632     arcinit.obj
+ 0001:00010652       ??_C@_0DK@INJPNBCP@?$CK?5MailBox?51?3?$CFx?0?5MailBox?52?3?$CFx?0?5Ma@FNODOBFM@ 00411652     arcinit.obj
+ 0001:0001068c       ??_C@_0EK@GNODIBNL@?$CK?5MiniARC?5Interface?5?9?5?5CommandSi@FNODOBFM@ 0041168c     arcinit.obj
+ 0001:000106d6       ??_C@_0EL@HJMLPDNI@?$CK?5New?5Comm?5Interface?5?9?5?5CommandS@FNODOBFM@ 004116d6     arcinit.obj
+ 0001:00010722       ??_C@_0BH@CDLDBOJF@?$CK?5SrbExtensionSize?3?$CFx?6?$AA@FNODOBFM@ 00411722     arcinit.obj
+ 0001:0001073a       ??_C@_0EC@KMMHNEKL@?$CK?5ConfigInfo?9?$DOHwMSInterruptRouti@FNODOBFM@ 0041173a     arcinit.obj
+ 0001:0001077c       ??_C@_0N@OEGLNJCG@ioctlbufsize?$AA@FNODOBFM@ 0041177c     arcinit.obj
+ 0001:0001078a       ??_C@_0BL@FPDNGGII@?$CK?5Adapter?5is?5in?5poll?5mode?6?$AA@FNODOBFM@ 0041178a     arcinit.obj
+ 0001:000107a6       ??_C@_0CM@NKHNJDEG@leaving?5FindAdapter?5?9?5fail?5initi@FNODOBFM@ 004117a6     arcinit.obj
+ 0001:000107d2       ??_C@_0CO@GHEIBKDI@?$CK?5leaving?5FindAdapter?5?9?5fail?5ini@FNODOBFM@ 004117d2     arcinit.obj
+ 0001:00010800       ??_C@_0DC@BFHJHJOO@?$CK?5fail?5SynFibCT_SET_MINIARC_HOST@FNODOBFM@ 00411800     arcinit.obj
+ 0001:00010832       ??_C@_0CE@IADADNNA@?$CK?5Use?5MU?5Register?5for?5IOP_Reset?4@FNODOBFM@ 00411832     arcinit.obj
+ 0001:00010856       ??_C@_0CJ@LHHNJCHI@?$CK?5Use?5inbound?5doorbell?5for?5IOP_R@FNODOBFM@ 00411856     arcinit.obj
+ 0001:00010880       ??_C@_0BP@DJKPJIGJ@?$CK?5Ignore_IOP_Reset?5is?5set?5?4?4?4?6?$AA@FNODOBFM@ 00411880     arcinit.obj
+ 0001:000108a0       ??_C@_0CK@LEDHDPPJ@?$CK?5Disk?5Power?5Management?5is?5suppo@FNODOBFM@ 004118a0     arcinit.obj
+ 0001:000108ca       ??_C@_0CJ@PJOACPGJ@?$CK?5This?5firmware?5supports?5fast?5JB@FNODOBFM@ 004118ca     arcinit.obj
+ 0001:000108f4       ??_C@_0BH@LMHJIEKF@?$CK?5ExposeNonDASD?5is?5?$CFx?6?$AA@FNODOBFM@ 004118f4     arcinit.obj
+ 0001:0001090c       ??_C@_0BB@JIKBMNNG@QueueDepthPerLun?$AA@FNODOBFM@ 0041190c     arcinit.obj
+ 0001:0001091e       ??_C@_0N@GDDJMKFE@PauseIOLimit?$AA@FNODOBFM@ 0041191e     arcinit.obj
+ 0001:0001092c       ??_C@_0O@LIIBGGCF@ResumeIOLimit?$AA@FNODOBFM@ 0041192c     arcinit.obj
+ 0001:0001093a       ??_C@_0O@OKMDGJBG@ConvertSGList?$AA@FNODOBFM@ 0041193a     arcinit.obj
+ 0001:00010948       ??_C@_0BE@IIJOOEPG@QueueStartThreshold?$AA@FNODOBFM@ 00411948     arcinit.obj
+ 0001:0001095c       ??_C@_0BD@CEDPKLI@QueueDumpThreshold?$AA@FNODOBFM@ 0041195c     arcinit.obj
+ 0001:00010970       ??_C@_0BA@NLIGFJMK@MaxIoSizeQueued?$AA@FNODOBFM@ 00411970     arcinit.obj
+ 0001:00010980       ??_C@_0N@MLHJOFDC@QueueAllowed?$AA@FNODOBFM@ 00411980     arcinit.obj
+ 0001:0001098e       ??_C@_0BC@IEBJFOIJ@FlushSizeInBlocks?$AA@FNODOBFM@ 0041198e     arcinit.obj
+ 0001:000109a0       ??_C@_0EA@OJJGPBKL@leaving?5FindAdapter?5?9?5fail?5Handl@FNODOBFM@ 004119a0     arcinit.obj
+ 0001:000109e0       ??_C@_0EC@HNCBOCML@?$CK?5leaving?5FindAdapter?5?9?5fail?5Han@FNODOBFM@ 004119e0     arcinit.obj
+ 0001:00010a22       ??_C@_09NBOIBGGK@EnableWMI?$AA@FNODOBFM@ 00411a22     arcinit.obj
+ 0001:00010a2c       ??_C@_0DH@OIMAJCMK@?$CK?5?9?5Driver?5version?5?$CFs?0?5adapter?5n@FNODOBFM@ 00411a2c     arcinit.obj
+ 0001:00010a64       ??_C@_0DF@NGIHOECA@?$CK?5?9?5Size?5of?5HwDevExt?$DN0x?$CFx?4?5Size?5@FNODOBFM@ 00411a64     arcinit.obj
+ 0001:00010a9a       ??_C@_0BG@JAEBOKND@?$CK?5?9?5Done?5FindAdapter?6?$AA@FNODOBFM@ 00411a9a     arcinit.obj
+ 0001:00010ab0       ??_C@_0CG@GOHAMHPA@leaving?5FindAdapter?5?9?5adapter?5fo@FNODOBFM@ 00411ab0     arcinit.obj
+ 0001:00010ad6       ??_C@_0BN@DGMFEGDN@entering?5GetElapsedSeconds?5?6?$AA@FNODOBFM@ 00411ad6     arcinit.obj
+ 0001:00010af4       ??_C@_0DD@GOLHMOHG@leaving?5GetElapsedSeconds?5?9?5seco@FNODOBFM@ 00411af4     arcinit.obj
+ 0001:00010b28       ??_C@_0CJ@KCPJKGH@entering?5IsAdapterReadyForConfig@FNODOBFM@ 00411b28     arcinit.obj
+ 0001:00010b52       ??_C@_0CH@PFKKGKLP@IsAdapterReadyForConfigCommand?3?5@FNODOBFM@ 00411b52     arcinit.obj
+ 0001:00010b7a       ??_C@_0DJ@FMKIDFML@?$CK?5leaving?5IsAdapterReadyForConfi@FNODOBFM@ 00411b7a     arcinit.obj
+ 0001:00010bb4       ??_C@_0CI@DLDHKJIO@IsAdapterReadyForConfigCommand?3?5@FNODOBFM@ 00411bb4     arcinit.obj
+ 0001:00010bdc       ??_C@_0CI@LLJGECEO@leaving?5IsAdapterReadyForConfigC@FNODOBFM@ 00411bdc     arcinit.obj
+ 0001:00010c04       ??_C@_0BD@LJONEFCN@entering?5IOPReset?6?$AA@FNODOBFM@ 00411c04     arcinit.obj
+ 0001:00010c18       ??_C@_0EN@CPGMGMBD@?$CK?$CK?5Fail?5to?5iopreset?5the?5adapter?5@FNODOBFM@ 00411c18     arcinit.obj
+ 0001:00010c66       ??_C@_0DE@GCJLBNBN@?$CK?$CK?5Fail?5to?5iopreset?5the?5adapter?0@FNODOBFM@ 00411c66     arcinit.obj
+ 0001:00010c9a       ??_C@_0BI@DKKBLGKC@?$CK?$CK?5IOPReset?5succeeded?4?6?$AA@FNODOBFM@ 00411c9a     arcinit.obj
+ 0001:00010cb2       ??_C@_0CI@GNLBMFGK@?$CK?$CK?5Trying?5to?5return?5pending?5SRB?5@FNODOBFM@ 00411cb2     arcinit.obj
+ 0001:00010cda       ??_C@_0DN@FCBCELNC@?$CK?$CK?5outstandingIO?5before?5calling?5@FNODOBFM@ 00411cda     arcinit.obj
+ 0001:00010d18       ??_C@_0BL@FAOIMEOD@?$CK?$CK?5returned?5?$CFd?5SRB?5to?5OS?4?6?$AA@FNODOBFM@ 00411d18     arcinit.obj
+ 0001:00010d34       ??_C@_0DG@MCABGJKN@Driver?5should?5not?5work?5under?5MSI@FNODOBFM@ 00411d34     arcinit.obj
+ 0001:00010d6a       ??_C@_0DE@DDNIODIO@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00411d6a     arcinit.obj
+ 0001:00010d9e       ??_C@_0BC@JKJGEENA@leaving?5IOPReset?6?$AA@FNODOBFM@ 00411d9e     arcinit.obj
+ 0001:00010db0       ??_C@_01EEMJAFIK@?6?$AA@FNODOBFM@ 00411db0     arcinit.obj
+ 0001:00010db2       ??_C@_0CH@DPKMOBPP@?$CK?5StorPort?5miniport?5driver?5versi@FNODOBFM@ 00411db2     arcinit.obj
+ 0001:00010dda       ??_C@_0DI@EADLFBBO@?$CK?5IopReset?3?5Adapter?5properties?5?$DN@FNODOBFM@ 00411dda     arcinit.obj
+ 0001:00010e12       ??_C@_0CE@OJCBEKFM@?$CK?5IopReset?3?5ADAPTER?5NOT?5RUNNING?$CB@FNODOBFM@ 00411e12     arcinit.obj
+ 0001:00010e36       ??_C@_0CL@CHDKOHLO@?$DN?$DN?$DN?$DN?$DN?$DN?$DO?5Final?5Vector?5Number?5is?5?$CF@FNODOBFM@ 00411e36     arcinit.obj
+ 0001:00010e62       ??_C@_0CI@BJJEDHMG@?$CK?5pDeviceExtension?9?$DOVectorCapaci@FNODOBFM@ 00411e62     arcinit.obj
+ 0001:00010e8a       ??_C@_0DE@JJAKLEJD@?$CK?5pDeviceExtension?9?$DOMSIXIoThrott@FNODOBFM@ 00411e8a     arcinit.obj
+ 0001:00010ebe       ??_C@_0DF@LMKAIIEG@?$CK?5pDeviceExtension?9?$DOMSIXIoThrott@FNODOBFM@ 00411ebe     arcinit.obj
+ 0001:00010ef4       ??_C@_0BK@OLLEIHIC@?$CK?5Switching?5to?5MSIx?5mode?6?$AA@FNODOBFM@ 00411ef4     arcinit.obj
+ 0001:00010f0e       ??_C@_0BA@EAOKKBLN@?$CK?5MSIx?5Enabled?6?$AA@FNODOBFM@ 00411f0e     arcinit.obj
+ 0001:00010f1e       ??_C@_0EB@JEEKIEDM@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00411f1e     arcinit.obj
+ 0001:00010f60       ??_C@_0EA@DFHNCIMC@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00411f60     arcinit.obj
+ 0001:00010fa0       ??_C@_0BE@OKKJEBLK@?$CK?5MSIX?5NOT?5Enabled?6?$AA@FNODOBFM@ 00411fa0     arcinit.obj
+ 0001:00010fb4       ??_C@_0CE@FDDAIENL@entering?5HandleAdapterConfigIssu@FNODOBFM@ 00411fb4     arcinit.obj
+ 0001:00010fd8       ??_C@_0EG@EOLGKFDM@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 00411fd8     arcinit.obj
+ 0001:0001101e       ??_C@_0EI@BLLNCBDL@?$CK?5leaving?5HandleAdapterConfigIss@FNODOBFM@ 0041201e     arcinit.obj
+ 0001:00011066       ??_C@_0EC@KFDDDOGD@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 00412066     arcinit.obj
+ 0001:000110a8       ??_C@_0EE@EEHAIAKN@?$CK?5leaving?5HandleAdapterConfigIss@FNODOBFM@ 004120a8     arcinit.obj
+ 0001:000110ec       ??_C@_0EC@EGKDAAOP@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 004120ec     arcinit.obj
+ 0001:0001112e       ??_C@_0EE@KHOALOCB@?$CK?5leaving?5HandleAdapterConfigIss@FNODOBFM@ 0041212e     arcinit.obj
+ 0001:00011172       ??_C@_0CD@FIHDJCJC@leaving?5HandleAdapterConfigIssue@FNODOBFM@ 00412172     arcinit.obj
+ 0001:00011196       ??_C@_0BM@OLPDNDAC@entering?5InitializeAdapter?6?$AA@FNODOBFM@ 00412196     arcinit.obj
+ 0001:000111b2       ??_C@_0CP@OADFCMNE@leaving?5InitializeAdapter?3?5fail?5@FNODOBFM@ 004121b2     arcinit.obj
+ 0001:000111e2       ??_C@_0DB@CKIIOBC@?$CK?5leaving?5InitializeAdapter?3?5fai@FNODOBFM@ 004121e2     arcinit.obj
+ 0001:00011214       ??_C@_0BL@CPLHAEBI@leaving?5InitializeAdapter?6?$AA@FNODOBFM@ 00412214     arcinit.obj
+ 0001:00011230       ??_C@_0BO@IEENCLHE@entering?5HwInitializeAdapter?6?$AA@FNODOBFM@ 00412230     arcinit.obj
+ 0001:0001124e       ??_C@_0EH@ONHPKJKD@?$CK?5StorPortGetMSIInfo?5returned?5Fa@FNODOBFM@ 0041224e     arcinit.obj
+ 0001:00011296       ??_C@_0EC@KLPNNIKH@?$CK?5StorPortGetMSIInfo?5returned?5st@FNODOBFM@ 00412296     arcinit.obj
+ 0001:000112d8       ??_C@_0EE@OLLCNNAO@?$CK?5StorPortGetMSIInfo?5returned?5st@FNODOBFM@ 004122d8     arcinit.obj
+ 0001:0001131c       ??_C@_0EJ@OBPFJGIJ@?$CK?5StorPortGetMSIInfo?5returned?5st@FNODOBFM@ 0041231c     arcinit.obj
+ 0001:00011366       ??_C@_0BH@KAJFPLII@?$CK?5?9?5Done?5HwInitialize?6?$AA@FNODOBFM@ 00412366     arcinit.obj
+ 0001:0001137e       ??_C@_0DG@IDIIGHJK@leaving?5HwInitializeAdapter?0?5lin@FNODOBFM@ 0041237e     arcinit.obj
+ 0001:000113b4       ??_C@_0BN@CMNHFCJM@leaving?5HwInitializeAdapter?6?$AA@FNODOBFM@ 004123b4     arcinit.obj
+ 0001:000113d2       ??_C@_0BI@BOGNCAIA@entering?5InitializeDPC?6?$AA@FNODOBFM@ 004123d2     arcinit.obj
+ 0001:000113ea       ??_C@_0BJ@CFFELFMJ@?$CK?5MSIx?5DPCs?5initialized?6?$AA@FNODOBFM@ 004123ea     arcinit.obj
+ 0001:00011404       ??_C@_0BI@LAPEOFCN@?$CK?5?9?5Done?5InitializeDPC?6?$AA@FNODOBFM@ 00412404     arcinit.obj
+ 0001:0001141c       ??_C@_0BH@PAHICDNJ@leaving?5InitializeDPC?6?$AA@FNODOBFM@ 0041241c     arcinit.obj
+ 0001:00011434       ??_C@_0CP@OJKLKHLO@entering?5InitializeConsumerProdu@FNODOBFM@ 00412434     arcinit.obj
+ 0001:00011464       ??_C@_0DE@MJJEGAKI@leaving?5InitializeConsumerProduc@FNODOBFM@ 00412464     arcinit.obj
+ 0001:00011498       ??_C@_0CO@NEGLFCOP@leaving?5InitializeConsumerProduc@FNODOBFM@ 00412498     arcinit.obj
+ 0001:000114c6       ??_C@_0CP@IKCNDLML@entering?5InitializeConsumerProdu@FNODOBFM@ 004124c6     arcinit.obj
+ 0001:000114f6       ??_C@_0DF@IICIHNDP@leaving?5InitializeConsumerProduc@FNODOBFM@ 004124f6     arcinit.obj
+ 0001:0001152c       ??_C@_0DE@OBANPGHF@leaving?5InitializeConsumerProduc@FNODOBFM@ 0041252c     arcinit.obj
+ 0001:00011560       ??_C@_0CP@GDFIJJML@entering?5InitializeMessageUnitQu@FNODOBFM@ 00412560     arcinit.obj
+ 0001:00011590       ??_C@_0DF@CLHHLLI@leaving?5InitializeMessageUnitQue@FNODOBFM@ 00412590     arcinit.obj
+ 0001:000115c6       ??_C@_0DE@BBDIIBAC@leaving?5InitializeMessageUnitQue@FNODOBFM@ 004125c6     arcinit.obj
+ 0001:000115fa       ??_C@_0BI@PNFIHJKN@entering?5MapDeviceBase?6?$AA@FNODOBFM@ 004125fa     arcinit.obj
+ 0001:00011612       ??_C@_0DL@HHJHAPNC@?$CK?5StorPortGetDeviceBase?5failed?0?5@FNODOBFM@ 00412612     arcinit.obj
+ 0001:0001164e       ??_C@_0FM@FAGAFMJI@?$CK?5StorPortGetDeviceBaseB1?5failed@FNODOBFM@ 0041264e     arcinit.obj
+ 0001:000116aa       ??_C@_0FM@DFFNMELK@?$CK?5StorPortGetDeviceBaseB0?5failed@FNODOBFM@ 004126aa     arcinit.obj
+ 0001:00011706       ??_C@_0DH@GMHBCEJM@?$CK?5GET_MINIARC_PROPERTIES?5fails?0?5@FNODOBFM@ 00412706     arcinit.obj
+ 0001:0001173e       ??_C@_0CE@JIIGOPEA@?$CK?5This?5is?5a?5BEDROC?5inplementatio@FNODOBFM@ 0041273e     arcinit.obj
+ 0001:00011762       ??_C@_0CF@HKNELPOC@leaving?5MapDeviceBase?5?9?5rtnval?5?$DN@FNODOBFM@ 00412762     arcinit.obj
+ 0001:00011788       ??_C@_0BG@LOIMFNHP@entering?5MatchPciIds?6?$AA@FNODOBFM@ 00412788     arcinit.obj
+ 0001:0001179e       ??_C@_08HNOCAICB@Adaptec?5?$AA@FNODOBFM@ 0041279e     arcinit.obj
+ 0001:000117a8       ??_C@_0CC@GEDCIDMJ@leaving?5MatchPciIds?0?5rtnval?5?$DN?5?$CFx@FNODOBFM@ 004127a8     arcinit.obj
+ 0001:000117ca       ??_C@_0CE@NAJHAKAL@entering?5ResetAndInitializeAdapt@FNODOBFM@ 004127ca     arcinit.obj
+ 0001:000117ee       ??_C@_0CJ@ICCABACH@?$CK?$CK?5Adapter?5is?5running?5after?5an?5I@FNODOBFM@ 004127ee     arcinit.obj
+ 0001:00011818       ??_C@_0DN@NGJKEOMO@?$CK?5IopReset?3?5Can?8t?5determine?5adap@FNODOBFM@ 00412818     arcinit.obj
+ 0001:00011856       ??_C@_0CD@NLNEBMEC@leaving?5ResetAndInitializeAdapte@FNODOBFM@ 00412856     arcinit.obj
+ 0001:0001187a       ??_C@_0BH@IFFPEJNM@entering?5ResetAdapter?6?$AA@FNODOBFM@ 0041287a     arcinit.obj
+ 0001:00011892       ??_C@_0CF@FBOKKCLF@?$CK?5Entering?5Reset?5Adapter?5Routine@FNODOBFM@ 00412892     arcinit.obj
+ 0001:000118b8       ??_C@_0EH@ECEBKEGJ@?$CK?5FW?5is?5processing?5IOP_RESET?0?5le@FNODOBFM@ 004128b8     arcinit.obj
+ 0001:00011900       ??_C@_0BG@JODNDMNO@leaving?5ResetAdapter?6?$AA@FNODOBFM@ 00412900     arcinit.obj
+ 0001:00011916       ??_C@_0DN@KLBLIJBD@?$CK?5An?5IOPReset?5DPC?5is?5pending?0?5ju@FNODOBFM@ 00412916     arcinit.obj
+ 0001:00011954       ??_C@_0BF@GMFKAGLA@?$CK?$CK?5BlinLed?5Code?3?5?$CFx?6?$AA@FNODOBFM@ 00412954     arcinit.obj
+ 0001:0001196a       ??_C@_0DM@EBNPFHJD@?$CK?5set?5timer?5to?5check?5the?5FW?5stat@FNODOBFM@ 0041296a     arcinit.obj
+ 0001:000119a6       ??_C@_0CL@EEBCPBAP@?$CK?5leaving?5Reset?5Adapter?5Routine?0@FNODOBFM@ 004129a6     arcinit.obj
+ 0001:000119d2       ??_C@_0DM@BLBAPGMJ@?$CK?$CK?$CK?$CK?5ResetAdapter?5?9?5SendSynchFib@FNODOBFM@ 004129d2     arcinit.obj
+ 0001:00011a0e       ??_C@_0EC@CPDLAFLK@?$CK?5ResetAdapter?5?9?5AdapterIsAlive?5@FNODOBFM@ 00412a0e     arcinit.obj
+ 0001:00011a50       ??_C@_0CG@BBBMKNGF@Outstanding?5IO?5in?5ResetAdapter?5i@FNODOBFM@ 00412a50     arcinit.obj
+ 0001:00011a76       ??_C@_0DE@NBJDNHPF@Calling?5CompleteBufferedRequest?5@FNODOBFM@ 00412a76     arcinit.obj
+ 0001:00011aaa       ??_C@_0HD@ICMAGBPN@Calling?5DequeueRawIoReadWriteReq@FNODOBFM@ 00412aaa     arcinit.obj
+ 0001:00011b1e       ??_C@_0DM@HLOGJCDJ@Calling?5CompleteAllSortingQueue?5@FNODOBFM@ 00412b1e     arcinit.obj
+ 0001:00011b5a       ??_C@_0CD@FANGNOJF@leaving?5ResetAdapter?0?5rtnval?5?$DN?5?$CF@FNODOBFM@ 00412b5a     arcinit.obj
+ 0001:00011b7e       ??_C@_0DB@DPGILIHI@?$CK?5leaving?5Reset?5Adapter?5Routine?5@FNODOBFM@ 00412b7e     arcinit.obj
+ 0001:00011bb0       ??_C@_0DB@KLKDBGPC@?$CK?5current?5ElapsedTime?5is?5?$CFx?4?5Dri@FNODOBFM@ 00412bb0     arcinit.obj
+ 0001:00011be2       ??_C@_0L@ENAJINDB@Management?$AA@FNODOBFM@ 00412be2     cmddelivery.obj
+ 0001:00011bee       ??_C@_0BB@JIADCMFJ@Array?5?5?5?5?5?5?5?5?5?5?5?$AA@FNODOBFM@ 00412bee     cmddelivery.obj
+ 0001:00011c00       ??_C@_08BFDLJAAH@ADAPTEC?5?$AA@FNODOBFM@ 00412c00     cmddelivery.obj
+ 0001:00011c0a       ??_C@_0BB@HJODFKJH@ARRAY?5?5?5?5?5?5?5?5?5?5?5?$AA@FNODOBFM@ 00412c0a     cmddelivery.obj
+ 0001:00011c1c       ??_C@_0BJ@NDPKABON@entering?5AdapterControl?6?$AA@FNODOBFM@ 00412c1c     cmdproc.obj
+ 0001:00011c36       ??_C@_0CF@FDIANAIH@?$CK?5?9?5AdapterControl?3?5ScsiStopAdap@FNODOBFM@ 00412c36     cmdproc.obj
+ 0001:00011c5c       ??_C@_0EC@BHBKOIEM@?$CK?5?9?5AdapterControl?3?5ScsiStopAdap@FNODOBFM@ 00412c5c     cmdproc.obj
+ 0001:00011c9e       ??_C@_0DK@JIECJOFO@?$CK?5Set?5pInitStruct?9?$DONoOfMsiVector@FNODOBFM@ 00412c9e     cmdproc.obj
+ 0001:00011cd8       ??_C@_0HA@BIJAMPMG@?$CK?5?9?5AdapterControl?3?5ScsiSetBootC@FNODOBFM@ 00412cd8     cmdproc.obj
+ 0001:00011d48       ??_C@_0DL@CMAPNHGC@?$CK?5?9?5AdapterControl?3?5ScsiSetBootC@FNODOBFM@ 00412d48     cmdproc.obj
+ 0001:00011d84       ??_C@_0HE@CIFLMEO@?$CK?5?9?5AdapterControl?3?5ScsiSetRunni@FNODOBFM@ 00412d84     cmdproc.obj
+ 0001:00011df8       ??_C@_0CI@NDPGKLNN@?$CK?5?9?5AdapterControl?3?5ScsiRestartA@FNODOBFM@ 00412df8     cmdproc.obj
+ 0001:00011e20       ??_C@_0CM@CNGCOMHH@?$CK?5Before?5checking?5Adapter?5Health@FNODOBFM@ 00412e20     cmdproc.obj
+ 0001:00011e4c       ??_C@_0CM@LGOLDMAP@?$CK?5leaving?5AdapterControl?5Routine@FNODOBFM@ 00412e4c     cmdproc.obj
+ 0001:00011e78       ??_C@_0GP@BJCLBBHJ@?$CK?5CHECK_ADAPTER_HEALTH?5failed?0?5s@FNODOBFM@ 00412e78     cmdproc.obj
+ 0001:00011ee8       ??_C@_0GI@HKBIHHID@?$CK?5START_ADAPTER?5failed?0?5start?5a?5@FNODOBFM@ 00412ee8     cmdproc.obj
+ 0001:00011f50       ??_C@_0CO@CEANCDOF@?$CK?5?9?5AdapterControl?3?5Reset?5HostRR@FNODOBFM@ 00412f50     cmdproc.obj
+ 0001:00011f7e       ??_C@_0CO@JFFKFNJF@?6?$CK?5?9?5AdapterControl?3?5ScsiQuery?5w@FNODOBFM@ 00412f7e     cmdproc.obj
+ 0001:00011fac       ??_C@_0DB@OIEGMDBJ@?6?$CK?5?9?5AdapterControl?3?5ScsiQuery?5W@FNODOBFM@ 00412fac     cmdproc.obj
+ 0001:00011fde       ??_C@_0DC@FOPMLBKH@?6?$CK?5Unsupported?5AdapterControl?5co@FNODOBFM@ 00412fde     cmdproc.obj
+ 0001:00012010       ??_C@_0BI@MBKDPNLO@leaving?5AdapterControl?6?$AA@FNODOBFM@ 00413010     cmdproc.obj
+ 0001:00012028       ??_C@_0O@GDHFPHNH@?$CK?5action?3?5?$CFd?6?$AA@FNODOBFM@ 00413028     cmdproc.obj
+ 0001:00012036       ??_C@_0L@PGGNAFAD@?$CK?5sleep?51?6?$AA@FNODOBFM@ 00413036     cmdproc.obj
+ 0001:00012042       ??_C@_0CH@BKCIEAIN@?$CK?5coming?5back?5from?5power?5state?5c@FNODOBFM@ 00413042     cmdproc.obj
+ 0001:0001206a       ??_C@_0BC@HBDLBCBL@?$CK?5going?5to?5S3?1S4?6?$AA@FNODOBFM@ 0041306a     cmdproc.obj
+ 0001:0001207c       ??_C@_0M@DAKLMIGA@?$CK?5shutdown?6?$AA@FNODOBFM@ 0041307c     cmdproc.obj
+ 0001:00012088       ??_C@_09GFAMPCAC@?$CK?5reboot?6?$AA@FNODOBFM@ 00413088     cmdproc.obj
+ 0001:00012092       ??_C@_0CO@NKBJPPMA@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 00413092     cmdproc.obj
+ 0001:000120c0       ??_C@_0FN@LKLFGDKL@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 004130c0     cmdproc.obj
+ 0001:0001211e       ??_C@_0FA@MOKLGDID@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 0041311e     cmdproc.obj
+ 0001:0001216e       ??_C@_0GA@IGOANHED@?$CK?5buildio?3?5LBA?5OUT?5OF?5RANGE?0?5sen@FNODOBFM@ 0041316e     cmdproc.obj
+ 0001:000121ce       ??_C@_07MPDDHOMN@CSMIALL?$AA@FNODOBFM@ 004131ce     ioctl.obj
+ 0001:000121d6       ??_C@_07OODOBGKD@CSMIARY?$AA@FNODOBFM@ 004131d6     ioctl.obj
+ 0001:000121de       ??_C@_07PAKBHMBE@CSMISAS?$AA@FNODOBFM@ 004131de     ioctl.obj
+ 0001:000121e6       ??_C@_07BHCKAAPP@CSMIPHY?$AA@FNODOBFM@ 004131e6     ioctl.obj
+ 0001:000121ee       ??_C@_0BI@COAKNOP@?$CK?5?9?5IOCTL?5MESSAGE?3?5?$CFs?5?6?$AA@FNODOBFM@ 004131ee     ioctl.obj
+ 0001:00012206       ??_C@_0BP@PHOOCPMJ@?$CK?5?9?5IOCTL?3?5FSAMPCTL_RESET_IOP?6?$AA@FNODOBFM@ 00413206     ioctl.obj
+ 0001:00012226       ??_C@_0L@EIJBKGJP@arcsas?4sys?$AA@FNODOBFM@ 00413226     ioctl.obj
+ 0001:00012232       ??_C@_0BN@BIKJANKI@Adaptec?5RAID?5Storport?5Driver?$AA@FNODOBFM@ 00413232     ioctl.obj
+ 0001:00012250       ??_C@_0FN@JAMFHGEE@Leaving?5QueueSortingQ?5?$CIFALSE?$CJ?3?5o@FNODOBFM@ 00413250     comm.obj
+ 0001:000122ae       ??_C@_0FN@DPGMDLIO@Leaving?5QueueSortingQ?5?$CIFALSE?$CJ?3?5o@FNODOBFM@ 004132ae     comm.obj
+ 0001:0001230c       ??_C@_0FJ@BLFEEFNB@?$CD2?0?5returning?5FALSE?4?5S?50x?$CFx?0?5N?50@FNODOBFM@ 0041330c     comm.obj
+ 0001:00012366       ??_C@_1BI@BHAHBMFJ@?$AAM?$AAo?$AAf?$AAR?$AAe?$AAs?$AAo?$AAu?$AAr?$AAc?$AAe?$AA?$AA@FNODOBFM@ 00413366     wmi.obj
+ 0001:0001237e       ??_C@_1BK@EPHGJNJ@?$AAS?$AAc?$AAs?$AAi?$AAM?$AAi?$AAn?$AAi?$AAP?$AAo?$AAr?$AAt?$AA?$AA@FNODOBFM@ 0041337e     scsiwmi:wmilib.obj
+ 0002:00000000       __imp__memset              00414000     ntoskrnl:ntoskrnl.exe
+ 0002:00000004       __imp___aulldvrm           00414004     ntoskrnl:ntoskrnl.exe
+ 0002:00000008       __imp___alldiv             00414008     ntoskrnl:ntoskrnl.exe
+ 0002:0000000c       __imp___allmul             0041400c     ntoskrnl:ntoskrnl.exe
+ 0002:00000010       __imp___aulldiv            00414010     ntoskrnl:ntoskrnl.exe
+ 0002:00000014       __imp___aullshr            00414014     ntoskrnl:ntoskrnl.exe
+ 0002:00000018       __imp__KeTickCount         00414018     ntoskrnl:ntoskrnl.exe
+ 0002:00000018       _KeTickCount               00414018     ntoskrnl:ntoskrnl.exe
+ 0002:0000001c       __imp__KeBugCheckEx@20     0041401c     ntoskrnl:ntoskrnl.exe
+ 0002:00000020       \177ntoskrnl_NULL_THUNK_DATA 00414020     ntoskrnl:ntoskrnl.exe
+ 0002:00000024       __imp__StorPortNotification 00414024     storport:storport.sys
+ 0002:00000028       __imp__StorPortStallExecution@4 00414028     storport:storport.sys
+ 0002:0000002c       __imp__StorPortReadRegisterUchar@8 0041402c     storport:storport.sys
+ 0002:00000030       __imp__StorPortReadRegisterUlong@8 00414030     storport:storport.sys
+ 0002:00000034       __imp__StorPortReadRegisterBufferUchar@16 00414034     storport:storport.sys
+ 0002:00000038       __imp__StorPortWriteRegisterUlong@12 00414038     storport:storport.sys
+ 0002:0000003c       __imp__StorPortWriteRegisterBufferUlong@16 0041403c     storport:storport.sys
+ 0002:00000040       __imp__StorPortMoveMemory@12 00414040     storport:storport.sys
+ 0002:00000044       __imp__StorPortGetDeviceBase@28 00414044     storport:storport.sys
+ 0002:00000048       __imp__StorPortWriteRegisterBufferUchar@16 00414048     storport:storport.sys
+ 0002:0000004c       __imp__StorPortDebugPrint  0041404c     storport:storport.sys
+ 0002:00000050       __imp__StorPortResume@4    00414050     storport:storport.sys
+ 0002:00000054       __imp__StorPortInitialize@16 00414054     storport:storport.sys
+ 0002:00000058       __imp__StorPortFreeDeviceBase@8 00414058     storport:storport.sys
+ 0002:0000005c       __imp__StorPortGetBusData@24 0041405c     storport:storport.sys
+ 0002:00000060       __imp__StorPortGetPhysicalAddress@16 00414060     storport:storport.sys
+ 0002:00000064       __imp__StorPortGetUncachedExtension@12 00414064     storport:storport.sys
+ 0002:00000068       __imp__StorPortPause@8     00414068     storport:storport.sys
+ 0002:0000006c       __imp__StorPortSetDeviceQueueDepth@20 0041406c     storport:storport.sys
+ 0002:00000070       __imp__StorPortCompleteRequest@20 00414070     storport:storport.sys
+ 0002:00000074       __imp__StorPortQuerySystemTime@4 00414074     storport:storport.sys
+ 0002:00000078       __imp__StorPortExtendedFunction 00414078     storport:storport.sys
+ 0002:0000007c       __imp__StorPortPauseDevice@20 0041407c     storport:storport.sys
+ 0002:00000080       __imp__StorPortBusy@8      00414080     storport:storport.sys
+ 0002:00000084       __imp__StorPortGetScatterGatherList@8 00414084     storport:storport.sys
+ 0002:00000088       __imp__StorPortResumeDevice@16 00414088     storport:storport.sys
+ 0002:0000008c       __imp__ScsiPortMoveMemory@12 0041408c     storport:storport.sys
+ 0002:00000090       \177storport_NULL_THUNK_DATA 00414090     storport:storport.sys
+ 0002:000000d8       _RevCompareTable           004140d8     revision.obj
+ 0002:000001d8       _RevCompareTableLength     004141d8     revision.obj
+ 0002:000001dc       ??_C@_08HNOCAICB@Adaptec?5?$AA@ 004141dc     arcsas.obj
+ 0002:000001e8       ??_C@_04ODJNANJC@9005?$AA@ 004141e8     arcsas.obj
+ 0002:000001f0       ??_C@_04EKJHPGNA@0285?$AA@ 004141f0     arcsas.obj
+ 0002:000001f8       ??_C@_04GBLKKFBD@0286?$AA@ 004141f8     arcsas.obj
+ 0002:00000200       ??_C@_04PPDJIIJN@0288?$AA@ 00414200     arcsas.obj
+ 0002:00000208       ??_C@_04LPGNDNED@028b?$AA@ 00414208     arcsas.obj
+ 0002:00000210       ??_C@_04KGHGAMAC@028c?$AA@ 00414210     arcsas.obj
+ 0002:00000218       ??_C@_0BB@MMDKHCIH@ARC?9SAS?5?5?5?5?5?5?5?5?5?$AA@ 00414218     arcsas.obj
+ 0002:0000022c       ??_C@_06DFBHEALI@AACAPI?$AA@ 0041422c     arcsas.obj
+ 0002:00000238       __load_config_used         00414238     BufferOverflowK:loadcfg.obj
+ 0003:00000000       _gDebugFlags               00415000     arcdebug.obj
+ 0003:00000008       _gNativeModeAdapters       00415008     arcsas.obj
+ 0003:00000170       _gNumNativeModeAdapters    00415170     arcsas.obj
+ 0003:00000174       _gARCProductId             00415174     arcsas.obj
+ 0003:00000178       _gARCApiId                 00415178     arcsas.obj
+ 0003:0000017c       _gARCOEMFlags              0041517c     arcsas.obj
+ 0003:00000180       _gARCSASRxSubsystemInfo    00415180     arcsas.obj
+ 0003:00000308       _gARCSASRktSubsystemInfo   00415308     arcsas.obj
+ 0003:00000340       _gARCSASArkSubsystemInfo   00415340     arcsas.obj
+ 0003:00000358       _gARCSASPMCSubsystemInfo   00415358     arcsas.obj
+ 0003:000003e0       _gARCVendor                004153e0     arcinit.obj
+ 0003:000003e4       _gAdapterGuid              004153e4     wmi.obj
+ 0003:000003f4       _gIoChannelGuid            004153f4     wmi.obj
+ 0003:00000404       _gDiskArrayGuid            00415404     wmi.obj
+ 0003:00000414       _gPhysicalDiskGuid         00415414     wmi.obj
+ 0003:00000424       _gAdapterMethodGuid        00415424     wmi.obj
+ 0003:00000434       ___security_cookie         00415434     BufferOverflowK:gs_support.obj
+ 0003:00000438       ___security_cookie_complement 00415438     BufferOverflowK:gs_support.obj
+ 0003:00000448       _gTraceContext             00415448     arcinit.obj
+ 0003:0000044c       _gAdapterAddCount          0041544c     arcinit.obj
+ 0003:00000460       _gAdapterTable             00415460     <common>
+ 0003:00000560       _gDriverObject             00415560     <common>
+ 0004:00000006       ___security_init_cookie    00416006 f   BufferOverflowK:gs_support.obj
+ 0004:0000005e       _GsDriverEntry@8           0041605e f   BufferOverflowK:gs_support.obj
+ 0004:00000074       _GsIsReadTimeStampCounterAvailable@0 00416074 f   BufferOverflowK:gs_util.obj
+ 0004:000000f4       __IMPORT_DESCRIPTOR_ntoskrnl 004160f4     ntoskrnl:ntoskrnl.exe
+ 0004:00000108       __IMPORT_DESCRIPTOR_storport 00416108     storport:storport.sys
+ 0004:0000011c       __NULL_IMPORT_DESCRIPTOR   0041611c     ntoskrnl:ntoskrnl.exe
+
+ entry point at        0004:0000005e
+
+ Static symbols
+
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     ntoskrnl:ntoskrnl.exe
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0000:fffe6000       .debug$S                   00400000     storport:storport.sys
+ 0001:00002034       $LN21                      00403034     rxdevice.obj
+ 0001:0000289c       _StrcatLocal@8             0040389c f   arcdebug.obj
+ 0001:000028c6       _Strcatc@8                 004038c6 f   arcdebug.obj
+ 0001:0000f3b4       $LN79                      004103b4     scsiwmi:wmilib.obj
+ 0003:00000440       ?TimerAge@?1??CheckingFWAfterPowerStateChange@@9@9 00415440     timer.obj
+ 0003:00000444       ?TimerAge@?1??Reset_IOP_CompletionTimer@@9@9 00415444     timer.obj
+ 0003:00000450       ?initialized@?1??DriverEntry@@9@9 00415450     arcinit.obj
+ 0004:00000224       .idata$6                   00416224     ntoskrnl:ntoskrnl.exe
+ 0004:000004da       .idata$6                   004164da     storport:storport.sys
+ 0005:000000d0       $R000000                   004170d0     arcsas.res
+ 0005:00000438       $R000368                   00417438     arcsas.res
